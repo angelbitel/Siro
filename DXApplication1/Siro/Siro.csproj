@@ -1,0 +1,1272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E14472E4-8017-42E4-A41D-E9D819849DBF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Siro</RootNamespace>
+    <AssemblyName>Siro</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="DevExpress.BonusSkins.v15.2" />
+    <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v15.2.Win, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v15.2" />
+    <Reference Include="DevExpress.DataAccess.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v15.2.UI, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Diagram.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Map.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v15.2" />
+    <Reference Include="DevExpress.Sparkline.v15.2.Core" />
+    <Reference Include="DevExpress.Utils.v15.2.UI, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v15.2.Extensions, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v15.2.UI, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v15.2.Wizard, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraDiagram.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v15.2" />
+    <Reference Include="DevExpress.XtraGauges.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v15.2.Presets, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v15.2.Win, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraMap.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v15.2.Extensions, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v15.2.Extensions, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acredores.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AgendaCobros.cs">
+      <DependentUpon>slGestiones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Almacenaje.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Almacenes.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Asientos.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bancos.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Categorias.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CicloAlmacenaje.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClasesCliente.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClasesRA.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cobradores.cs">
+      <DependentUpon>slGestiones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Colaboradores.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Conductores.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contabilidad.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contabilidad.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ContratosColaborador.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\Acredor.cs" />
+    <Compile Include="Controller\Banco.cs" />
+    <Compile Include="Controller\Cliente.cs" />
+    <Compile Include="Controller\Colaborador.cs" />
+    <Compile Include="Controller\Contabilidad.cs" />
+    <Compile Include="Controller\Cotizacion.cs" />
+    <Compile Include="Controller\CuentasM.cs" />
+    <Compile Include="Controller\CuentasPorPagar.cs" />
+    <Compile Include="Controller\DescuentosGobierno.cs" />
+    <Compile Include="Controller\Diario.cs" />
+    <Compile Include="Controller\Factura.cs" />
+    <Compile Include="Controller\HasardFile.cs" />
+    <Compile Include="Controller\HoraTrabjada.cs" />
+    <Compile Include="Controller\Lst.cs" />
+    <Compile Include="Controller\Persona.cs" />
+    <Compile Include="Controller\RA.cs" />
+    <Compile Include="Controller\Usuario.cs" />
+    <Compile Include="DetalleAsientos.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesFactura.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesFacturaItem.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Factura.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="F\Contabilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Contabilidad.Designer.cs">
+      <DependentUpon>Contabilidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\DashboardDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\DashboardDesigner.Designer.cs">
+      <DependentUpon>DashboardDesigner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Dashboards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Dashboards.Designer.cs">
+      <DependentUpon>Dashboards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\CuentasPorCobrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\CuentasPorCobrar.Designer.cs">
+      <DependentUpon>CuentasPorCobrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\CuentasPorPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\CuentasPorPagar.Designer.cs">
+      <DependentUpon>CuentasPorPagar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\DetalleFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\DetalleFactura.Designer.cs">
+      <DependentUpon>DetalleFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\FiltroCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\FiltroCuentas.Designer.cs">
+      <DependentUpon>FiltroCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\FiltroFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\FiltroFecha.Designer.cs">
+      <DependentUpon>FiltroFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\MaestrosCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\MaestrosCuentas.Designer.cs">
+      <DependentUpon>MaestrosCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\Proveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\Proveedores.Designer.cs">
+      <DependentUpon>Proveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\SelectorCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\SelectorCuentas.Designer.cs">
+      <DependentUpon>SelectorCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShortClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShortClientes.Designer.cs">
+      <DependentUpon>ShortClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShortProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShortProveedores.Designer.cs">
+      <DependentUpon>ShortProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShowBanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShowBanco.Designer.cs">
+      <DependentUpon>ShowBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShowBanco2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShowBanco2.Designer.cs">
+      <DependentUpon>ShowBanco2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShowClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShowClientes.Designer.cs">
+      <DependentUpon>ShowClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShowCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShowCuentas.Designer.cs">
+      <DependentUpon>ShowCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShowEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShowEmpleados.Designer.cs">
+      <DependentUpon>ShowEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShowFormaPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShowFormaPago.Designer.cs">
+      <DependentUpon>ShowFormaPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShowProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShowProveedor.Designer.cs">
+      <DependentUpon>ShowProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\ShowProveedores2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\ShowProveedores2.Designer.cs">
+      <DependentUpon>ShowProveedores2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\VerCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\VerCuentas.Designer.cs">
+      <DependentUpon>VerCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Facturacion\Almacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Facturacion\Almacen.Designer.cs">
+      <DependentUpon>Almacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Facturacion\Categoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Facturacion\Categoria.Designer.cs">
+      <DependentUpon>Categoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Facturacion\ListaPrecios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Facturacion\ListaPrecios.Designer.cs">
+      <DependentUpon>ListaPrecios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Facturacion\Marca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Facturacion\Marca.Designer.cs">
+      <DependentUpon>Marca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Facturacion\VerVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Facturacion\VerVentas.Designer.cs">
+      <DependentUpon>VerVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Inventario.Designer.cs">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\AddC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\AddC.Designer.cs">
+      <DependentUpon>AddC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\AddP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\AddP.Designer.cs">
+      <DependentUpon>AddP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\BindingList.cs" />
+    <Compile Include="F\I\CerrarCiclo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\CerrarCiclo.Designer.cs">
+      <DependentUpon>CerrarCiclo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\EntradasSalidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\EntradasSalidas.Designer.cs">
+      <DependentUpon>EntradasSalidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\Filtrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\Filtrar.Designer.cs">
+      <DependentUpon>Filtrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\IngresosRA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\IngresosRA.Designer.cs">
+      <DependentUpon>IngresosRA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\InicioEA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\InicioEA.Designer.cs">
+      <DependentUpon>InicioEA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\InventarioActual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\InventarioActual.Designer.cs">
+      <DependentUpon>InventarioActual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Perfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Perfiles.Designer.cs">
+      <DependentUpon>Perfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\P\AgregarHoras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\AgregarHoras.Designer.cs">
+      <DependentUpon>AgregarHoras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\P\AgregarVacaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\AgregarVacaciones.Designer.cs">
+      <DependentUpon>AgregarVacaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\P\Cumpleaños.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\Cumpleaños.Designer.cs">
+      <DependentUpon>Cumpleaños.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\P\PlanillaGenerada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\PlanillaGenerada.Designer.cs">
+      <DependentUpon>PlanillaGenerada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestiones.cs">
+      <DependentUpon>slGestiones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialCliente.cs">
+      <DependentUpon>slGestiones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kardex.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaestroCuentas.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Marcas.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Cuentas.cs" />
+    <Compile Include="Model\EntradasSalidas.cs" />
+    <Compile Include="Model\Liquidacion.cs" />
+    <Compile Include="Model\Prmts.cs" />
+    <Compile Include="Model\RegistroArroz.cs" />
+    <Compile Include="Model\Servicio.cs" />
+    <Compile Include="Model\TipoFlete.cs" />
+    <Compile Include="Model\TiposCalculos.cs" />
+    <Compile Include="F\P\VerFactores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\VerFactores.Designer.cs">
+      <DependentUpon>VerFactores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Factor.cs" />
+    <Compile Include="Model\FFiltro.cs" />
+    <Compile Include="Model\MovimientoColaborador.cs" />
+    <Compile Include="Controller\Producto.cs" />
+    <Compile Include="Model\Talonario.cs" />
+    <Compile Include="Conversion.cs" />
+    <Compile Include="Cotizaciones.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Deducciones.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Departamentos.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Descuentos.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleCotizacion.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesDescuento.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesPerfil.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesTransaccione.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empresas.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntedidadesFinanciera.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadosColaborador.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Factores.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormasPago.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FPagoUilizada.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="F\Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Cliente.Designer.cs">
+      <DependentUpon>Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Cotizacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Cotizacion.Designer.cs">
+      <DependentUpon>Cotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\CrearModificarReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\CrearModificarReporte.Designer.cs">
+      <DependentUpon>CrearModificarReporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\Diario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\Diario.Designer.cs">
+      <DependentUpon>Diario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\Banco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\Banco.Designer.cs">
+      <DependentUpon>Banco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\Factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\Factura.Designer.cs">
+      <DependentUpon>Factura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\FormaPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\FormaPago.Designer.cs">
+      <DependentUpon>FormaPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\Mayor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\Mayor.Designer.cs">
+      <DependentUpon>Mayor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\Periodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\Periodo.Designer.cs">
+      <DependentUpon>Periodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Empresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Empresa.Designer.cs">
+      <DependentUpon>Empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Perfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Perfil.Designer.cs">
+      <DependentUpon>Perfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Planilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Planilla.Designer.cs">
+      <DependentUpon>Planilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Facturacion\Producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Facturacion\Producto.Designer.cs">
+      <DependentUpon>Producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\P\AgregarDeduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\AgregarDeduccion.Designer.cs">
+      <DependentUpon>AgregarDeduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\P\ColaboradorEm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\ColaboradorEm.Designer.cs">
+      <DependentUpon>ColaboradorEm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\P\PruebaPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\PruebaPlanilla.Designer.cs">
+      <DependentUpon>PruebaPlanilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\P\Talonarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\Talonarios.Designer.cs">
+      <DependentUpon>Talonarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Reportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Reportes.Designer.cs">
+      <DependentUpon>Reportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Facturacion\Servicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Facturacion\Servicio.Designer.cs">
+      <DependentUpon>Servicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Usuario.Designer.cs">
+      <DependentUpon>Usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HorasTrabajadas.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IngresosDeducciones.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IngresosDeduccionesHoras.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AsientoContable.cs" />
+    <Compile Include="Model\Cliente.cs" />
+    <Compile Include="Model\ClienteMini.cs" />
+    <Compile Include="Model\Colaborador.cs" />
+    <Compile Include="Model\Cuenta.cs" />
+    <Compile Include="Model\CuentaContable.cs" />
+    <Compile Include="Model\Deduccion.cs" />
+    <Compile Include="Model\Deducciones.cs" />
+    <Compile Include="Model\DetalleCotizacion.cs" />
+    <Compile Include="Model\DetalleTransaccion.cs" />
+    <Compile Include="Model\Empresa.cs" />
+    <Compile Include="Model\Encrypt.cs" />
+    <Compile Include="Model\FPago.cs" />
+    <Compile Include="Model\HorasTrabajadas.cs" />
+    <Compile Include="Model\Mayor.cs" />
+    <Compile Include="Model\Producto.cs" />
+    <Compile Include="Model\TreeViewMenus.cs" />
+    <Compile Include="Model\V.cs" />
+    <Compile Include="Model\Vacacion.cs" />
+    <Compile Include="Pagos.cs">
+      <DependentUpon>slGestiones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Perfil.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlanillaColaborador.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlanillaDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlanillaDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlanillaDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlanillaDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlanillaDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Posiciones.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrecioProducto.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Precios.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procedencias.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Productores.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Productos.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="provedores.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RA.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Recibidos.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroLiquidaciones.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroOtrosDeducciones.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrosBanco.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroVacaciones.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rentas.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\rptCotizacion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\rptCotizacion.Designer.cs">
+      <DependentUpon>rptCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\XtraReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\XtraReport1.Designer.cs">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResultadosGestion.cs">
+      <DependentUpon>slGestiones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="slContabilidad.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slContabilidad.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="slContabilidad.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="slContabilidad.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slContabilidad.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSources\slDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="slGestiones.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slGestiones.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="slGestiones.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slGestiones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="slGestiones.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slGestiones.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="slSiro.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slSiro.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="slSiro.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="slSiro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>slSiro.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TiposAlmacen.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposArroz.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposCliente.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposCompromiso.cs">
+      <DependentUpon>slGestiones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposFactor.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposGestion.cs">
+      <DependentUpon>slGestiones.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposMovimiento.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transacciones.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utility.cs" />
+    <Compile Include="VAsientos.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vendedores.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VMayorAsientos.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VPagosProveedor.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VPlanilla.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VPrecioLista.cs">
+      <DependentUpon>Contabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VRA.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VValoresAlmacenaje.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="F\Cliente.resx">
+      <DependentUpon>Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Contabilidad.resx">
+      <DependentUpon>Contabilidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Cotizacion.resx">
+      <DependentUpon>Cotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\CrearModificarReporte.resx">
+      <DependentUpon>CrearModificarReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\DashboardDesigner.resx">
+      <DependentUpon>DashboardDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Dashboards.resx">
+      <DependentUpon>Dashboards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\CuentasPorCobrar.resx">
+      <DependentUpon>CuentasPorCobrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\CuentasPorPagar.resx">
+      <DependentUpon>CuentasPorPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\DetalleFactura.resx">
+      <DependentUpon>DetalleFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\Diario.resx">
+      <DependentUpon>Diario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\Banco.resx">
+      <DependentUpon>Banco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\Factura.resx">
+      <DependentUpon>Factura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\FiltroCuentas.resx">
+      <DependentUpon>FiltroCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\FiltroFecha.resx">
+      <DependentUpon>FiltroFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\FormaPago.resx">
+      <DependentUpon>FormaPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\MaestrosCuentas.resx">
+      <DependentUpon>MaestrosCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\Mayor.resx">
+      <DependentUpon>Mayor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\Periodo.resx">
+      <DependentUpon>Periodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\Proveedores.resx">
+      <DependentUpon>Proveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\SelectorCuentas.resx">
+      <DependentUpon>SelectorCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShortClientes.resx">
+      <DependentUpon>ShortClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShortProveedores.resx">
+      <DependentUpon>ShortProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShowBanco.resx">
+      <DependentUpon>ShowBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShowBanco2.resx">
+      <DependentUpon>ShowBanco2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShowClientes.resx">
+      <DependentUpon>ShowClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShowCuentas.resx">
+      <DependentUpon>ShowCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShowEmpleados.resx">
+      <DependentUpon>ShowEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShowFormaPago.resx">
+      <DependentUpon>ShowFormaPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShowProveedor.resx">
+      <DependentUpon>ShowProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\ShowProveedores2.resx">
+      <DependentUpon>ShowProveedores2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\VerCuentas.resx">
+      <DependentUpon>VerCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Empresa.resx">
+      <DependentUpon>Empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Facturacion\Almacen.resx">
+      <DependentUpon>Almacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Facturacion\Categoria.resx">
+      <DependentUpon>Categoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Facturacion\ListaPrecios.resx">
+      <DependentUpon>ListaPrecios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Facturacion\Marca.resx">
+      <DependentUpon>Marca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Facturacion\VerVentas.resx">
+      <DependentUpon>VerVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Inventario.resx">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\AddC.resx">
+      <DependentUpon>AddC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\AddP.resx">
+      <DependentUpon>AddP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\CerrarCiclo.resx">
+      <DependentUpon>CerrarCiclo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\EntradasSalidas.resx">
+      <DependentUpon>EntradasSalidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\Filtrar.resx">
+      <DependentUpon>Filtrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\IngresosRA.resx">
+      <DependentUpon>IngresosRA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\InicioEA.resx">
+      <DependentUpon>InicioEA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\InventarioActual.resx">
+      <DependentUpon>InventarioActual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Perfil.resx">
+      <DependentUpon>Perfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Perfiles.resx">
+      <DependentUpon>Perfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Planilla.resx">
+      <DependentUpon>Planilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Facturacion\Producto.resx">
+      <DependentUpon>Producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\P\AgregarDeduccion.resx">
+      <DependentUpon>AgregarDeduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\P\AgregarHoras.resx">
+      <DependentUpon>AgregarHoras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\P\ColaboradorEm.resx">
+      <DependentUpon>ColaboradorEm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\P\Cumpleaños.resx">
+      <DependentUpon>Cumpleaños.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\P\PlanillaGenerada.resx">
+      <DependentUpon>PlanillaGenerada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\P\PruebaPlanilla.resx">
+      <DependentUpon>PruebaPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\P\Talonarios.resx">
+      <DependentUpon>Talonarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\P\VerFactores.resx">
+      <DependentUpon>VerFactores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Reportes.resx">
+      <DependentUpon>Reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Facturacion\Servicio.resx">
+      <DependentUpon>Servicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\Usuario.resx">
+      <DependentUpon>Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reportes\rptCotizacion.resx">
+      <DependentUpon>rptCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\XtraReport1.resx">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Contabilidad.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Contabilidad.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataSources\Almacenaje.datasource" />
+    <None Include="DataSources\CicloAlmacenaje.datasource" />
+    <None Include="DataSources\Conductores.datasource" />
+    <None Include="DataSources\Almacenes.datasource" />
+    <None Include="DataSources\Categorias.datasource" />
+    <None Include="DataSources\Acredores.datasource" />
+    <None Include="App.Config" />
+    <None Include="DataSources\Bancos.datasource" />
+    <None Include="DataSources\Clientes.datasource" />
+    <None Include="DataSources\Colaboradores.datasource" />
+    <None Include="Contabilidad.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Contabilidad.edmx</DependentUpon>
+      <LastGenOutput>Contabilidad.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Contabilidad.edmx.diagram">
+      <DependentUpon>Contabilidad.edmx</DependentUpon>
+    </None>
+    <None Include="Contabilidad.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Contabilidad.edmx</DependentUpon>
+      <LastGenOutput>Contabilidad.cs</LastGenOutput>
+    </None>
+    <None Include="DataSources\Deducciones.datasource" />
+    <None Include="DataSources\DetalleCotizacion.datasource" />
+    <None Include="DataSources\DetallesTransaccione.datasource" />
+    <None Include="DataSources\Empresas.datasource" />
+    <None Include="DataSources\IngresosDeducciones.datasource" />
+    <None Include="DataSources\Factores.datasource" />
+    <None Include="DataSources\HorasTrabajadas.datasource" />
+    <None Include="DataSources\PrecioProducto.datasource" />
+    <None Include="DataSources\Siro.Model.CuentaContable.datasource" />
+    <None Include="DataSources\Siro.Model.Cuentas.datasource" />
+    <None Include="DataSources\Siro.Model.Producto.datasource" />
+    <None Include="DataSources\VPrecioLista.datasource" />
+    <None Include="DataSources\DetallesFactura.datasource" />
+    <None Include="DataSources\MaestroCuentas.datasource" />
+    <None Include="DataSources\DetallesFacturaItem.datasource" />
+    <None Include="DataSources\Marcas.datasource" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="PlanillaDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PlanillaDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataSources\PlanillaColaborador.datasource" />
+    <None Include="PlanillaDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PlanillaDb.edmx</DependentUpon>
+      <LastGenOutput>PlanillaDb.Context.cs</LastGenOutput>
+    </None>
+    <None Include="PlanillaDb.edmx.diagram">
+      <DependentUpon>PlanillaDb.edmx</DependentUpon>
+    </None>
+    <None Include="PlanillaDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PlanillaDb.edmx</DependentUpon>
+      <LastGenOutput>PlanillaDb.cs</LastGenOutput>
+    </None>
+    <None Include="DataSources\Productos.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="DataSources\Servicios.datasource" />
+    <None Include="DataSources\Siro.Model.AsientoContable.datasource" />
+    <None Include="DataSources\Siro.Model.ClienteMini.datasource" />
+    <None Include="DataSources\Siro.Model.Colaborador.datasource" />
+    <None Include="DataSources\Siro.Model.Deduccion.datasource" />
+    <None Include="DataSources\Siro.Model.DetalleCotizacion.datasource" />
+    <None Include="DataSources\Siro.Model.Mayor.datasource" />
+    <None Include="DataSources\Siro.Model.Talonario.datasource" />
+    <None Include="DataSources\Siro.Model.Factor.datasource" />
+    <None Include="DataSources\Siro.Model.MovimientoColaborador.datasource" />
+    <None Include="DataSources\Siro.Model.TiposCalculos.datasource" />
+    <None Include="DataSources\Siro.Model.Vacacion.datasource" />
+    <None Include="DataSources\RegistroLiquidaciones.datasource" />
+    <None Include="DataSources\Siro.Model.Servicio.datasource" />
+    <EntityDeploy Include="slContabilidad.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>slContabilidad.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataSources\provedores.datasource" />
+    <None Include="DataSources\Recibidos.datasource" />
+    <None Include="DataSources\RA.datasource" />
+    <None Include="DataSources\Siro.Model.CuentasMaestras.datasource" />
+    <None Include="DataSources\Siro.Model.RegistroArroz.datasource" />
+    <None Include="DataSources\Siro.Model.EntradasSalidas.datasource" />
+    <None Include="slContabilidad.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>slContabilidad.edmx</DependentUpon>
+      <LastGenOutput>slContabilidad.Context.cs</LastGenOutput>
+    </None>
+    <None Include="slContabilidad.edmx.diagram">
+      <DependentUpon>slContabilidad.edmx</DependentUpon>
+    </None>
+    <None Include="slContabilidad.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>slContabilidad.edmx</DependentUpon>
+      <LastGenOutput>slContabilidad.cs</LastGenOutput>
+    </None>
+    <None Include="DataSources\slDataSet.xsc">
+      <DependentUpon>slDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSources\slDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>slDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSources\slDataSet.xss">
+      <DependentUpon>slDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSources\Transacciones.datasource" />
+    <None Include="DataSources\Usuarios.datasource" />
+    <None Include="DataSources\VAsientos.datasource" />
+    <None Include="DataSources\VPagosProveedor.datasource" />
+    <EntityDeploy Include="slGestiones.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>slGestiones.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="slGestiones.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>slGestiones.edmx</DependentUpon>
+      <LastGenOutput>slGestiones.Context.cs</LastGenOutput>
+    </None>
+    <None Include="slGestiones.edmx.diagram">
+      <DependentUpon>slGestiones.edmx</DependentUpon>
+    </None>
+    <None Include="slGestiones.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>slGestiones.edmx</DependentUpon>
+      <LastGenOutput>slGestiones.cs</LastGenOutput>
+    </None>
+    <None Include="DataSources\TiposAlmacen.datasource" />
+    <None Include="DataSources\TiposArroz.datasource" />
+    <None Include="DataSources\TiposMovimiento.datasource" />
+    <None Include="DataSources\VValoresAlmacenaje.datasource" />
+    <EntityDeploy Include="slSiro.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>slSiro.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="slSiro.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>slSiro.edmx</DependentUpon>
+      <LastGenOutput>slSiro.Context.cs</LastGenOutput>
+    </None>
+    <None Include="slSiro.edmx.diagram">
+      <DependentUpon>slSiro.edmx</DependentUpon>
+    </None>
+    <None Include="slSiro.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>slSiro.edmx</DependentUpon>
+      <LastGenOutput>slSiro.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\silo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\silo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\silo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\silo3.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

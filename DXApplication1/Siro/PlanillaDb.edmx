@@ -1,0 +1,1721 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="slModelPlanilla.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Acredores">
+          <Key>
+            <PropertyRef Name="IdAcredor" />
+          </Key>
+          <Property Name="IdAcredor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Acredor" Type="varchar" MaxLength="250" />
+          <Property Name="Direccion" Type="varchar" MaxLength="250" />
+          <Property Name="ACH" Type="varchar" MaxLength="250" />
+          <Property Name="Telefono" Type="varchar" MaxLength="250" />
+          <Property Name="Orden" Type="int" />
+        </EntityType>
+        <EntityType Name="Colaboradores">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+          </Key>
+          <Property Name="IdColaborador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Colaborador" Type="varchar" MaxLength="250" />
+          <Property Name="IdEstadoColaborador" Type="int" />
+          <Property Name="IdContratoColaborador" Type="int" />
+          <Property Name="SalarioQuincenal" Type="money" />
+          <Property Name="CTORepresentacion" Type="money" />
+          <Property Name="EstadoCivil" Type="varchar" MaxLength="50" />
+          <Property Name="IdentificacionPersonal" Type="varchar" MaxLength="250" />
+          <Property Name="Direccion" Type="varchar" MaxLength="250" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="Sexo" Type="varchar" MaxLength="50" />
+          <Property Name="IdEntidadFinanciera" Type="int" />
+          <Property Name="HoraEntrada" Type="time" Precision="7" />
+          <Property Name="HoraSalida" Type="time" Precision="7" />
+          <Property Name="IdDepartamento" Type="int" />
+          <Property Name="IdPosicion" Type="int" />
+          <Property Name="RataPorHora" Type="money" />
+          <Property Name="Bonificaciones" Type="money" />
+          <Property Name="SeguroSocial" Type="varchar" MaxLength="250" />
+          <Property Name="Sangre" Type="varchar" MaxLength="50" />
+          <Property Name="IdRenta" Type="int" />
+          <Property Name="Img" Type="varbinary(max)" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="Telefono" Type="varchar" MaxLength="250" />
+          <Property Name="Dependientes" Type="int" />
+          <Property Name="ExentoRenta" Type="bit" />
+        </EntityType>
+        <EntityType Name="ContratosColaborador">
+          <Key>
+            <PropertyRef Name="IdContratoColaborador" />
+          </Key>
+          <Property Name="IdContratoColaborador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContratoColaborador" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Deducciones">
+          <Key>
+            <PropertyRef Name="IdDeduccion" />
+          </Key>
+          <Property Name="IdDeduccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="Deduccion" Type="varchar" MaxLength="250" />
+          <Property Name="TipoDeduccion" Type="varchar" MaxLength="50" />
+          <Property Name="IdAcredor" Type="int" />
+          <Property Name="Monto" Type="money" />
+          <Property Name="MontoPagado" Type="money" />
+          <Property Name="ArregloRecurrente" Type="money" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="IdDepartamento" />
+          </Key>
+          <Property Name="IdDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="Departamento" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Descuentos">
+          <Key>
+            <PropertyRef Name="IdDescuento" />
+          </Key>
+          <Property Name="IdDescuento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAcredor" Type="int" />
+          <Property Name="Descuento" Type="varchar" MaxLength="250" />
+          <Property Name="NumeroPrestamo" Type="varchar" MaxLength="250" />
+          <Property Name="DescuentoDiciembre" Type="bit" />
+          <Property Name="Monto" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sl.Planilla.DetallesDescuento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DetallesDescuento">
+          <Key>
+            <PropertyRef Name="IdDetalleDescuento" />
+          </Key>
+          <Property Name="IdDetalleDescuento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDescuento" Type="int" />
+          <Property Name="FechaDescuento" Type="int" />
+          <Property Name="CorrespondeA" Type="varchar" MaxLength="50" />
+          <Property Name="Monto" Type="money" />
+        </EntityType>
+        <EntityType Name="EntedidadesFinanciera">
+          <Key>
+            <PropertyRef Name="IdEntidadFinanciera" />
+          </Key>
+          <Property Name="IdEntidadFinanciera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntidadFinanciera" Type="varchar" MaxLength="250" />
+          <Property Name="NumeroCuenta" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="EstadosColaborador">
+          <Key>
+            <PropertyRef Name="IdEstadoColaborador" />
+          </Key>
+          <Property Name="IdEstadoColaborador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstadoColaborador" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Factores">
+          <Key>
+            <PropertyRef Name="IdFactor" />
+          </Key>
+          <Property Name="IdFactor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="DescripcionFactor" Type="varchar" MaxLength="250" />
+          <Property Name="Factor" Type="money" />
+          <Property Name="IdTipoFactor" Type="int" />
+          <Property Name="RestaSaldo" Type="bit" />
+          <Property Name="TipoDia" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="HorasTrabajadas">
+          <Key>
+            <PropertyRef Name="IdHoraTrabjada" />
+          </Key>
+          <Property Name="IdHoraTrabjada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="IdFactor" Type="int" />
+          <Property Name="HoraTrabajada" Type="money" />
+          <Property Name="Mes" Type="int" />
+          <Property Name="Año" Type="int" />
+          <Property Name="FechaProceso" Type="datetime" />
+          <Property Name="Procesado" Type="bit" />
+        </EntityType>
+        <EntityType Name="IngresosDeducciones">
+          <Key>
+            <PropertyRef Name="IdIngresoDeducion" />
+          </Key>
+          <Property Name="IdIngresoDeducion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDeduccion" Type="int" />
+          <Property Name="Monto" Type="money" />
+          <Property Name="FechaProceso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="IngresosDeduccionesHoras">
+          <Key>
+            <PropertyRef Name="IdIngresoDeducionHora" />
+          </Key>
+          <Property Name="IdIngresoDeducionHora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="Monto" Type="money" />
+          <Property Name="FechaProceso" Type="datetime" />
+          <Property Name="Quincena" Type="int" />
+          <Property Name="IdFactor" Type="int" />
+        </EntityType>
+        <EntityType Name="PlanillaColaborador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdColaborador" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="FechaProceso" Type="datetime" Nullable="false" />
+          <Property Name="Año" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="int" Nullable="false" />
+          <Property Name="Quincena" Type="int" Nullable="false" />
+          <Property Name="RataPorHora" Type="money" />
+          <Property Name="SalarioQuincenal" Type="money" />
+          <Property Name="TotalHoras" Type="money" />
+          <Property Name="SalarioBruto" Type="money" />
+          <Property Name="OtrasDeducciones" Type="money" />
+          <Property Name="CXCRecurrentes" Type="money" />
+          <Property Name="CXC" Type="money" />
+          <Property Name="SeguroSocial" Type="money" />
+          <Property Name="SeguroEducativo" Type="money" />
+          <Property Name="ISR" Type="money" />
+          <Property Name="SeguroSocialPatronal" Type="money" />
+          <Property Name="SeguroEducativoPatronal" Type="money" />
+          <Property Name="Decimo" Type="money" />
+          <Property Name="Vacacciones" Type="money" />
+          <Property Name="Riesgo" Type="money" />
+          <Property Name="SalarioNeto" Type="money" />
+          <Property Name="indemnizacion" Type="money" />
+          <Property Name="Antiguedad" Type="money" />
+          <Property Name="Recerva" Type="money" />
+          <Property Name="PeriodDecimo" Type="int" />
+          <Property Name="SeguroSocialDecimo" Type="money" />
+          <Property Name="SeguroSocialDecimoPatrono" Type="money" />
+        </EntityType>
+        <EntityType Name="Posiciones">
+          <Key>
+            <PropertyRef Name="IdPosicion" />
+          </Key>
+          <Property Name="IdPosicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Posicion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="RegistroLiquidaciones">
+          <Key>
+            <PropertyRef Name="IdRegistroLiquidacion" />
+          </Key>
+          <Property Name="IdRegistroLiquidacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="Desde" Type="date" />
+          <Property Name="Hasta" Type="date" />
+          <Property Name="Antiguedad" Type="money" />
+          <Property Name="Indemnizacion" Type="money" />
+          <Property Name="NoReintegro" Type="money" />
+          <Property Name="DecimoProporcional" Type="money" />
+          <Property Name="VacacionesProporcionales" Type="money" />
+          <Property Name="Social" Type="money" />
+          <Property Name="Educativo" Type="money" />
+          <Property Name="ISR" Type="money" />
+          <Property Name="Liquidacion" Type="money" />
+        </EntityType>
+        <EntityType Name="RegistroOtrosDeducciones">
+          <Key>
+            <PropertyRef Name="IdOtraDeduccion" />
+          </Key>
+          <Property Name="IdOtraDeduccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="Deduccion" Type="varchar" MaxLength="250" />
+          <Property Name="TipoDeduccion" Type="varchar" MaxLength="50" />
+          <Property Name="Monto" Type="money" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RegistroVacaciones">
+          <Key>
+            <PropertyRef Name="IdRegistroVacacion" />
+          </Key>
+          <Property Name="IdRegistroVacacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="TipoDeduccion" Type="varchar" MaxLength="50" />
+          <Property Name="Monto" Type="money" />
+          <Property Name="FechaIngreso" Type="datetime" />
+          <Property Name="Desde" Type="date" />
+          <Property Name="Hasta" Type="date" />
+          <Property Name="Brutas" Type="money" />
+          <Property Name="Descuentos" Type="money" />
+          <Property Name="Social" Type="money" />
+          <Property Name="Educativo" Type="money" />
+          <Property Name="ISR" Type="money" />
+          <Property Name="Neto" Type="money" />
+        </EntityType>
+        <EntityType Name="Rentas">
+          <Key>
+            <PropertyRef Name="IdRenta" />
+          </Key>
+          <Property Name="IdRenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Renta" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TiposFactor">
+          <Key>
+            <PropertyRef Name="IdTipoFactor" />
+          </Key>
+          <Property Name="IdTipoFactor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Factor" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VPlanilla">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="Sexo" />
+            <PropertyRef Name="Renta" />
+            <PropertyRef Name="OtrasDeducciones" />
+            <PropertyRef Name="Extras" />
+            <PropertyRef Name="Amonestacion" />
+            <PropertyRef Name="CXC" />
+            <PropertyRef Name="Domingos" />
+            <PropertyRef Name="Feriados" />
+          </Key>
+          <Property Name="IdColaborador" Type="int" Nullable="false" />
+          <Property Name="Colaborador" Type="varchar" MaxLength="250" />
+          <Property Name="Sexo" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="SalarioDevengado" Type="money" />
+          <Property Name="SeguroEducativo" Type="money" />
+          <Property Name="SeguroSocial" Type="money" />
+          <Property Name="Renta" Type="money" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="OtrasDeducciones" Type="money" Nullable="false" />
+          <Property Name="Mes" Type="nvarchar" MaxLength="30" />
+          <Property Name="Extras" Type="money" Nullable="false" />
+          <Property Name="Amonestacion" Type="money" Nullable="false" />
+          <Property Name="CXC" Type="money" Nullable="false" />
+          <Property Name="DesdeHasta" Type="varchar" MaxLength="161" />
+          <Property Name="Departamento" Type="varchar" MaxLength="250" />
+          <Property Name="RataPorHora" Type="money" />
+          <Property Name="Domingos" Type="money" Nullable="false" />
+          <Property Name="Feriados" Type="money" Nullable="false" />
+          <Property Name="Dias" Type="int" />
+          <Property Name="Posicion" Type="varchar" MaxLength="250" />
+          <Property Name="Empresa" Type="varchar" MaxLength="55" />
+          <Property Name="Ruc" Type="varchar" MaxLength="20" />
+          <Property Name="Dv" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <Association Name="FK_Colaboradores_Colaboradores">
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="1" />
+          <End Role="Colaboradores1" Type="Self.Colaboradores" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="Colaboradores1">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_ContratosColaborador">
+          <End Role="ContratosColaborador" Type="Self.ContratosColaborador" Multiplicity="0..1" />
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContratosColaborador">
+              <PropertyRef Name="IdContratoColaborador" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdContratoColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_Departamentos">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="0..1" />
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="IdDepartamento" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_EntedidadesFinanciera">
+          <End Role="EntedidadesFinanciera" Type="Self.EntedidadesFinanciera" Multiplicity="0..1" />
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntedidadesFinanciera">
+              <PropertyRef Name="IdEntidadFinanciera" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdEntidadFinanciera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_EstadosColaborador">
+          <End Role="EstadosColaborador" Type="Self.EstadosColaborador" Multiplicity="0..1" />
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosColaborador">
+              <PropertyRef Name="IdEstadoColaborador" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdEstadoColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_Posiciones">
+          <End Role="Posiciones" Type="Self.Posiciones" Multiplicity="0..1" />
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posiciones">
+              <PropertyRef Name="IdPosicion" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdPosicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deducciones_Acredores">
+          <End Role="Acredores" Type="Self.Acredores" Multiplicity="0..1" />
+          <End Role="Deducciones" Type="Self.Deducciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acredores">
+              <PropertyRef Name="IdAcredor" />
+            </Principal>
+            <Dependent Role="Deducciones">
+              <PropertyRef Name="IdAcredor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deducciones_Colaboradores">
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="0..1" />
+          <End Role="Deducciones" Type="Self.Deducciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="Deducciones">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesDescuento_Descuentos">
+          <End Role="Descuentos" Type="Self.Descuentos" Multiplicity="0..1" />
+          <End Role="DetallesDescuento" Type="Self.DetallesDescuento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descuentos">
+              <PropertyRef Name="IdDescuento" />
+            </Principal>
+            <Dependent Role="DetallesDescuento">
+              <PropertyRef Name="IdDescuento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factores_TiposFactor">
+          <End Role="TiposFactor" Type="Self.TiposFactor" Multiplicity="0..1" />
+          <End Role="Factores" Type="Self.Factores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposFactor">
+              <PropertyRef Name="IdTipoFactor" />
+            </Principal>
+            <Dependent Role="Factores">
+              <PropertyRef Name="IdTipoFactor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasTrabajadas_Colaboradores">
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="0..1" />
+          <End Role="HorasTrabajadas" Type="Self.HorasTrabajadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="HorasTrabajadas">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasTrabajadas_Factores">
+          <End Role="Factores" Type="Self.Factores" Multiplicity="0..1" />
+          <End Role="HorasTrabajadas" Type="Self.HorasTrabajadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factores">
+              <PropertyRef Name="IdFactor" />
+            </Principal>
+            <Dependent Role="HorasTrabajadas">
+              <PropertyRef Name="IdFactor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngresosDeducciones_Deducciones">
+          <End Role="Deducciones" Type="Self.Deducciones" Multiplicity="0..1" />
+          <End Role="IngresosDeducciones" Type="Self.IngresosDeducciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deducciones">
+              <PropertyRef Name="IdDeduccion" />
+            </Principal>
+            <Dependent Role="IngresosDeducciones">
+              <PropertyRef Name="IdDeduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngresosDeduccionesHoras_Colaboradores">
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="0..1" />
+          <End Role="IngresosDeduccionesHoras" Type="Self.IngresosDeduccionesHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="IngresosDeduccionesHoras">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngresosDeduccionesHoras_Factores">
+          <End Role="Factores" Type="Self.Factores" Multiplicity="0..1" />
+          <End Role="IngresosDeduccionesHoras" Type="Self.IngresosDeduccionesHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factores">
+              <PropertyRef Name="IdFactor" />
+            </Principal>
+            <Dependent Role="IngresosDeduccionesHoras">
+              <PropertyRef Name="IdFactor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanillaColaborador_Colaboradores">
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="1" />
+          <End Role="PlanillaColaborador" Type="Self.PlanillaColaborador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="PlanillaColaborador">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroLiquidaciones_Colaboradores">
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="0..1" />
+          <End Role="RegistroLiquidaciones" Type="Self.RegistroLiquidaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="RegistroLiquidaciones">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroOtrosDeducciones_Colaboradores">
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="0..1" />
+          <End Role="RegistroOtrosDeducciones" Type="Self.RegistroOtrosDeducciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="RegistroOtrosDeducciones">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroVacaciones_Colaboradores">
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="0..1" />
+          <End Role="RegistroVacaciones" Type="Self.RegistroVacaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="RegistroVacaciones">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="MaestroPlanilla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="int" Mode="In" />
+          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+          <Parameter Name="GetDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="MaestroPlanillaCuentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="int" Mode="In" />
+          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+          <Parameter Name="GetDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="MaestroPlanillaIndividual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUser" Type="int" Mode="In" />
+          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+          <Parameter Name="GetDate" Type="datetime" Mode="In" />
+          <Parameter Name="IdColaborador" Type="int" Mode="In" />
+          <Parameter Name="SalarioQ" Type="money" Mode="In" />
+        </Function>
+        <EntityContainer Name="slModelPlanillaStoreContainer">
+          <EntitySet Name="Acredores" EntityType="Self.Acredores" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="Colaboradores" EntityType="Self.Colaboradores" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="ContratosColaborador" EntityType="Self.ContratosColaborador" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="Deducciones" EntityType="Self.Deducciones" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="Descuentos" EntityType="Self.Descuentos" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="EntedidadesFinanciera" EntityType="Self.EntedidadesFinanciera" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="EstadosColaborador" EntityType="Self.EstadosColaborador" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="Factores" EntityType="Self.Factores" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="HorasTrabajadas" EntityType="Self.HorasTrabajadas" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="IngresosDeducciones" EntityType="Self.IngresosDeducciones" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="IngresosDeduccionesHoras" EntityType="Self.IngresosDeduccionesHoras" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="PlanillaColaborador" EntityType="Self.PlanillaColaborador" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="Posiciones" EntityType="Self.Posiciones" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="RegistroLiquidaciones" EntityType="Self.RegistroLiquidaciones" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="RegistroOtrosDeducciones" EntityType="Self.RegistroOtrosDeducciones" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="RegistroVacaciones" EntityType="Self.RegistroVacaciones" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="Rentas" EntityType="Self.Rentas" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="TiposFactor" EntityType="Self.TiposFactor" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="DetallesDescuento" EntityType="Self.DetallesDescuento" store:Type="Tables" store:Schema="Planilla">
+            <DefiningQuery>SELECT 
+    [DetallesDescuento].[IdDetalleDescuento] AS [IdDetalleDescuento], 
+    [DetallesDescuento].[IdDescuento] AS [IdDescuento], 
+    [DetallesDescuento].[FechaDescuento] AS [FechaDescuento], 
+    [DetallesDescuento].[CorrespondeA] AS [CorrespondeA], 
+    [DetallesDescuento].[Monto] AS [Monto]
+    FROM [Planilla].[DetallesDescuento] AS [DetallesDescuento]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VPlanilla" EntityType="Self.VPlanilla" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VPlanilla].[IdColaborador] AS [IdColaborador], 
+    [VPlanilla].[Colaborador] AS [Colaborador], 
+    [VPlanilla].[Sexo] AS [Sexo], 
+    [VPlanilla].[SalarioDevengado] AS [SalarioDevengado], 
+    [VPlanilla].[SeguroEducativo] AS [SeguroEducativo], 
+    [VPlanilla].[SeguroSocial] AS [SeguroSocial], 
+    [VPlanilla].[Renta] AS [Renta], 
+    [VPlanilla].[IdEmpresa] AS [IdEmpresa], 
+    [VPlanilla].[OtrasDeducciones] AS [OtrasDeducciones], 
+    [VPlanilla].[Mes] AS [Mes], 
+    [VPlanilla].[Extras] AS [Extras], 
+    [VPlanilla].[Amonestacion] AS [Amonestacion], 
+    [VPlanilla].[CXC] AS [CXC], 
+    [VPlanilla].[DesdeHasta] AS [DesdeHasta], 
+    [VPlanilla].[Departamento] AS [Departamento], 
+    [VPlanilla].[RataPorHora] AS [RataPorHora], 
+    [VPlanilla].[Domingos] AS [Domingos], 
+    [VPlanilla].[Feriados] AS [Feriados], 
+    [VPlanilla].[Dias] AS [Dias], 
+    [VPlanilla].[Posicion] AS [Posicion], 
+    [VPlanilla].[Empresa] AS [Empresa], 
+    [VPlanilla].[Ruc] AS [Ruc], 
+    [VPlanilla].[Dv] AS [Dv]
+    FROM [dbo].[VPlanilla] AS [VPlanilla]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Colaboradores_Colaboradores" Association="Self.FK_Colaboradores_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="Colaboradores1" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_ContratosColaborador" Association="Self.FK_Colaboradores_ContratosColaborador">
+            <End Role="ContratosColaborador" EntitySet="ContratosColaborador" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_Departamentos" Association="Self.FK_Colaboradores_Departamentos">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_EntedidadesFinanciera" Association="Self.FK_Colaboradores_EntedidadesFinanciera">
+            <End Role="EntedidadesFinanciera" EntitySet="EntedidadesFinanciera" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_EstadosColaborador" Association="Self.FK_Colaboradores_EstadosColaborador">
+            <End Role="EstadosColaborador" EntitySet="EstadosColaborador" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_Posiciones" Association="Self.FK_Colaboradores_Posiciones">
+            <End Role="Posiciones" EntitySet="Posiciones" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deducciones_Acredores" Association="Self.FK_Deducciones_Acredores">
+            <End Role="Acredores" EntitySet="Acredores" />
+            <End Role="Deducciones" EntitySet="Deducciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deducciones_Colaboradores" Association="Self.FK_Deducciones_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="Deducciones" EntitySet="Deducciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesDescuento_Descuentos" Association="Self.FK_DetallesDescuento_Descuentos">
+            <End Role="Descuentos" EntitySet="Descuentos" />
+            <End Role="DetallesDescuento" EntitySet="DetallesDescuento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factores_TiposFactor" Association="Self.FK_Factores_TiposFactor">
+            <End Role="TiposFactor" EntitySet="TiposFactor" />
+            <End Role="Factores" EntitySet="Factores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasTrabajadas_Colaboradores" Association="Self.FK_HorasTrabajadas_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="HorasTrabajadas" EntitySet="HorasTrabajadas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasTrabajadas_Factores" Association="Self.FK_HorasTrabajadas_Factores">
+            <End Role="Factores" EntitySet="Factores" />
+            <End Role="HorasTrabajadas" EntitySet="HorasTrabajadas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngresosDeducciones_Deducciones" Association="Self.FK_IngresosDeducciones_Deducciones">
+            <End Role="Deducciones" EntitySet="Deducciones" />
+            <End Role="IngresosDeducciones" EntitySet="IngresosDeducciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngresosDeduccionesHoras_Colaboradores" Association="Self.FK_IngresosDeduccionesHoras_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="IngresosDeduccionesHoras" EntitySet="IngresosDeduccionesHoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngresosDeduccionesHoras_Factores" Association="Self.FK_IngresosDeduccionesHoras_Factores">
+            <End Role="Factores" EntitySet="Factores" />
+            <End Role="IngresosDeduccionesHoras" EntitySet="IngresosDeduccionesHoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanillaColaborador_Colaboradores" Association="Self.FK_PlanillaColaborador_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="PlanillaColaborador" EntitySet="PlanillaColaborador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroLiquidaciones_Colaboradores" Association="Self.FK_RegistroLiquidaciones_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="RegistroLiquidaciones" EntitySet="RegistroLiquidaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroOtrosDeducciones_Colaboradores" Association="Self.FK_RegistroOtrosDeducciones_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="RegistroOtrosDeducciones" EntitySet="RegistroOtrosDeducciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroVacaciones_Colaboradores" Association="Self.FK_RegistroVacaciones_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="RegistroVacaciones" EntitySet="RegistroVacaciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="slModelPlanilla" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Acredores">
+          <Key>
+            <PropertyRef Name="IdAcredor" />
+          </Key>
+          <Property Name="IdAcredor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Acredor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ACH" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="Int32" />
+          <NavigationProperty Name="Deducciones" Relationship="slModelPlanilla.FK_Deducciones_Acredores" FromRole="Acredores" ToRole="Deducciones" />
+        </EntityType>
+        <EntityType Name="ContratosColaborador">
+          <Key>
+            <PropertyRef Name="IdContratoColaborador" />
+          </Key>
+          <Property Name="IdContratoColaborador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContratoColaborador" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_Colaboradores_ContratosColaborador" FromRole="ContratosColaborador" ToRole="Colaboradores" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="IdDepartamento" />
+          </Key>
+          <Property Name="IdDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="Departamento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_Colaboradores_Departamentos" FromRole="Departamentos" ToRole="Colaboradores" />
+        </EntityType>
+        <EntityType Name="Descuentos">
+          <Key>
+            <PropertyRef Name="IdDescuento" />
+          </Key>
+          <Property Name="IdDescuento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAcredor" Type="Int32" />
+          <Property Name="Descuento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroPrestamo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DescuentoDiciembre" Type="Boolean" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="DetallesDescuento" Relationship="Self.FK_DetallesDescuento_Descuentos" FromRole="Descuentos" ToRole="DetallesDescuento" />
+        </EntityType>
+        <EntityType Name="EntedidadesFinanciera">
+          <Key>
+            <PropertyRef Name="IdEntidadFinanciera" />
+          </Key>
+          <Property Name="IdEntidadFinanciera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntidadFinanciera" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroCuenta" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_Colaboradores_EntedidadesFinanciera" FromRole="EntedidadesFinanciera" ToRole="Colaboradores" />
+        </EntityType>
+        <EntityType Name="EstadosColaborador">
+          <Key>
+            <PropertyRef Name="IdEstadoColaborador" />
+          </Key>
+          <Property Name="IdEstadoColaborador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoColaborador" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_Colaboradores_EstadosColaborador" FromRole="EstadosColaborador" ToRole="Colaboradores" />
+        </EntityType>
+        <EntityType Name="Posiciones">
+          <Key>
+            <PropertyRef Name="IdPosicion" />
+          </Key>
+          <Property Name="IdPosicion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Posicion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_Colaboradores_Posiciones" FromRole="Posiciones" ToRole="Colaboradores" />
+        </EntityType>
+        <EntityType Name="Rentas">
+          <Key>
+            <PropertyRef Name="IdRenta" />
+          </Key>
+          <Property Name="IdRenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Renta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_Colaboradores_Rentas" FromRole="Rentas" ToRole="Colaboradores" />
+        </EntityType>
+        <EntityType Name="DetallesDescuento">
+          <Key>
+            <PropertyRef Name="IdDetalleDescuento" />
+          </Key>
+          <Property Name="IdDetalleDescuento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDescuento" Type="Int32" />
+          <Property Name="FechaDescuento" Type="Int32" />
+          <Property Name="CorrespondeA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Descuentos" Relationship="Self.FK_DetallesDescuento_Descuentos" FromRole="DetallesDescuento" ToRole="Descuentos" />
+        </EntityType>
+        <Association Name="FK_DetallesDescuento_Descuentos">
+          <End Role="Descuentos" Type="Self.Descuentos" Multiplicity="0..1" />
+          <End Role="DetallesDescuento" Type="Self.DetallesDescuento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descuentos">
+              <PropertyRef Name="IdDescuento" />
+            </Principal>
+            <Dependent Role="DetallesDescuento">
+              <PropertyRef Name="IdDescuento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="slPlanilla" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Acredores" EntityType="Self.Acredores" />
+          <EntitySet Name="ContratosColaborador" EntityType="Self.ContratosColaborador" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+          <EntitySet Name="Descuentos" EntityType="Self.Descuentos" />
+          <EntitySet Name="EntedidadesFinanciera" EntityType="Self.EntedidadesFinanciera" />
+          <EntitySet Name="EstadosColaborador" EntityType="Self.EstadosColaborador" />
+          <EntitySet Name="Posiciones" EntityType="Self.Posiciones" />
+          <EntitySet Name="Rentas" EntityType="Self.Rentas" />
+          <EntitySet Name="DetallesDescuento" EntityType="Self.DetallesDescuento" />
+          <AssociationSet Name="FK_DetallesDescuento_Descuentos" Association="Self.FK_DetallesDescuento_Descuentos">
+            <End Role="Descuentos" EntitySet="Descuentos" />
+            <End Role="DetallesDescuento" EntitySet="DetallesDescuento" />
+          </AssociationSet>
+          <EntitySet Name="Colaboradores" EntityType="slModelPlanilla.Colaboradores" />
+          <AssociationSet Name="FK_Colaboradores_ContratosColaborador" Association="slModelPlanilla.FK_Colaboradores_ContratosColaborador">
+            <End Role="ContratosColaborador" EntitySet="ContratosColaborador" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_Departamentos" Association="slModelPlanilla.FK_Colaboradores_Departamentos">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_EntedidadesFinanciera" Association="slModelPlanilla.FK_Colaboradores_EntedidadesFinanciera">
+            <End Role="EntedidadesFinanciera" EntitySet="EntedidadesFinanciera" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_EstadosColaborador" Association="slModelPlanilla.FK_Colaboradores_EstadosColaborador">
+            <End Role="EstadosColaborador" EntitySet="EstadosColaborador" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_Posiciones" Association="slModelPlanilla.FK_Colaboradores_Posiciones">
+            <End Role="Posiciones" EntitySet="Posiciones" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Colaboradores_Rentas" Association="slModelPlanilla.FK_Colaboradores_Rentas">
+            <End Role="Rentas" EntitySet="Rentas" />
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <EntitySet Name="HorasTrabajadas" EntityType="slModelPlanilla.HorasTrabajadas" />
+          <EntitySet Name="TiposFactor" EntityType="slModelPlanilla.TiposFactor" />
+          <AssociationSet Name="FK_Colaboradores_Colaboradores" Association="slModelPlanilla.FK_Colaboradores_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="Colaboradores1" EntitySet="Colaboradores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasTrabajadas_Colaboradores" Association="slModelPlanilla.FK_HorasTrabajadas_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="HorasTrabajadas" EntitySet="HorasTrabajadas" />
+          </AssociationSet>
+          <EntitySet Name="Factores" EntityType="slModelPlanilla.Factores" />
+          <AssociationSet Name="FK_Factores_TiposFactor" Association="slModelPlanilla.FK_Factores_TiposFactor">
+            <End Role="TiposFactor" EntitySet="TiposFactor" />
+            <End Role="Factores" EntitySet="Factores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HorasTrabajadas_Factores" Association="slModelPlanilla.FK_HorasTrabajadas_Factores">
+            <End Role="Factores" EntitySet="Factores" />
+            <End Role="HorasTrabajadas" EntitySet="HorasTrabajadas" />
+          </AssociationSet>
+          <EntitySet Name="Deducciones" EntityType="slModelPlanilla.Deducciones" />
+          <EntitySet Name="IngresosDeducciones" EntityType="slModelPlanilla.IngresosDeducciones" />
+          <AssociationSet Name="FK_Deducciones_Acredores" Association="slModelPlanilla.FK_Deducciones_Acredores">
+            <End Role="Acredores" EntitySet="Acredores" />
+            <End Role="Deducciones" EntitySet="Deducciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deducciones_Colaboradores" Association="slModelPlanilla.FK_Deducciones_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="Deducciones" EntitySet="Deducciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngresosDeducciones_Deducciones" Association="slModelPlanilla.FK_IngresosDeducciones_Deducciones">
+            <End Role="Deducciones" EntitySet="Deducciones" />
+            <End Role="IngresosDeducciones" EntitySet="IngresosDeducciones" />
+          </AssociationSet>
+          <EntitySet Name="IngresosDeduccionesHoras" EntityType="slModelPlanilla.IngresosDeduccionesHoras" />
+          <AssociationSet Name="FK_IngresosDeduccionesHoras_Colaboradores" Association="slModelPlanilla.FK_IngresosDeduccionesHoras_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="IngresosDeduccionesHoras" EntitySet="IngresosDeduccionesHoras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngresosDeduccionesHoras_Factores" Association="slModelPlanilla.FK_IngresosDeduccionesHoras_Factores">
+            <End Role="Factores" EntitySet="Factores" />
+            <End Role="IngresosDeduccionesHoras" EntitySet="IngresosDeduccionesHoras" />
+          </AssociationSet>
+          <EntitySet Name="VPlanilla" EntityType="slModelPlanilla.VPlanilla" />
+          <EntitySet Name="RegistroOtrosDeducciones" EntityType="slModelPlanilla.RegistroOtrosDeducciones" />
+          <AssociationSet Name="FK_RegistroOtrosDeducciones_Colaboradores" Association="slModelPlanilla.FK_RegistroOtrosDeducciones_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="RegistroOtrosDeducciones" EntitySet="RegistroOtrosDeducciones" />
+          </AssociationSet>
+          <EntitySet Name="RegistroVacaciones" EntityType="slModelPlanilla.RegistroVacaciones" />
+          <AssociationSet Name="FK_RegistroVacaciones_Colaboradores" Association="slModelPlanilla.FK_RegistroVacaciones_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="RegistroVacaciones" EntitySet="RegistroVacaciones" />
+          </AssociationSet>
+          <EntitySet Name="RegistroLiquidaciones" EntityType="slModelPlanilla.RegistroLiquidaciones" />
+          <AssociationSet Name="FK_RegistroLiquidaciones_Colaboradores" Association="slModelPlanilla.FK_RegistroLiquidaciones_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="RegistroLiquidaciones" EntitySet="RegistroLiquidaciones" />
+          </AssociationSet>
+          <FunctionImport Name="MaestroPlanilla">
+            <Parameter Name="IdUser" Mode="In" Type="Int32" />
+            <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
+            <Parameter Name="GetDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="PlanillaColaborador" EntityType="slModelPlanilla.PlanillaColaborador" />
+          <AssociationSet Name="FK_PlanillaColaborador_Colaboradores" Association="slModelPlanilla.FK_PlanillaColaborador_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="PlanillaColaborador" EntitySet="PlanillaColaborador" />
+          </AssociationSet>
+          <FunctionImport Name="MaestroPlanillaCuentas">
+            <Parameter Name="IdUser" Mode="In" Type="Int32" />
+            <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
+            <Parameter Name="GetDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="MaestroPlanillaIndividual">
+            <Parameter Name="IdUser" Mode="In" Type="Int32" />
+            <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
+            <Parameter Name="GetDate" Mode="In" Type="DateTime" />
+            <Parameter Name="IdColaborador" Mode="In" Type="Int32" />
+            <Parameter Name="SalarioQ" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="Colaboradores">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+          </Key>
+          <Property Name="IdColaborador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Colaborador" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstadoColaborador" Type="Int32" />
+          <Property Name="IdContratoColaborador" Type="Int32" />
+          <Property Name="SalarioQuincenal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CTORepresentacion" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EstadoCivil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdentificacionPersonal" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="Sexo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEntidadFinanciera" Type="Int32" />
+          <Property Name="HoraEntrada" Type="Time" Precision="7" />
+          <Property Name="HoraSalida" Type="Time" Precision="7" />
+          <Property Name="IdDepartamento" Type="Int32" />
+          <Property Name="IdPosicion" Type="Int32" />
+          <Property Name="RataPorHora" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Bonificaciones" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SeguroSocial" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Sangre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdRenta" Type="Int32" />
+          <Property Name="Img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ContratosColaborador" Relationship="slModelPlanilla.FK_Colaboradores_ContratosColaborador" FromRole="Colaboradores" ToRole="ContratosColaborador" />
+          <NavigationProperty Name="Departamentos" Relationship="slModelPlanilla.FK_Colaboradores_Departamentos" FromRole="Colaboradores" ToRole="Departamentos" />
+          <NavigationProperty Name="EntedidadesFinanciera" Relationship="slModelPlanilla.FK_Colaboradores_EntedidadesFinanciera" FromRole="Colaboradores" ToRole="EntedidadesFinanciera" />
+          <NavigationProperty Name="EstadosColaborador" Relationship="slModelPlanilla.FK_Colaboradores_EstadosColaborador" FromRole="Colaboradores" ToRole="EstadosColaborador" />
+          <NavigationProperty Name="Posiciones" Relationship="slModelPlanilla.FK_Colaboradores_Posiciones" FromRole="Colaboradores" ToRole="Posiciones" />
+          <NavigationProperty Name="Rentas" Relationship="slModelPlanilla.FK_Colaboradores_Rentas" FromRole="Colaboradores" ToRole="Rentas" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Telefono" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Dependientes" Type="Int32" />
+          <NavigationProperty Name="Colaboradores1" Relationship="slModelPlanilla.FK_Colaboradores_Colaboradores" FromRole="Colaboradores" ToRole="Colaboradores1" />
+          <NavigationProperty Name="Colaboradores2" Relationship="slModelPlanilla.FK_Colaboradores_Colaboradores" FromRole="Colaboradores1" ToRole="Colaboradores" />
+          <NavigationProperty Name="HorasTrabajadas" Relationship="slModelPlanilla.FK_HorasTrabajadas_Colaboradores" FromRole="Colaboradores" ToRole="HorasTrabajadas" />
+          <NavigationProperty Name="Deducciones" Relationship="slModelPlanilla.FK_Deducciones_Colaboradores" FromRole="Colaboradores" ToRole="Deducciones" />
+          <Property Name="ExentoRenta" Type="Boolean" />
+          <NavigationProperty Name="IngresosDeduccionesHoras" Relationship="slModelPlanilla.FK_IngresosDeduccionesHoras_Colaboradores" FromRole="Colaboradores" ToRole="IngresosDeduccionesHoras" />
+          <NavigationProperty Name="RegistroOtrosDeducciones" Relationship="slModelPlanilla.FK_RegistroOtrosDeducciones_Colaboradores" FromRole="Colaboradores" ToRole="RegistroOtrosDeducciones" />
+          <NavigationProperty Name="RegistroVacaciones" Relationship="slModelPlanilla.FK_RegistroVacaciones_Colaboradores" FromRole="Colaboradores" ToRole="RegistroVacaciones" />
+          <NavigationProperty Name="RegistroLiquidaciones" Relationship="slModelPlanilla.FK_RegistroLiquidaciones_Colaboradores" FromRole="Colaboradores" ToRole="RegistroLiquidaciones" />
+          <NavigationProperty Name="PlanillaColaborador" Relationship="slModelPlanilla.FK_PlanillaColaborador_Colaboradores" FromRole="Colaboradores" ToRole="PlanillaColaborador" />
+        </EntityType>
+        <Association Name="FK_Colaboradores_ContratosColaborador">
+          <End Type="slModelPlanilla.ContratosColaborador" Role="ContratosColaborador" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContratosColaborador">
+              <PropertyRef Name="IdContratoColaborador" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdContratoColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_Departamentos">
+          <End Type="slModelPlanilla.Departamentos" Role="Departamentos" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="IdDepartamento" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_EntedidadesFinanciera">
+          <End Type="slModelPlanilla.EntedidadesFinanciera" Role="EntedidadesFinanciera" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntedidadesFinanciera">
+              <PropertyRef Name="IdEntidadFinanciera" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdEntidadFinanciera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_EstadosColaborador">
+          <End Type="slModelPlanilla.EstadosColaborador" Role="EstadosColaborador" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadosColaborador">
+              <PropertyRef Name="IdEstadoColaborador" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdEstadoColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_Posiciones">
+          <End Type="slModelPlanilla.Posiciones" Role="Posiciones" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posiciones">
+              <PropertyRef Name="IdPosicion" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdPosicion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Colaboradores_Rentas">
+          <End Type="slModelPlanilla.Rentas" Role="Rentas" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rentas">
+              <PropertyRef Name="IdRenta" />
+            </Principal>
+            <Dependent Role="Colaboradores">
+              <PropertyRef Name="IdRenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HorasTrabajadas">
+          <Key>
+            <PropertyRef Name="IdHoraTrabjada" />
+          </Key>
+          <Property Name="IdHoraTrabjada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="IdFactor" Type="Int32" />
+          <Property Name="HoraTrabajada" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Mes" Type="Int32" />
+          <Property Name="Año" Type="Int32" />
+          <Property Name="FechaProceso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_HorasTrabajadas_Colaboradores" FromRole="HorasTrabajadas" ToRole="Colaboradores" />
+          <NavigationProperty Name="Factores" Relationship="slModelPlanilla.FK_HorasTrabajadas_Factores" FromRole="HorasTrabajadas" ToRole="Factores" />
+          <Property Name="Procesado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TiposFactor">
+          <Key>
+            <PropertyRef Name="IdTipoFactor" />
+          </Key>
+          <Property Name="IdTipoFactor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Factor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Factores" Relationship="slModelPlanilla.FK_Factores_TiposFactor" FromRole="TiposFactor" ToRole="Factores" />
+        </EntityType>
+        <Association Name="FK_Colaboradores_Colaboradores">
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="1" />
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="Colaboradores1">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasTrabajadas_Colaboradores">
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.HorasTrabajadas" Role="HorasTrabajadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="HorasTrabajadas">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Factores">
+          <Key>
+            <PropertyRef Name="IdFactor" />
+          </Key>
+          <Property Name="IdFactor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="DescripcionFactor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Factor" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdTipoFactor" Type="Int32" />
+          <NavigationProperty Name="TiposFactor" Relationship="slModelPlanilla.FK_Factores_TiposFactor" FromRole="Factores" ToRole="TiposFactor" />
+          <NavigationProperty Name="HorasTrabajadas" Relationship="slModelPlanilla.FK_HorasTrabajadas_Factores" FromRole="Factores" ToRole="HorasTrabajadas" />
+          <Property Name="RestaSaldo" Type="Boolean" />
+          <NavigationProperty Name="IngresosDeduccionesHoras" Relationship="slModelPlanilla.FK_IngresosDeduccionesHoras_Factores" FromRole="Factores" ToRole="IngresosDeduccionesHoras" />
+          <Property Name="TipoDia" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Factores_TiposFactor">
+          <End Type="slModelPlanilla.TiposFactor" Role="TiposFactor" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.Factores" Role="Factores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposFactor">
+              <PropertyRef Name="IdTipoFactor" />
+            </Principal>
+            <Dependent Role="Factores">
+              <PropertyRef Name="IdTipoFactor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HorasTrabajadas_Factores">
+          <End Type="slModelPlanilla.Factores" Role="Factores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.HorasTrabajadas" Role="HorasTrabajadas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factores">
+              <PropertyRef Name="IdFactor" />
+            </Principal>
+            <Dependent Role="HorasTrabajadas">
+              <PropertyRef Name="IdFactor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Deducciones">
+          <Key>
+            <PropertyRef Name="IdDeduccion" />
+          </Key>
+          <Property Name="IdDeduccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="Deduccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDeduccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdAcredor" Type="Int32" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MontoPagado" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Acredores" Relationship="slModelPlanilla.FK_Deducciones_Acredores" FromRole="Deducciones" ToRole="Acredores" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_Deducciones_Colaboradores" FromRole="Deducciones" ToRole="Colaboradores" />
+          <NavigationProperty Name="IngresosDeducciones" Relationship="slModelPlanilla.FK_IngresosDeducciones_Deducciones" FromRole="Deducciones" ToRole="IngresosDeducciones" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="ArregloRecurrente" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="IngresosDeducciones">
+          <Key>
+            <PropertyRef Name="IdIngresoDeducion" />
+          </Key>
+          <Property Name="IdIngresoDeducion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDeduccion" Type="Int32" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaProceso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Deducciones" Relationship="slModelPlanilla.FK_IngresosDeducciones_Deducciones" FromRole="IngresosDeducciones" ToRole="Deducciones" />
+        </EntityType>
+        <Association Name="FK_Deducciones_Acredores">
+          <End Type="slModelPlanilla.Acredores" Role="Acredores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.Deducciones" Role="Deducciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acredores">
+              <PropertyRef Name="IdAcredor" />
+            </Principal>
+            <Dependent Role="Deducciones">
+              <PropertyRef Name="IdAcredor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deducciones_Colaboradores">
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.Deducciones" Role="Deducciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="Deducciones">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngresosDeducciones_Deducciones">
+          <End Type="slModelPlanilla.Deducciones" Role="Deducciones" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.IngresosDeducciones" Role="IngresosDeducciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deducciones">
+              <PropertyRef Name="IdDeduccion" />
+            </Principal>
+            <Dependent Role="IngresosDeducciones">
+              <PropertyRef Name="IdDeduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IngresosDeduccionesHoras">
+          <Key>
+            <PropertyRef Name="IdIngresoDeducionHora" />
+          </Key>
+          <Property Name="IdIngresoDeducionHora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaProceso" Type="DateTime" Precision="3" />
+          <Property Name="Quincena" Type="Int32" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_IngresosDeduccionesHoras_Colaboradores" FromRole="IngresosDeduccionesHoras" ToRole="Colaboradores" />
+          <Property Name="IdFactor" Type="Int32" />
+          <NavigationProperty Name="Factores" Relationship="slModelPlanilla.FK_IngresosDeduccionesHoras_Factores" FromRole="IngresosDeduccionesHoras" ToRole="Factores" />
+        </EntityType>
+        <Association Name="FK_IngresosDeduccionesHoras_Colaboradores">
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.IngresosDeduccionesHoras" Role="IngresosDeduccionesHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="IngresosDeduccionesHoras">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngresosDeduccionesHoras_Factores">
+          <End Type="slModelPlanilla.Factores" Role="Factores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.IngresosDeduccionesHoras" Role="IngresosDeduccionesHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factores">
+              <PropertyRef Name="IdFactor" />
+            </Principal>
+            <Dependent Role="IngresosDeduccionesHoras">
+              <PropertyRef Name="IdFactor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VPlanilla">
+          <Key>
+            <PropertyRef Name="IdColaborador" />
+            <PropertyRef Name="Sexo" />
+            <PropertyRef Name="Renta" />
+            <PropertyRef Name="OtrasDeducciones" />
+            <PropertyRef Name="Extras" />
+            <PropertyRef Name="Amonestacion" />
+            <PropertyRef Name="CXC" />
+            <PropertyRef Name="Domingos" />
+            <PropertyRef Name="Feriados" />
+          </Key>
+          <Property Name="IdColaborador" Type="Int32" Nullable="false" />
+          <Property Name="Colaborador" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SalarioDevengado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SeguroEducativo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SeguroSocial" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Renta" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="OtrasDeducciones" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Mes" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Extras" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Amonestacion" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CXC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="DesdeHasta" Type="String" MaxLength="161" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="RataPorHora" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Domingos" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Feriados" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Dias" Type="Int32" />
+          <Property Name="Posicion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Empresa" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="Ruc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Dv" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RegistroOtrosDeducciones">
+          <Key>
+            <PropertyRef Name="IdOtraDeduccion" />
+          </Key>
+          <Property Name="IdOtraDeduccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="Deduccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDeduccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_RegistroOtrosDeducciones_Colaboradores" FromRole="RegistroOtrosDeducciones" ToRole="Colaboradores" />
+        </EntityType>
+        <Association Name="FK_RegistroOtrosDeducciones_Colaboradores">
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.RegistroOtrosDeducciones" Role="RegistroOtrosDeducciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="RegistroOtrosDeducciones">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RegistroVacaciones">
+          <Key>
+            <PropertyRef Name="IdRegistroVacacion" />
+          </Key>
+          <Property Name="IdRegistroVacacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="TipoDeduccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="Desde" Type="DateTime" Precision="0" />
+          <Property Name="Hasta" Type="DateTime" Precision="0" />
+          <Property Name="Brutas" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Descuentos" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Social" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Educativo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ISR" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Neto" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_RegistroVacaciones_Colaboradores" FromRole="RegistroVacaciones" ToRole="Colaboradores" />
+        </EntityType>
+        <Association Name="FK_RegistroVacaciones_Colaboradores">
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.RegistroVacaciones" Role="RegistroVacaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="RegistroVacaciones">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RegistroLiquidaciones">
+          <Key>
+            <PropertyRef Name="IdRegistroLiquidacion" />
+          </Key>
+          <Property Name="IdRegistroLiquidacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="Desde" Type="DateTime" Precision="0" />
+          <Property Name="Hasta" Type="DateTime" Precision="0" />
+          <Property Name="Antiguedad" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Indemnizacion" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NoReintegro" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DecimoProporcional" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="VacacionesProporcionales" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Social" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Educativo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ISR" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Liquidacion" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_RegistroLiquidaciones_Colaboradores" FromRole="RegistroLiquidaciones" ToRole="Colaboradores" />
+        </EntityType>
+        <Association Name="FK_RegistroLiquidaciones_Colaboradores">
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.RegistroLiquidaciones" Role="RegistroLiquidaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="RegistroLiquidaciones">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PlanillaColaborador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdColaborador" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="FechaProceso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Año" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="Int32" Nullable="false" />
+          <Property Name="Quincena" Type="Int32" Nullable="false" />
+          <Property Name="RataPorHora" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SalarioQuincenal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalHoras" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SalarioBruto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OtrasDeducciones" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CXCRecurrentes" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CXC" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SeguroSocial" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SeguroEducativo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ISR" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SeguroSocialPatronal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SeguroEducativoPatronal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Decimo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Vacacciones" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SalarioNeto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="indemnizacion" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Antiguedad" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Recerva" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_PlanillaColaborador_Colaboradores" FromRole="PlanillaColaborador" ToRole="Colaboradores" />
+          <Property Name="Riesgo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PeriodDecimo" Type="Int32" />
+          <Property Name="SeguroSocialDecimo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SeguroSocialDecimoPatrono" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <Association Name="FK_PlanillaColaborador_Colaboradores">
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="1" />
+          <End Type="slModelPlanilla.PlanillaColaborador" Role="PlanillaColaborador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="PlanillaColaborador">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="slModelPlanillaStoreContainer" CdmEntityContainer="slPlanilla">
+          <EntitySetMapping Name="Acredores">
+            <EntityTypeMapping TypeName="slModelPlanilla.Acredores">
+              <MappingFragment StoreEntitySet="Acredores">
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="IdAcredor" ColumnName="IdAcredor" />
+                <ScalarProperty Name="Acredor" ColumnName="Acredor" />
+                <ScalarProperty Name="ACH" ColumnName="ACH" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContratosColaborador">
+            <EntityTypeMapping TypeName="slModelPlanilla.ContratosColaborador">
+              <MappingFragment StoreEntitySet="ContratosColaborador">
+                <ScalarProperty Name="IdContratoColaborador" ColumnName="IdContratoColaborador" />
+                <ScalarProperty Name="ContratoColaborador" ColumnName="ContratoColaborador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="slModelPlanilla.Departamentos">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Descuentos">
+            <EntityTypeMapping TypeName="slModelPlanilla.Descuentos">
+              <MappingFragment StoreEntitySet="Descuentos">
+                <ScalarProperty Name="IdDescuento" ColumnName="IdDescuento" />
+                <ScalarProperty Name="IdAcredor" ColumnName="IdAcredor" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="NumeroPrestamo" ColumnName="NumeroPrestamo" />
+                <ScalarProperty Name="DescuentoDiciembre" ColumnName="DescuentoDiciembre" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntedidadesFinanciera">
+            <EntityTypeMapping TypeName="slModelPlanilla.EntedidadesFinanciera">
+              <MappingFragment StoreEntitySet="EntedidadesFinanciera">
+                <ScalarProperty Name="IdEntidadFinanciera" ColumnName="IdEntidadFinanciera" />
+                <ScalarProperty Name="EntidadFinanciera" ColumnName="EntidadFinanciera" />
+                <ScalarProperty Name="NumeroCuenta" ColumnName="NumeroCuenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadosColaborador">
+            <EntityTypeMapping TypeName="slModelPlanilla.EstadosColaborador">
+              <MappingFragment StoreEntitySet="EstadosColaborador">
+                <ScalarProperty Name="IdEstadoColaborador" ColumnName="IdEstadoColaborador" />
+                <ScalarProperty Name="EstadoColaborador" ColumnName="EstadoColaborador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posiciones">
+            <EntityTypeMapping TypeName="slModelPlanilla.Posiciones">
+              <MappingFragment StoreEntitySet="Posiciones">
+                <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rentas">
+            <EntityTypeMapping TypeName="slModelPlanilla.Rentas">
+              <MappingFragment StoreEntitySet="Rentas">
+                <ScalarProperty Name="IdRenta" ColumnName="IdRenta" />
+                <ScalarProperty Name="Renta" ColumnName="Renta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallesDescuento">
+            <EntityTypeMapping TypeName="slModelPlanilla.DetallesDescuento">
+              <MappingFragment StoreEntitySet="DetallesDescuento">
+                <ScalarProperty Name="IdDetalleDescuento" ColumnName="IdDetalleDescuento" />
+                <ScalarProperty Name="IdDescuento" ColumnName="IdDescuento" />
+                <ScalarProperty Name="FechaDescuento" ColumnName="FechaDescuento" />
+                <ScalarProperty Name="CorrespondeA" ColumnName="CorrespondeA" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colaboradores">
+            <EntityTypeMapping TypeName="slModelPlanilla.Colaboradores">
+              <MappingFragment StoreEntitySet="Colaboradores">
+                <ScalarProperty Name="ExentoRenta" ColumnName="ExentoRenta" />
+                <ScalarProperty Name="Dependientes" ColumnName="Dependientes" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="IdRenta" ColumnName="IdRenta" />
+                <ScalarProperty Name="Sangre" ColumnName="Sangre" />
+                <ScalarProperty Name="SeguroSocial" ColumnName="SeguroSocial" />
+                <ScalarProperty Name="Bonificaciones" ColumnName="Bonificaciones" />
+                <ScalarProperty Name="RataPorHora" ColumnName="RataPorHora" />
+                <ScalarProperty Name="IdPosicion" ColumnName="IdPosicion" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="HoraSalida" ColumnName="HoraSalida" />
+                <ScalarProperty Name="HoraEntrada" ColumnName="HoraEntrada" />
+                <ScalarProperty Name="IdEntidadFinanciera" ColumnName="IdEntidadFinanciera" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="IdentificacionPersonal" ColumnName="IdentificacionPersonal" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="CTORepresentacion" ColumnName="CTORepresentacion" />
+                <ScalarProperty Name="SalarioQuincenal" ColumnName="SalarioQuincenal" />
+                <ScalarProperty Name="IdContratoColaborador" ColumnName="IdContratoColaborador" />
+                <ScalarProperty Name="IdEstadoColaborador" ColumnName="IdEstadoColaborador" />
+                <ScalarProperty Name="Colaborador" ColumnName="Colaborador" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HorasTrabajadas">
+            <EntityTypeMapping TypeName="slModelPlanilla.HorasTrabajadas">
+              <MappingFragment StoreEntitySet="HorasTrabajadas">
+                <ScalarProperty Name="Procesado" ColumnName="Procesado" />
+                <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="HoraTrabajada" ColumnName="HoraTrabajada" />
+                <ScalarProperty Name="IdFactor" ColumnName="IdFactor" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdHoraTrabjada" ColumnName="IdHoraTrabjada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposFactor">
+            <EntityTypeMapping TypeName="slModelPlanilla.TiposFactor">
+              <MappingFragment StoreEntitySet="TiposFactor">
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="IdTipoFactor" ColumnName="IdTipoFactor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factores">
+            <EntityTypeMapping TypeName="slModelPlanilla.Factores">
+              <MappingFragment StoreEntitySet="Factores">
+                <ScalarProperty Name="TipoDia" ColumnName="TipoDia" />
+                <ScalarProperty Name="RestaSaldo" ColumnName="RestaSaldo" />
+                <ScalarProperty Name="IdTipoFactor" ColumnName="IdTipoFactor" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="DescripcionFactor" ColumnName="DescripcionFactor" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdFactor" ColumnName="IdFactor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deducciones">
+            <EntityTypeMapping TypeName="slModelPlanilla.Deducciones">
+              <MappingFragment StoreEntitySet="Deducciones">
+                <ScalarProperty Name="ArregloRecurrente" ColumnName="ArregloRecurrente" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="MontoPagado" ColumnName="MontoPagado" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="IdAcredor" ColumnName="IdAcredor" />
+                <ScalarProperty Name="TipoDeduccion" ColumnName="TipoDeduccion" />
+                <ScalarProperty Name="Deduccion" ColumnName="Deduccion" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="IdDeduccion" ColumnName="IdDeduccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IngresosDeducciones">
+            <EntityTypeMapping TypeName="slModelPlanilla.IngresosDeducciones">
+              <MappingFragment StoreEntitySet="IngresosDeducciones">
+                <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="IdDeduccion" ColumnName="IdDeduccion" />
+                <ScalarProperty Name="IdIngresoDeducion" ColumnName="IdIngresoDeducion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IngresosDeduccionesHoras">
+            <EntityTypeMapping TypeName="slModelPlanilla.IngresosDeduccionesHoras">
+              <MappingFragment StoreEntitySet="IngresosDeduccionesHoras">
+                <ScalarProperty Name="IdFactor" ColumnName="IdFactor" />
+                <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+                <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="IdIngresoDeducionHora" ColumnName="IdIngresoDeducionHora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VPlanilla">
+            <EntityTypeMapping TypeName="slModelPlanilla.VPlanilla">
+              <MappingFragment StoreEntitySet="VPlanilla">
+                <ScalarProperty Name="Dv" ColumnName="Dv" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+                <ScalarProperty Name="Feriados" ColumnName="Feriados" />
+                <ScalarProperty Name="Domingos" ColumnName="Domingos" />
+                <ScalarProperty Name="RataPorHora" ColumnName="RataPorHora" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="DesdeHasta" ColumnName="DesdeHasta" />
+                <ScalarProperty Name="CXC" ColumnName="CXC" />
+                <ScalarProperty Name="Amonestacion" ColumnName="Amonestacion" />
+                <ScalarProperty Name="Extras" ColumnName="Extras" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="OtrasDeducciones" ColumnName="OtrasDeducciones" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Renta" ColumnName="Renta" />
+                <ScalarProperty Name="SeguroSocial" ColumnName="SeguroSocial" />
+                <ScalarProperty Name="SeguroEducativo" ColumnName="SeguroEducativo" />
+                <ScalarProperty Name="SalarioDevengado" ColumnName="SalarioDevengado" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Colaborador" ColumnName="Colaborador" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroOtrosDeducciones">
+            <EntityTypeMapping TypeName="slModelPlanilla.RegistroOtrosDeducciones">
+              <MappingFragment StoreEntitySet="RegistroOtrosDeducciones">
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="TipoDeduccion" ColumnName="TipoDeduccion" />
+                <ScalarProperty Name="Deduccion" ColumnName="Deduccion" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="IdOtraDeduccion" ColumnName="IdOtraDeduccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroVacaciones">
+            <EntityTypeMapping TypeName="slModelPlanilla.RegistroVacaciones">
+              <MappingFragment StoreEntitySet="RegistroVacaciones">
+                <ScalarProperty Name="Neto" ColumnName="Neto" />
+                <ScalarProperty Name="ISR" ColumnName="ISR" />
+                <ScalarProperty Name="Educativo" ColumnName="Educativo" />
+                <ScalarProperty Name="Social" ColumnName="Social" />
+                <ScalarProperty Name="Descuentos" ColumnName="Descuentos" />
+                <ScalarProperty Name="Brutas" ColumnName="Brutas" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="TipoDeduccion" ColumnName="TipoDeduccion" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="IdRegistroVacacion" ColumnName="IdRegistroVacacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroLiquidaciones">
+            <EntityTypeMapping TypeName="slModelPlanilla.RegistroLiquidaciones">
+              <MappingFragment StoreEntitySet="RegistroLiquidaciones">
+                <ScalarProperty Name="Liquidacion" ColumnName="Liquidacion" />
+                <ScalarProperty Name="ISR" ColumnName="ISR" />
+                <ScalarProperty Name="Educativo" ColumnName="Educativo" />
+                <ScalarProperty Name="Social" ColumnName="Social" />
+                <ScalarProperty Name="VacacionesProporcionales" ColumnName="VacacionesProporcionales" />
+                <ScalarProperty Name="DecimoProporcional" ColumnName="DecimoProporcional" />
+                <ScalarProperty Name="NoReintegro" ColumnName="NoReintegro" />
+                <ScalarProperty Name="Indemnizacion" ColumnName="Indemnizacion" />
+                <ScalarProperty Name="Antiguedad" ColumnName="Antiguedad" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="IdRegistroLiquidacion" ColumnName="IdRegistroLiquidacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="MaestroPlanilla" FunctionName="slModelPlanilla.Store.MaestroPlanilla" />
+          <EntitySetMapping Name="PlanillaColaborador">
+            <EntityTypeMapping TypeName="slModelPlanilla.PlanillaColaborador">
+              <MappingFragment StoreEntitySet="PlanillaColaborador">
+                <ScalarProperty Name="SeguroSocialDecimoPatrono" ColumnName="SeguroSocialDecimoPatrono" />
+                <ScalarProperty Name="SeguroSocialDecimo" ColumnName="SeguroSocialDecimo" />
+                <ScalarProperty Name="PeriodDecimo" ColumnName="PeriodDecimo" />
+                <ScalarProperty Name="Riesgo" ColumnName="Riesgo" />
+                <ScalarProperty Name="Recerva" ColumnName="Recerva" />
+                <ScalarProperty Name="Antiguedad" ColumnName="Antiguedad" />
+                <ScalarProperty Name="indemnizacion" ColumnName="indemnizacion" />
+                <ScalarProperty Name="SalarioNeto" ColumnName="SalarioNeto" />
+                <ScalarProperty Name="Vacacciones" ColumnName="Vacacciones" />
+                <ScalarProperty Name="Decimo" ColumnName="Decimo" />
+                <ScalarProperty Name="SeguroEducativoPatronal" ColumnName="SeguroEducativoPatronal" />
+                <ScalarProperty Name="SeguroSocialPatronal" ColumnName="SeguroSocialPatronal" />
+                <ScalarProperty Name="ISR" ColumnName="ISR" />
+                <ScalarProperty Name="SeguroEducativo" ColumnName="SeguroEducativo" />
+                <ScalarProperty Name="SeguroSocial" ColumnName="SeguroSocial" />
+                <ScalarProperty Name="CXC" ColumnName="CXC" />
+                <ScalarProperty Name="CXCRecurrentes" ColumnName="CXCRecurrentes" />
+                <ScalarProperty Name="OtrasDeducciones" ColumnName="OtrasDeducciones" />
+                <ScalarProperty Name="SalarioBruto" ColumnName="SalarioBruto" />
+                <ScalarProperty Name="TotalHoras" ColumnName="TotalHoras" />
+                <ScalarProperty Name="SalarioQuincenal" ColumnName="SalarioQuincenal" />
+                <ScalarProperty Name="RataPorHora" ColumnName="RataPorHora" />
+                <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="MaestroPlanillaCuentas" FunctionName="slModelPlanilla.Store.MaestroPlanillaCuentas" />
+          <FunctionImportMapping FunctionImportName="MaestroPlanillaIndividual" FunctionName="slModelPlanilla.Store.MaestroPlanillaIndividual" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

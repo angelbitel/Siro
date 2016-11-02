@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Gestiones.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgendaCobros">
+          <Key>
+            <PropertyRef Name="IdAgenda" />
+          </Key>
+          <Property Name="IdAgenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="IdCobrador" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="IdEstado" Type="int" />
+          <Property Name="DiasAtraso" Type="int" />
+          <Property Name="MontoAdeudado" Type="money" />
+          <Property Name="CicloCorrriente" Type="money" />
+          <Property Name="Ciclo60" Type="money" />
+          <Property Name="Ciclo90" Type="money" />
+          <Property Name="Ciclo120" Type="money" />
+          <Property Name="CicloMas120" Type="money" />
+          <Property Name="IdTipoCompromiso" Type="int" />
+        </EntityType>
+        <EntityType Name="Cobradores">
+          <Key>
+            <PropertyRef Name="IdCobrador" />
+          </Key>
+          <Property Name="IdCobrador" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cobrador" Type="varchar" MaxLength="250" />
+          <Property Name="IdTipoCobrador" Type="int" />
+        </EntityType>
+        <EntityType Name="Gestiones">
+          <Key>
+            <PropertyRef Name="IdGestion" />
+          </Key>
+          <Property Name="IdGestion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gestion" Type="varchar" MaxLength="250" />
+          <Property Name="IdTipoGestion" Type="int" />
+        </EntityType>
+        <EntityType Name="HistorialCliente">
+          <Key>
+            <PropertyRef Name="IdHistorial" />
+          </Key>
+          <Property Name="IdHistorial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdResultadoGestion" Type="int" />
+          <Property Name="IdCliente" Type="int" />
+        </EntityType>
+        <EntityType Name="Pagos">
+          <Key>
+            <PropertyRef Name="IdPago" />
+          </Key>
+          <Property Name="IdPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MontoPago" Type="money" />
+          <Property Name="FechaPago" Type="datetime" />
+          <Property Name="IdResultadoGestion" Type="int" />
+        </EntityType>
+        <EntityType Name="ResultadosGestion">
+          <Key>
+            <PropertyRef Name="IdResultadoGestion" />
+          </Key>
+          <Property Name="IdResultadoGestion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAgenda" Type="int" />
+          <Property Name="FechaGestion" Type="datetime" />
+          <Property Name="IdGestion" Type="int" />
+          <Property Name="Comentarios" Type="varchar(max)" />
+          <Property Name="FechaPago" Type="datetime" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="MontoArreglo" Type="money" />
+          <Property Name="MontoPagado" Type="money" />
+          <Property Name="EstadoPromesa" Type="int" />
+          <Property Name="FechaReprogramacion" Type="datetime" />
+          <Property Name="IdCobrador" Type="int" />
+          <Property Name="EstadoReprogramacion" Type="int" />
+        </EntityType>
+        <EntityType Name="TiposCompromiso">
+          <Key>
+            <PropertyRef Name="IdTipoCompromiso" />
+          </Key>
+          <Property Name="IdTipoCompromiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoCompromiso" Type="int" />
+        </EntityType>
+        <EntityType Name="TiposGestion">
+          <Key>
+            <PropertyRef Name="IdTipoGestion" />
+          </Key>
+          <Property Name="IdTipoGestion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoGestion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_AgendaCobros_Cobradores">
+          <End Role="Cobradores" Type="Self.Cobradores" Multiplicity="0..1" />
+          <End Role="AgendaCobros" Type="Self.AgendaCobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cobradores">
+              <PropertyRef Name="IdCobrador" />
+            </Principal>
+            <Dependent Role="AgendaCobros">
+              <PropertyRef Name="IdCobrador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgendaCobros_TiposCompromiso">
+          <End Role="TiposCompromiso" Type="Self.TiposCompromiso" Multiplicity="0..1" />
+          <End Role="AgendaCobros" Type="Self.AgendaCobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposCompromiso">
+              <PropertyRef Name="IdTipoCompromiso" />
+            </Principal>
+            <Dependent Role="AgendaCobros">
+              <PropertyRef Name="IdTipoCompromiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gestiones_TiposGestion">
+          <End Role="TiposGestion" Type="Self.TiposGestion" Multiplicity="0..1" />
+          <End Role="Gestiones" Type="Self.Gestiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposGestion">
+              <PropertyRef Name="IdTipoGestion" />
+            </Principal>
+            <Dependent Role="Gestiones">
+              <PropertyRef Name="IdTipoGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialCliente_ResultadosGestion">
+          <End Role="ResultadosGestion" Type="Self.ResultadosGestion" Multiplicity="0..1" />
+          <End Role="HistorialCliente" Type="Self.HistorialCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResultadosGestion">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Principal>
+            <Dependent Role="HistorialCliente">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagos_ResultadosGestion">
+          <End Role="ResultadosGestion" Type="Self.ResultadosGestion" Multiplicity="0..1" />
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResultadosGestion">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultadosGestion_AgendaCobros">
+          <End Role="AgendaCobros" Type="Self.AgendaCobros" Multiplicity="0..1" />
+          <End Role="ResultadosGestion" Type="Self.ResultadosGestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgendaCobros">
+              <PropertyRef Name="IdAgenda" />
+            </Principal>
+            <Dependent Role="ResultadosGestion">
+              <PropertyRef Name="IdAgenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultadosGestion_Gestiones">
+          <End Role="Gestiones" Type="Self.Gestiones" Multiplicity="0..1" />
+          <End Role="ResultadosGestion" Type="Self.ResultadosGestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestiones">
+              <PropertyRef Name="IdGestion" />
+            </Principal>
+            <Dependent Role="ResultadosGestion">
+              <PropertyRef Name="IdGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultadosGestion_ResultadosGestion">
+          <End Role="ResultadosGestion" Type="Self.ResultadosGestion" Multiplicity="1" />
+          <End Role="ResultadosGestion1" Type="Self.ResultadosGestion" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ResultadosGestion">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Principal>
+            <Dependent Role="ResultadosGestion1">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GestionesStoreContainer">
+          <EntitySet Name="AgendaCobros" EntityType="Self.AgendaCobros" Schema="Gestion" store:Type="Tables" />
+          <EntitySet Name="Cobradores" EntityType="Self.Cobradores" Schema="Gestion" store:Type="Tables" />
+          <EntitySet Name="Gestiones" EntityType="Self.Gestiones" Schema="Gestion" store:Type="Tables" />
+          <EntitySet Name="HistorialCliente" EntityType="Self.HistorialCliente" Schema="Gestion" store:Type="Tables" />
+          <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="Gestion" store:Type="Tables" />
+          <EntitySet Name="ResultadosGestion" EntityType="Self.ResultadosGestion" Schema="Gestion" store:Type="Tables" />
+          <EntitySet Name="TiposCompromiso" EntityType="Self.TiposCompromiso" Schema="Gestion" store:Type="Tables" />
+          <EntitySet Name="TiposGestion" EntityType="Self.TiposGestion" Schema="Gestion" store:Type="Tables" />
+          <AssociationSet Name="FK_AgendaCobros_Cobradores" Association="Self.FK_AgendaCobros_Cobradores">
+            <End Role="Cobradores" EntitySet="Cobradores" />
+            <End Role="AgendaCobros" EntitySet="AgendaCobros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgendaCobros_TiposCompromiso" Association="Self.FK_AgendaCobros_TiposCompromiso">
+            <End Role="TiposCompromiso" EntitySet="TiposCompromiso" />
+            <End Role="AgendaCobros" EntitySet="AgendaCobros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gestiones_TiposGestion" Association="Self.FK_Gestiones_TiposGestion">
+            <End Role="TiposGestion" EntitySet="TiposGestion" />
+            <End Role="Gestiones" EntitySet="Gestiones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialCliente_ResultadosGestion" Association="Self.FK_HistorialCliente_ResultadosGestion">
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+            <End Role="HistorialCliente" EntitySet="HistorialCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagos_ResultadosGestion" Association="Self.FK_Pagos_ResultadosGestion">
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultadosGestion_AgendaCobros" Association="Self.FK_ResultadosGestion_AgendaCobros">
+            <End Role="AgendaCobros" EntitySet="AgendaCobros" />
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultadosGestion_Gestiones" Association="Self.FK_ResultadosGestion_Gestiones">
+            <End Role="Gestiones" EntitySet="Gestiones" />
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultadosGestion_ResultadosGestion" Association="Self.FK_ResultadosGestion_ResultadosGestion">
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+            <End Role="ResultadosGestion1" EntitySet="ResultadosGestion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Gestiones" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AgendaCobros">
+          <Key>
+            <PropertyRef Name="IdAgenda" />
+          </Key>
+          <Property Name="IdAgenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdCobrador" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="IdEstado" Type="Int32" />
+          <Property Name="DiasAtraso" Type="Int32" />
+          <Property Name="MontoAdeudado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CicloCorrriente" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Ciclo60" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Ciclo90" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Ciclo120" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CicloMas120" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdTipoCompromiso" Type="Int32" />
+          <NavigationProperty Name="TiposCompromiso" Relationship="Self.FK_AgendaCobros_TiposCompromiso" FromRole="AgendaCobros" ToRole="TiposCompromiso" />
+          <NavigationProperty Name="ResultadosGestion" Relationship="Self.FK_ResultadosGestion_AgendaCobros" FromRole="AgendaCobros" ToRole="ResultadosGestion" />
+          <NavigationProperty Name="Cobradores" Relationship="Gestiones.FK_AgendaCobros_Cobradores" FromRole="AgendaCobros" ToRole="Cobradores" />
+        </EntityType>
+        <EntityType Name="Cobradores">
+          <Key>
+            <PropertyRef Name="IdCobrador" />
+          </Key>
+          <Property Name="IdCobrador" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cobrador" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoCobrador" Type="Int32" />
+          <NavigationProperty Name="AgendaCobros" Relationship="Gestiones.FK_AgendaCobros_Cobradores" FromRole="Cobradores" ToRole="AgendaCobros" />
+        </EntityType>
+        <EntityType Name="Gestiones">
+          <Key>
+            <PropertyRef Name="IdGestion" />
+          </Key>
+          <Property Name="IdGestion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gestion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoGestion" Type="Int32" />
+          <NavigationProperty Name="TiposGestion" Relationship="Self.FK_Gestiones_TiposGestion" FromRole="Gestiones" ToRole="TiposGestion" />
+          <NavigationProperty Name="ResultadosGestion" Relationship="Gestiones.FK_ResultadosGestion_Gestiones" FromRole="Gestiones" ToRole="ResultadosGestion" />
+        </EntityType>
+        <EntityType Name="HistorialCliente">
+          <Key>
+            <PropertyRef Name="IdHistorial" />
+          </Key>
+          <Property Name="IdHistorial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdResultadoGestion" Type="Int32" />
+          <Property Name="IdCliente" Type="Int32" />
+          <NavigationProperty Name="ResultadosGestion" Relationship="Self.FK_HistorialCliente_ResultadosGestion" FromRole="HistorialCliente" ToRole="ResultadosGestion" />
+        </EntityType>
+        <EntityType Name="Pagos">
+          <Key>
+            <PropertyRef Name="IdPago" />
+          </Key>
+          <Property Name="IdPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MontoPago" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" />
+          <Property Name="IdResultadoGestion" Type="Int32" />
+          <NavigationProperty Name="ResultadosGestion" Relationship="Self.FK_Pagos_ResultadosGestion" FromRole="Pagos" ToRole="ResultadosGestion" />
+        </EntityType>
+        <EntityType Name="ResultadosGestion">
+          <Key>
+            <PropertyRef Name="IdResultadoGestion" />
+          </Key>
+          <Property Name="IdResultadoGestion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAgenda" Type="Int32" />
+          <Property Name="FechaGestion" Type="DateTime" Precision="3" />
+          <Property Name="IdGestion" Type="Int32" />
+          <Property Name="Comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="MontoArreglo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MontoPagado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EstadoPromesa" Type="Int32" />
+          <Property Name="FechaReprogramacion" Type="DateTime" Precision="3" />
+          <Property Name="IdCobrador" Type="Int32" />
+          <Property Name="EstadoReprogramacion" Type="Int32" />
+          <NavigationProperty Name="AgendaCobros" Relationship="Self.FK_ResultadosGestion_AgendaCobros" FromRole="ResultadosGestion" ToRole="AgendaCobros" />
+          <NavigationProperty Name="HistorialCliente" Relationship="Self.FK_HistorialCliente_ResultadosGestion" FromRole="ResultadosGestion" ToRole="HistorialCliente" />
+          <NavigationProperty Name="Pagos" Relationship="Self.FK_Pagos_ResultadosGestion" FromRole="ResultadosGestion" ToRole="Pagos" />
+          <NavigationProperty Name="ResultadosGestion1" Relationship="Self.FK_ResultadosGestion_ResultadosGestion" FromRole="ResultadosGestion" ToRole="ResultadosGestion1" />
+          <NavigationProperty Name="ResultadosGestion2" Relationship="Self.FK_ResultadosGestion_ResultadosGestion" FromRole="ResultadosGestion1" ToRole="ResultadosGestion" />
+          <NavigationProperty Name="Gestiones" Relationship="Gestiones.FK_ResultadosGestion_Gestiones" FromRole="ResultadosGestion" ToRole="Gestiones" />
+        </EntityType>
+        <EntityType Name="TiposCompromiso">
+          <Key>
+            <PropertyRef Name="IdTipoCompromiso" />
+          </Key>
+          <Property Name="IdTipoCompromiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoCompromiso" Type="Int32" />
+          <NavigationProperty Name="AgendaCobros" Relationship="Self.FK_AgendaCobros_TiposCompromiso" FromRole="TiposCompromiso" ToRole="AgendaCobros" />
+        </EntityType>
+        <EntityType Name="TiposGestion">
+          <Key>
+            <PropertyRef Name="IdTipoGestion" />
+          </Key>
+          <Property Name="IdTipoGestion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoGestion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Gestiones" Relationship="Self.FK_Gestiones_TiposGestion" FromRole="TiposGestion" ToRole="Gestiones" />
+        </EntityType>
+        <Association Name="FK_AgendaCobros_TiposCompromiso">
+          <End Role="TiposCompromiso" Type="Self.TiposCompromiso" Multiplicity="0..1" />
+          <End Role="AgendaCobros" Type="Self.AgendaCobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposCompromiso">
+              <PropertyRef Name="IdTipoCompromiso" />
+            </Principal>
+            <Dependent Role="AgendaCobros">
+              <PropertyRef Name="IdTipoCompromiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultadosGestion_AgendaCobros">
+          <End Role="AgendaCobros" Type="Self.AgendaCobros" Multiplicity="0..1" />
+          <End Role="ResultadosGestion" Type="Self.ResultadosGestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgendaCobros">
+              <PropertyRef Name="IdAgenda" />
+            </Principal>
+            <Dependent Role="ResultadosGestion">
+              <PropertyRef Name="IdAgenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gestiones_TiposGestion">
+          <End Role="TiposGestion" Type="Self.TiposGestion" Multiplicity="0..1" />
+          <End Role="Gestiones" Type="Self.Gestiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposGestion">
+              <PropertyRef Name="IdTipoGestion" />
+            </Principal>
+            <Dependent Role="Gestiones">
+              <PropertyRef Name="IdTipoGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialCliente_ResultadosGestion">
+          <End Role="ResultadosGestion" Type="Self.ResultadosGestion" Multiplicity="0..1" />
+          <End Role="HistorialCliente" Type="Self.HistorialCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResultadosGestion">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Principal>
+            <Dependent Role="HistorialCliente">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagos_ResultadosGestion">
+          <End Role="ResultadosGestion" Type="Self.ResultadosGestion" Multiplicity="0..1" />
+          <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResultadosGestion">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Principal>
+            <Dependent Role="Pagos">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultadosGestion_ResultadosGestion">
+          <End Role="ResultadosGestion" Type="Self.ResultadosGestion" Multiplicity="1" />
+          <End Role="ResultadosGestion1" Type="Self.ResultadosGestion" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ResultadosGestion">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Principal>
+            <Dependent Role="ResultadosGestion1">
+              <PropertyRef Name="IdResultadoGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="slGestiones" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AgendaCobros" EntityType="Self.AgendaCobros" />
+          <EntitySet Name="Cobradores" EntityType="Self.Cobradores" />
+          <EntitySet Name="Gestiones" EntityType="Self.Gestiones" />
+          <EntitySet Name="HistorialCliente" EntityType="Self.HistorialCliente" />
+          <EntitySet Name="Pagos" EntityType="Self.Pagos" />
+          <EntitySet Name="ResultadosGestion" EntityType="Self.ResultadosGestion" />
+          <EntitySet Name="TiposCompromiso" EntityType="Self.TiposCompromiso" />
+          <EntitySet Name="TiposGestion" EntityType="Self.TiposGestion" />
+          <AssociationSet Name="FK_AgendaCobros_TiposCompromiso" Association="Self.FK_AgendaCobros_TiposCompromiso">
+            <End Role="TiposCompromiso" EntitySet="TiposCompromiso" />
+            <End Role="AgendaCobros" EntitySet="AgendaCobros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultadosGestion_AgendaCobros" Association="Self.FK_ResultadosGestion_AgendaCobros">
+            <End Role="AgendaCobros" EntitySet="AgendaCobros" />
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gestiones_TiposGestion" Association="Self.FK_Gestiones_TiposGestion">
+            <End Role="TiposGestion" EntitySet="TiposGestion" />
+            <End Role="Gestiones" EntitySet="Gestiones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialCliente_ResultadosGestion" Association="Self.FK_HistorialCliente_ResultadosGestion">
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+            <End Role="HistorialCliente" EntitySet="HistorialCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagos_ResultadosGestion" Association="Self.FK_Pagos_ResultadosGestion">
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+            <End Role="Pagos" EntitySet="Pagos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultadosGestion_ResultadosGestion" Association="Self.FK_ResultadosGestion_ResultadosGestion">
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+            <End Role="ResultadosGestion1" EntitySet="ResultadosGestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgendaCobros_Cobradores" Association="Gestiones.FK_AgendaCobros_Cobradores">
+            <End Role="Cobradores" EntitySet="Cobradores" />
+            <End Role="AgendaCobros" EntitySet="AgendaCobros" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultadosGestion_Gestiones" Association="Gestiones.FK_ResultadosGestion_Gestiones">
+            <End Role="Gestiones" EntitySet="Gestiones" />
+            <End Role="ResultadosGestion" EntitySet="ResultadosGestion" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_AgendaCobros_Cobradores">
+          <End Type="Gestiones.Cobradores" Role="Cobradores" Multiplicity="0..1" />
+          <End Type="Gestiones.AgendaCobros" Role="AgendaCobros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cobradores">
+              <PropertyRef Name="IdCobrador" />
+            </Principal>
+            <Dependent Role="AgendaCobros">
+              <PropertyRef Name="IdCobrador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultadosGestion_Gestiones">
+          <End Type="Gestiones.Gestiones" Role="Gestiones" Multiplicity="0..1" />
+          <End Type="Gestiones.ResultadosGestion" Role="ResultadosGestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestiones">
+              <PropertyRef Name="IdGestion" />
+            </Principal>
+            <Dependent Role="ResultadosGestion">
+              <PropertyRef Name="IdGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GestionesStoreContainer" CdmEntityContainer="slGestiones">
+          <EntitySetMapping Name="AgendaCobros">
+            <EntityTypeMapping TypeName="Gestiones.AgendaCobros">
+              <MappingFragment StoreEntitySet="AgendaCobros">
+                <ScalarProperty Name="IdAgenda" ColumnName="IdAgenda" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdCobrador" ColumnName="IdCobrador" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="DiasAtraso" ColumnName="DiasAtraso" />
+                <ScalarProperty Name="MontoAdeudado" ColumnName="MontoAdeudado" />
+                <ScalarProperty Name="CicloCorrriente" ColumnName="CicloCorrriente" />
+                <ScalarProperty Name="Ciclo60" ColumnName="Ciclo60" />
+                <ScalarProperty Name="Ciclo90" ColumnName="Ciclo90" />
+                <ScalarProperty Name="Ciclo120" ColumnName="Ciclo120" />
+                <ScalarProperty Name="CicloMas120" ColumnName="CicloMas120" />
+                <ScalarProperty Name="IdTipoCompromiso" ColumnName="IdTipoCompromiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cobradores">
+            <EntityTypeMapping TypeName="Gestiones.Cobradores">
+              <MappingFragment StoreEntitySet="Cobradores">
+                <ScalarProperty Name="IdCobrador" ColumnName="IdCobrador" />
+                <ScalarProperty Name="Cobrador" ColumnName="Cobrador" />
+                <ScalarProperty Name="IdTipoCobrador" ColumnName="IdTipoCobrador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gestiones">
+            <EntityTypeMapping TypeName="Gestiones.Gestiones">
+              <MappingFragment StoreEntitySet="Gestiones">
+                <ScalarProperty Name="IdGestion" ColumnName="IdGestion" />
+                <ScalarProperty Name="Gestion" ColumnName="Gestion" />
+                <ScalarProperty Name="IdTipoGestion" ColumnName="IdTipoGestion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialCliente">
+            <EntityTypeMapping TypeName="Gestiones.HistorialCliente">
+              <MappingFragment StoreEntitySet="HistorialCliente">
+                <ScalarProperty Name="IdHistorial" ColumnName="IdHistorial" />
+                <ScalarProperty Name="IdResultadoGestion" ColumnName="IdResultadoGestion" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagos">
+            <EntityTypeMapping TypeName="Gestiones.Pagos">
+              <MappingFragment StoreEntitySet="Pagos">
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+                <ScalarProperty Name="MontoPago" ColumnName="MontoPago" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="IdResultadoGestion" ColumnName="IdResultadoGestion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResultadosGestion">
+            <EntityTypeMapping TypeName="Gestiones.ResultadosGestion">
+              <MappingFragment StoreEntitySet="ResultadosGestion">
+                <ScalarProperty Name="IdResultadoGestion" ColumnName="IdResultadoGestion" />
+                <ScalarProperty Name="IdAgenda" ColumnName="IdAgenda" />
+                <ScalarProperty Name="FechaGestion" ColumnName="FechaGestion" />
+                <ScalarProperty Name="IdGestion" ColumnName="IdGestion" />
+                <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="MontoArreglo" ColumnName="MontoArreglo" />
+                <ScalarProperty Name="MontoPagado" ColumnName="MontoPagado" />
+                <ScalarProperty Name="EstadoPromesa" ColumnName="EstadoPromesa" />
+                <ScalarProperty Name="FechaReprogramacion" ColumnName="FechaReprogramacion" />
+                <ScalarProperty Name="IdCobrador" ColumnName="IdCobrador" />
+                <ScalarProperty Name="EstadoReprogramacion" ColumnName="EstadoReprogramacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposCompromiso">
+            <EntityTypeMapping TypeName="Gestiones.TiposCompromiso">
+              <MappingFragment StoreEntitySet="TiposCompromiso">
+                <ScalarProperty Name="IdTipoCompromiso" ColumnName="IdTipoCompromiso" />
+                <ScalarProperty Name="TipoCompromiso" ColumnName="TipoCompromiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposGestion">
+            <EntityTypeMapping TypeName="Gestiones.TiposGestion">
+              <MappingFragment StoreEntitySet="TiposGestion">
+                <ScalarProperty Name="IdTipoGestion" ColumnName="IdTipoGestion" />
+                <ScalarProperty Name="TipoGestion" ColumnName="TipoGestion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

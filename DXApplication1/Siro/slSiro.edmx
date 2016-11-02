@@ -1,0 +1,1078 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="slModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Almacenes">
+          <Key>
+            <PropertyRef Name="IdAlmacen" />
+          </Key>
+          <Property Name="IdAlmacen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipoAlmacen" Type="int" />
+          <Property Name="Almacen" Type="varchar" MaxLength="250" />
+          <Property Name="Descripción" Type="varchar" MaxLength="250" />
+          <Property Name="FechaCreación" Type="datetime" />
+          <Property Name="Cantidad" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="CicloAlmacenaje">
+          <Key>
+            <PropertyRef Name="IdPeridoSilo" />
+          </Key>
+          <Property Name="IdPeridoSilo" Type="int" Nullable="false" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="LLenadoDesde" Type="datetime" />
+          <Property Name="LLenadoHasta" Type="datetime" />
+          <Property Name="VaciadoDesde" Type="datetime" />
+          <Property Name="VaciadoHasta" Type="datetime" />
+          <Property Name="PorcentajeEnteroE" Type="money" />
+          <Property Name="PorcentajeQuebradoE" Type="money" />
+          <Property Name="RendimientoEstimado" Type="money" />
+          <Property Name="TotalBruto" Type="money" />
+          <Property Name="TotalNeto" Type="money" />
+          <Property Name="CostoTotal" Type="money" />
+          <Property Name="TotalPilado" Type="money" />
+          <Property Name="PorcentajeEnteroF" Type="money" />
+          <Property Name="PorcentajeQuebradoF" Type="money" />
+          <Property Name="RendimientoFinal" Type="money" />
+        </EntityType>
+        <EntityType Name="ClasesRA">
+          <Key>
+            <PropertyRef Name="IdClaseRA" />
+          </Key>
+          <Property Name="IdClaseRA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaseRa" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Conductores">
+          <Key>
+            <PropertyRef Name="IdConductor" />
+          </Key>
+          <Property Name="IdConductor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Conductor" Type="varchar" MaxLength="250" />
+          <Property Name="Cedula" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Kardex">
+          <Key>
+            <PropertyRef Name="IdInventario" />
+          </Key>
+          <Property Name="IdInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPeridoSilo" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdTipoMovimiento" Type="int" />
+          <Property Name="IdRa" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Cantidad" Type="money" />
+          <Property Name="Comentario" Type="varchar" MaxLength="250" />
+          <Property Name="Precio" Type="money" />
+          <Property Name="PorcentajeDescuentoSilo" Type="money" />
+          <Property Name="Total" Type="money" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="PorcentajeEntero" Type="money" />
+          <Property Name="PorcentajeQuebrado" Type="money" />
+        </EntityType>
+        <EntityType Name="Procedencias">
+          <Key>
+            <PropertyRef Name="IdProcedencia" />
+          </Key>
+          <Property Name="IdProcedencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCorregimiento" Type="int" />
+          <Property Name="Procedencia" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Productores">
+          <Key>
+            <PropertyRef Name="IdProductor" />
+          </Key>
+          <Property Name="IdProductor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProcedencia" Type="int" />
+          <Property Name="Productor" Type="varchar" MaxLength="250" />
+          <Property Name="Cedula" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="RA">
+          <Key>
+            <PropertyRef Name="IdEntradaArroz" />
+          </Key>
+          <Property Name="IdEntradaArroz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PesoBruto" Type="money" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Neto" Type="money" />
+          <Property Name="Matricula" Type="varchar" MaxLength="50" />
+          <Property Name="PorcentajeHumedad" Type="money" />
+          <Property Name="PorcentajeImpurezas" Type="money" />
+          <Property Name="IdConductor" Type="int" />
+          <Property Name="Precio" Type="money" />
+          <Property Name="IdTipoFlete" Type="int" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="IdProductor" Type="int" />
+          <Property Name="IdTipoArroz" Type="int" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="IdRecibido" Type="int" />
+          <Property Name="NumeroBoleta" Type="varchar" MaxLength="50" />
+          <Property Name="Apach" Type="money" />
+          <Property Name="RendimientoMolineria" Type="money" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="EntradaDeArroz" Type="varchar" MaxLength="250" />
+          <Property Name="FehaProceso" Type="datetime" />
+          <Property Name="EstaPilado" Type="bit" />
+          <Property Name="Total" Type="money" />
+          <Property Name="PorcentajeEntero" Type="money" />
+          <Property Name="PorcentajeQuebrado" Type="money" />
+          <Property Name="IdPeridoSilo" Type="int" />
+          <Property Name="PorcentajeAjusteSeco" Type="money" />
+          <Property Name="Seco" Type="money" />
+        </EntityType>
+        <EntityType Name="Recibidos">
+          <Key>
+            <PropertyRef Name="IdRecibido" />
+          </Key>
+          <Property Name="IdRecibido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Recibido" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TiposAlmacen">
+          <Key>
+            <PropertyRef Name="IdTipoAlmacen" />
+          </Key>
+          <Property Name="IdTipoAlmacen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoAlmacen" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TiposArroz">
+          <Key>
+            <PropertyRef Name="IdTipoArroz" />
+          </Key>
+          <Property Name="IdTipoArroz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoArroz" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TiposMovimiento">
+          <Key>
+            <PropertyRef Name="IdTipoMovimiento" />
+          </Key>
+          <Property Name="IdTipoMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoMovimiento" Type="varchar" MaxLength="250" />
+          <Property Name="Resta" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vendedores">
+          <Key>
+            <PropertyRef Name="IdVendedor" />
+          </Key>
+          <Property Name="IdVendedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vendedor" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="IdVentas" />
+          </Key>
+          <Property Name="IdVentas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PrecioVenta" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="IdTipoVenta" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sl.dbo.VValoresAlmacenaje' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VValoresAlmacenaje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="FechaLLenadoDesde" Type="datetime" />
+          <Property Name="FechaLLenadoHasta" Type="datetime" />
+          <Property Name="TotalBruto" Type="money" />
+          <Property Name="PorcentajeHumedadE" Type="money" />
+          <Property Name="PorcentajeImpurezasE" Type="money" />
+          <Property Name="PorcentajeEnteroE" Type="money" />
+          <Property Name="PorcentajeQuebradoE" Type="money" />
+          <Property Name="RendimientoE" Type="money" />
+          <Property Name="TotalNeto" Type="money" />
+          <Property Name="Costo" Type="money" />
+          <Property Name="FechaPiladoDesde" Type="datetime" />
+          <Property Name="FechaPiladoHasta" Type="datetime" />
+          <Property Name="TotalPilado" Type="money" />
+          <Property Name="AjusteTotal" Type="money" />
+          <Property Name="PorcentajeEnteroF" Type="money" />
+          <Property Name="PorcentajeQuebradoF" Type="money" />
+          <Property Name="RendimientoF" Type="money" />
+          <Property Name="InventarioFinal" Type="money" />
+          <Property Name="Seco" Type="money" />
+          <Property Name="Almacen" Type="varchar" MaxLength="250" />
+          <Property Name="TipoArroz" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VRA">
+          <Key>
+            <PropertyRef Name="IdEntradaArroz" />
+          </Key>
+          <Property Name="IdEntradaArroz" Type="int" Nullable="false" />
+          <Property Name="IdRecibido" Type="int" />
+          <Property Name="EntradaDeArroz" Type="varchar" MaxLength="250" />
+          <Property Name="PesoBruto" Type="money" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Neto" Type="money" />
+          <Property Name="Matricula" Type="varchar" MaxLength="50" />
+          <Property Name="PorcentajeHumedad" Type="money" />
+          <Property Name="PorcentajeImpurezas" Type="money" />
+          <Property Name="IdConductor" Type="int" />
+          <Property Name="Conductor" Type="varchar" MaxLength="250" />
+          <Property Name="Precio" Type="money" />
+          <Property Name="Total" Type="money" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="IdTipoFlete" Type="int" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="Proveedor" Type="nvarchar" MaxLength="150" />
+          <Property Name="IdTipoArroz" Type="int" />
+          <Property Name="TipoArroz" Type="varchar" MaxLength="250" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="Almacen" Type="varchar" MaxLength="250" />
+          <Property Name="FehaProceso" Type="datetime" />
+          <Property Name="NumeroBoleta" Type="varchar" MaxLength="50" />
+          <Property Name="Recibido" Type="varchar" MaxLength="250" />
+          <Property Name="Apach" Type="money" />
+          <Property Name="PorcentajeEntero" Type="money" />
+          <Property Name="PorcentajeQuebrado" Type="money" />
+          <Property Name="Seco" Type="money" />
+          <Property Name="PorcentajeAjusteSeco" Type="money" />
+        </EntityType>
+        <Association Name="FK_Almacenes_TiposAlmacen">
+          <End Role="TiposAlmacen" Type="Self.TiposAlmacen" Multiplicity="0..1" />
+          <End Role="Almacenes" Type="Self.Almacenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposAlmacen">
+              <PropertyRef Name="IdTipoAlmacen" />
+            </Principal>
+            <Dependent Role="Almacenes">
+              <PropertyRef Name="IdTipoAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kardex_TiposMovimiento">
+          <End Role="TiposMovimiento" Type="Self.TiposMovimiento" Multiplicity="0..1" />
+          <End Role="Kardex" Type="Self.Kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposMovimiento">
+              <PropertyRef Name="IdTipoMovimiento" />
+            </Principal>
+            <Dependent Role="Kardex">
+              <PropertyRef Name="IdTipoMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Procedencias_Procedencias">
+          <End Role="Procedencias" Type="Self.Procedencias" Multiplicity="1" />
+          <End Role="Procedencias1" Type="Self.Procedencias" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Procedencias">
+              <PropertyRef Name="IdProcedencia" />
+            </Principal>
+            <Dependent Role="Procedencias1">
+              <PropertyRef Name="IdProcedencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Almacenes">
+          <End Role="Almacenes" Type="Self.Almacenes" Multiplicity="0..1" />
+          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacenes">
+              <PropertyRef Name="IdAlmacen" />
+            </Principal>
+            <Dependent Role="RA">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Conductores">
+          <End Role="Conductores" Type="Self.Conductores" Multiplicity="0..1" />
+          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conductores">
+              <PropertyRef Name="IdConductor" />
+            </Principal>
+            <Dependent Role="RA">
+              <PropertyRef Name="IdConductor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Recibidos">
+          <End Role="Recibidos" Type="Self.Recibidos" Multiplicity="0..1" />
+          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recibidos">
+              <PropertyRef Name="IdRecibido" />
+            </Principal>
+            <Dependent Role="RA">
+              <PropertyRef Name="IdRecibido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_TiposArroz">
+          <End Role="TiposArroz" Type="Self.TiposArroz" Multiplicity="0..1" />
+          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposArroz">
+              <PropertyRef Name="IdTipoArroz" />
+            </Principal>
+            <Dependent Role="RA">
+              <PropertyRef Name="IdTipoArroz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="slModel2StoreContainer">
+          <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="CicloAlmacenaje" EntityType="Self.CicloAlmacenaje" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="ClasesRA" EntityType="Self.ClasesRA" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="Conductores" EntityType="Self.Conductores" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="Kardex" EntityType="Self.Kardex" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="Procedencias" EntityType="Self.Procedencias" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="Productores" EntityType="Self.Productores" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="RA" EntityType="Self.RA" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="Recibidos" EntityType="Self.Recibidos" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="TiposAlmacen" EntityType="Self.TiposAlmacen" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="TiposArroz" EntityType="Self.TiposArroz" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="TiposMovimiento" EntityType="Self.TiposMovimiento" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="Vendedores" EntityType="Self.Vendedores" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="VValoresAlmacenaje" EntityType="Self.VValoresAlmacenaje" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VValoresAlmacenaje].[ID] AS [ID], 
+    [VValoresAlmacenaje].[IdAlmacen] AS [IdAlmacen], 
+    [VValoresAlmacenaje].[FechaLLenadoDesde] AS [FechaLLenadoDesde], 
+    [VValoresAlmacenaje].[FechaLLenadoHasta] AS [FechaLLenadoHasta], 
+    [VValoresAlmacenaje].[TotalBruto] AS [TotalBruto], 
+    [VValoresAlmacenaje].[PorcentajeHumedadE] AS [PorcentajeHumedadE], 
+    [VValoresAlmacenaje].[PorcentajeImpurezasE] AS [PorcentajeImpurezasE], 
+    [VValoresAlmacenaje].[PorcentajeEnteroE] AS [PorcentajeEnteroE], 
+    [VValoresAlmacenaje].[PorcentajeQuebradoE] AS [PorcentajeQuebradoE], 
+    [VValoresAlmacenaje].[RendimientoE] AS [RendimientoE], 
+    [VValoresAlmacenaje].[TotalNeto] AS [TotalNeto], 
+    [VValoresAlmacenaje].[Costo] AS [Costo], 
+    [VValoresAlmacenaje].[FechaPiladoDesde] AS [FechaPiladoDesde], 
+    [VValoresAlmacenaje].[FechaPiladoHasta] AS [FechaPiladoHasta], 
+    [VValoresAlmacenaje].[TotalPilado] AS [TotalPilado], 
+    [VValoresAlmacenaje].[AjusteTotal] AS [AjusteTotal], 
+    [VValoresAlmacenaje].[PorcentajeEnteroF] AS [PorcentajeEnteroF], 
+    [VValoresAlmacenaje].[PorcentajeQuebradoF] AS [PorcentajeQuebradoF], 
+    [VValoresAlmacenaje].[RendimientoF] AS [RendimientoF], 
+    [VValoresAlmacenaje].[InventarioFinal] AS [InventarioFinal], 
+    [VValoresAlmacenaje].[Seco] AS [Seco], 
+    [VValoresAlmacenaje].[Almacen] AS [Almacen], 
+    [VValoresAlmacenaje].[TipoArroz] AS [TipoArroz]
+    FROM [dbo].[VValoresAlmacenaje] AS [VValoresAlmacenaje]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VRA" EntityType="Self.VRA" store:Type="Views" store:Schema="Siro">
+            <DefiningQuery>SELECT 
+    [VRA].[IdEntradaArroz] AS [IdEntradaArroz], 
+    [VRA].[IdRecibido] AS [IdRecibido], 
+    [VRA].[EntradaDeArroz] AS [EntradaDeArroz], 
+    [VRA].[PesoBruto] AS [PesoBruto], 
+    [VRA].[Fecha] AS [Fecha], 
+    [VRA].[Neto] AS [Neto], 
+    [VRA].[Matricula] AS [Matricula], 
+    [VRA].[PorcentajeHumedad] AS [PorcentajeHumedad], 
+    [VRA].[PorcentajeImpurezas] AS [PorcentajeImpurezas], 
+    [VRA].[IdConductor] AS [IdConductor], 
+    [VRA].[Conductor] AS [Conductor], 
+    [VRA].[Precio] AS [Precio], 
+    [VRA].[Total] AS [Total], 
+    [VRA].[IdEmpresa] AS [IdEmpresa], 
+    [VRA].[IdTipoFlete] AS [IdTipoFlete], 
+    [VRA].[IdProveedor] AS [IdProveedor], 
+    [VRA].[Proveedor] AS [Proveedor], 
+    [VRA].[IdTipoArroz] AS [IdTipoArroz], 
+    [VRA].[TipoArroz] AS [TipoArroz], 
+    [VRA].[IdUser] AS [IdUser], 
+    [VRA].[IdAlmacen] AS [IdAlmacen], 
+    [VRA].[Almacen] AS [Almacen], 
+    [VRA].[FehaProceso] AS [FehaProceso], 
+    [VRA].[NumeroBoleta] AS [NumeroBoleta], 
+    [VRA].[Recibido] AS [Recibido], 
+    [VRA].[Apach] AS [Apach], 
+    [VRA].[PorcentajeEntero] AS [PorcentajeEntero], 
+    [VRA].[PorcentajeQuebrado] AS [PorcentajeQuebrado], 
+    [VRA].[Seco] AS [Seco], 
+    [VRA].[PorcentajeAjusteSeco] AS [PorcentajeAjusteSeco]
+    FROM [Siro].[VRA] AS [VRA]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Almacenes_TiposAlmacen" Association="Self.FK_Almacenes_TiposAlmacen">
+            <End Role="TiposAlmacen" EntitySet="TiposAlmacen" />
+            <End Role="Almacenes" EntitySet="Almacenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kardex_TiposMovimiento" Association="Self.FK_Kardex_TiposMovimiento">
+            <End Role="TiposMovimiento" EntitySet="TiposMovimiento" />
+            <End Role="Kardex" EntitySet="Kardex" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Procedencias_Procedencias" Association="Self.FK_Procedencias_Procedencias">
+            <End Role="Procedencias" EntitySet="Procedencias" />
+            <End Role="Procedencias1" EntitySet="Procedencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Almacenes" Association="Self.FK_RA_Almacenes">
+            <End Role="Almacenes" EntitySet="Almacenes" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Conductores" Association="Self.FK_RA_Conductores">
+            <End Role="Conductores" EntitySet="Conductores" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Recibidos" Association="Self.FK_RA_Recibidos">
+            <End Role="Recibidos" EntitySet="Recibidos" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_TiposArroz" Association="Self.FK_RA_TiposArroz">
+            <End Role="TiposArroz" EntitySet="TiposArroz" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="slModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Almacenaje">
+          <Key>
+            <PropertyRef Name="IdAlmacen" />
+          </Key>
+          <Property Name="IdAlmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipoAlmacen" Type="Int32" />
+          <Property Name="Almacen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Descripción" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreación" Type="DateTime" Precision="3" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="TiposAlmacen" Relationship="Self.FK_Almacenes_TiposAlmacen" FromRole="Almacenes" ToRole="TiposAlmacen" />
+          <NavigationProperty Name="RA" Relationship="Self.FK_RA_Almacenes" FromRole="Almacenes" ToRole="RA" />
+        </EntityType>
+        <EntityType Name="CicloAlmacenaje">
+          <Key>
+            <PropertyRef Name="IdPeridoSilo" />
+          </Key>
+          <Property Name="IdPeridoSilo" Type="Int32" Nullable="false" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="LLenadoDesde" Type="DateTime" Precision="3" />
+          <Property Name="LLenadoHasta" Type="DateTime" Precision="3" />
+          <Property Name="VaciadoDesde" Type="DateTime" Precision="3" />
+          <Property Name="VaciadoHasta" Type="DateTime" Precision="3" />
+          <Property Name="PorcentajeEnteroE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeQuebradoE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RendimientoEstimado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalBruto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalNeto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CostoTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalPilado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeEnteroF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeQuebradoF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RendimientoFinal" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="ClasesRA">
+          <Key>
+            <PropertyRef Name="IdClaseRA" />
+          </Key>
+          <Property Name="IdClaseRA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaseRa" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Conductores">
+          <Key>
+            <PropertyRef Name="IdConductor" />
+          </Key>
+          <Property Name="IdConductor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Conductor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RA" Relationship="Self.FK_RA_Conductores" FromRole="Conductores" ToRole="RA" />
+        </EntityType>
+        <EntityType Name="Kardex">
+          <Key>
+            <PropertyRef Name="IdInventario" />
+          </Key>
+          <Property Name="IdInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPeridoSilo" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdTipoMovimiento" Type="Int32" />
+          <Property Name="IdRa" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeDescuentoSilo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="PorcentajeEntero" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeQuebrado" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="TiposMovimiento" Relationship="Self.FK_Kardex_TiposMovimiento" FromRole="Kardex" ToRole="TiposMovimiento" />
+        </EntityType>
+        <EntityType Name="Procedencias">
+          <Key>
+            <PropertyRef Name="IdProcedencia" />
+          </Key>
+          <Property Name="IdProcedencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCorregimiento" Type="Int32" />
+          <Property Name="Procedencia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Procedencias1" Relationship="Self.FK_Procedencias_Procedencias" FromRole="Procedencias" ToRole="Procedencias1" />
+          <NavigationProperty Name="Procedencias2" Relationship="Self.FK_Procedencias_Procedencias" FromRole="Procedencias1" ToRole="Procedencias" />
+        </EntityType>
+        <EntityType Name="Productores">
+          <Key>
+            <PropertyRef Name="IdProductor" />
+          </Key>
+          <Property Name="IdProductor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProcedencia" Type="Int32" />
+          <Property Name="Productor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RA">
+          <Key>
+            <PropertyRef Name="IdEntradaArroz" />
+          </Key>
+          <Property Name="IdEntradaArroz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PesoBruto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Neto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PorcentajeHumedad" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeImpurezas" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdConductor" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdTipoFlete" Type="Int32" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="IdProductor" Type="Int32" />
+          <Property Name="IdTipoArroz" Type="Int32" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="IdRecibido" Type="Int32" />
+          <Property Name="NumeroBoleta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apach" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RendimientoMolineria" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="EntradaDeArroz" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FehaProceso" Type="DateTime" Precision="3" />
+          <Property Name="EstaPilado" Type="Boolean" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeEntero" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeQuebrado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdPeridoSilo" Type="Int32" />
+          <Property Name="PorcentajeAjusteSeco" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Seco" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Almacenes" Relationship="Self.FK_RA_Almacenes" FromRole="RA" ToRole="Almacenes" />
+          <NavigationProperty Name="Conductores" Relationship="Self.FK_RA_Conductores" FromRole="RA" ToRole="Conductores" />
+          <NavigationProperty Name="Recibidos" Relationship="Self.FK_RA_Recibidos" FromRole="RA" ToRole="Recibidos" />
+          <NavigationProperty Name="TiposArroz" Relationship="Self.FK_RA_TiposArroz" FromRole="RA" ToRole="TiposArroz" />
+        </EntityType>
+        <EntityType Name="Recibidos">
+          <Key>
+            <PropertyRef Name="IdRecibido" />
+          </Key>
+          <Property Name="IdRecibido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Recibido" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RA" Relationship="Self.FK_RA_Recibidos" FromRole="Recibidos" ToRole="RA" />
+        </EntityType>
+        <EntityType Name="TiposAlmacen">
+          <Key>
+            <PropertyRef Name="IdTipoAlmacen" />
+          </Key>
+          <Property Name="IdTipoAlmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoAlmacen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Almacenes" Relationship="Self.FK_Almacenes_TiposAlmacen" FromRole="TiposAlmacen" ToRole="Almacenes" />
+        </EntityType>
+        <EntityType Name="TiposArroz">
+          <Key>
+            <PropertyRef Name="IdTipoArroz" />
+          </Key>
+          <Property Name="IdTipoArroz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoArroz" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RA" Relationship="Self.FK_RA_TiposArroz" FromRole="TiposArroz" ToRole="RA" />
+        </EntityType>
+        <EntityType Name="TiposMovimiento">
+          <Key>
+            <PropertyRef Name="IdTipoMovimiento" />
+          </Key>
+          <Property Name="IdTipoMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoMovimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Resta" Type="Boolean" />
+          <NavigationProperty Name="Kardex" Relationship="Self.FK_Kardex_TiposMovimiento" FromRole="TiposMovimiento" ToRole="Kardex" />
+        </EntityType>
+        <EntityType Name="VRA">
+          <Key>
+            <PropertyRef Name="IdEntradaArroz" />
+          </Key>
+          <Property Name="IdEntradaArroz" Type="Int32" Nullable="false" />
+          <Property Name="IdRecibido" Type="Int32" />
+          <Property Name="EntradaDeArroz" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PesoBruto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Neto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PorcentajeHumedad" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeImpurezas" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdConductor" Type="Int32" />
+          <Property Name="Conductor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="IdTipoFlete" Type="Int32" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="Proveedor" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IdTipoArroz" Type="Int32" />
+          <Property Name="TipoArroz" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="Almacen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FehaProceso" Type="DateTime" Precision="3" />
+          <Property Name="NumeroBoleta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Recibido" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Apach" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeEntero" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeQuebrado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Seco" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeAjusteSeco" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <Association Name="FK_Almacenes_TiposAlmacen">
+          <End Role="TiposAlmacen" Type="Self.TiposAlmacen" Multiplicity="0..1" />
+          <End Role="Almacenes" Type="slModel2.Almacenaje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposAlmacen">
+              <PropertyRef Name="IdTipoAlmacen" />
+            </Principal>
+            <Dependent Role="Almacenes">
+              <PropertyRef Name="IdTipoAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Almacenes">
+          <End Role="Almacenes" Type="slModel2.Almacenaje" Multiplicity="0..1" />
+          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacenes">
+              <PropertyRef Name="IdAlmacen" />
+            </Principal>
+            <Dependent Role="RA">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Conductores">
+          <End Role="Conductores" Type="Self.Conductores" Multiplicity="0..1" />
+          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conductores">
+              <PropertyRef Name="IdConductor" />
+            </Principal>
+            <Dependent Role="RA">
+              <PropertyRef Name="IdConductor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kardex_TiposMovimiento">
+          <End Role="TiposMovimiento" Type="Self.TiposMovimiento" Multiplicity="0..1" />
+          <End Role="Kardex" Type="Self.Kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposMovimiento">
+              <PropertyRef Name="IdTipoMovimiento" />
+            </Principal>
+            <Dependent Role="Kardex">
+              <PropertyRef Name="IdTipoMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Procedencias_Procedencias">
+          <End Role="Procedencias" Type="Self.Procedencias" Multiplicity="1" />
+          <End Role="Procedencias1" Type="Self.Procedencias" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Procedencias">
+              <PropertyRef Name="IdProcedencia" />
+            </Principal>
+            <Dependent Role="Procedencias1">
+              <PropertyRef Name="IdProcedencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_Recibidos">
+          <End Role="Recibidos" Type="Self.Recibidos" Multiplicity="0..1" />
+          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recibidos">
+              <PropertyRef Name="IdRecibido" />
+            </Principal>
+            <Dependent Role="RA">
+              <PropertyRef Name="IdRecibido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RA_TiposArroz">
+          <End Role="TiposArroz" Type="Self.TiposArroz" Multiplicity="0..1" />
+          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposArroz">
+              <PropertyRef Name="IdTipoArroz" />
+            </Principal>
+            <Dependent Role="RA">
+              <PropertyRef Name="IdTipoArroz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="slSiro" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Almacenes" EntityType="slModel2.Almacenaje" />
+          <EntitySet Name="CicloAlmacenaje" EntityType="Self.CicloAlmacenaje" />
+          <EntitySet Name="ClasesRA" EntityType="Self.ClasesRA" />
+          <EntitySet Name="Conductores" EntityType="Self.Conductores" />
+          <EntitySet Name="Kardex" EntityType="Self.Kardex" />
+          <EntitySet Name="Procedencias" EntityType="Self.Procedencias" />
+          <EntitySet Name="Productores" EntityType="Self.Productores" />
+          <EntitySet Name="RA" EntityType="Self.RA" />
+          <EntitySet Name="Recibidos" EntityType="Self.Recibidos" />
+          <EntitySet Name="TiposAlmacen" EntityType="Self.TiposAlmacen" />
+          <EntitySet Name="TiposArroz" EntityType="Self.TiposArroz" />
+          <EntitySet Name="TiposMovimiento" EntityType="Self.TiposMovimiento" />
+          <EntitySet Name="VRA" EntityType="Self.VRA" />
+          <AssociationSet Name="FK_Almacenes_TiposAlmacen" Association="Self.FK_Almacenes_TiposAlmacen">
+            <End Role="TiposAlmacen" EntitySet="TiposAlmacen" />
+            <End Role="Almacenes" EntitySet="Almacenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Almacenes" Association="Self.FK_RA_Almacenes">
+            <End Role="Almacenes" EntitySet="Almacenes" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Conductores" Association="Self.FK_RA_Conductores">
+            <End Role="Conductores" EntitySet="Conductores" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kardex_TiposMovimiento" Association="Self.FK_Kardex_TiposMovimiento">
+            <End Role="TiposMovimiento" EntitySet="TiposMovimiento" />
+            <End Role="Kardex" EntitySet="Kardex" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Procedencias_Procedencias" Association="Self.FK_Procedencias_Procedencias">
+            <End Role="Procedencias" EntitySet="Procedencias" />
+            <End Role="Procedencias1" EntitySet="Procedencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Recibidos" Association="Self.FK_RA_Recibidos">
+            <End Role="Recibidos" EntitySet="Recibidos" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_TiposArroz" Association="Self.FK_RA_TiposArroz">
+            <End Role="TiposArroz" EntitySet="TiposArroz" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <EntitySet Name="VValoresAlmacenaje" EntityType="slModel2.VValoresAlmacenaje" />
+          <EntitySet Name="Vendedores" EntityType="slModel2.Vendedores" />
+          <EntitySet Name="Ventas" EntityType="slModel2.Ventas" />
+        </EntityContainer>
+        <EntityType Name="VValoresAlmacenaje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="FechaLLenadoDesde" Type="DateTime" Precision="3" />
+          <Property Name="FechaLLenadoHasta" Type="DateTime" Precision="3" />
+          <Property Name="TotalBruto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeHumedadE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeImpurezasE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeEnteroE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeQuebradoE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RendimientoE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalNeto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaPiladoDesde" Type="DateTime" Precision="3" />
+          <Property Name="FechaPiladoHasta" Type="DateTime" Precision="3" />
+          <Property Name="TotalPilado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AjusteTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeEnteroF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeQuebradoF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RendimientoF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="InventarioFinal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Seco" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Almacen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TipoArroz" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Vendedores">
+          <Key>
+            <PropertyRef Name="IdVendedor" />
+          </Key>
+          <Property Name="IdVendedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vendedor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="IdVentas" />
+          </Key>
+          <Property Name="IdVentas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PrecioVenta" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="IdTipoVenta" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="slModel2StoreContainer" CdmEntityContainer="slSiro">
+          <EntitySetMapping Name="Almacenes">
+            <EntityTypeMapping TypeName="slModel2.Almacenaje">
+              <MappingFragment StoreEntitySet="Almacenes">
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="IdTipoAlmacen" ColumnName="IdTipoAlmacen" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="FechaCreación" ColumnName="FechaCreación" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CicloAlmacenaje">
+            <EntityTypeMapping TypeName="slModel2.CicloAlmacenaje">
+              <MappingFragment StoreEntitySet="CicloAlmacenaje">
+                <ScalarProperty Name="IdPeridoSilo" ColumnName="IdPeridoSilo" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="LLenadoDesde" ColumnName="LLenadoDesde" />
+                <ScalarProperty Name="LLenadoHasta" ColumnName="LLenadoHasta" />
+                <ScalarProperty Name="VaciadoDesde" ColumnName="VaciadoDesde" />
+                <ScalarProperty Name="VaciadoHasta" ColumnName="VaciadoHasta" />
+                <ScalarProperty Name="PorcentajeEnteroE" ColumnName="PorcentajeEnteroE" />
+                <ScalarProperty Name="PorcentajeQuebradoE" ColumnName="PorcentajeQuebradoE" />
+                <ScalarProperty Name="RendimientoEstimado" ColumnName="RendimientoEstimado" />
+                <ScalarProperty Name="TotalBruto" ColumnName="TotalBruto" />
+                <ScalarProperty Name="TotalNeto" ColumnName="TotalNeto" />
+                <ScalarProperty Name="CostoTotal" ColumnName="CostoTotal" />
+                <ScalarProperty Name="TotalPilado" ColumnName="TotalPilado" />
+                <ScalarProperty Name="PorcentajeEnteroF" ColumnName="PorcentajeEnteroF" />
+                <ScalarProperty Name="PorcentajeQuebradoF" ColumnName="PorcentajeQuebradoF" />
+                <ScalarProperty Name="RendimientoFinal" ColumnName="RendimientoFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClasesRA">
+            <EntityTypeMapping TypeName="slModel2.ClasesRA">
+              <MappingFragment StoreEntitySet="ClasesRA">
+                <ScalarProperty Name="IdClaseRA" ColumnName="IdClaseRA" />
+                <ScalarProperty Name="ClaseRa" ColumnName="ClaseRa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conductores">
+            <EntityTypeMapping TypeName="slModel2.Conductores">
+              <MappingFragment StoreEntitySet="Conductores">
+                <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
+                <ScalarProperty Name="Conductor" ColumnName="Conductor" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kardex">
+            <EntityTypeMapping TypeName="slModel2.Kardex">
+              <MappingFragment StoreEntitySet="Kardex">
+                <ScalarProperty Name="IdInventario" ColumnName="IdInventario" />
+                <ScalarProperty Name="IdPeridoSilo" ColumnName="IdPeridoSilo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
+                <ScalarProperty Name="IdRa" ColumnName="IdRa" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="PorcentajeDescuentoSilo" ColumnName="PorcentajeDescuentoSilo" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="PorcentajeEntero" ColumnName="PorcentajeEntero" />
+                <ScalarProperty Name="PorcentajeQuebrado" ColumnName="PorcentajeQuebrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Procedencias">
+            <EntityTypeMapping TypeName="slModel2.Procedencias">
+              <MappingFragment StoreEntitySet="Procedencias">
+                <ScalarProperty Name="IdProcedencia" ColumnName="IdProcedencia" />
+                <ScalarProperty Name="IdCorregimiento" ColumnName="IdCorregimiento" />
+                <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productores">
+            <EntityTypeMapping TypeName="slModel2.Productores">
+              <MappingFragment StoreEntitySet="Productores">
+                <ScalarProperty Name="IdProductor" ColumnName="IdProductor" />
+                <ScalarProperty Name="IdProcedencia" ColumnName="IdProcedencia" />
+                <ScalarProperty Name="Productor" ColumnName="Productor" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RA">
+            <EntityTypeMapping TypeName="slModel2.RA">
+              <MappingFragment StoreEntitySet="RA">
+                <ScalarProperty Name="IdEntradaArroz" ColumnName="IdEntradaArroz" />
+                <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Neto" ColumnName="Neto" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="PorcentajeHumedad" ColumnName="PorcentajeHumedad" />
+                <ScalarProperty Name="PorcentajeImpurezas" ColumnName="PorcentajeImpurezas" />
+                <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="IdTipoFlete" ColumnName="IdTipoFlete" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdProductor" ColumnName="IdProductor" />
+                <ScalarProperty Name="IdTipoArroz" ColumnName="IdTipoArroz" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="IdRecibido" ColumnName="IdRecibido" />
+                <ScalarProperty Name="NumeroBoleta" ColumnName="NumeroBoleta" />
+                <ScalarProperty Name="Apach" ColumnName="Apach" />
+                <ScalarProperty Name="RendimientoMolineria" ColumnName="RendimientoMolineria" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="EntradaDeArroz" ColumnName="EntradaDeArroz" />
+                <ScalarProperty Name="FehaProceso" ColumnName="FehaProceso" />
+                <ScalarProperty Name="EstaPilado" ColumnName="EstaPilado" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="PorcentajeEntero" ColumnName="PorcentajeEntero" />
+                <ScalarProperty Name="PorcentajeQuebrado" ColumnName="PorcentajeQuebrado" />
+                <ScalarProperty Name="IdPeridoSilo" ColumnName="IdPeridoSilo" />
+                <ScalarProperty Name="PorcentajeAjusteSeco" ColumnName="PorcentajeAjusteSeco" />
+                <ScalarProperty Name="Seco" ColumnName="Seco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recibidos">
+            <EntityTypeMapping TypeName="slModel2.Recibidos">
+              <MappingFragment StoreEntitySet="Recibidos">
+                <ScalarProperty Name="IdRecibido" ColumnName="IdRecibido" />
+                <ScalarProperty Name="Recibido" ColumnName="Recibido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposAlmacen">
+            <EntityTypeMapping TypeName="slModel2.TiposAlmacen">
+              <MappingFragment StoreEntitySet="TiposAlmacen">
+                <ScalarProperty Name="IdTipoAlmacen" ColumnName="IdTipoAlmacen" />
+                <ScalarProperty Name="TipoAlmacen" ColumnName="TipoAlmacen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposArroz">
+            <EntityTypeMapping TypeName="slModel2.TiposArroz">
+              <MappingFragment StoreEntitySet="TiposArroz">
+                <ScalarProperty Name="IdTipoArroz" ColumnName="IdTipoArroz" />
+                <ScalarProperty Name="TipoArroz" ColumnName="TipoArroz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposMovimiento">
+            <EntityTypeMapping TypeName="slModel2.TiposMovimiento">
+              <MappingFragment StoreEntitySet="TiposMovimiento">
+                <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
+                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+                <ScalarProperty Name="Resta" ColumnName="Resta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VRA">
+            <EntityTypeMapping TypeName="slModel2.VRA">
+              <MappingFragment StoreEntitySet="VRA">
+                <ScalarProperty Name="IdEntradaArroz" ColumnName="IdEntradaArroz" />
+                <ScalarProperty Name="IdRecibido" ColumnName="IdRecibido" />
+                <ScalarProperty Name="EntradaDeArroz" ColumnName="EntradaDeArroz" />
+                <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Neto" ColumnName="Neto" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="PorcentajeHumedad" ColumnName="PorcentajeHumedad" />
+                <ScalarProperty Name="PorcentajeImpurezas" ColumnName="PorcentajeImpurezas" />
+                <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
+                <ScalarProperty Name="Conductor" ColumnName="Conductor" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdTipoFlete" ColumnName="IdTipoFlete" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="IdTipoArroz" ColumnName="IdTipoArroz" />
+                <ScalarProperty Name="TipoArroz" ColumnName="TipoArroz" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="FehaProceso" ColumnName="FehaProceso" />
+                <ScalarProperty Name="NumeroBoleta" ColumnName="NumeroBoleta" />
+                <ScalarProperty Name="Recibido" ColumnName="Recibido" />
+                <ScalarProperty Name="Apach" ColumnName="Apach" />
+                <ScalarProperty Name="PorcentajeEntero" ColumnName="PorcentajeEntero" />
+                <ScalarProperty Name="PorcentajeQuebrado" ColumnName="PorcentajeQuebrado" />
+                <ScalarProperty Name="Seco" ColumnName="Seco" />
+                <ScalarProperty Name="PorcentajeAjusteSeco" ColumnName="PorcentajeAjusteSeco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VValoresAlmacenaje">
+            <EntityTypeMapping TypeName="slModel2.VValoresAlmacenaje">
+              <MappingFragment StoreEntitySet="VValoresAlmacenaje">
+                <ScalarProperty Name="TipoArroz" ColumnName="TipoArroz" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="Seco" ColumnName="Seco" />
+                <ScalarProperty Name="InventarioFinal" ColumnName="InventarioFinal" />
+                <ScalarProperty Name="RendimientoF" ColumnName="RendimientoF" />
+                <ScalarProperty Name="PorcentajeQuebradoF" ColumnName="PorcentajeQuebradoF" />
+                <ScalarProperty Name="PorcentajeEnteroF" ColumnName="PorcentajeEnteroF" />
+                <ScalarProperty Name="AjusteTotal" ColumnName="AjusteTotal" />
+                <ScalarProperty Name="TotalPilado" ColumnName="TotalPilado" />
+                <ScalarProperty Name="FechaPiladoHasta" ColumnName="FechaPiladoHasta" />
+                <ScalarProperty Name="FechaPiladoDesde" ColumnName="FechaPiladoDesde" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="TotalNeto" ColumnName="TotalNeto" />
+                <ScalarProperty Name="RendimientoE" ColumnName="RendimientoE" />
+                <ScalarProperty Name="PorcentajeQuebradoE" ColumnName="PorcentajeQuebradoE" />
+                <ScalarProperty Name="PorcentajeEnteroE" ColumnName="PorcentajeEnteroE" />
+                <ScalarProperty Name="PorcentajeImpurezasE" ColumnName="PorcentajeImpurezasE" />
+                <ScalarProperty Name="PorcentajeHumedadE" ColumnName="PorcentajeHumedadE" />
+                <ScalarProperty Name="TotalBruto" ColumnName="TotalBruto" />
+                <ScalarProperty Name="FechaLLenadoHasta" ColumnName="FechaLLenadoHasta" />
+                <ScalarProperty Name="FechaLLenadoDesde" ColumnName="FechaLLenadoDesde" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendedores">
+            <EntityTypeMapping TypeName="slModel2.Vendedores">
+              <MappingFragment StoreEntitySet="Vendedores">
+                <ScalarProperty Name="Vendedor" ColumnName="Vendedor" />
+                <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventas">
+            <EntityTypeMapping TypeName="slModel2.Ventas">
+              <MappingFragment StoreEntitySet="Ventas">
+                <ScalarProperty Name="IdTipoVenta" ColumnName="IdTipoVenta" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdVentas" ColumnName="IdVentas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

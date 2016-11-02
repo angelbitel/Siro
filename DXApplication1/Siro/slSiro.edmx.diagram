@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="037b1bc376fa46ff8617f622991cfa35" Name="Diagram1">
+        <EntityTypeShape EntityType="slModel2.Almacenaje" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.CicloAlmacenaje" Width="1.5" PointX="5.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.ClasesRA" Width="1.5" PointX="9.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.Conductores" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.Kardex" Width="1.5" PointX="10" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.Procedencias" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.Productores" Width="1.5" PointX="7.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.RA" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.Recibidos" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.TiposAlmacen" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.TiposArroz" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.TiposMovimiento" Width="1.5" PointX="7.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModel2.VRA" Width="1.5" PointX="9.75" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="slModel2.FK_Almacenes_TiposAlmacen" ManuallyRouted="false" />
+        <AssociationConnector Association="slModel2.FK_RA_Almacenes" ManuallyRouted="false" />
+        <AssociationConnector Association="slModel2.FK_RA_Conductores" ManuallyRouted="false" />
+        <AssociationConnector Association="slModel2.FK_Kardex_TiposMovimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="slModel2.FK_Procedencias_Procedencias" ManuallyRouted="false" />
+        <AssociationConnector Association="slModel2.FK_RA_Recibidos" ManuallyRouted="false" />
+        <AssociationConnector Association="slModel2.FK_RA_TiposArroz" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="slModel2.VValoresAlmacenaje" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="slModel2.Vendedores" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="slModel2.Ventas" Width="1.5" PointX="12.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

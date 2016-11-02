@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f439c7f545fc44cd8d6a34dc676881a5" Name="Diagram1" ZoomLevel="72" >
+        <EntityTypeShape EntityType="slModel.Usuarios" Width="1.5" PointX="16.25" PointY="4.625" />
+        <EntityTypeShape EntityType="slModel.ClasesCliente" Width="1.5" PointX="0.5" PointY="3.375" />
+        <EntityTypeShape EntityType="slModel.Clientes" Width="1.5" PointX="3.5" PointY="2.75" />
+        <EntityTypeShape EntityType="slModel.TiposCliente" Width="1.5" PointX="0.5" PointY="5.875" />
+        <AssociationConnector Association="slModel.FK_clientes_ClasesCliente" />
+        <AssociationConnector Association="slModel.FK_clientes_clientes" />
+        <AssociationConnector Association="slModel.FK_clientes_clientes1" />
+        <AssociationConnector Association="slModel.FK_clientes_TiposCliente" />
+        <EntityTypeShape EntityType="slModel.DetallesPerfil" Width="1.5" PointX="24" PointY="10.125" />
+        <EntityTypeShape EntityType="slModel.Perfil" Width="1.5" PointX="24" PointY="8.125" />
+        <AssociationConnector Association="slModel.FK_DetallesPerfil_Perfil" />
+        <EntityTypeShape EntityType="slModel.Empresas" Width="1.5" PointX="19.125" PointY="10.5" />
+        <EntityTypeShape EntityType="slModel.VAsientos" Width="1.5" PointX="24" PointY="4.625" />
+        <EntityTypeShape EntityType="slModel.FormasPago" Width="1.5" PointX="11" PointY="16.75" />
+        <EntityTypeShape EntityType="slModel.FPagoUilizada" Width="1.5" PointX="13.25" PointY="16.375" />
+        <EntityTypeShape EntityType="slModel.Transacciones" Width="1.5" PointX="15.625" PointY="15.625" />
+        <AssociationConnector Association="slModel.FK_FPagoUilizada_FormasPago" />
+        <AssociationConnector Association="slModel.FK_FPagoUilizada_Transacciones" />
+        <EntityTypeShape EntityType="slModel.Bancos" Width="1.5" PointX="9.125" PointY="3.375" />
+        <EntityTypeShape EntityType="slModel.RegistrosBanco" Width="1.5" PointX="13.25" PointY="2.875" />
+        <AssociationConnector Association="slModel.FK_RegistrosBanco_Bancos" />
+        <AssociationConnector Association="slModel.FK_RegistrosBanco_Clientes" />
+        <AssociationConnector Association="slModel.FK_RegistrosBanco_Usuarios" />
+        <AssociationConnector Association="slModel.FK_RegistrosBanco_Empresas" />
+        <AssociationConnector Association="slModel.FK_Transacciones_Empresas" />
+        <EntityTypeShape EntityType="slModel.Cotizaciones" Width="1.5" PointX="0.5" PointY="8" />
+        <EntityTypeShape EntityType="slModel.DetalleCotizacion" Width="1.5" PointX="0.5" PointY="11.125" />
+        <AssociationConnector Association="slModel.FK_Cotizaciones_clientes" />
+        <AssociationConnector Association="slModel.FK_DetalleCotizacion_Cotizaciones" />
+        <EntityTypeShape EntityType="slModel.Servicios" Width="1.5" PointX="8.625" PointY="15.375" />
+        <AssociationConnector Association="slModel.FK_Servicios_Empresas" />
+        <EntityTypeShape EntityType="slModel.Parametros" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="slModel.PrecioProducto" Width="1.5" PointX="16" PointY="12.25" />
+        <EntityTypeShape EntityType="slModel.Precios" Width="1.5" PointX="6" PointY="6.875" />
+        <AssociationConnector Association="slModel.FK_Clientes_Precios" />
+        <AssociationConnector Association="slModel.FK_PrecioProducto_Precios" />
+        <AssociationConnector Association="slModel.FK_PrecioProducto_Servicios" />
+        <EntityTypeShape EntityType="slModel.VPrecioLista" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="slModel.DetallesTransaccione" Width="1.5" PointX="15.625" PointY="21.5" />
+        <AssociationConnector Association="slModel.FK_DetallesTransaccione_Servicios" />
+        <AssociationConnector Association="slModel.FK_DetallesTransaccione_Transacciones" />
+        <EntityTypeShape EntityType="slModel.Productos" Width="1.5" PointX="9.25" PointY="22.75" />
+        <AssociationConnector Association="slModel.FK_DetallesTransaccione_Productos" />
+        <AssociationConnector Association="slModel.FK_Productos_Empresas" />
+        <AssociationConnector Association="slModel.FK_PrecioProducto_Productos" />
+        <EntityTypeShape EntityType="slModel.Categorias" Width="1.5" PointX="10.75" PointY="19.125" />
+        <AssociationConnector Association="slModel.FK_Productos_Categorias" />
+        <AssociationConnector Association="slModel.FK_Servicios_Categorias" />
+        </Diagram>
+      <Diagram DiagramId="518268499a8941f98c7d54362550c017" Name="Diagram2" >
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

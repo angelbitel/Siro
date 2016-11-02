@@ -1,0 +1,870 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="slModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asientos">
+          <Key>
+            <PropertyRef Name="IdAsiento" />
+          </Key>
+          <Property Name="IdAsiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="IdTransaccion" Type="int" />
+          <Property Name="IdRegistroBanco" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="250" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleAsientos">
+          <Key>
+            <PropertyRef Name="IdDetalleAsiento" />
+          </Key>
+          <Property Name="IdDetalleAsiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAsiento" Type="int" />
+          <Property Name="Debito" Type="money" />
+          <Property Name="Credito" Type="money" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="IdServicio" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="IdBanco" Type="int" />
+          <Property Name="idProvedor" Type="int" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="IdMaestroCuenta" Type="int" />
+          <Property Name="Id" Type="int" />
+        </EntityType>
+        <EntityType Name="DetallesFactura">
+          <Key>
+            <PropertyRef Name="IdDetalleFactura" />
+          </Key>
+          <Property Name="IdDetalleFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFactura" Type="int" />
+          <Property Name="Cantidad" Type="money" />
+          <Property Name="IdCuentaContable" Type="int" />
+          <Property Name="Monto" Type="money" />
+          <Property Name="ITBMS" Type="money" />
+          <Property Name="Total" Type="money" />
+          <Property Name="RItbms" Type="bit" />
+          <Property Name="IdProducto" Type="int" />
+        </EntityType>
+        <EntityType Name="DetallesFacturaItem">
+          <Key>
+            <PropertyRef Name="IdDetalleFacturaItem" />
+          </Key>
+          <Property Name="IdDetalleFacturaItem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDetalleFactura" Type="int" />
+          <Property Name="IdMarca" Type="int" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="IdCategoria" Type="int" />
+          <Property Name="Producto" Type="varchar" MaxLength="250" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="Cantidad" Type="money" />
+          <Property Name="Monto" Type="money" />
+          <Property Name="ITBMS" Type="money" />
+          <Property Name="Total" Type="money" />
+          <Property Name="PrecioVenta" Type="money" />
+          <Property Name="ActualizaInventario" Type="bit" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="IdProvedor" Type="int" />
+          <Property Name="Glosa" Type="varchar" MaxLength="250" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="NumeroFactura" Type="varchar" MaxLength="250" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="DiasPlazo" Type="int" />
+          <Property Name="ModoPago" Type="varchar" MaxLength="50" />
+          <Property Name="Monto" Type="money" />
+          <Property Name="ITBM" Type="money" />
+          <Property Name="MontoPagado" Type="money" />
+          <Property Name="Descuento" Type="money" />
+          <Property Name="Tipo" Type="int" />
+          <Property Name="IdCliente" Type="int" />
+        </EntityType>
+        <EntityType Name="MaestroCuentas">
+          <Key>
+            <PropertyRef Name="IdMaestroCuenta" />
+          </Key>
+          <Property Name="IdMaestroCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="Text" Type="varchar" MaxLength="250" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="Nivel" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="int" />
+          <Property Name="Id" Type="int" />
+          <Property Name="Habilitar" Type="bit" />
+          <Property Name="SumaResta" Type="int" />
+          <Property Name="Nivel0" Type="varchar" MaxLength="250" />
+          <Property Name="Nivel1" Type="varchar" MaxLength="250" />
+          <Property Name="Nivel2" Type="varchar" MaxLength="250" />
+          <Property Name="Nivel3" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Almacenes">
+          <Key>
+            <PropertyRef Name="IdAlmacen" />
+          </Key>
+          <Property Name="IdAlmacen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="Almacen" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="IdMarca" />
+          </Key>
+          <Property Name="IdMarca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="Marca" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="provedores">
+          <Key>
+            <PropertyRef Name="idProvedor" />
+          </Key>
+          <Property Name="idProvedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Proveedor" Type="nvarchar" MaxLength="150" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactoTitulo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="100" />
+          <Property Name="Movil" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="100" />
+          <Property Name="HomePage" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ruc" Type="varchar" MaxLength="250" />
+          <Property Name="EsProductor" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sl.dbo.VMayorAsientos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VMayorAsientos">
+          <Key>
+            <PropertyRef Name="IdDetalleAsiento" />
+            <PropertyRef Name="IdCuentaContable" />
+            <PropertyRef Name="N" />
+            <PropertyRef Name="IdAsiento" />
+          </Key>
+          <Property Name="IdDetalleAsiento" Type="int" Nullable="false" />
+          <Property Name="Cuenta" Type="varchar" MaxLength="250" />
+          <Property Name="IdCuentaContable" Type="int" Nullable="false" />
+          <Property Name="N" Type="int" Nullable="false" />
+          <Property Name="Monto" Type="money" />
+          <Property Name="Nivel1" Type="varchar" MaxLength="50" />
+          <Property Name="Nivel2" Type="varchar" MaxLength="50" />
+          <Property Name="Nivel3" Type="varchar" MaxLength="50" />
+          <Property Name="Nivel4" Type="varchar" MaxLength="50" />
+          <Property Name="Año" Type="int" />
+          <Property Name="Mes" Type="int" />
+          <Property Name="Empresa" Type="varchar" MaxLength="55" />
+          <Property Name="Entidad" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="250" />
+          <Property Name="Credito" Type="money" />
+          <Property Name="Debito" Type="money" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="IdAsiento" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VPagosProveedor">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+            <PropertyRef Name="Corriente" />
+            <PropertyRef Name="Morosidad60" />
+            <PropertyRef Name="Morosidad90" />
+            <PropertyRef Name="Morosidad120" />
+            <PropertyRef Name="MorosidadMas120" />
+          </Key>
+          <Property Name="IdFactura" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdProvedor" Type="int" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="Glosa" Type="varchar" MaxLength="250" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="MontoAdeudado" Type="money" />
+          <Property Name="MontoPagado" Type="money" />
+          <Property Name="DiasTranscurridos" Type="int" />
+          <Property Name="Dias" Type="int" />
+          <Property Name="Tipo" Type="int" />
+          <Property Name="ArregloPago" Type="money" />
+          <Property Name="Corriente" Type="money" Nullable="false" />
+          <Property Name="Morosidad60" Type="money" Nullable="false" />
+          <Property Name="Morosidad90" Type="money" Nullable="false" />
+          <Property Name="Morosidad120" Type="money" Nullable="false" />
+          <Property Name="MorosidadMas120" Type="money" Nullable="false" />
+          <Property Name="Cliente" Type="nvarchar" MaxLength="100" />
+          <Property Name="Empresa" Type="varchar" MaxLength="55" />
+          <Property Name="img" Type="varbinary(max)" />
+          <Property Name="MontoProducto" Type="money" />
+          <Property Name="ProductoServicio" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_DetalleAsientos_Asientos">
+          <End Role="Asientos" Type="Self.Asientos" Multiplicity="0..1" />
+          <End Role="DetalleAsientos" Type="Self.DetalleAsientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asientos">
+              <PropertyRef Name="IdAsiento" />
+            </Principal>
+            <Dependent Role="DetalleAsientos">
+              <PropertyRef Name="IdAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleAsientos_MaestroCuentas">
+          <End Role="MaestroCuentas" Type="Self.MaestroCuentas" Multiplicity="0..1" />
+          <End Role="DetalleAsientos" Type="Self.DetalleAsientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroCuentas">
+              <PropertyRef Name="IdMaestroCuenta" />
+            </Principal>
+            <Dependent Role="DetalleAsientos">
+              <PropertyRef Name="IdMaestroCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesFactura_Factura">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="0..1" />
+          <End Role="DetallesFactura" Type="Self.DetallesFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="IdFactura" />
+            </Principal>
+            <Dependent Role="DetallesFactura">
+              <PropertyRef Name="IdFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesFactura_MaestroCuentas">
+          <End Role="MaestroCuentas" Type="Self.MaestroCuentas" Multiplicity="0..1" />
+          <End Role="DetallesFactura" Type="Self.DetallesFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroCuentas">
+              <PropertyRef Name="IdMaestroCuenta" />
+            </Principal>
+            <Dependent Role="DetallesFactura">
+              <PropertyRef Name="IdCuentaContable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesFacturaItem_DetallesFactura">
+          <End Role="DetallesFactura" Type="Self.DetallesFactura" Multiplicity="0..1" />
+          <End Role="DetallesFacturaItem" Type="Self.DetallesFacturaItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetallesFactura">
+              <PropertyRef Name="IdDetalleFactura" />
+            </Principal>
+            <Dependent Role="DetallesFacturaItem">
+              <PropertyRef Name="IdDetalleFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="slModel1StoreContainer">
+          <EntitySet Name="Asientos" EntityType="Self.Asientos" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="DetalleAsientos" EntityType="Self.DetalleAsientos" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="DetallesFactura" EntityType="Self.DetallesFactura" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="DetallesFacturaItem" EntityType="Self.DetallesFacturaItem" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="MaestroCuentas" EntityType="Self.MaestroCuentas" Schema="Contabilidad" store:Type="Tables" />
+          <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provedores" EntityType="Self.provedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VMayorAsientos" EntityType="Self.VMayorAsientos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VMayorAsientos].[IdDetalleAsiento] AS [IdDetalleAsiento], 
+    [VMayorAsientos].[Cuenta] AS [Cuenta], 
+    [VMayorAsientos].[IdCuentaContable] AS [IdCuentaContable], 
+    [VMayorAsientos].[N] AS [N], 
+    [VMayorAsientos].[Monto] AS [Monto], 
+    [VMayorAsientos].[Nivel1] AS [Nivel1], 
+    [VMayorAsientos].[Nivel2] AS [Nivel2], 
+    [VMayorAsientos].[Nivel3] AS [Nivel3], 
+    [VMayorAsientos].[Nivel4] AS [Nivel4], 
+    [VMayorAsientos].[Año] AS [Año], 
+    [VMayorAsientos].[Mes] AS [Mes], 
+    [VMayorAsientos].[Empresa] AS [Empresa], 
+    [VMayorAsientos].[Entidad] AS [Entidad], 
+    [VMayorAsientos].[IdEmpresa] AS [IdEmpresa], 
+    [VMayorAsientos].[Comentario] AS [Comentario], 
+    [VMayorAsientos].[Credito] AS [Credito], 
+    [VMayorAsientos].[Debito] AS [Debito], 
+    [VMayorAsientos].[Fecha] AS [Fecha], 
+    [VMayorAsientos].[IdAsiento] AS [IdAsiento]
+    FROM [dbo].[VMayorAsientos] AS [VMayorAsientos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VPagosProveedor" EntityType="Self.VPagosProveedor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VPagosProveedor].[IdFactura] AS [IdFactura], 
+    [VPagosProveedor].[IdProvedor] AS [IdProvedor], 
+    [VPagosProveedor].[IdCliente] AS [IdCliente], 
+    [VPagosProveedor].[Glosa] AS [Glosa], 
+    [VPagosProveedor].[Fecha] AS [Fecha], 
+    [VPagosProveedor].[FechaVencimiento] AS [FechaVencimiento], 
+    [VPagosProveedor].[MontoAdeudado] AS [MontoAdeudado], 
+    [VPagosProveedor].[MontoPagado] AS [MontoPagado], 
+    [VPagosProveedor].[DiasTranscurridos] AS [DiasTranscurridos], 
+    [VPagosProveedor].[Dias] AS [Dias], 
+    [VPagosProveedor].[Tipo] AS [Tipo], 
+    [VPagosProveedor].[ArregloPago] AS [ArregloPago], 
+    [VPagosProveedor].[Corriente] AS [Corriente], 
+    [VPagosProveedor].[Morosidad60] AS [Morosidad60], 
+    [VPagosProveedor].[Morosidad90] AS [Morosidad90], 
+    [VPagosProveedor].[Morosidad120] AS [Morosidad120], 
+    [VPagosProveedor].[MorosidadMas120] AS [MorosidadMas120], 
+    [VPagosProveedor].[Cliente] AS [Cliente], 
+    [VPagosProveedor].[Empresa] AS [Empresa], 
+    [VPagosProveedor].[img] AS [img], 
+    [VPagosProveedor].[MontoProducto] AS [MontoProducto], 
+    [VPagosProveedor].[ProductoServicio] AS [ProductoServicio]
+    FROM [dbo].[VPagosProveedor] AS [VPagosProveedor]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DetalleAsientos_Asientos" Association="Self.FK_DetalleAsientos_Asientos">
+            <End Role="Asientos" EntitySet="Asientos" />
+            <End Role="DetalleAsientos" EntitySet="DetalleAsientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleAsientos_MaestroCuentas" Association="Self.FK_DetalleAsientos_MaestroCuentas">
+            <End Role="MaestroCuentas" EntitySet="MaestroCuentas" />
+            <End Role="DetalleAsientos" EntitySet="DetalleAsientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesFactura_Factura" Association="Self.FK_DetallesFactura_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="DetallesFactura" EntitySet="DetallesFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesFactura_MaestroCuentas" Association="Self.FK_DetallesFactura_MaestroCuentas">
+            <End Role="MaestroCuentas" EntitySet="MaestroCuentas" />
+            <End Role="DetallesFactura" EntitySet="DetallesFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesFacturaItem_DetallesFactura" Association="Self.FK_DetallesFacturaItem_DetallesFactura">
+            <End Role="DetallesFactura" EntitySet="DetallesFactura" />
+            <End Role="DetallesFacturaItem" EntitySet="DetallesFacturaItem" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="slModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="slContabilidad" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Factura" EntityType="slModel1.Factura" />
+          <EntitySet Name="VPagosProveedor" EntityType="slModel1.VPagosProveedor" />
+          <EntitySet Name="Asientos" EntityType="slModel1.Asientos" />
+          <EntitySet Name="DetalleAsientos" EntityType="slModel1.DetalleAsientos" />
+          <AssociationSet Name="FK_DetalleAsientos_Asientos" Association="slModel1.FK_DetalleAsientos_Asientos">
+            <End Role="Asientos" EntitySet="Asientos" />
+            <End Role="DetalleAsientos" EntitySet="DetalleAsientos" />
+          </AssociationSet>
+          <EntitySet Name="MaestroCuentas" EntityType="slModel1.MaestroCuentas" />
+          <AssociationSet Name="FK_DetalleAsientos_MaestroCuentas" Association="slModel1.FK_DetalleAsientos_MaestroCuentas">
+            <End Role="MaestroCuentas" EntitySet="MaestroCuentas" />
+            <End Role="DetalleAsientos" EntitySet="DetalleAsientos" />
+          </AssociationSet>
+          <EntitySet Name="VMayorAsientos" EntityType="slModel1.VMayorAsientos" />
+          <EntitySet Name="DetallesFacturaItem" EntityType="slModel1.DetallesFacturaItem" />
+          <EntitySet Name="provedores" EntityType="slModel1.provedores" />
+          <EntitySet Name="DetallesFactura" EntityType="slModel1.DetallesFactura" />
+          <AssociationSet Name="FK_DetallesFactura_Factura" Association="slModel1.FK_DetallesFactura_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="DetallesFactura" EntitySet="DetallesFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesFactura_MaestroCuentas" Association="slModel1.FK_DetallesFactura_MaestroCuentas">
+            <End Role="MaestroCuentas" EntitySet="MaestroCuentas" />
+            <End Role="DetallesFactura" EntitySet="DetallesFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetallesFacturaItem_DetallesFactura" Association="slModel1.FK_DetallesFacturaItem_DetallesFactura">
+            <End Role="DetallesFactura" EntitySet="DetallesFactura" />
+            <End Role="DetallesFacturaItem" EntitySet="DetallesFacturaItem" />
+          </AssociationSet>
+          <EntitySet Name="Marcas" EntityType="slModel1.Marcas" />
+          <EntitySet Name="Almacenes" EntityType="slModel1.Almacenes" />
+          </EntityContainer>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+          </Key>
+          <Property Name="IdFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="Glosa" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="NumeroFactura" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="DiasPlazo" Type="Int32" />
+          <Property Name="ModoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ITBM" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MontoPagado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Descuento" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdProvedor" Type="Int32" />
+          <Property Name="Tipo" Type="Int32" />
+          <Property Name="IdCliente" Type="Int32" />
+          <NavigationProperty Name="DetallesFactura" Relationship="slModel1.FK_DetallesFactura_Factura" FromRole="Factura" ToRole="DetallesFactura" />
+        </EntityType>
+        <EntityType Name="VPagosProveedor">
+          <Key>
+            <PropertyRef Name="IdFactura" />
+            <PropertyRef Name="Corriente" />
+            <PropertyRef Name="Morosidad60" />
+            <PropertyRef Name="Morosidad90" />
+            <PropertyRef Name="Morosidad120" />
+            <PropertyRef Name="MorosidadMas120" />
+          </Key>
+          <Property Name="IdFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProvedor" Type="Int32" />
+          <Property Name="Glosa" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+          <Property Name="MontoAdeudado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MontoPagado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiasTranscurridos" Type="Int32" />
+          <Property Name="Dias" Type="Int32" />
+          <Property Name="Tipo" Type="Int32" />
+          <Property Name="ArregloPago" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="Corriente" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Morosidad60" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Morosidad90" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Morosidad120" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="MorosidadMas120" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Empresa" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MontoProducto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ProductoServicio" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Asientos">
+          <Key>
+            <PropertyRef Name="IdAsiento" />
+          </Key>
+          <Property Name="IdAsiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="IdTransaccion" Type="Int32" />
+          <Property Name="IdRegistroBanco" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="DetalleAsientos" Relationship="slModel1.FK_DetalleAsientos_Asientos" FromRole="Asientos" ToRole="DetalleAsientos" />
+        </EntityType>
+        <EntityType Name="DetalleAsientos">
+          <Key>
+            <PropertyRef Name="IdDetalleAsiento" />
+          </Key>
+          <Property Name="IdDetalleAsiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAsiento" Type="Int32" />
+          <Property Name="Debito" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Credito" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="IdServicio" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="IdBanco" Type="Int32" />
+          <Property Name="idProvedor" Type="Int32" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="IdMaestroCuenta" Type="Int32" />
+          <NavigationProperty Name="Asientos" Relationship="slModel1.FK_DetalleAsientos_Asientos" FromRole="DetalleAsientos" ToRole="Asientos" />
+          <NavigationProperty Name="MaestroCuentas" Relationship="slModel1.FK_DetalleAsientos_MaestroCuentas" FromRole="DetalleAsientos" ToRole="MaestroCuentas" />
+          <Property Name="Id" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_DetalleAsientos_Asientos">
+          <End Type="slModel1.Asientos" Role="Asientos" Multiplicity="0..1" />
+          <End Type="slModel1.DetalleAsientos" Role="DetalleAsientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asientos">
+              <PropertyRef Name="IdAsiento" />
+            </Principal>
+            <Dependent Role="DetalleAsientos">
+              <PropertyRef Name="IdAsiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MaestroCuentas">
+          <Key>
+            <PropertyRef Name="IdMaestroCuenta" />
+          </Key>
+          <Property Name="IdMaestroCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="Nivel" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="Int32" />
+          <Property Name="Id" Type="Int32" />
+          <NavigationProperty Name="DetalleAsientos" Relationship="slModel1.FK_DetalleAsientos_MaestroCuentas" FromRole="MaestroCuentas" ToRole="DetalleAsientos" />
+          <Property Name="Habilitar" Type="Boolean" />
+          <Property Name="SumaResta" Type="Int32" />
+          <NavigationProperty Name="DetallesFactura" Relationship="slModel1.FK_DetallesFactura_MaestroCuentas" FromRole="MaestroCuentas" ToRole="DetallesFactura" />
+          <Property Name="Nivel0" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_DetalleAsientos_MaestroCuentas">
+          <End Type="slModel1.MaestroCuentas" Role="MaestroCuentas" Multiplicity="0..1" />
+          <End Type="slModel1.DetalleAsientos" Role="DetalleAsientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroCuentas">
+              <PropertyRef Name="IdMaestroCuenta" />
+            </Principal>
+            <Dependent Role="DetalleAsientos">
+              <PropertyRef Name="IdMaestroCuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VMayorAsientos">
+          <Key>
+            <PropertyRef Name="IdDetalleAsiento" />
+            <PropertyRef Name="IdCuentaContable" />
+            <PropertyRef Name="N" />
+            <PropertyRef Name="IdAsiento" />
+          </Key>
+          <Property Name="IdDetalleAsiento" Type="Int32" Nullable="false" />
+          <Property Name="Cuenta" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdCuentaContable" Type="Int32" Nullable="false" />
+          <Property Name="N" Type="Int32" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Nivel1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Año" Type="Int32" />
+          <Property Name="Mes" Type="Int32" />
+          <Property Name="Empresa" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+          <Property Name="Entidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Credito" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Debito" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="IdAsiento" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetallesFacturaItem">
+          <Key>
+            <PropertyRef Name="IdDetalleFacturaItem" />
+          </Key>
+          <Property Name="IdDetalleFacturaItem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDetalleFactura" Type="Int32" />
+          <Property Name="Producto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ITBMS" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdProducto" Type="Int32" />
+          <NavigationProperty Name="DetallesFactura" Relationship="slModel1.FK_DetallesFacturaItem_DetallesFactura" FromRole="DetallesFacturaItem" ToRole="DetallesFactura" />
+          <Property Name="IdMarca" Type="Int32" />
+          <Property Name="IdCategoria" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PrecioVenta" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ActualizaInventario" Type="Boolean" />
+          <Property Name="IdAlmacen" Type="Int32" />
+        </EntityType>
+        <EntityType Name="provedores">
+          <Key>
+            <PropertyRef Name="idProvedor" />
+          </Key>
+          <Property Name="idProvedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Proveedor" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactoTitulo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Movil" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HomePage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ruc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EsProductor" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="DetallesFactura">
+          <Key>
+            <PropertyRef Name="IdDetalleFactura" />
+          </Key>
+          <Property Name="IdDetalleFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFactura" Type="Int32" />
+          <Property Name="Cantidad" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IdCuentaContable" Type="Int32" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ITBMS" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RItbms" Type="Boolean" />
+          <Property Name="IdProducto" Type="Int32" />
+          <NavigationProperty Name="Factura" Relationship="slModel1.FK_DetallesFactura_Factura" FromRole="DetallesFactura" ToRole="Factura" />
+          <NavigationProperty Name="MaestroCuentas" Relationship="slModel1.FK_DetallesFactura_MaestroCuentas" FromRole="DetallesFactura" ToRole="MaestroCuentas" />
+          <NavigationProperty Name="DetallesFacturaItem" Relationship="slModel1.FK_DetallesFacturaItem_DetallesFactura" FromRole="DetallesFactura" ToRole="DetallesFacturaItem" />
+        </EntityType>
+        <Association Name="FK_DetallesFactura_Factura">
+          <End Type="slModel1.Factura" Role="Factura" Multiplicity="0..1" />
+          <End Type="slModel1.DetallesFactura" Role="DetallesFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="IdFactura" />
+            </Principal>
+            <Dependent Role="DetallesFactura">
+              <PropertyRef Name="IdFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesFactura_MaestroCuentas">
+          <End Type="slModel1.MaestroCuentas" Role="MaestroCuentas" Multiplicity="0..1" />
+          <End Type="slModel1.DetallesFactura" Role="DetallesFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaestroCuentas">
+              <PropertyRef Name="IdMaestroCuenta" />
+            </Principal>
+            <Dependent Role="DetallesFactura">
+              <PropertyRef Name="IdCuentaContable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetallesFacturaItem_DetallesFactura">
+          <End Type="slModel1.DetallesFactura" Role="DetallesFactura" Multiplicity="0..1" />
+          <End Type="slModel1.DetallesFacturaItem" Role="DetallesFacturaItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetallesFactura">
+              <PropertyRef Name="IdDetalleFactura" />
+            </Principal>
+            <Dependent Role="DetallesFacturaItem">
+              <PropertyRef Name="IdDetalleFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="IdMarca" />
+          </Key>
+          <Property Name="IdMarca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdEmpresa" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Almacenes">
+          <Key>
+            <PropertyRef Name="IdAlmacen" />
+          </Key>
+          <Property Name="IdAlmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="Almacen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="slModel1StoreContainer" CdmEntityContainer="slContabilidad">
+          <EntitySetMapping Name="Factura">
+            <EntityTypeMapping TypeName="slModel1.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="IdProvedor" ColumnName="IdProvedor" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="MontoPagado" ColumnName="MontoPagado" />
+                <ScalarProperty Name="ITBM" ColumnName="ITBM" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+                <ScalarProperty Name="DiasPlazo" ColumnName="DiasPlazo" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="NumeroFactura" ColumnName="NumeroFactura" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Glosa" ColumnName="Glosa" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VPagosProveedor">
+            <EntityTypeMapping TypeName="slModel1.VPagosProveedor">
+              <MappingFragment StoreEntitySet="VPagosProveedor">
+                <ScalarProperty Name="ProductoServicio" ColumnName="ProductoServicio" />
+                <ScalarProperty Name="MontoProducto" ColumnName="MontoProducto" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="MorosidadMas120" ColumnName="MorosidadMas120" />
+                <ScalarProperty Name="Morosidad120" ColumnName="Morosidad120" />
+                <ScalarProperty Name="Morosidad90" ColumnName="Morosidad90" />
+                <ScalarProperty Name="Morosidad60" ColumnName="Morosidad60" />
+                <ScalarProperty Name="Corriente" ColumnName="Corriente" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="ArregloPago" ColumnName="ArregloPago" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+                <ScalarProperty Name="DiasTranscurridos" ColumnName="DiasTranscurridos" />
+                <ScalarProperty Name="MontoPagado" ColumnName="MontoPagado" />
+                <ScalarProperty Name="MontoAdeudado" ColumnName="MontoAdeudado" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Glosa" ColumnName="Glosa" />
+                <ScalarProperty Name="IdProvedor" ColumnName="IdProvedor" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asientos">
+            <EntityTypeMapping TypeName="slModel1.Asientos">
+              <MappingFragment StoreEntitySet="Asientos">
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdRegistroBanco" ColumnName="IdRegistroBanco" />
+                <ScalarProperty Name="IdTransaccion" ColumnName="IdTransaccion" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdAsiento" ColumnName="IdAsiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleAsientos">
+            <EntityTypeMapping TypeName="slModel1.DetalleAsientos">
+              <MappingFragment StoreEntitySet="DetalleAsientos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdMaestroCuenta" ColumnName="IdMaestroCuenta" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="idProvedor" ColumnName="idProvedor" />
+                <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Debito" ColumnName="Debito" />
+                <ScalarProperty Name="IdAsiento" ColumnName="IdAsiento" />
+                <ScalarProperty Name="IdDetalleAsiento" ColumnName="IdDetalleAsiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaestroCuentas">
+            <EntityTypeMapping TypeName="slModel1.MaestroCuentas">
+              <MappingFragment StoreEntitySet="MaestroCuentas">
+                <ScalarProperty Name="Nivel3" ColumnName="Nivel3" />
+                <ScalarProperty Name="Nivel2" ColumnName="Nivel2" />
+                <ScalarProperty Name="Nivel1" ColumnName="Nivel1" />
+                <ScalarProperty Name="Nivel0" ColumnName="Nivel0" />
+                <ScalarProperty Name="SumaResta" ColumnName="SumaResta" />
+                <ScalarProperty Name="Habilitar" ColumnName="Habilitar" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdMaestroCuenta" ColumnName="IdMaestroCuenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VMayorAsientos">
+            <EntityTypeMapping TypeName="slModel1.VMayorAsientos">
+              <MappingFragment StoreEntitySet="VMayorAsientos">
+                <ScalarProperty Name="IdAsiento" ColumnName="IdAsiento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Debito" ColumnName="Debito" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Entidad" ColumnName="Entidad" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Nivel4" ColumnName="Nivel4" />
+                <ScalarProperty Name="Nivel3" ColumnName="Nivel3" />
+                <ScalarProperty Name="Nivel2" ColumnName="Nivel2" />
+                <ScalarProperty Name="Nivel1" ColumnName="Nivel1" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="N" ColumnName="N" />
+                <ScalarProperty Name="IdCuentaContable" ColumnName="IdCuentaContable" />
+                <ScalarProperty Name="Cuenta" ColumnName="Cuenta" />
+                <ScalarProperty Name="IdDetalleAsiento" ColumnName="IdDetalleAsiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallesFacturaItem">
+            <EntityTypeMapping TypeName="slModel1.DetallesFacturaItem">
+              <MappingFragment StoreEntitySet="DetallesFacturaItem">
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="ActualizaInventario" ColumnName="ActualizaInventario" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ITBMS" ColumnName="ITBMS" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="IdDetalleFactura" ColumnName="IdDetalleFactura" />
+                <ScalarProperty Name="IdDetalleFacturaItem" ColumnName="IdDetalleFacturaItem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provedores">
+            <EntityTypeMapping TypeName="slModel1.provedores">
+              <MappingFragment StoreEntitySet="provedores">
+                <ScalarProperty Name="EsProductor" ColumnName="EsProductor" />
+                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
+                <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Movil" ColumnName="Movil" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="ContactoTitulo" ColumnName="ContactoTitulo" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="idProvedor" ColumnName="idProvedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallesFactura">
+            <EntityTypeMapping TypeName="slModel1.DetallesFactura">
+              <MappingFragment StoreEntitySet="DetallesFactura">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="RItbms" ColumnName="RItbms" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ITBMS" ColumnName="ITBMS" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="IdCuentaContable" ColumnName="IdCuentaContable" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
+                <ScalarProperty Name="IdDetalleFactura" ColumnName="IdDetalleFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="slModel1.Marcas">
+              <MappingFragment StoreEntitySet="Marcas">
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Almacenes">
+            <EntityTypeMapping TypeName="slModel1.Almacenes">
+              <MappingFragment StoreEntitySet="Almacenes">
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
