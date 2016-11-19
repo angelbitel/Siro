@@ -25,7 +25,7 @@ namespace Siro
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Almacenaje> Almacenes { get; set; }
+        public virtual DbSet<Almacenaje> Almacenaje { get; set; }
         public virtual DbSet<CicloAlmacenaje> CicloAlmacenaje { get; set; }
         public virtual DbSet<ClasesRA> ClasesRA { get; set; }
         public virtual DbSet<Conductores> Conductores { get; set; }

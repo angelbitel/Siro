@@ -43,9 +43,10 @@ namespace Siro.Controller
             get
             {
                 var lst = new List<Almacenaje>();
-                db3.Almacenaje.Join(db3.RA, a => a.IdAlmacen, b => b.IdAlmacen, (a, b) => new { a, b }).Where(w => w.b.IdPeridoSilo == null).Select(s => new { s.a }).ToList().ForEach(f =>
+                //db3.Almacenaje.Join(db3.RA, a => a.IdAlmacen, b => b.IdAlmacen, (a, b) => new { a, b }).Where(w => w.b.IdPeridoSilo == null).Select(s => new { s.a }).ToList().ForEach(f =>
+                db3.Almacenaje.ToList().ForEach(f =>
                 {
-                    lst.Add(new Almacenaje { IdAlmacen = f.a.IdAlmacen, Almacen = f.a.Almacen });
+                    lst.Add(new Almacenaje { IdAlmacen = f.IdAlmacen, Almacen = f.Almacen });
                 });
                 return lst;
             }
@@ -69,8 +70,8 @@ namespace Siro.Controller
             get
             {
                 var l = new List<Model.TipoFlete>();
-                l.Add(new Model.TipoFlete { IdTipoFlete = 1, TiposFlete = "Flete Paga Productor" });
-                l.Add(new Model.TipoFlete { IdTipoFlete = 2, TiposFlete = "Flete Paga Molino" });
+                l.Add(new Model.TipoFlete { IdTipoFlete = 1, TiposFlete = "Flete Paga Molino" });
+                l.Add(new Model.TipoFlete { IdTipoFlete = 2, TiposFlete = "Flete Paga Productor" });
                 l.Add(new Model.TipoFlete { IdTipoFlete = 3, TiposFlete = "Flete paga el molino y retiene dinero al productor" });
                 return l;
             }
@@ -82,9 +83,9 @@ namespace Siro.Controller
                 return db3.Conductores.ToList();
             }
         }
-        public List<Model.RegistroArroz> LstRA(string filtro)
+        public List<Siro.RA> LstRA(string filtro)
         {
-            return db3.Database.SqlQuery<Model.RegistroArroz>(string.Format("SELECT * FROM Siro.VRA WHERE {0}", filtro)).ToList();
+            return db3.Database.SqlQuery<Siro.RA>(string.Format("SELECT * FROM Siro.RA WHERE {0}", filtro)).ToList();
         }
         public List<VAsientos> LstAsientos(int año, int mes, int idEmpresa)
         {

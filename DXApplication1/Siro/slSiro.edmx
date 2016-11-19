@@ -122,6 +122,11 @@
           <Property Name="IdPeridoSilo" Type="int" />
           <Property Name="PorcentajeAjusteSeco" Type="money" />
           <Property Name="Seco" Type="money" />
+          <Property Name="Descuento" Type="bit" />
+          <Property Name="Rendimiento" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PorcentajeAdicionalSecado" Type="money" />
+          <Property Name="PorcentajeSecado" Type="money" />
+          <Property Name="Flete" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Recibidos">
           <Key>
@@ -557,6 +562,11 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <NavigationProperty Name="Conductores" Relationship="Self.FK_RA_Conductores" FromRole="RA" ToRole="Conductores" />
           <NavigationProperty Name="Recibidos" Relationship="Self.FK_RA_Recibidos" FromRole="RA" ToRole="Recibidos" />
           <NavigationProperty Name="TiposArroz" Relationship="Self.FK_RA_TiposArroz" FromRole="RA" ToRole="TiposArroz" />
+          <Property Name="Descuento" Type="Boolean" />
+          <Property Name="Rendimiento" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PorcentajeAdicionalSecado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeSecado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Flete" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Recibidos">
           <Key>
@@ -711,7 +721,7 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="slSiro" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Almacenes" EntityType="slModel2.Almacenaje" />
+          <EntitySet Name="Almacenaje" EntityType="slModel2.Almacenaje" />
           <EntitySet Name="CicloAlmacenaje" EntityType="Self.CicloAlmacenaje" />
           <EntitySet Name="ClasesRA" EntityType="Self.ClasesRA" />
           <EntitySet Name="Conductores" EntityType="Self.Conductores" />
@@ -726,10 +736,10 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <EntitySet Name="VRA" EntityType="Self.VRA" />
           <AssociationSet Name="FK_Almacenes_TiposAlmacen" Association="Self.FK_Almacenes_TiposAlmacen">
             <End Role="TiposAlmacen" EntitySet="TiposAlmacen" />
-            <End Role="Almacenes" EntitySet="Almacenes" />
+            <End Role="Almacenes" EntitySet="Almacenaje" />
           </AssociationSet>
           <AssociationSet Name="FK_RA_Almacenes" Association="Self.FK_RA_Almacenes">
-            <End Role="Almacenes" EntitySet="Almacenes" />
+            <End Role="Almacenes" EntitySet="Almacenaje" />
             <End Role="RA" EntitySet="RA" />
           </AssociationSet>
           <AssociationSet Name="FK_RA_Conductores" Association="Self.FK_RA_Conductores">
@@ -808,7 +818,7 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="slModel2StoreContainer" CdmEntityContainer="slSiro">
-          <EntitySetMapping Name="Almacenes">
+          <EntitySetMapping Name="Almacenaje">
             <EntityTypeMapping TypeName="slModel2.Almacenaje">
               <MappingFragment StoreEntitySet="Almacenes">
                 <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
@@ -902,6 +912,11 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <EntitySetMapping Name="RA">
             <EntityTypeMapping TypeName="slModel2.RA">
               <MappingFragment StoreEntitySet="RA">
+                <ScalarProperty Name="Flete" ColumnName="Flete" />
+                <ScalarProperty Name="PorcentajeSecado" ColumnName="PorcentajeSecado" />
+                <ScalarProperty Name="PorcentajeAdicionalSecado" ColumnName="PorcentajeAdicionalSecado" />
+                <ScalarProperty Name="Rendimiento" ColumnName="Rendimiento" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
                 <ScalarProperty Name="IdEntradaArroz" ColumnName="IdEntradaArroz" />
                 <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />

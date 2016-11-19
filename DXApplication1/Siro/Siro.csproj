@@ -386,6 +386,12 @@
     <Compile Include="F\I\CerrarCiclo.Designer.cs">
       <DependentUpon>CerrarCiclo.cs</DependentUpon>
     </Compile>
+    <Compile Include="F\I\Conductor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\Conductor.Designer.cs">
+      <DependentUpon>Conductor.cs</DependentUpon>
+    </Compile>
     <Compile Include="F\I\EntradasSalidas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -999,6 +1005,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F\I\CerrarCiclo.resx">
       <DependentUpon>CerrarCiclo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\Conductor.resx">
+      <DependentUpon>Conductor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F\I\EntradasSalidas.resx">
       <DependentUpon>EntradasSalidas.cs</DependentUpon>

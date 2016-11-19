@@ -49,5 +49,10 @@ namespace Siro.F.I
                 e.Cancel = true;
             }
         }
+
+        private void btnGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

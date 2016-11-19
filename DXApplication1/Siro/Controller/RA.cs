@@ -83,6 +83,7 @@ namespace Siro.Controller
                 {
                     try
                     {
+                        entidad.FehaProceso = DateTime.Now;
                         if (entidad.IdEntradaArroz == 0)
                             context.RA.Add(entidad);
                         else

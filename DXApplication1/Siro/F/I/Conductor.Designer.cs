@@ -1,6 +1,6 @@
 ﻿namespace Siro.F.I
 {
-    partial class AddC
+    partial class Conductor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddC));
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Conductor));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.conductoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.repositoryItemTextEditPassword = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.conductoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colIdConductor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colConductor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCedula = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.lblMsg = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -46,18 +50,24 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItemFecha = new DevExpress.XtraBars.BarStaticItem();
-            this.barStaticItemEmpresa = new DevExpress.XtraBars.BarStaticItem();
-            this.btnBackWard = new DevExpress.XtraBars.BarButtonItem();
-            this.btnFordware = new DevExpress.XtraBars.BarButtonItem();
-            this.btnNew = new DevExpress.XtraBars.BarButtonItem();
-            this.btnGuadar = new DevExpress.XtraBars.BarButtonItem();
-            this.btnGuardar = new DevExpress.XtraBars.BarButtonItem();
+            this.barMdiChildrenListItem1 = new DevExpress.XtraBars.BarMdiChildrenListItem();
+            this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
+            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.itbcrumbCuentas = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.rpsBreadCrumb1 = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conductoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conductoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itbcrumbCuentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rpsBreadCrumb1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -69,14 +79,13 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(427, 364);
-            this.gridControl1.TabIndex = 0;
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEditPassword,
+            this.repositoryItemImageComboBox1});
+            this.gridControl1.Size = new System.Drawing.Size(657, 478);
+            this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            // 
-            // conductoresBindingSource
-            // 
-            this.conductoresBindingSource.DataSource = typeof(Siro.Conductores);
             // 
             // gridView1
             // 
@@ -87,19 +96,33 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
-            this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
             this.gridView1.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView1_RowUpdated);
+            // 
+            // repositoryItemTextEditPassword
+            // 
+            this.repositoryItemTextEditPassword.AutoHeight = false;
+            this.repositoryItemTextEditPassword.Name = "repositoryItemTextEditPassword";
+            this.repositoryItemTextEditPassword.PasswordChar = '*';
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            // 
+            // conductoresBindingSource
+            // 
+            this.conductoresBindingSource.DataSource = typeof(Siro.Conductores);
             // 
             // colIdConductor
             // 
-            this.colIdConductor.Caption = "Id";
+            this.colIdConductor.Caption = "#";
             this.colIdConductor.FieldName = "IdConductor";
             this.colIdConductor.Name = "colIdConductor";
             this.colIdConductor.Visible = true;
             this.colIdConductor.VisibleIndex = 0;
-            this.colIdConductor.Width = 27;
+            this.colIdConductor.Width = 62;
             // 
             // colConductor
             // 
@@ -107,7 +130,7 @@
             this.colConductor.Name = "colConductor";
             this.colConductor.Visible = true;
             this.colConductor.VisibleIndex = 1;
-            this.colConductor.Width = 107;
+            this.colConductor.Width = 282;
             // 
             // colCedula
             // 
@@ -115,7 +138,7 @@
             this.colCedula.Name = "colCedula";
             this.colCedula.Visible = true;
             this.colCedula.VisibleIndex = 2;
-            this.colCedula.Width = 107;
+            this.colCedula.Width = 288;
             // 
             // barManager1
             // 
@@ -128,18 +151,21 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
-            this.lblMsg,
             this.barButtonItem2,
+            this.lblMsg,
             this.barButtonItem3,
-            this.barStaticItemFecha,
-            this.barStaticItemEmpresa,
-            this.btnBackWard,
-            this.btnFordware,
-            this.btnNew,
-            this.btnGuadar,
-            this.btnGuardar,
-            this.barButtonItem5});
+            this.barMdiChildrenListItem1,
+            this.barWorkspaceMenuItem1,
+            this.barButtonItem4,
+            this.barEditItem1,
+            this.barButtonItem5,
+            this.barButtonItem6,
+            this.barButtonItem7,
+            this.barButtonItem8});
             this.barManager1.MaxItemId = 12;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.rpsBreadCrumb1,
+            this.itbcrumbCuentas});
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar3
@@ -158,9 +184,16 @@
             // 
             // lblMsg
             // 
-            this.lblMsg.Id = 1;
+            this.lblMsg.Id = 2;
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Administracion Perfiles";
+            this.barButtonItem8.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.Glyph")));
+            this.barButtonItem8.Id = 11;
+            this.barButtonItem8.Name = "barButtonItem8";
             // 
             // barDockControlTop
             // 
@@ -168,15 +201,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(427, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(657, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 364);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 478);
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(427, 35);
+            this.barDockControlBottom.Size = new System.Drawing.Size(657, 35);
             // 
             // barDockControlLeft
             // 
@@ -184,105 +217,119 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 364);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 478);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(427, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(657, 0);
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 364);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 478);
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Nuevo Cliente";
-            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
+            this.barButtonItem1.Caption = "Archivo";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "Ocultar Panel Edición";
-            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
-            this.barButtonItem2.Id = 2;
+            this.barButtonItem2.Caption = "barButtonItem2";
+            this.barButtonItem2.Id = 1;
             this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "Mostrar Panel Edición";
-            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
+            this.barButtonItem3.Caption = "barButtonItem3";
             this.barButtonItem3.Id = 3;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
-            // barStaticItemFecha
+            // barMdiChildrenListItem1
             // 
-            this.barStaticItemFecha.Id = 4;
-            this.barStaticItemFecha.Name = "barStaticItemFecha";
-            this.barStaticItemFecha.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.barMdiChildrenListItem1.Caption = "barMdiChildrenListItem1";
+            this.barMdiChildrenListItem1.Id = 4;
+            this.barMdiChildrenListItem1.Name = "barMdiChildrenListItem1";
             // 
-            // barStaticItemEmpresa
+            // barWorkspaceMenuItem1
             // 
-            this.barStaticItemEmpresa.Id = 5;
-            this.barStaticItemEmpresa.Name = "barStaticItemEmpresa";
-            this.barStaticItemEmpresa.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.barWorkspaceMenuItem1.Caption = "barWorkspaceMenuItem1";
+            this.barWorkspaceMenuItem1.Id = 5;
+            this.barWorkspaceMenuItem1.Name = "barWorkspaceMenuItem1";
             // 
-            // btnBackWard
+            // workspaceManager1
             // 
-            this.btnBackWard.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBackWard.Glyph")));
-            this.btnBackWard.Id = 6;
-            this.btnBackWard.Name = "btnBackWard";
+            this.workspaceManager1.TargetControl = this;
+            this.workspaceManager1.TransitionType = pushTransition1;
+            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
             // 
-            // btnFordware
+            // barButtonItem4
             // 
-            this.btnFordware.Glyph = ((System.Drawing.Image)(resources.GetObject("btnFordware.Glyph")));
-            this.btnFordware.Id = 7;
-            this.btnFordware.Name = "btnFordware";
+            this.barButtonItem4.Caption = "barButtonItem4";
+            this.barButtonItem4.Id = 6;
+            this.barButtonItem4.Name = "barButtonItem4";
             // 
-            // btnNew
+            // barEditItem1
             // 
-            this.btnNew.Caption = "Nuevo";
-            this.btnNew.Glyph = ((System.Drawing.Image)(resources.GetObject("btnNew.Glyph")));
-            this.btnNew.Id = 8;
-            this.btnNew.Name = "btnNew";
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.itbcrumbCuentas;
+            this.barEditItem1.EditWidth = 271;
+            this.barEditItem1.Id = 7;
+            this.barEditItem1.Name = "barEditItem1";
             // 
-            // btnGuadar
+            // itbcrumbCuentas
             // 
-            this.btnGuadar.Caption = "Guardar";
-            this.btnGuadar.Glyph = ((System.Drawing.Image)(resources.GetObject("btnGuadar.Glyph")));
-            this.btnGuadar.Id = 9;
-            this.btnGuadar.Name = "btnGuadar";
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Caption = "barButtonItem4";
-            this.btnGuardar.Glyph = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Glyph")));
-            this.btnGuardar.Id = 10;
-            this.btnGuardar.Name = "btnGuardar";
+            this.itbcrumbCuentas.AutoHeight = false;
+            this.itbcrumbCuentas.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.itbcrumbCuentas.Name = "itbcrumbCuentas";
             // 
             // barButtonItem5
             // 
-            this.barButtonItem5.Caption = "barButtonItem5";
-            this.barButtonItem5.Id = 11;
+            this.barButtonItem5.Caption = "Nuevo Perfil";
+            this.barButtonItem5.Id = 8;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
-            // AddC
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Modificar Perfiles";
+            this.barButtonItem6.Id = 9;
+            this.barButtonItem6.Name = "barButtonItem6";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Guardar Perfil";
+            this.barButtonItem7.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.Glyph")));
+            this.barButtonItem7.Id = 10;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // rpsBreadCrumb1
+            // 
+            this.rpsBreadCrumb1.AutoHeight = false;
+            this.rpsBreadCrumb1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.rpsBreadCrumb1.Name = "rpsBreadCrumb1";
+            // 
+            // Conductor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 399);
+            this.ClientSize = new System.Drawing.Size(657, 513);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "AddC";
-            this.Text = "AddC";
+            this.Name = "Conductor";
+            this.Text = "Conductor";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conductoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conductoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itbcrumbCuentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rpsBreadCrumb1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,7 +338,13 @@
         #endregion
 
         private DevExpress.XtraGrid.GridControl gridControl1;
+        private System.Windows.Forms.BindingSource conductoresBindingSource;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdConductor;
+        private DevExpress.XtraGrid.Columns.GridColumn colConductor;
+        private DevExpress.XtraGrid.Columns.GridColumn colCedula;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEditPassword;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarStaticItem lblMsg;
@@ -302,17 +355,16 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemFecha;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemEmpresa;
-        private DevExpress.XtraBars.BarButtonItem btnBackWard;
-        private DevExpress.XtraBars.BarButtonItem btnFordware;
-        private DevExpress.XtraBars.BarButtonItem btnNew;
-        private DevExpress.XtraBars.BarButtonItem btnGuadar;
-        private DevExpress.XtraBars.BarButtonItem btnGuardar;
+        private DevExpress.XtraBars.BarMdiChildrenListItem barMdiChildrenListItem1;
+        private DevExpress.XtraBars.BarWorkspaceMenuItem barWorkspaceMenuItem1;
+        private DevExpress.Utils.WorkspaceManager workspaceManager1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit itbcrumbCuentas;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private System.Windows.Forms.BindingSource conductoresBindingSource;
-        private DevExpress.XtraGrid.Columns.GridColumn colIdConductor;
-        private DevExpress.XtraGrid.Columns.GridColumn colConductor;
-        private DevExpress.XtraGrid.Columns.GridColumn colCedula;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit rpsBreadCrumb1;
     }
 }

@@ -43,6 +43,11 @@ namespace Siro
         public Nullable<int> IdPeridoSilo { get; set; }
         public Nullable<decimal> PorcentajeAjusteSeco { get; set; }
         public Nullable<decimal> Seco { get; set; }
+        public Nullable<bool> Descuento { get; set; }
+        public Nullable<decimal> Rendimiento { get; set; }
+        public Nullable<decimal> PorcentajeAdicionalSecado { get; set; }
+        public Nullable<decimal> PorcentajeSecado { get; set; }
+        public Nullable<decimal> Flete { get; set; }
     
         public virtual Almacenaje Almacenes { get; set; }
         public virtual Conductores Conductores { get; set; }

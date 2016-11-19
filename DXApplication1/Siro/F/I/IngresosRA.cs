@@ -11,25 +11,16 @@ namespace Siro.F.I
 {
     public partial class IngresosRA : DevExpress.XtraEditors.XtraForm
     {
-         BindingList<RA> lstRegistroArroz = new  BindingList<RA>();
+        BindingList<RA> lstRegistroArroz = new  BindingList<RA>();
         List<Almacenaje> lstAlmacenes = new List<Almacenaje>();
         List<Conductores> lstConductores = new List<Conductores>();
         List<TiposArroz> lstTiposArroz = new List<TiposArroz>();
         List<provedores> lstprovedores = new List<provedores>();
         List<Recibidos> lstRecibidos = new List<Recibidos>();
+        private RA UltimoRa {get; set;}
         public IngresosRA()
         {
             InitializeComponent();
-        }
-
-        private void btnNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
-        private void btnGuadar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
         }
 
         private void IngresosRA_Load(object sender, EventArgs e)
@@ -45,9 +36,9 @@ namespace Siro.F.I
         {
             var lst = new Controller.Lst();
             lstAlmacenes = lst.AlmacenesProduccion;
-            lstConductores = lst.Conductores;
+            lstConductores = lst.Conductores.OrderBy(o=> o.Conductor).ToList();
             lstTiposArroz = lst.Productos;
-            lstprovedores = lst.Proveedores;
+            lstprovedores = lst.Proveedores.OrderBy(o=> o.Proveedor).ToList();
             lstRecibidos = lst.Recibido;
 
             foreach (Model.TipoFlete current in lst.TiposFlete)
@@ -59,50 +50,78 @@ namespace Siro.F.I
                 };
                 this.icbeTipoFlete.Properties.Items.Add(item);
             }
-        }
-
-        private void toolStripButtonGuardar_Click(object sender, EventArgs e)
-        {
-
+            foreach (Almacenaje current in lstAlmacenes)
+            {
+                ImageComboBoxItem item = new ImageComboBoxItem
+                {
+                    Value = current.IdAlmacen,
+                    Description = current.Almacen
+                };
+                this.slueSilo.Properties.Items.Add(item);
+            }
         }
 
         private void textEdit5_KeyUp(object sender, KeyEventArgs e)
-        {            
-            var txt = sender as TextEdit;
-            decimal bruto=0, humedad=0, precio=0, impureza=0, neto=0, total=0;
-            decimal totalImpureza = 0, totalHumedad = 0;
-            decimal porcentajeImpureza = 0, porcentajeHumedad = 0;
-                decimal.TryParse(txtBruto.Text, out bruto);
-                decimal.TryParse(txtHumedad.Text, out humedad);
-                decimal.TryParse(txtPrecio.Text, out precio);
-                decimal.TryParse(txtImpurezas.Text, out impureza);
-                if (impureza > 4)
-                {
-                    totalImpureza = impureza - 4;
-                    porcentajeImpureza = bruto * totalImpureza / 100;
-                }
-                if (humedad > 24)
-                {
-                    totalHumedad = (humedad-24)*1.2M;
-                    porcentajeHumedad = bruto * totalHumedad / 100;
-                }
+        {
+            Calcular();
+        }
+
+        private void Calcular()
+        {
+            decimal bruto = 0, humedad = 0, precio = 0, impureza = 0, seco = 0, total = 0, pesoPagar=0, neto=0, flete=0;
+            decimal totalImpureza = 0, totalHumedad = 0, totalSeco=0, totalSecoAdic=0;
+            decimal porcentajeImpureza = 0, porcentajeHumedad = 0, porcentajeSeco = 0, porcentajeAdicSeco=0;
+            decimal.TryParse(txtBruto.Text, out bruto);
+            decimal.TryParse(txtHumedad.Text, out humedad);
+            decimal.TryParse(txtPrecio.Text, out precio);
+            decimal.TryParse(txtImpurezas.Text, out impureza);
+            decimal.TryParse(txtAdicSecado.Text, out totalSecoAdic);
+            decimal.TryParse(txtSecado.Text, out totalSeco);
+            decimal.TryParse(txtFlete.Text, out flete);
+            if (impureza > 4)
+            {
+                totalImpureza = impureza - 4;
+                porcentajeImpureza = bruto * totalImpureza / 100;
+            }
+            if (humedad > 24)
+            {
+                totalHumedad = (humedad - 24) * 1.2M;
+                porcentajeHumedad = bruto * totalHumedad / 100;
+            }
+
+            porcentajeSeco = bruto * totalSeco / 100;
+            porcentajeAdicSeco = bruto * totalSecoAdic / 100;
+
+            if (checkEdit1.Checked)
+                pesoPagar=bruto;
+            else
+                pesoPagar = bruto - porcentajeHumedad - porcentajeImpureza;
+
+            seco = bruto - porcentajeHumedad - porcentajeImpureza-porcentajeAdicSeco-porcentajeSeco;
 
 
-                    neto = bruto-porcentajeHumedad-porcentajeImpureza;
-                    
-            
-            total = neto * precio;
-            var row=bindingSource1.Current as Model.RegistroArroz;
-            if(row == null)
+            total = pesoPagar * precio;
+            neto = pesoPagar * precio;
+            var row = bindingSource1.Current as Siro.RA;
+            if (row == null)
             {
                 bindingSource1.AddNew();
-                row = bindingSource1.Current as Model.RegistroArroz;
+                row = bindingSource1.Current as Siro.RA;
             }
-            row.Neto = neto;
-            row.Total = total;
-            row.Apach = bruto * 0.05M;
-            row.Precio = precio;
-            row.Seco = ((row.PorcentajeAjusteSeco ?? 1) * row.Neto / 100) + row.Neto;
+            else
+            {
+                row.Neto = neto;
+                row.Total = total - row.Apach - flete;
+                row.Apach = bruto * 0.05M;
+                row.Precio = precio;
+                row.Seco = seco;
+                row.Rendimiento = row.PorcentajeQuebrado + row.PorcentajeEntero;
+                row.PorcentajeAdicionalSecado = totalSecoAdic;
+                row.PorcentajeSecado = totalSeco;
+            }
+            txtPagar.EditValue = row.Total;
+            txtNeto.EditValue = row.Neto;
+            textEdit6.EditValue = row.Seco;
         }
 
         private void bindingNavigator1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -112,47 +131,22 @@ namespace Siro.F.I
             {
             }else if(e.ClickedItem.Text=="Guardar")
             {
-                var row = bindingSource1.Current as Model.RegistroArroz;
-                var entidad = new Siro.RA
-                {
-                    IdEntradaArroz = row.IdEntradaArroz,
-                    Apach = row.Apach,
-                    Fecha = row.Fecha,
-                    FehaProceso = DateTime.Now,
-                    IdAlmacen = row.IdAlmacen,
-                    IdConductor = row.IdConductor,
-                    IdEmpresa = Principal.Bariables.IdEmpresa.Id,
-                    IdProductor = row.IdProductor,
-                    IdProveedor = row.IdProveedor,
-                    IdRecibido = row.IdRecibido,
-                    IdTipoArroz = row.IdTipoArroz,
-                    IdTipoFlete = row.IdTipoFlete,
-                    IdUser = Principal.Bariables.IdUsuario,
-                    Matricula = row.Matricula,
-                    Neto = row.Neto,
-                    NumeroBoleta = row.NumeroBoleta,
-                    PesoBruto = row.PesoBruto,
-                    PorcentajeHumedad = row.PorcentajeHumedad,
-                    PorcentajeImpurezas = row.PorcentajeImpurezas,
-                    Precio = row.Precio,
-                    Total = row.Total,
-                    PorcentajeEntero = row.PorcentajeEntero,
-                    PorcentajeQuebrado = row.PorcentajeQuebrado,
-                    PorcentajeAjusteSeco = row.PorcentajeAjusteSeco,
-                    Seco = row.Seco
-                };
+                var row = bindingSource1.Current as Siro.RA;
                 var eje=new Controller.RA();
-                if (eje.Guardar(entidad))
+                if (eje.Guardar(row))
                 {
                     lblMsg.Caption = eje.MSG;
                     if (row.IdEntradaArroz == 0)
                         row.IdEntradaArroz = eje.NuevoId;
+                    UltimoRa = row;
+
                 }
                 else
                     lblMsg.Caption = eje.MSG;
             }
             else if (e.ClickedItem.Text == "Add new")
             {
+
             }
             else if (e.ClickedItem.Text == "Filtrar")
             {
@@ -164,28 +158,57 @@ namespace Siro.F.I
             }
         }
 
-        private void bindingSource1_AddingNew(object sender, AddingNewEventArgs e)
-        {
-
-        }
-
-        private void bindingSource1_ListChanged(object sender, ListChangedEventArgs e)
-        {
-            var row = bindingSource1.Current as Model.RegistroArroz;
-            //if (row != null)
-            //    if (row.Fecha == null)
-            //        row.Fecha = Principal.Bariables.PeridoContable;
-        }
-
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
+            var nRa = new RA { IdTipoArroz = 1, IdRecibido = 1, PorcentajeSecado = 12, PorcentajeAdicionalSecado = 1.2M, IdTipoFlete=1 };
+
+            if (UltimoRa != null)
+            {
+                nRa.IdAlmacen = UltimoRa.IdAlmacen;
+                nRa.IdProveedor = UltimoRa.IdProveedor;
+                nRa.Descuento = UltimoRa.Descuento;
+                nRa.Fecha = UltimoRa.Fecha;
+                nRa.IdRecibido = UltimoRa.IdRecibido;
+                nRa.IdTipoArroz = UltimoRa.IdTipoArroz;
+                nRa.IdConductor = UltimoRa.IdConductor;
+
+
+                gridView1.SetFocusedRowCellValue(colIdTipoArroz, UltimoRa.IdTipoArroz);
+                gridView1.SetFocusedRowCellValue(colIdRecibido, UltimoRa.IdRecibido);
+                gridView1.SetFocusedRowCellValue(colIdAlmacen, UltimoRa.IdAlmacen);
+                gridView1.SetFocusedRowCellValue(colIdProveedor, UltimoRa.IdProveedor);
+                gridView1.SetFocusedRowCellValue(colIdConductor, UltimoRa.IdConductor);
+                icbeTipoFlete.EditValue = UltimoRa.IdTipoFlete;
+
+                dtFecha.EditValue = UltimoRa.Fecha;
+                (bindingSource1.Current as RA).Fecha = UltimoRa.Fecha;
+                (bindingSource1.Current as RA).IdRecibido = UltimoRa.IdRecibido;
+                (bindingSource1.Current as RA).IdTipoArroz = UltimoRa.IdTipoArroz;
+                (bindingSource1.Current as RA).IdAlmacen = UltimoRa.IdAlmacen;
+                (bindingSource1.Current as RA).IdProveedor = UltimoRa.IdProveedor;
+                (bindingSource1.Current as RA).IdTipoFlete = UltimoRa.IdTipoFlete;
+                (bindingSource1.Current as RA).IdConductor = UltimoRa.IdConductor;
+            }
+            else
+            {
+                lstRegistroArroz.Add(nRa);
+
+                gridView1.SetFocusedRowCellValue(colIdTipoArroz, 1);
+                gridView1.SetFocusedRowCellValue(colIdRecibido, 1);
+                dtFecha.EditValue = Principal.Bariables.PeridoContable;
+                icbeTipoFlete.EditValue = 1;
+                (bindingSource1.Current as RA).Fecha = Principal.Bariables.PeridoContable;
+                (bindingSource1.Current as RA).IdRecibido = 1;
+                (bindingSource1.Current as RA).IdTipoArroz = 1;
+                (bindingSource1.Current as RA).IdTipoFlete = 1;
+            }
+            lblMsg.Caption = "Nuevo Registro De Arroz!!!";
+
         }
 
         private void textEdit4_KeyUp(object sender, KeyEventArgs e)
         {
-            var row = bindingSource1.Current as Model.RegistroArroz;
-            row.Rendimiento = row.PorcentajeQuebrado + row.PorcentajeImpurezas;
-            gridView1.SetFocusedRowCellValue(colRendimiento, row.Rendimiento);
+            Calcular();
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -195,7 +218,7 @@ namespace Siro.F.I
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            var row = gridView1.GetFocusedRow() as Model.RegistroArroz;
+            var row = gridView1.GetFocusedRow() as Siro.RA;
             if (row != null)
             {
                 GenerarReporteDFecha("Registro Arroz", row.IdEntradaArroz);
@@ -229,6 +252,7 @@ namespace Siro.F.I
             if (f.IdProv != 0)
             {
                 lstprovedores = lst.Proveedores;
+                provedoresBindingSource.DataSource = lstprovedores;
                 slueProveedor.EditValue = f.IdProv;
             }
         }
@@ -241,8 +265,28 @@ namespace Siro.F.I
             if (f.IdConductor != 0)
             {
                 lstConductores = lst.Conductores;
-                slueProveedor.EditValue = f.IdConductor;
+                conductoresBindingSource.DataSource = lstConductores;
+                slueConductores.EditValue = f.IdConductor;
             }
+        }
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            Calcular();
+        }
+
+        private void icbeTipoFlete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtBruto.Focus();
+        }
+        private void txtKeyCodeValue(object sender, KeyEventArgs e)
+        {
+            if (((TextEdit)sender).Text.Trim().Length >0)
+                Calcular();
+        }
+
+        private void checkEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+            Calcular();
         }
     }
 }
