@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Siro</RootNamespace>
     <AssemblyName>Siro</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,59 +33,70 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SiroAccounting.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="DevExpress.BonusSkins.v15.2" />
-    <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.CodeParser.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Dashboard.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Dashboard.v15.2.Win, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v15.2" />
-    <Reference Include="DevExpress.DataAccess.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.DataAccess.v15.2.UI, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Diagram.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Images.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Map.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Office.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.PivotGrid.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Spreadsheet.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v15.2" />
-    <Reference Include="DevExpress.Sparkline.v15.2.Core" />
-    <Reference Include="DevExpress.Utils.v15.2.UI, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Xpo.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v15.2.Extensions, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v15.2.UI, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v15.2.Wizard, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraDiagram.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v15.2" />
-    <Reference Include="DevExpress.XtraGauges.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGauges.v15.2.Presets, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGauges.v15.2.Win, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraMap.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraNavBar.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPivotGrid.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v15.2.Extensions, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraRichEdit.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraRichEdit.v15.2.Extensions, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraScheduler.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v15.2.Core, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraSpreadsheet.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraVerticalGrid.v15.2, Version=15.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v20.1" />
+    <Reference Include="DevExpress.Charts.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.TreeMap.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeMap.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v20.1.Win, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v20.1" />
+    <Reference Include="DevExpress.DataAccess.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v20.1.UI, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Diagram.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Map.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Export, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1" />
+    <Reference Include="DevExpress.Utils.v20.1" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core" />
+    <Reference Include="DevExpress.Utils.v20.1.UI, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.1.Extensions, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.1.UI, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v20.1.Wizard, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraDiagram.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.1" />
+    <Reference Include="DevExpress.XtraGauges.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v20.1.Presets, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v20.1.Win, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraMap.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v20.1.Extensions, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Reporting.Extensions, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -171,6 +183,7 @@
       <DependentUpon>PlanillaDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Controller\Acredor.cs" />
+    <Compile Include="Controller\AutoSugestTextBox.cs" />
     <Compile Include="Controller\Banco.cs" />
     <Compile Include="Controller\Cliente.cs" />
     <Compile Include="Controller\Colaborador.cs" />
@@ -184,9 +197,14 @@
     <Compile Include="Controller\HasardFile.cs" />
     <Compile Include="Controller\HoraTrabjada.cs" />
     <Compile Include="Controller\Lst.cs" />
+    <Compile Include="Controller\MVSeguridad.cs" />
+    <Compile Include="Controller\MVSubtotalesCuentas.cs" />
     <Compile Include="Controller\Persona.cs" />
     <Compile Include="Controller\RA.cs" />
     <Compile Include="Controller\Usuario.cs" />
+    <Compile Include="Controller\VMContabilidad.cs" />
+    <Compile Include="Controller\VMSesiones.cs" />
+    <Compile Include="D.cs" />
     <Compile Include="DetalleAsientos.cs">
       <DependentUpon>slContabilidad.tt</DependentUpon>
     </Compile>
@@ -195,6 +213,9 @@
     </Compile>
     <Compile Include="DetallesFacturaItem.cs">
       <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleVentasMovil.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
     </Compile>
     <Compile Include="Factura.cs">
       <DependentUpon>slContabilidad.tt</DependentUpon>
@@ -217,6 +238,12 @@
     <Compile Include="F\Dashboards.Designer.cs">
       <DependentUpon>Dashboards.cs</DependentUpon>
     </Compile>
+    <Compile Include="F\D\AgregarCuentaContable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\AgregarCuentaContable.Designer.cs">
+      <DependentUpon>AgregarCuentaContable.cs</DependentUpon>
+    </Compile>
     <Compile Include="F\D\CuentasPorCobrar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +261,12 @@
     </Compile>
     <Compile Include="F\D\DetalleFactura.Designer.cs">
       <DependentUpon>DetalleFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\EditarCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\EditarCuentas.Designer.cs">
+      <DependentUpon>EditarCuentas.cs</DependentUpon>
     </Compile>
     <Compile Include="F\D\FiltroCuentas.cs">
       <SubType>Form</SubType>
@@ -253,6 +286,12 @@
     <Compile Include="F\D\MaestrosCuentas.Designer.cs">
       <DependentUpon>MaestrosCuentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="F\D\MantenimientoCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\MantenimientoCuentas.Designer.cs">
+      <DependentUpon>MantenimientoCuentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="F\D\Proveedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +303,12 @@
     </Compile>
     <Compile Include="F\D\SelectorCuentas.Designer.cs">
       <DependentUpon>SelectorCuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\D\SesionesPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\SesionesPendientes.Designer.cs">
+      <DependentUpon>SesionesPendientes.cs</DependentUpon>
     </Compile>
     <Compile Include="F\D\ShortClientes.cs">
       <SubType>Form</SubType>
@@ -349,6 +394,12 @@
     <Compile Include="F\Facturacion\ListaPrecios.Designer.cs">
       <DependentUpon>ListaPrecios.cs</DependentUpon>
     </Compile>
+    <Compile Include="F\Facturacion\LitleClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\Facturacion\LitleClient.Designer.cs">
+      <DependentUpon>LitleClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="F\Facturacion\Marca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,6 +412,7 @@
     <Compile Include="F\Facturacion\VerVentas.Designer.cs">
       <DependentUpon>VerVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="F\GridMultiColumnSortInfo.cs" />
     <Compile Include="F\Inventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -422,11 +474,35 @@
     <Compile Include="F\I\InventarioActual.Designer.cs">
       <DependentUpon>InventarioActual.cs</DependentUpon>
     </Compile>
+    <Compile Include="F\I\SilosInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\SilosInfo.Designer.cs">
+      <DependentUpon>SilosInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\Vendedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\Vendedores.Designer.cs">
+      <DependentUpon>Vendedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\I\Ventas Moviles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\I\Ventas Moviles.Designer.cs">
+      <DependentUpon>Ventas Moviles.cs</DependentUpon>
+    </Compile>
     <Compile Include="F\Perfiles.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F\Perfiles.Designer.cs">
       <DependentUpon>Perfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F\PeriodosFiscales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\PeriodosFiscales.Designer.cs">
+      <DependentUpon>PeriodosFiscales.cs</DependentUpon>
     </Compile>
     <Compile Include="F\P\AgregarHoras.cs">
       <SubType>Form</SubType>
@@ -452,6 +528,12 @@
     <Compile Include="F\P\PlanillaGenerada.Designer.cs">
       <DependentUpon>PlanillaGenerada.cs</DependentUpon>
     </Compile>
+    <Compile Include="F\VMaestroCuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\VMaestroCuentas.Designer.cs">
+      <DependentUpon>VMaestroCuentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gestiones.cs">
       <DependentUpon>slGestiones.tt</DependentUpon>
     </Compile>
@@ -467,11 +549,22 @@
     <Compile Include="Marcas.cs">
       <DependentUpon>slContabilidad.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Acumulado.cs" />
+    <Compile Include="Model\CuentaMayor.cs" />
     <Compile Include="Model\Cuentas.cs" />
+    <Compile Include="Model\DetalleAsientoCorto.cs" />
     <Compile Include="Model\EntradasSalidas.cs" />
     <Compile Include="Model\Liquidacion.cs" />
+    <Compile Include="Model\Login.cs" />
+    <Compile Include="Model\MaestroContable.cs" />
+    <Compile Include="Model\MaestroCuentas.cs" />
+    <Compile Include="Model\Notificacion.cs" />
+    <Compile Include="Model\OrigenesTransacciones.cs" />
+    <Compile Include="Model\PeriodoFiscal.cs" />
     <Compile Include="Model\Prmts.cs" />
     <Compile Include="Model\RegistroArroz.cs" />
+    <Compile Include="Model\Resumen.cs" />
+    <Compile Include="Model\ResumenCreditos.cs" />
     <Compile Include="Model\Servicio.cs" />
     <Compile Include="Model\TipoFlete.cs" />
     <Compile Include="Model\TiposCalculos.cs" />
@@ -683,6 +776,7 @@
     <Compile Include="Model\TreeViewMenus.cs" />
     <Compile Include="Model\V.cs" />
     <Compile Include="Model\Vacacion.cs" />
+    <Compile Include="Model\VerAsientos.cs" />
     <Compile Include="Pagos.cs">
       <DependentUpon>slGestiones.tt</DependentUpon>
     </Compile>
@@ -778,6 +872,9 @@
     <Compile Include="Servicios.cs">
       <DependentUpon>Contabilidad.tt</DependentUpon>
     </Compile>
+    <Compile Include="SesionesAplicacion.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
     <Compile Include="slContabilidad.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -849,6 +946,9 @@
     <Compile Include="TiposMovimiento.cs">
       <DependentUpon>slSiro.tt</DependentUpon>
     </Compile>
+    <Compile Include="TiposVenta.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
     <Compile Include="Transacciones.cs">
       <DependentUpon>Contabilidad.tt</DependentUpon>
     </Compile>
@@ -859,10 +959,19 @@
     <Compile Include="VAsientos.cs">
       <DependentUpon>Contabilidad.tt</DependentUpon>
     </Compile>
+    <Compile Include="VCuentasMaestras.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VCuentasPrimarias.cs">
+      <DependentUpon>slContabilidad.tt</DependentUpon>
+    </Compile>
     <Compile Include="Vendedores.cs">
       <DependentUpon>slSiro.tt</DependentUpon>
     </Compile>
     <Compile Include="Ventas.cs">
+      <DependentUpon>slSiro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VentasMoviles.cs">
       <DependentUpon>slSiro.tt</DependentUpon>
     </Compile>
     <Compile Include="VMayorAsientos.cs">
@@ -901,6 +1010,9 @@
     <EmbeddedResource Include="F\Dashboards.resx">
       <DependentUpon>Dashboards.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F\D\AgregarCuentaContable.resx">
+      <DependentUpon>AgregarCuentaContable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F\D\CuentasPorCobrar.resx">
       <DependentUpon>CuentasPorCobrar.cs</DependentUpon>
     </EmbeddedResource>
@@ -915,6 +1027,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F\D\Banco.resx">
       <DependentUpon>Banco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\EditarCuentas.resx">
+      <DependentUpon>EditarCuentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F\D\Factura.resx">
       <DependentUpon>Factura.cs</DependentUpon>
@@ -931,6 +1046,9 @@
     <EmbeddedResource Include="F\D\MaestrosCuentas.resx">
       <DependentUpon>MaestrosCuentas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F\D\MantenimientoCuentas.resx">
+      <DependentUpon>MantenimientoCuentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F\D\Mayor.resx">
       <DependentUpon>Mayor.cs</DependentUpon>
     </EmbeddedResource>
@@ -942,6 +1060,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F\D\SelectorCuentas.resx">
       <DependentUpon>SelectorCuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\SesionesPendientes.resx">
+      <DependentUpon>SesionesPendientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F\D\ShortClientes.resx">
       <DependentUpon>ShortClientes.cs</DependentUpon>
@@ -988,6 +1109,9 @@
     <EmbeddedResource Include="F\Facturacion\ListaPrecios.resx">
       <DependentUpon>ListaPrecios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F\Facturacion\LitleClient.resx">
+      <DependentUpon>LitleClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F\Facturacion\Marca.resx">
       <DependentUpon>Marca.cs</DependentUpon>
     </EmbeddedResource>
@@ -1024,6 +1148,15 @@
     <EmbeddedResource Include="F\I\InventarioActual.resx">
       <DependentUpon>InventarioActual.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F\I\SilosInfo.resx">
+      <DependentUpon>SilosInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\Vendedores.resx">
+      <DependentUpon>Vendedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\I\Ventas Moviles.resx">
+      <DependentUpon>Ventas Moviles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -1032,6 +1165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F\Perfiles.resx">
       <DependentUpon>Perfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\PeriodosFiscales.resx">
+      <DependentUpon>PeriodosFiscales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F\Planilla.resx">
       <DependentUpon>Planilla.cs</DependentUpon>
@@ -1072,6 +1208,9 @@
     <EmbeddedResource Include="F\Usuario.resx">
       <DependentUpon>Usuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F\VMaestroCuentas.resx">
+      <DependentUpon>VMaestroCuentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -1102,7 +1241,9 @@
     <None Include="DataSources\Almacenes.datasource" />
     <None Include="DataSources\Categorias.datasource" />
     <None Include="DataSources\Acredores.datasource" />
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataSources\Bancos.datasource" />
     <None Include="DataSources\Clientes.datasource" />
     <None Include="DataSources\Colaboradores.datasource" />
@@ -1135,6 +1276,7 @@
     <None Include="DataSources\MaestroCuentas.datasource" />
     <None Include="DataSources\DetallesFacturaItem.datasource" />
     <None Include="DataSources\Marcas.datasource" />
+    <None Include="DetalleVentasMovil.datasource" />
     <None Include="packages.config" />
     <EntityDeploy Include="PlanillaDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -1188,6 +1330,12 @@
     <None Include="DataSources\Siro.Model.CuentasMaestras.datasource" />
     <None Include="DataSources\Siro.Model.RegistroArroz.datasource" />
     <None Include="DataSources\Siro.Model.EntradasSalidas.datasource" />
+    <None Include="DataSources\Siro.Model.MaestroCuentas.datasource" />
+    <None Include="DataSources\Siro.Model.Resumen.datasource" />
+    <None Include="DataSources\Siro.Model.ResumenCreditos.datasource" />
+    <None Include="SesionesAplicacion.datasource" />
+    <None Include="Siro.Model.MaestroContable.datasource" />
+    <None Include="Siro.Model.PeriodoFiscal.datasource" />
     <None Include="slContabilidad.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>slContabilidad.edmx</DependentUpon>
@@ -1237,22 +1385,14 @@
     <None Include="DataSources\TiposArroz.datasource" />
     <None Include="DataSources\TiposMovimiento.datasource" />
     <None Include="DataSources\VValoresAlmacenaje.datasource" />
+    <None Include="DataSources\Vendedores.datasource" />
+    <None Include="DataSources\VentasMoviles.datasource" />
     <EntityDeploy Include="slSiro.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>slSiro.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="slSiro.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>slSiro.edmx</DependentUpon>
-      <LastGenOutput>slSiro.Context.cs</LastGenOutput>
-    </None>
     <None Include="slSiro.edmx.diagram">
       <DependentUpon>slSiro.edmx</DependentUpon>
-    </None>
-    <None Include="slSiro.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>slSiro.edmx</DependentUpon>
-      <LastGenOutput>slSiro.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1269,6 +1409,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\silo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\birthday.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\birthday2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SiroAccounting.ico" />
+    <Content Include="slSiro.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>slSiro.edmx</DependentUpon>
+      <LastGenOutput>slSiro.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="slSiro.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>slSiro.edmx</DependentUpon>
+      <LastGenOutput>slSiro.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

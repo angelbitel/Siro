@@ -1,6 +1,8 @@
 ﻿using Siro.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Siro.Controller
 {
@@ -15,20 +17,89 @@ namespace Siro.Controller
             dbE = new slEntities();
             dbP = new slPlanilla();
         }
-        public List<Cuentas> CuentasMaestras(int idEmpresa)
+        private string Buscar(int tipo, List<VCuentasPrimarias> lst) => lst.SingleOrDefault(s => s.Tipo.Equals(tipo)) == null ? "" : lst.SingleOrDefault(s => s.Tipo.Equals(tipo)).Text;
+        public bool Guardar(MaestroCuentas inf)
+        {
+            try
+            {
+                if (inf.IdMaestroCuenta != 0)
+                    db.Entry(db.MaestroCuentas.Find(inf.IdMaestroCuenta)).CurrentValues.SetValues(inf);
+                else
+                    db.MaestroCuentas.Add(inf);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                return false;
+            }
+        }
+        public List<Model.MaestroCuentas> Cuentas
+        {
+            get
+            {
+                var lst = new List<Model.MaestroCuentas>();
+                db.MaestroCuentas.OrderBy(o => o.CuentaContable).ToList().ForEach(f => {
+                    var cuenta = Regex.Replace(f.CuentaContable, "[^0-9.]", "");
+                    lst.Add(new Model.MaestroCuentas { Codigo = cuenta.Trim(), Cuenta = f.Text.Trim(), IdMaestroCuenta = f.IdMaestroCuenta });
+                });
+                return lst;
+            }
+        }
+
+        public string Mensaje { get; private set; }
+
+        public List<Cuentas> CuentasMaestras()
         {
             var lst = new List<Cuentas>();
-            db.MaestroCuentas.Where(w => w.IdEmpresa == idEmpresa && w.Habilitar==true).OrderBy(o => new {o.Tipo, o.Id }).ToList().ForEach(f =>
+            var lstCUentas = db.VCuentasPrimarias.ToList();
+            db.MaestroCuentas.Where(w => w.Habilitar == true).OrderBy(o => new { o.CuentaContable }).ToList().ForEach(f =>
             {
                 lst.Add(new Cuentas
                 {
-                    ParentID = f.ParentID,
+                    ParentID = f.ParentID ?? 0,
                     Text = f.Text,
                     ID = f.IdMaestroCuenta,
-                    Tipo = f.Tipo??0,
-                    Id = f.Id??0
+                    Tipo = f.Tipo ?? 0,
+                    Id = f.Id ?? 0,
+                    CuentaContable = f.CuentaContable,
+                    Nivel = f.Nivel ?? 0,
+                    Nivel0 = f.Nivel0,
+                    Nivel1 = f.Nivel1,
+                    Nivel2 = f.Nivel2,
+                    Nivel3 = f.Nivel3,
+                    Habilitar = f.Habilitar,
+                    SumaResta = f.SumaResta,
+                    CuentaMadre = $"{f.Tipo} {Buscar(f.Tipo ?? 0, lstCUentas)}"
                 });
             });
+            return lst;
+        }
+        public List<Cuentas> CuentasMaestras(int idEmpresa)
+        {
+            var lst = new List<Cuentas>();
+            var lstCUentas = db.VCuentasPrimarias.ToList();
+            db.MaestroCuentas.Where(w => w.IdEmpresa == idEmpresa && w.Habilitar == true).OrderBy(o => new { o.Tipo, o.Id }).ToList().ForEach(f =>
+               {
+                   lst.Add(new Cuentas
+                   {
+                       ParentID = f.ParentID ?? 0,
+                       Text = f.Text,
+                       ID = f.IdMaestroCuenta,
+                       Tipo = f.Tipo ?? 0,
+                       Id = f.Id ?? 0,
+                       CuentaContable = f.CuentaContable,
+                       Nivel = f.Nivel ?? 0,
+                       Nivel0 = f.Nivel0,
+                       Nivel1 = f.Nivel1,
+                       Nivel2 = f.Nivel2,
+                       Nivel3 = f.Nivel3,
+                       Habilitar = f.Habilitar,
+                       SumaResta = f.SumaResta,
+                       CuentaMadre = Buscar(f.Tipo ?? 0, lstCUentas)
+                   });
+               });
             return lst;
         }
         public List<Model.Cuentas> Personas(int idEmpresa)
@@ -85,10 +156,7 @@ namespace Siro.Controller
             });
             return lst;
         }
-        public void Dispose()
-        {
-            db.Dispose();
-        }
+        public void Dispose() => db.Dispose();
         public List<Cuentas> LstCuentasFiltradas(int idEmpresa, int[] idTipo)
         {
             List<Cuentas> lst = new List<Cuentas>();
@@ -97,7 +165,7 @@ namespace Siro.Controller
             {
                 lst.Add(new Cuentas
                 {
-                    ParentID = f.ParentID,
+                    ParentID = f.ParentID??0,
                     Text = f.Text,
                     ID = f.IdMaestroCuenta,
                     Tipo = f.Tipo ?? 0

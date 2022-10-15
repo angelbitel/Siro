@@ -70,9 +70,7 @@ namespace Siro.F.I
         {
             decimal o = 0m;
             if (decimal.TryParse(textEdit1.Text, out o))
-            {
                 Porcentaje = o;
-            }
             else
                 MessageBox.Show("No se pudo convertir el porcentaje; escriba nuevamente!! ");
         }

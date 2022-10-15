@@ -15,8 +15,12 @@
           <Property Name="IdRegistroBanco" Type="int" />
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Comentario" Type="nvarchar" MaxLength="250" />
-          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="IdFactura" Type="int" />
+          <Property Name="IdOrigen" Type="int" />
+          <Property Name="Importante" Type="varchar" MaxLength="250" />
+          <Property Name="IdTipoAsiento" Type="int" />
         </EntityType>
         <EntityType Name="DetalleAsientos">
           <Key>
@@ -24,8 +28,8 @@
           </Key>
           <Property Name="IdDetalleAsiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdAsiento" Type="int" />
-          <Property Name="Debito" Type="money" />
-          <Property Name="Credito" Type="money" />
+          <Property Name="Debito" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Credito" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IdCliente" Type="int" />
           <Property Name="IdServicio" Type="int" />
           <Property Name="IdProducto" Type="int" />
@@ -95,8 +99,8 @@
           <Property Name="IdMaestroCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdEmpresa" Type="int" />
           <Property Name="Text" Type="varchar" MaxLength="250" />
-          <Property Name="ParentID" Type="int" Nullable="false" />
-          <Property Name="Nivel" Type="int" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="Nivel" Type="int" />
           <Property Name="Tipo" Type="int" />
           <Property Name="Id" Type="int" />
           <Property Name="Habilitar" Type="bit" />
@@ -105,6 +109,17 @@
           <Property Name="Nivel1" Type="varchar" MaxLength="250" />
           <Property Name="Nivel2" Type="varchar" MaxLength="250" />
           <Property Name="Nivel3" Type="varchar" MaxLength="250" />
+          <Property Name="CuentaContable" Type="varchar" MaxLength="50" />
+          <Property Name="Nivel4" Type="varchar" MaxLength="250" />
+          <Property Name="EsBanco" Type="bit" />
+          <Property Name="C1" Type="int" />
+          <Property Name="C2" Type="int" />
+          <Property Name="C3" Type="int" />
+          <Property Name="EsCompra" Type="bit" />
+          <Property Name="C4" Type="int" />
+          <Property Name="EsProveedor" Type="bit" />
+          <Property Name="EsCliente" Type="bit" />
+          <Property Name="UltimoCheque" Type="int" />
         </EntityType>
         <EntityType Name="Almacenes">
           <Key>
@@ -137,10 +152,42 @@
           <Property Name="Fax" Type="nvarchar" MaxLength="100" />
           <Property Name="HomePage" Type="nvarchar" MaxLength="100" />
           <Property Name="Ruc" Type="varchar" MaxLength="250" />
+          <Property Name="IdProcencia" Type="int" />
           <Property Name="EsProductor" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'sl.dbo.VMayorAsientos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SesionesAplicacion">
+          <Key>
+            <PropertyRef Name="IdSesion" />
+          </Key>
+          <Property Name="IdSesion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="Sesion" Type="varchar(max)" />
+          <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="SeGuardo" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Accounting.dbo.VCuentasMaestras' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VCuentasMaestras">
+          <Key>
+            <PropertyRef Name="IdMaestroCuenta" />
+          </Key>
+          <Property Name="Text" Type="varchar" MaxLength="250" />
+          <Property Name="IdMaestroCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Accounting.dbo.VCuentasPrimarias' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="VCuentasPrimarias">
+          <Key>
+            <PropertyRef Name="IdMaestroCuenta" />
+          </Key>
+          <Property Name="IdMaestroCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="250" />
+          <Property Name="Tipo" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Accounting.dbo.VMayorAsientos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VMayorAsientos">
           <Key>
             <PropertyRef Name="IdDetalleAsiento" />
@@ -168,8 +215,8 @@ warning 6002: The table/view 'sl.dbo.VMayorAsientos' does not have a primary key
           <Property Name="Fecha" Type="datetime" />
           <Property Name="IdAsiento" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Accounting.dbo.VPagosProveedor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VPagosProveedor">
           <Key>
             <PropertyRef Name="IdFactura" />
@@ -272,6 +319,20 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="provedores" EntityType="Self.provedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SesionesAplicacion" EntityType="Self.SesionesAplicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VCuentasMaestras" EntityType="Self.VCuentasMaestras" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VCuentasMaestras].[Text] AS [Text], 
+    [VCuentasMaestras].[IdMaestroCuenta] AS [IdMaestroCuenta]
+    FROM [dbo].[VCuentasMaestras] AS [VCuentasMaestras]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VCuentasPrimarias" EntityType="Self.VCuentasPrimarias" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VCuentasPrimarias].[IdMaestroCuenta] AS [IdMaestroCuenta], 
+    [VCuentasPrimarias].[Text] AS [Text], 
+    [VCuentasPrimarias].[Tipo] AS [Tipo]
+    FROM [dbo].[VCuentasPrimarias] AS [VCuentasPrimarias]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="VMayorAsientos" EntityType="Self.VMayorAsientos" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VMayorAsientos].[IdDetalleAsiento] AS [IdDetalleAsiento], 
@@ -378,6 +439,9 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           </AssociationSet>
           <EntitySet Name="Marcas" EntityType="slModel1.Marcas" />
           <EntitySet Name="Almacenes" EntityType="slModel1.Almacenes" />
+          <EntitySet Name="VCuentasMaestras" EntityType="slModel1.VCuentasMaestras" />
+          <EntitySet Name="VCuentasPrimarias" EntityType="slModel1.VCuentasPrimarias" />
+          <EntitySet Name="SesionesAplicacion" EntityType="slModel1.SesionesAplicacion" />
           </EntityContainer>
         <EntityType Name="Factura">
           <Key>
@@ -442,9 +506,13 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           <Property Name="IdRegistroBanco" Type="Int32" />
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" />
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="DetalleAsientos" Relationship="slModel1.FK_DetalleAsientos_Asientos" FromRole="Asientos" ToRole="DetalleAsientos" />
+          <Property Name="IdFactura" Type="Int32" />
+          <Property Name="IdOrigen" Type="Int32" />
+          <Property Name="Importante" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoAsiento" Type="Int32" />
         </EntityType>
         <EntityType Name="DetalleAsientos">
           <Key>
@@ -452,8 +520,8 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           </Key>
           <Property Name="IdDetalleAsiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdAsiento" Type="Int32" />
-          <Property Name="Debito" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Credito" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Debito" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Credito" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="IdCliente" Type="Int32" />
           <Property Name="IdServicio" Type="Int32" />
           <Property Name="IdProducto" Type="Int32" />
@@ -484,8 +552,8 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           <Property Name="IdMaestroCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdEmpresa" Type="Int32" />
           <Property Name="Text" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="ParentID" Type="Int32" Nullable="false" />
-          <Property Name="Nivel" Type="Int32" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="Nivel" Type="Int32" />
           <Property Name="Tipo" Type="Int32" />
           <Property Name="Id" Type="Int32" />
           <NavigationProperty Name="DetalleAsientos" Relationship="slModel1.FK_DetalleAsientos_MaestroCuentas" FromRole="MaestroCuentas" ToRole="DetalleAsientos" />
@@ -496,6 +564,17 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           <Property Name="Nivel1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Nivel2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Nivel3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CuentaContable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel4" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EsBanco" Type="Boolean" />
+          <Property Name="EsCompra" Type="Boolean" />
+          <Property Name="C1" Type="Int32" />
+          <Property Name="C2" Type="Int32" />
+          <Property Name="C3" Type="Int32" />
+          <Property Name="C4" Type="Int32" />
+          <Property Name="EsProveedor" Type="Boolean" />
+          <Property Name="EsCliente" Type="Boolean" />
+          <Property Name="UltimoCheque" Type="Int32" />
         </EntityType>
         <Association Name="FK_DetalleAsientos_MaestroCuentas">
           <End Type="slModel1.MaestroCuentas" Role="MaestroCuentas" Multiplicity="0..1" />
@@ -572,6 +651,7 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           <Property Name="HomePage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Ruc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="EsProductor" Type="Boolean" />
+          <Property Name="IdProcencia" Type="Int32" />
         </EntityType>
         <EntityType Name="DetallesFactura">
           <Key>
@@ -642,6 +722,33 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           <Property Name="IdEmpresa" Type="Int32" />
           <Property Name="Almacen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="VCuentasMaestras">
+          <Key>
+            <PropertyRef Name="IdMaestroCuenta" />
+          </Key>
+          <Property Name="Text" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdMaestroCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="VCuentasPrimarias">
+          <Key>
+            <PropertyRef Name="IdMaestroCuenta" />
+          </Key>
+          <Property Name="IdMaestroCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SesionesAplicacion">
+          <Key>
+            <PropertyRef Name="IdSesion" />
+          </Key>
+          <Property Name="IdSesion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="Sesion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SeGuardo" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -700,6 +807,10 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           <EntitySetMapping Name="Asientos">
             <EntityTypeMapping TypeName="slModel1.Asientos">
               <MappingFragment StoreEntitySet="Asientos">
+                <ScalarProperty Name="IdTipoAsiento" ColumnName="IdTipoAsiento" />
+                <ScalarProperty Name="Importante" ColumnName="Importante" />
+                <ScalarProperty Name="IdOrigen" ColumnName="IdOrigen" />
+                <ScalarProperty Name="IdFactura" ColumnName="IdFactura" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="Comentario" ColumnName="Comentario" />
@@ -732,6 +843,17 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           <EntitySetMapping Name="MaestroCuentas">
             <EntityTypeMapping TypeName="slModel1.MaestroCuentas">
               <MappingFragment StoreEntitySet="MaestroCuentas">
+                <ScalarProperty Name="UltimoCheque" ColumnName="UltimoCheque" />
+                <ScalarProperty Name="EsCliente" ColumnName="EsCliente" />
+                <ScalarProperty Name="EsProveedor" ColumnName="EsProveedor" />
+                <ScalarProperty Name="C4" ColumnName="C4" />
+                <ScalarProperty Name="C3" ColumnName="C3" />
+                <ScalarProperty Name="C2" ColumnName="C2" />
+                <ScalarProperty Name="C1" ColumnName="C1" />
+                <ScalarProperty Name="EsCompra" ColumnName="EsCompra" />
+                <ScalarProperty Name="EsBanco" ColumnName="EsBanco" />
+                <ScalarProperty Name="Nivel4" ColumnName="Nivel4" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
                 <ScalarProperty Name="Nivel3" ColumnName="Nivel3" />
                 <ScalarProperty Name="Nivel2" ColumnName="Nivel2" />
                 <ScalarProperty Name="Nivel1" ColumnName="Nivel1" />
@@ -796,6 +918,7 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
           <EntitySetMapping Name="provedores">
             <EntityTypeMapping TypeName="slModel1.provedores">
               <MappingFragment StoreEntitySet="provedores">
+                <ScalarProperty Name="IdProcencia" ColumnName="IdProcencia" />
                 <ScalarProperty Name="EsProductor" ColumnName="EsProductor" />
                 <ScalarProperty Name="Ruc" ColumnName="Ruc" />
                 <ScalarProperty Name="HomePage" ColumnName="HomePage" />
@@ -844,6 +967,36 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="VCuentasMaestras">
+            <EntityTypeMapping TypeName="slModel1.VCuentasMaestras">
+              <MappingFragment StoreEntitySet="VCuentasMaestras">
+                <ScalarProperty Name="IdMaestroCuenta" ColumnName="IdMaestroCuenta" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VCuentasPrimarias">
+            <EntityTypeMapping TypeName="slModel1.VCuentasPrimarias">
+              <MappingFragment StoreEntitySet="VCuentasPrimarias">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="IdMaestroCuenta" ColumnName="IdMaestroCuenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SesionesAplicacion">
+            <EntityTypeMapping TypeName="slModel1.SesionesAplicacion">
+              <MappingFragment StoreEntitySet="SesionesAplicacion">
+                <ScalarProperty Name="SeGuardo" ColumnName="SeGuardo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Sesion" ColumnName="Sesion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdSesion" ColumnName="IdSesion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -859,7 +1012,7 @@ warning 6002: The table/view 'sl.dbo.VPagosProveedor' does not have a primary ke
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

@@ -3,18 +3,21 @@ using DevExpress.XtraBars.Docking2010.Views.Tabbed;
 using DevExpress.XtraReports.UI;
 using Siro.Properties;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Siro
 {
     public partial class Principal : DevExpress.XtraEditors.XtraForm
     {
-        public static Model.V Bariables { get; set; }
+        public static Model.V Bariables = new Model.V();
+        public static Principal This { get; set; }
+        public static List<Model.MaestroContable> LstCuentas = new List<Model.MaestroContable>();
         public Principal()
         {
-            Bariables = new Model.V();
             Bariables.IdEmpresa = new Model.Empresa();
             Bariables.db = new slEntities();
 
@@ -22,10 +25,11 @@ namespace Siro
         }
         private void Principal_Load(object sender, EventArgs e)
         {
+            This = this;
             AddDocumentManager();
-            new F.Login().ShowDialog();
-            if (!Bariables.HabilitarP)
-                this.Close();
+            //new F.Login().ShowDialog();
+            //if (!Bariables.HabilitarP)
+            //    this.Close();
             PrepararUi();
             if(Settings.Default.DIdEmpresa != 0)
             {
@@ -50,7 +54,13 @@ namespace Siro
             this.Text = string.Format("Periodo {1}, {2} Quincena [{0}]", Settings.Default.DEmpresa, Settings.Default.DFecha.ToString(" yyyy MMMM"), q);
             Bariables.Desde =  new DateTime(DateTime.Now.Year, 1, 1);
             Bariables.Hasta = DateTime.Now;
-            dockPanel1.Text = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Settings.Default.UltimoUsuario);
+            dockPanel1.Text = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(Bariables.Usuario);
+            Task.Run(async () =>
+            {
+                var cont = new Controller.VMContabilidad();
+                var resCuentas = await cont.CuentasContables();
+                resCuentas.ForEach(f => LstCuentas.Add(new Model.MaestroContable { IdMaestroCuenta = f.IdMaestroCuenta, CuentaContable = f.CuentaContable, Text = f.Text }));
+            });
         }
         private void OpenForm(DevExpress.XtraEditors.XtraForm frm)
         {
@@ -167,6 +177,25 @@ namespace Siro
                 case "navBarItem24":
                     OpenForm(new F.Facturacion.Marca());
                     break;
+                case "navBarItem31":
+                    OpenForm(new F.I.SilosInfo());
+                    break;
+                case "navBarItem35":
+                    OpenForm(new F.I.Vendedores());
+                    break;
+                case "navBarItem36":
+                    var frm = new F.D.MantenimientoCuentas();
+                    OpenForm(frm);
+                    break;
+                case "navBarItem37":
+                    OpenForm(new F.VMaestroCuentas());
+                    break;
+                case "navBarItem38":
+                    new F.Dashboards("Balance Prueba").Show();
+                    break;
+                case "navBarItem39":
+                    new F.PeriodosFiscales().ShowDialog();
+                    break;
             }
         }
         private void GenerarReporteD(string reporte, int[] tip)
@@ -230,27 +259,22 @@ namespace Siro
         }
         public void PrepararUi()
         {
-            var usuario = Bariables.db.Usuarios.Single(s => s.IdUser == Bariables.IdUsuario);
-            if (usuario != null)
+            var perfil = Bariables.db.DetallesPerfil.Where(s => s.IdPerfil == Bariables.IdPerfil).ToList();
+            if (perfil.Count > 1)
             {
-                var perfil = Bariables.db.DetallesPerfil.Where(s => s.IdPerfil == usuario.IdPerfil).ToList();
-                if (perfil.Count > 1)
+                perfil.ForEach(f =>
                 {
-                    perfil.ForEach(f =>
+                    for (int i = 0; i < navBarControl1.Items.Count; i++)
                     {
-                        for (int i = 0; i < navBarControl1.Items.Count; i++)
+                        if (f.MenuName == navBarControl1.Items[i].Name)
                         {
-                            if (f.MenuName == navBarControl1.Items[i].Name)
-                            {
-                                navBarControl1.Items[i].Enabled = true;
-                                break;
-                            }
+                            navBarControl1.Items[i].Enabled = true;
+                            break;
                         }
-                    });
-                }
+                    }
+                });
             }
         }
-
         private void dockPanel1_CustomButtonChecked(object sender, ButtonEventArgs e)
         {
             if (e.Button == dockPanel1.CustomHeaderButtons[0])

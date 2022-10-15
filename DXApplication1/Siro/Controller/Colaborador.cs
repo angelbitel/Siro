@@ -375,7 +375,7 @@ namespace Siro.Controller
             {
                 var d = DescuentosGobierno.PeridoDecimo;
                 db.Colaboradores.Where(w => w.IdEstadoColaborador != 2).ToList().ForEach(f => {
-                    var result =db.Deducciones.Where(w => w.IdColaborador == f.IdColaborador && w.TipoDeduccion == "Salario Bruto" && EntityFunctions.TruncateTime(w.FechaIngreso) >= d.Desde && EntityFunctions.TruncateTime(w.FechaIngreso) <= d.Hasta).Select(s => new { s.IdColaborador, s.Monto }).ToList();
+                    var result =db.Deducciones.Where(w => w.IdColaborador == f.IdColaborador && w.TipoDeduccion == "Salario Bruto" && DbFunctions.TruncateTime(w.FechaIngreso) >= d.Desde && DbFunctions.TruncateTime(w.FechaIngreso) <= d.Hasta).Select(s => new { s.IdColaborador, s.Monto }).ToList();
                     var rest2 = result.GroupBy(g => new { g.IdColaborador }).Select(s => new { Monto = s.Sum(su => su.Monto) }).ToList();
                     rest2.ForEach(g =>
                     {
@@ -542,6 +542,14 @@ namespace Siro.Controller
         internal List<Model.TiposCalculos> CalculosVacaciones(int? IdColaborador, bool agregaDescuentos)
         {
             var lst = new List<Model.TiposCalculos>();
+            var vacaciones = db.PlanillaColaborador.Where(w => DbFunctions.AddMonths(w.FechaProceso, -12) <= DateTime.Now && w.IdColaborador == IdColaborador).Select(s => new { TotalHoras = s.TotalHoras??0, s.SalarioBruto }).Sum(s => s.SalarioBruto);
+           
+            lst.Add(new Model.TiposCalculos
+            {
+                Monto = vacaciones/11,
+                Tipo = "Vacaciones"
+            });
+
             db.Deducciones.Where(w => w.TipoDeduccion == "Salario Bruto" && w.IdColaborador == IdColaborador).GroupBy(g => new { g.TipoDeduccion, Fecha = g.FechaIngreso.Value.Month }).Select(s => new { s.Key.Fecha, s.Key.TipoDeduccion, Monto = s.Sum(su => su.Monto) }).ToList().ForEach(f =>
             {
                 lst.Add(new Model.TiposCalculos

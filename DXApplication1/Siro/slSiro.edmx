@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="slModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Almacenes">
+    <Schema Namespace="slSiro.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Almacenaje">
           <Key>
             <PropertyRef Name="IdAlmacen" />
           </Key>
@@ -51,6 +51,16 @@
           <Property Name="IdConductor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Conductor" Type="varchar" MaxLength="250" />
           <Property Name="Cedula" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DetalleVentasMovil">
+          <Key>
+            <PropertyRef Name="IdDetalleVentaMovil" />
+          </Key>
+          <Property Name="IdDetalleVentaMovil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdVentaMovil" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Kardex">
           <Key>
@@ -127,6 +137,7 @@
           <Property Name="PorcentajeAdicionalSecado" Type="money" />
           <Property Name="PorcentajeSecado" Type="money" />
           <Property Name="Flete" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tara" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Recibidos">
           <Key>
@@ -157,6 +168,13 @@
           <Property Name="TipoMovimiento" Type="varchar" MaxLength="250" />
           <Property Name="Resta" Type="bit" />
         </EntityType>
+        <EntityType Name="TiposVenta">
+          <Key>
+            <PropertyRef Name="IdTipoVenta" />
+          </Key>
+          <Property Name="IdTipoVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoVenta" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Vendedores">
           <Key>
             <PropertyRef Name="IdVendedor" />
@@ -174,6 +192,21 @@
           <Property Name="PrecioVenta" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IdCliente" Type="int" />
           <Property Name="IdTipoVenta" Type="int" />
+        </EntityType>
+        <EntityType Name="VentasMoviles">
+          <Key>
+            <PropertyRef Name="IdVentaMovil" />
+          </Key>
+          <Property Name="IdVentaMovil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdVendedor" Type="int" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="FechaVenta" Type="datetime" />
+          <Property Name="FechaProceso" Type="datetime" />
+          <Property Name="NumeroRecibo" Type="varchar" MaxLength="50" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sl.dbo.VValoresAlmacenaje' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -244,13 +277,25 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
         </EntityType>
         <Association Name="FK_Almacenes_TiposAlmacen">
           <End Role="TiposAlmacen" Type="Self.TiposAlmacen" Multiplicity="0..1" />
-          <End Role="Almacenes" Type="Self.Almacenes" Multiplicity="*" />
+          <End Role="Almacenaje" Type="Self.Almacenaje" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TiposAlmacen">
               <PropertyRef Name="IdTipoAlmacen" />
             </Principal>
-            <Dependent Role="Almacenes">
+            <Dependent Role="Almacenaje">
               <PropertyRef Name="IdTipoAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetalleVentasMovil_VentasMoviles">
+          <End Role="VentasMoviles" Type="Self.VentasMoviles" Multiplicity="0..1" />
+          <End Role="DetalleVentasMovil" Type="Self.DetalleVentasMovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VentasMoviles">
+              <PropertyRef Name="IdVentaMovil" />
+            </Principal>
+            <Dependent Role="DetalleVentasMovil">
+              <PropertyRef Name="IdVentaMovil" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -279,10 +324,10 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RA_Almacenes">
-          <End Role="Almacenes" Type="Self.Almacenes" Multiplicity="0..1" />
+          <End Role="Almacenaje" Type="Self.Almacenaje" Multiplicity="0..1" />
           <End Role="RA" Type="Self.RA" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Almacenes">
+            <Principal Role="Almacenaje">
               <PropertyRef Name="IdAlmacen" />
             </Principal>
             <Dependent Role="RA">
@@ -326,11 +371,36 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="slModel2StoreContainer">
-          <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="Siro" store:Type="Tables" />
+        <Association Name="FK_VentasMoviles_Vendedores">
+          <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+          <End Role="VentasMoviles" Type="Self.VentasMoviles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="IdVendedor" />
+            </Principal>
+            <Dependent Role="VentasMoviles">
+              <PropertyRef Name="IdVendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VentasMoviles_VentasMoviles">
+          <End Role="Almacenaje" Type="Self.Almacenaje" Multiplicity="0..1" />
+          <End Role="VentasMoviles" Type="Self.VentasMoviles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacenaje">
+              <PropertyRef Name="IdAlmacen" />
+            </Principal>
+            <Dependent Role="VentasMoviles">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="slSiroStoreContainer">
+          <EntitySet Name="Almacenaje" EntityType="Self.Almacenaje" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="CicloAlmacenaje" EntityType="Self.CicloAlmacenaje" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="ClasesRA" EntityType="Self.ClasesRA" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="Conductores" EntityType="Self.Conductores" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="DetalleVentasMovil" EntityType="Self.DetalleVentasMovil" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="Kardex" EntityType="Self.Kardex" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="Procedencias" EntityType="Self.Procedencias" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="Productores" EntityType="Self.Productores" Schema="Siro" store:Type="Tables" />
@@ -339,8 +409,10 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <EntitySet Name="TiposAlmacen" EntityType="Self.TiposAlmacen" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="TiposArroz" EntityType="Self.TiposArroz" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="TiposMovimiento" EntityType="Self.TiposMovimiento" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="TiposVenta" EntityType="Self.TiposVenta" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="Vendedores" EntityType="Self.Vendedores" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="Siro" store:Type="Tables" />
+          <EntitySet Name="VentasMoviles" EntityType="Self.VentasMoviles" Schema="Siro" store:Type="Tables" />
           <EntitySet Name="VValoresAlmacenaje" EntityType="Self.VValoresAlmacenaje" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VValoresAlmacenaje].[ID] AS [ID], 
@@ -404,7 +476,11 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           </EntitySet>
           <AssociationSet Name="FK_Almacenes_TiposAlmacen" Association="Self.FK_Almacenes_TiposAlmacen">
             <End Role="TiposAlmacen" EntitySet="TiposAlmacen" />
-            <End Role="Almacenes" EntitySet="Almacenes" />
+            <End Role="Almacenaje" EntitySet="Almacenaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVentasMovil_VentasMoviles" Association="Self.FK_DetalleVentasMovil_VentasMoviles">
+            <End Role="VentasMoviles" EntitySet="VentasMoviles" />
+            <End Role="DetalleVentasMovil" EntitySet="DetalleVentasMovil" />
           </AssociationSet>
           <AssociationSet Name="FK_Kardex_TiposMovimiento" Association="Self.FK_Kardex_TiposMovimiento">
             <End Role="TiposMovimiento" EntitySet="TiposMovimiento" />
@@ -415,7 +491,7 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
             <End Role="Procedencias1" EntitySet="Procedencias" />
           </AssociationSet>
           <AssociationSet Name="FK_RA_Almacenes" Association="Self.FK_RA_Almacenes">
-            <End Role="Almacenes" EntitySet="Almacenes" />
+            <End Role="Almacenaje" EntitySet="Almacenaje" />
             <End Role="RA" EntitySet="RA" />
           </AssociationSet>
           <AssociationSet Name="FK_RA_Conductores" Association="Self.FK_RA_Conductores">
@@ -430,11 +506,80 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
             <End Role="TiposArroz" EntitySet="TiposArroz" />
             <End Role="RA" EntitySet="RA" />
           </AssociationSet>
+          <AssociationSet Name="FK_VentasMoviles_Vendedores" Association="Self.FK_VentasMoviles_Vendedores">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="VentasMoviles" EntitySet="VentasMoviles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VentasMoviles_VentasMoviles" Association="Self.FK_VentasMoviles_VentasMoviles">
+            <End Role="Almacenaje" EntitySet="Almacenaje" />
+            <End Role="VentasMoviles" EntitySet="VentasMoviles" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="slModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="slSiro" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="slSiroCon" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Almacenaje" EntityType="slSiro.Almacenaje" />
+          <EntitySet Name="CicloAlmacenaje" EntityType="slSiro.CicloAlmacenaje" />
+          <EntitySet Name="ClasesRA" EntityType="slSiro.ClasesRA" />
+          <EntitySet Name="Conductores" EntityType="slSiro.Conductores" />
+          <EntitySet Name="DetalleVentasMovil" EntityType="slSiro.DetalleVentasMovil" />
+          <EntitySet Name="Kardex" EntityType="slSiro.Kardex" />
+          <EntitySet Name="Procedencias" EntityType="slSiro.Procedencias" />
+          <EntitySet Name="Productores" EntityType="slSiro.Productores" />
+          <EntitySet Name="RA" EntityType="slSiro.RA" />
+          <EntitySet Name="Recibidos" EntityType="slSiro.Recibidos" />
+          <EntitySet Name="TiposAlmacen" EntityType="slSiro.TiposAlmacen" />
+          <EntitySet Name="TiposArroz" EntityType="slSiro.TiposArroz" />
+          <EntitySet Name="TiposMovimiento" EntityType="slSiro.TiposMovimiento" />
+          <EntitySet Name="TiposVenta" EntityType="slSiro.TiposVenta" />
+          <EntitySet Name="Vendedores" EntityType="slSiro.Vendedores" />
+          <EntitySet Name="Ventas" EntityType="slSiro.Ventas" />
+          <EntitySet Name="VentasMoviles" EntityType="slSiro.VentasMoviles" />
+          <EntitySet Name="VValoresAlmacenaje" EntityType="slSiro.VValoresAlmacenaje" />
+          <EntitySet Name="VRA" EntityType="slSiro.VRA" />
+          <AssociationSet Name="FK_Almacenes_TiposAlmacen" Association="slSiro.FK_Almacenes_TiposAlmacen">
+            <End Role="TiposAlmacen" EntitySet="TiposAlmacen" />
+            <End Role="Almacenaje" EntitySet="Almacenaje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Almacenes" Association="slSiro.FK_RA_Almacenes">
+            <End Role="Almacenaje" EntitySet="Almacenaje" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VentasMoviles_VentasMoviles" Association="slSiro.FK_VentasMoviles_VentasMoviles">
+            <End Role="Almacenaje" EntitySet="Almacenaje" />
+            <End Role="VentasMoviles" EntitySet="VentasMoviles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Conductores" Association="slSiro.FK_RA_Conductores">
+            <End Role="Conductores" EntitySet="Conductores" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetalleVentasMovil_VentasMoviles" Association="slSiro.FK_DetalleVentasMovil_VentasMoviles">
+            <End Role="VentasMoviles" EntitySet="VentasMoviles" />
+            <End Role="DetalleVentasMovil" EntitySet="DetalleVentasMovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kardex_TiposMovimiento" Association="slSiro.FK_Kardex_TiposMovimiento">
+            <End Role="TiposMovimiento" EntitySet="TiposMovimiento" />
+            <End Role="Kardex" EntitySet="Kardex" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Procedencias_Procedencias" Association="slSiro.FK_Procedencias_Procedencias">
+            <End Role="Procedencias" EntitySet="Procedencias" />
+            <End Role="Procedencias1" EntitySet="Procedencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_Recibidos" Association="slSiro.FK_RA_Recibidos">
+            <End Role="Recibidos" EntitySet="Recibidos" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RA_TiposArroz" Association="slSiro.FK_RA_TiposArroz">
+            <End Role="TiposArroz" EntitySet="TiposArroz" />
+            <End Role="RA" EntitySet="RA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VentasMoviles_Vendedores" Association="slSiro.FK_VentasMoviles_Vendedores">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="VentasMoviles" EntitySet="VentasMoviles" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Almacenaje">
           <Key>
             <PropertyRef Name="IdAlmacen" />
@@ -445,8 +590,9 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <Property Name="Descripción" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreación" Type="DateTime" Precision="3" />
           <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="TiposAlmacen" Relationship="Self.FK_Almacenes_TiposAlmacen" FromRole="Almacenes" ToRole="TiposAlmacen" />
-          <NavigationProperty Name="RA" Relationship="Self.FK_RA_Almacenes" FromRole="Almacenes" ToRole="RA" />
+          <NavigationProperty Name="TiposAlmacen" Relationship="slSiro.FK_Almacenes_TiposAlmacen" FromRole="Almacenaje" ToRole="TiposAlmacen" />
+          <NavigationProperty Name="RA" Relationship="slSiro.FK_RA_Almacenes" FromRole="Almacenaje" ToRole="RA" />
+          <NavigationProperty Name="VentasMoviles" Relationship="slSiro.FK_VentasMoviles_VentasMoviles" FromRole="Almacenaje" ToRole="VentasMoviles" />
         </EntityType>
         <EntityType Name="CicloAlmacenaje">
           <Key>
@@ -483,7 +629,18 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <Property Name="IdConductor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Conductor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Cedula" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="RA" Relationship="Self.FK_RA_Conductores" FromRole="Conductores" ToRole="RA" />
+          <NavigationProperty Name="RA" Relationship="slSiro.FK_RA_Conductores" FromRole="Conductores" ToRole="RA" />
+        </EntityType>
+        <EntityType Name="DetalleVentasMovil">
+          <Key>
+            <PropertyRef Name="IdDetalleVentaMovil" />
+          </Key>
+          <Property Name="IdDetalleVentaMovil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdVentaMovil" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="VentasMoviles" Relationship="slSiro.FK_DetalleVentasMovil_VentasMoviles" FromRole="DetalleVentasMovil" ToRole="VentasMoviles" />
         </EntityType>
         <EntityType Name="Kardex">
           <Key>
@@ -504,7 +661,7 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <Property Name="IdAlmacen" Type="Int32" />
           <Property Name="PorcentajeEntero" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="PorcentajeQuebrado" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="TiposMovimiento" Relationship="Self.FK_Kardex_TiposMovimiento" FromRole="Kardex" ToRole="TiposMovimiento" />
+          <NavigationProperty Name="TiposMovimiento" Relationship="slSiro.FK_Kardex_TiposMovimiento" FromRole="Kardex" ToRole="TiposMovimiento" />
         </EntityType>
         <EntityType Name="Procedencias">
           <Key>
@@ -513,8 +670,8 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <Property Name="IdProcedencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdCorregimiento" Type="Int32" />
           <Property Name="Procedencia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Procedencias1" Relationship="Self.FK_Procedencias_Procedencias" FromRole="Procedencias" ToRole="Procedencias1" />
-          <NavigationProperty Name="Procedencias2" Relationship="Self.FK_Procedencias_Procedencias" FromRole="Procedencias1" ToRole="Procedencias" />
+          <NavigationProperty Name="Procedencias1" Relationship="slSiro.FK_Procedencias_Procedencias" FromRole="Procedencias" ToRole="Procedencias1" />
+          <NavigationProperty Name="Procedencias2" Relationship="slSiro.FK_Procedencias_Procedencias" FromRole="Procedencias1" ToRole="Procedencias" />
         </EntityType>
         <EntityType Name="Productores">
           <Key>
@@ -558,15 +715,16 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <Property Name="IdPeridoSilo" Type="Int32" />
           <Property Name="PorcentajeAjusteSeco" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Seco" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Almacenes" Relationship="Self.FK_RA_Almacenes" FromRole="RA" ToRole="Almacenes" />
-          <NavigationProperty Name="Conductores" Relationship="Self.FK_RA_Conductores" FromRole="RA" ToRole="Conductores" />
-          <NavigationProperty Name="Recibidos" Relationship="Self.FK_RA_Recibidos" FromRole="RA" ToRole="Recibidos" />
-          <NavigationProperty Name="TiposArroz" Relationship="Self.FK_RA_TiposArroz" FromRole="RA" ToRole="TiposArroz" />
           <Property Name="Descuento" Type="Boolean" />
           <Property Name="Rendimiento" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PorcentajeAdicionalSecado" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="PorcentajeSecado" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Flete" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tara" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Almacenaje" Relationship="slSiro.FK_RA_Almacenes" FromRole="RA" ToRole="Almacenaje" />
+          <NavigationProperty Name="Conductores" Relationship="slSiro.FK_RA_Conductores" FromRole="RA" ToRole="Conductores" />
+          <NavigationProperty Name="Recibidos" Relationship="slSiro.FK_RA_Recibidos" FromRole="RA" ToRole="Recibidos" />
+          <NavigationProperty Name="TiposArroz" Relationship="slSiro.FK_RA_TiposArroz" FromRole="RA" ToRole="TiposArroz" />
         </EntityType>
         <EntityType Name="Recibidos">
           <Key>
@@ -574,7 +732,7 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           </Key>
           <Property Name="IdRecibido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Recibido" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="RA" Relationship="Self.FK_RA_Recibidos" FromRole="Recibidos" ToRole="RA" />
+          <NavigationProperty Name="RA" Relationship="slSiro.FK_RA_Recibidos" FromRole="Recibidos" ToRole="RA" />
         </EntityType>
         <EntityType Name="TiposAlmacen">
           <Key>
@@ -582,7 +740,7 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           </Key>
           <Property Name="IdTipoAlmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoAlmacen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Almacenes" Relationship="Self.FK_Almacenes_TiposAlmacen" FromRole="TiposAlmacen" ToRole="Almacenes" />
+          <NavigationProperty Name="Almacenaje" Relationship="slSiro.FK_Almacenes_TiposAlmacen" FromRole="TiposAlmacen" ToRole="Almacenaje" />
         </EntityType>
         <EntityType Name="TiposArroz">
           <Key>
@@ -590,7 +748,7 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           </Key>
           <Property Name="IdTipoArroz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoArroz" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="RA" Relationship="Self.FK_RA_TiposArroz" FromRole="TiposArroz" ToRole="RA" />
+          <NavigationProperty Name="RA" Relationship="slSiro.FK_RA_TiposArroz" FromRole="TiposArroz" ToRole="RA" />
         </EntityType>
         <EntityType Name="TiposMovimiento">
           <Key>
@@ -599,7 +757,79 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <Property Name="IdTipoMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TipoMovimiento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Resta" Type="Boolean" />
-          <NavigationProperty Name="Kardex" Relationship="Self.FK_Kardex_TiposMovimiento" FromRole="TiposMovimiento" ToRole="Kardex" />
+          <NavigationProperty Name="Kardex" Relationship="slSiro.FK_Kardex_TiposMovimiento" FromRole="TiposMovimiento" ToRole="Kardex" />
+        </EntityType>
+        <EntityType Name="TiposVenta">
+          <Key>
+            <PropertyRef Name="IdTipoVenta" />
+          </Key>
+          <Property Name="IdTipoVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Vendedores">
+          <Key>
+            <PropertyRef Name="IdVendedor" />
+          </Key>
+          <Property Name="IdVendedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vendedor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VentasMoviles" Relationship="slSiro.FK_VentasMoviles_Vendedores" FromRole="Vendedores" ToRole="VentasMoviles" />
+        </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="IdVentas" />
+          </Key>
+          <Property Name="IdVentas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PrecioVenta" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="IdTipoVenta" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VentasMoviles">
+          <Key>
+            <PropertyRef Name="IdVentaMovil" />
+          </Key>
+          <Property Name="IdVentaMovil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdVendedor" Type="Int32" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="FechaVenta" Type="DateTime" Precision="3" />
+          <Property Name="FechaProceso" Type="DateTime" Precision="3" />
+          <Property Name="NumeroRecibo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Almacenaje" Relationship="slSiro.FK_VentasMoviles_VentasMoviles" FromRole="VentasMoviles" ToRole="Almacenaje" />
+          <NavigationProperty Name="DetalleVentasMovil" Relationship="slSiro.FK_DetalleVentasMovil_VentasMoviles" FromRole="VentasMoviles" ToRole="DetalleVentasMovil" />
+          <NavigationProperty Name="Vendedores" Relationship="slSiro.FK_VentasMoviles_Vendedores" FromRole="VentasMoviles" ToRole="Vendedores" />
+        </EntityType>
+        <EntityType Name="VValoresAlmacenaje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="FechaLLenadoDesde" Type="DateTime" Precision="3" />
+          <Property Name="FechaLLenadoHasta" Type="DateTime" Precision="3" />
+          <Property Name="TotalBruto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeHumedadE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeImpurezasE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeEnteroE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeQuebradoE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RendimientoE" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalNeto" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaPiladoDesde" Type="DateTime" Precision="3" />
+          <Property Name="FechaPiladoHasta" Type="DateTime" Precision="3" />
+          <Property Name="TotalPilado" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AjusteTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeEnteroF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PorcentajeQuebradoF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RendimientoF" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="InventarioFinal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Seco" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Almacen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TipoArroz" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="VRA">
           <Key>
@@ -637,22 +867,22 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           <Property Name="PorcentajeAjusteSeco" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <Association Name="FK_Almacenes_TiposAlmacen">
-          <End Role="TiposAlmacen" Type="Self.TiposAlmacen" Multiplicity="0..1" />
-          <End Role="Almacenes" Type="slModel2.Almacenaje" Multiplicity="*" />
+          <End Type="slSiro.TiposAlmacen" Role="TiposAlmacen" Multiplicity="0..1" />
+          <End Type="slSiro.Almacenaje" Role="Almacenaje" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TiposAlmacen">
               <PropertyRef Name="IdTipoAlmacen" />
             </Principal>
-            <Dependent Role="Almacenes">
+            <Dependent Role="Almacenaje">
               <PropertyRef Name="IdTipoAlmacen" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RA_Almacenes">
-          <End Role="Almacenes" Type="slModel2.Almacenaje" Multiplicity="0..1" />
-          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <End Type="slSiro.Almacenaje" Role="Almacenaje" Multiplicity="0..1" />
+          <End Type="slSiro.RA" Role="RA" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Almacenes">
+            <Principal Role="Almacenaje">
               <PropertyRef Name="IdAlmacen" />
             </Principal>
             <Dependent Role="RA">
@@ -660,9 +890,21 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VentasMoviles_VentasMoviles">
+          <End Type="slSiro.Almacenaje" Role="Almacenaje" Multiplicity="0..1" />
+          <End Type="slSiro.VentasMoviles" Role="VentasMoviles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacenaje">
+              <PropertyRef Name="IdAlmacen" />
+            </Principal>
+            <Dependent Role="VentasMoviles">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RA_Conductores">
-          <End Role="Conductores" Type="Self.Conductores" Multiplicity="0..1" />
-          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <End Type="slSiro.Conductores" Role="Conductores" Multiplicity="0..1" />
+          <End Type="slSiro.RA" Role="RA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Conductores">
               <PropertyRef Name="IdConductor" />
@@ -672,9 +914,21 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DetalleVentasMovil_VentasMoviles">
+          <End Type="slSiro.VentasMoviles" Role="VentasMoviles" Multiplicity="0..1" />
+          <End Type="slSiro.DetalleVentasMovil" Role="DetalleVentasMovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VentasMoviles">
+              <PropertyRef Name="IdVentaMovil" />
+            </Principal>
+            <Dependent Role="DetalleVentasMovil">
+              <PropertyRef Name="IdVentaMovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Kardex_TiposMovimiento">
-          <End Role="TiposMovimiento" Type="Self.TiposMovimiento" Multiplicity="0..1" />
-          <End Role="Kardex" Type="Self.Kardex" Multiplicity="*" />
+          <End Type="slSiro.TiposMovimiento" Role="TiposMovimiento" Multiplicity="0..1" />
+          <End Type="slSiro.Kardex" Role="Kardex" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TiposMovimiento">
               <PropertyRef Name="IdTipoMovimiento" />
@@ -685,8 +939,8 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Procedencias_Procedencias">
-          <End Role="Procedencias" Type="Self.Procedencias" Multiplicity="1" />
-          <End Role="Procedencias1" Type="Self.Procedencias" Multiplicity="0..1" />
+          <End Type="slSiro.Procedencias" Role="Procedencias" Multiplicity="1" />
+          <End Type="slSiro.Procedencias" Role="Procedencias1" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Procedencias">
               <PropertyRef Name="IdProcedencia" />
@@ -697,8 +951,8 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RA_Recibidos">
-          <End Role="Recibidos" Type="Self.Recibidos" Multiplicity="0..1" />
-          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <End Type="slSiro.Recibidos" Role="Recibidos" Multiplicity="0..1" />
+          <End Type="slSiro.RA" Role="RA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Recibidos">
               <PropertyRef Name="IdRecibido" />
@@ -709,8 +963,8 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RA_TiposArroz">
-          <End Role="TiposArroz" Type="Self.TiposArroz" Multiplicity="0..1" />
-          <End Role="RA" Type="Self.RA" Multiplicity="*" />
+          <End Type="slSiro.TiposArroz" Role="TiposArroz" Multiplicity="0..1" />
+          <End Type="slSiro.RA" Role="RA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TiposArroz">
               <PropertyRef Name="IdTipoArroz" />
@@ -720,306 +974,246 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="slSiro" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Almacenaje" EntityType="slModel2.Almacenaje" />
-          <EntitySet Name="CicloAlmacenaje" EntityType="Self.CicloAlmacenaje" />
-          <EntitySet Name="ClasesRA" EntityType="Self.ClasesRA" />
-          <EntitySet Name="Conductores" EntityType="Self.Conductores" />
-          <EntitySet Name="Kardex" EntityType="Self.Kardex" />
-          <EntitySet Name="Procedencias" EntityType="Self.Procedencias" />
-          <EntitySet Name="Productores" EntityType="Self.Productores" />
-          <EntitySet Name="RA" EntityType="Self.RA" />
-          <EntitySet Name="Recibidos" EntityType="Self.Recibidos" />
-          <EntitySet Name="TiposAlmacen" EntityType="Self.TiposAlmacen" />
-          <EntitySet Name="TiposArroz" EntityType="Self.TiposArroz" />
-          <EntitySet Name="TiposMovimiento" EntityType="Self.TiposMovimiento" />
-          <EntitySet Name="VRA" EntityType="Self.VRA" />
-          <AssociationSet Name="FK_Almacenes_TiposAlmacen" Association="Self.FK_Almacenes_TiposAlmacen">
-            <End Role="TiposAlmacen" EntitySet="TiposAlmacen" />
-            <End Role="Almacenes" EntitySet="Almacenaje" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RA_Almacenes" Association="Self.FK_RA_Almacenes">
-            <End Role="Almacenes" EntitySet="Almacenaje" />
-            <End Role="RA" EntitySet="RA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RA_Conductores" Association="Self.FK_RA_Conductores">
-            <End Role="Conductores" EntitySet="Conductores" />
-            <End Role="RA" EntitySet="RA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Kardex_TiposMovimiento" Association="Self.FK_Kardex_TiposMovimiento">
-            <End Role="TiposMovimiento" EntitySet="TiposMovimiento" />
-            <End Role="Kardex" EntitySet="Kardex" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Procedencias_Procedencias" Association="Self.FK_Procedencias_Procedencias">
-            <End Role="Procedencias" EntitySet="Procedencias" />
-            <End Role="Procedencias1" EntitySet="Procedencias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RA_Recibidos" Association="Self.FK_RA_Recibidos">
-            <End Role="Recibidos" EntitySet="Recibidos" />
-            <End Role="RA" EntitySet="RA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RA_TiposArroz" Association="Self.FK_RA_TiposArroz">
-            <End Role="TiposArroz" EntitySet="TiposArroz" />
-            <End Role="RA" EntitySet="RA" />
-          </AssociationSet>
-          <EntitySet Name="VValoresAlmacenaje" EntityType="slModel2.VValoresAlmacenaje" />
-          <EntitySet Name="Vendedores" EntityType="slModel2.Vendedores" />
-          <EntitySet Name="Ventas" EntityType="slModel2.Ventas" />
-        </EntityContainer>
-        <EntityType Name="VValoresAlmacenaje">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" />
-          <Property Name="IdAlmacen" Type="Int32" />
-          <Property Name="FechaLLenadoDesde" Type="DateTime" Precision="3" />
-          <Property Name="FechaLLenadoHasta" Type="DateTime" Precision="3" />
-          <Property Name="TotalBruto" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PorcentajeHumedadE" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PorcentajeImpurezasE" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PorcentajeEnteroE" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PorcentajeQuebradoE" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="RendimientoE" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TotalNeto" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Costo" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="FechaPiladoDesde" Type="DateTime" Precision="3" />
-          <Property Name="FechaPiladoHasta" Type="DateTime" Precision="3" />
-          <Property Name="TotalPilado" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="AjusteTotal" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PorcentajeEnteroF" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="PorcentajeQuebradoF" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="RendimientoF" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="InventarioFinal" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Seco" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Almacen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="TipoArroz" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Vendedores">
-          <Key>
-            <PropertyRef Name="IdVendedor" />
-          </Key>
-          <Property Name="IdVendedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Vendedor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Ventas">
-          <Key>
-            <PropertyRef Name="IdVentas" />
-          </Key>
-          <Property Name="IdVentas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdProducto" Type="Int32" />
-          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="PrecioVenta" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="IdCliente" Type="Int32" />
-          <Property Name="IdTipoVenta" Type="Int32" />
-        </EntityType>
+        <Association Name="FK_VentasMoviles_Vendedores">
+          <End Type="slSiro.Vendedores" Role="Vendedores" Multiplicity="0..1" />
+          <End Type="slSiro.VentasMoviles" Role="VentasMoviles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="IdVendedor" />
+            </Principal>
+            <Dependent Role="VentasMoviles">
+              <PropertyRef Name="IdVendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="slModel2StoreContainer" CdmEntityContainer="slSiro">
+        <EntityContainerMapping StorageEntityContainer="slSiroStoreContainer" CdmEntityContainer="slSiroCon">
           <EntitySetMapping Name="Almacenaje">
-            <EntityTypeMapping TypeName="slModel2.Almacenaje">
-              <MappingFragment StoreEntitySet="Almacenes">
-                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
-                <ScalarProperty Name="IdTipoAlmacen" ColumnName="IdTipoAlmacen" />
-                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
-                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
-                <ScalarProperty Name="FechaCreación" ColumnName="FechaCreación" />
+            <EntityTypeMapping TypeName="slSiro.Almacenaje">
+              <MappingFragment StoreEntitySet="Almacenaje">
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="FechaCreación" ColumnName="FechaCreación" />
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="IdTipoAlmacen" ColumnName="IdTipoAlmacen" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CicloAlmacenaje">
-            <EntityTypeMapping TypeName="slModel2.CicloAlmacenaje">
+            <EntityTypeMapping TypeName="slSiro.CicloAlmacenaje">
               <MappingFragment StoreEntitySet="CicloAlmacenaje">
-                <ScalarProperty Name="IdPeridoSilo" ColumnName="IdPeridoSilo" />
-                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
-                <ScalarProperty Name="LLenadoDesde" ColumnName="LLenadoDesde" />
-                <ScalarProperty Name="LLenadoHasta" ColumnName="LLenadoHasta" />
-                <ScalarProperty Name="VaciadoDesde" ColumnName="VaciadoDesde" />
-                <ScalarProperty Name="VaciadoHasta" ColumnName="VaciadoHasta" />
-                <ScalarProperty Name="PorcentajeEnteroE" ColumnName="PorcentajeEnteroE" />
-                <ScalarProperty Name="PorcentajeQuebradoE" ColumnName="PorcentajeQuebradoE" />
-                <ScalarProperty Name="RendimientoEstimado" ColumnName="RendimientoEstimado" />
-                <ScalarProperty Name="TotalBruto" ColumnName="TotalBruto" />
-                <ScalarProperty Name="TotalNeto" ColumnName="TotalNeto" />
-                <ScalarProperty Name="CostoTotal" ColumnName="CostoTotal" />
-                <ScalarProperty Name="TotalPilado" ColumnName="TotalPilado" />
-                <ScalarProperty Name="PorcentajeEnteroF" ColumnName="PorcentajeEnteroF" />
-                <ScalarProperty Name="PorcentajeQuebradoF" ColumnName="PorcentajeQuebradoF" />
                 <ScalarProperty Name="RendimientoFinal" ColumnName="RendimientoFinal" />
+                <ScalarProperty Name="PorcentajeQuebradoF" ColumnName="PorcentajeQuebradoF" />
+                <ScalarProperty Name="PorcentajeEnteroF" ColumnName="PorcentajeEnteroF" />
+                <ScalarProperty Name="TotalPilado" ColumnName="TotalPilado" />
+                <ScalarProperty Name="CostoTotal" ColumnName="CostoTotal" />
+                <ScalarProperty Name="TotalNeto" ColumnName="TotalNeto" />
+                <ScalarProperty Name="TotalBruto" ColumnName="TotalBruto" />
+                <ScalarProperty Name="RendimientoEstimado" ColumnName="RendimientoEstimado" />
+                <ScalarProperty Name="PorcentajeQuebradoE" ColumnName="PorcentajeQuebradoE" />
+                <ScalarProperty Name="PorcentajeEnteroE" ColumnName="PorcentajeEnteroE" />
+                <ScalarProperty Name="VaciadoHasta" ColumnName="VaciadoHasta" />
+                <ScalarProperty Name="VaciadoDesde" ColumnName="VaciadoDesde" />
+                <ScalarProperty Name="LLenadoHasta" ColumnName="LLenadoHasta" />
+                <ScalarProperty Name="LLenadoDesde" ColumnName="LLenadoDesde" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="IdPeridoSilo" ColumnName="IdPeridoSilo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ClasesRA">
-            <EntityTypeMapping TypeName="slModel2.ClasesRA">
+            <EntityTypeMapping TypeName="slSiro.ClasesRA">
               <MappingFragment StoreEntitySet="ClasesRA">
-                <ScalarProperty Name="IdClaseRA" ColumnName="IdClaseRA" />
                 <ScalarProperty Name="ClaseRa" ColumnName="ClaseRa" />
+                <ScalarProperty Name="IdClaseRA" ColumnName="IdClaseRA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Conductores">
-            <EntityTypeMapping TypeName="slModel2.Conductores">
+            <EntityTypeMapping TypeName="slSiro.Conductores">
               <MappingFragment StoreEntitySet="Conductores">
-                <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
-                <ScalarProperty Name="Conductor" ColumnName="Conductor" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Conductor" ColumnName="Conductor" />
+                <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleVentasMovil">
+            <EntityTypeMapping TypeName="slSiro.DetalleVentasMovil">
+              <MappingFragment StoreEntitySet="DetalleVentasMovil">
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdVentaMovil" ColumnName="IdVentaMovil" />
+                <ScalarProperty Name="IdDetalleVentaMovil" ColumnName="IdDetalleVentaMovil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Kardex">
-            <EntityTypeMapping TypeName="slModel2.Kardex">
+            <EntityTypeMapping TypeName="slSiro.Kardex">
               <MappingFragment StoreEntitySet="Kardex">
-                <ScalarProperty Name="IdInventario" ColumnName="IdInventario" />
-                <ScalarProperty Name="IdPeridoSilo" ColumnName="IdPeridoSilo" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
-                <ScalarProperty Name="IdRa" ColumnName="IdRa" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="PorcentajeDescuentoSilo" ColumnName="PorcentajeDescuentoSilo" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
-                <ScalarProperty Name="PorcentajeEntero" ColumnName="PorcentajeEntero" />
                 <ScalarProperty Name="PorcentajeQuebrado" ColumnName="PorcentajeQuebrado" />
+                <ScalarProperty Name="PorcentajeEntero" ColumnName="PorcentajeEntero" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="PorcentajeDescuentoSilo" ColumnName="PorcentajeDescuentoSilo" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdRa" ColumnName="IdRa" />
+                <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdPeridoSilo" ColumnName="IdPeridoSilo" />
+                <ScalarProperty Name="IdInventario" ColumnName="IdInventario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Procedencias">
-            <EntityTypeMapping TypeName="slModel2.Procedencias">
+            <EntityTypeMapping TypeName="slSiro.Procedencias">
               <MappingFragment StoreEntitySet="Procedencias">
-                <ScalarProperty Name="IdProcedencia" ColumnName="IdProcedencia" />
-                <ScalarProperty Name="IdCorregimiento" ColumnName="IdCorregimiento" />
                 <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
+                <ScalarProperty Name="IdCorregimiento" ColumnName="IdCorregimiento" />
+                <ScalarProperty Name="IdProcedencia" ColumnName="IdProcedencia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Productores">
-            <EntityTypeMapping TypeName="slModel2.Productores">
+            <EntityTypeMapping TypeName="slSiro.Productores">
               <MappingFragment StoreEntitySet="Productores">
-                <ScalarProperty Name="IdProductor" ColumnName="IdProductor" />
-                <ScalarProperty Name="IdProcedencia" ColumnName="IdProcedencia" />
-                <ScalarProperty Name="Productor" ColumnName="Productor" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Productor" ColumnName="Productor" />
+                <ScalarProperty Name="IdProcedencia" ColumnName="IdProcedencia" />
+                <ScalarProperty Name="IdProductor" ColumnName="IdProductor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RA">
-            <EntityTypeMapping TypeName="slModel2.RA">
+            <EntityTypeMapping TypeName="slSiro.RA">
               <MappingFragment StoreEntitySet="RA">
+                <ScalarProperty Name="Tara" ColumnName="Tara" />
                 <ScalarProperty Name="Flete" ColumnName="Flete" />
                 <ScalarProperty Name="PorcentajeSecado" ColumnName="PorcentajeSecado" />
                 <ScalarProperty Name="PorcentajeAdicionalSecado" ColumnName="PorcentajeAdicionalSecado" />
                 <ScalarProperty Name="Rendimiento" ColumnName="Rendimiento" />
                 <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="IdEntradaArroz" ColumnName="IdEntradaArroz" />
-                <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Neto" ColumnName="Neto" />
-                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
-                <ScalarProperty Name="PorcentajeHumedad" ColumnName="PorcentajeHumedad" />
-                <ScalarProperty Name="PorcentajeImpurezas" ColumnName="PorcentajeImpurezas" />
-                <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="IdTipoFlete" ColumnName="IdTipoFlete" />
-                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-                <ScalarProperty Name="IdProductor" ColumnName="IdProductor" />
-                <ScalarProperty Name="IdTipoArroz" ColumnName="IdTipoArroz" />
-                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
-                <ScalarProperty Name="IdRecibido" ColumnName="IdRecibido" />
-                <ScalarProperty Name="NumeroBoleta" ColumnName="NumeroBoleta" />
-                <ScalarProperty Name="Apach" ColumnName="Apach" />
-                <ScalarProperty Name="RendimientoMolineria" ColumnName="RendimientoMolineria" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-                <ScalarProperty Name="EntradaDeArroz" ColumnName="EntradaDeArroz" />
-                <ScalarProperty Name="FehaProceso" ColumnName="FehaProceso" />
-                <ScalarProperty Name="EstaPilado" ColumnName="EstaPilado" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="PorcentajeEntero" ColumnName="PorcentajeEntero" />
-                <ScalarProperty Name="PorcentajeQuebrado" ColumnName="PorcentajeQuebrado" />
-                <ScalarProperty Name="IdPeridoSilo" ColumnName="IdPeridoSilo" />
-                <ScalarProperty Name="PorcentajeAjusteSeco" ColumnName="PorcentajeAjusteSeco" />
                 <ScalarProperty Name="Seco" ColumnName="Seco" />
+                <ScalarProperty Name="PorcentajeAjusteSeco" ColumnName="PorcentajeAjusteSeco" />
+                <ScalarProperty Name="IdPeridoSilo" ColumnName="IdPeridoSilo" />
+                <ScalarProperty Name="PorcentajeQuebrado" ColumnName="PorcentajeQuebrado" />
+                <ScalarProperty Name="PorcentajeEntero" ColumnName="PorcentajeEntero" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="EstaPilado" ColumnName="EstaPilado" />
+                <ScalarProperty Name="FehaProceso" ColumnName="FehaProceso" />
+                <ScalarProperty Name="EntradaDeArroz" ColumnName="EntradaDeArroz" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="RendimientoMolineria" ColumnName="RendimientoMolineria" />
+                <ScalarProperty Name="Apach" ColumnName="Apach" />
+                <ScalarProperty Name="NumeroBoleta" ColumnName="NumeroBoleta" />
+                <ScalarProperty Name="IdRecibido" ColumnName="IdRecibido" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="IdTipoArroz" ColumnName="IdTipoArroz" />
+                <ScalarProperty Name="IdProductor" ColumnName="IdProductor" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdTipoFlete" ColumnName="IdTipoFlete" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
+                <ScalarProperty Name="PorcentajeImpurezas" ColumnName="PorcentajeImpurezas" />
+                <ScalarProperty Name="PorcentajeHumedad" ColumnName="PorcentajeHumedad" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Neto" ColumnName="Neto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+                <ScalarProperty Name="IdEntradaArroz" ColumnName="IdEntradaArroz" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Recibidos">
-            <EntityTypeMapping TypeName="slModel2.Recibidos">
+            <EntityTypeMapping TypeName="slSiro.Recibidos">
               <MappingFragment StoreEntitySet="Recibidos">
-                <ScalarProperty Name="IdRecibido" ColumnName="IdRecibido" />
                 <ScalarProperty Name="Recibido" ColumnName="Recibido" />
+                <ScalarProperty Name="IdRecibido" ColumnName="IdRecibido" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TiposAlmacen">
-            <EntityTypeMapping TypeName="slModel2.TiposAlmacen">
+            <EntityTypeMapping TypeName="slSiro.TiposAlmacen">
               <MappingFragment StoreEntitySet="TiposAlmacen">
-                <ScalarProperty Name="IdTipoAlmacen" ColumnName="IdTipoAlmacen" />
                 <ScalarProperty Name="TipoAlmacen" ColumnName="TipoAlmacen" />
+                <ScalarProperty Name="IdTipoAlmacen" ColumnName="IdTipoAlmacen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TiposArroz">
-            <EntityTypeMapping TypeName="slModel2.TiposArroz">
+            <EntityTypeMapping TypeName="slSiro.TiposArroz">
               <MappingFragment StoreEntitySet="TiposArroz">
-                <ScalarProperty Name="IdTipoArroz" ColumnName="IdTipoArroz" />
                 <ScalarProperty Name="TipoArroz" ColumnName="TipoArroz" />
+                <ScalarProperty Name="IdTipoArroz" ColumnName="IdTipoArroz" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TiposMovimiento">
-            <EntityTypeMapping TypeName="slModel2.TiposMovimiento">
+            <EntityTypeMapping TypeName="slSiro.TiposMovimiento">
               <MappingFragment StoreEntitySet="TiposMovimiento">
-                <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
-                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
                 <ScalarProperty Name="Resta" ColumnName="Resta" />
+                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+                <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VRA">
-            <EntityTypeMapping TypeName="slModel2.VRA">
-              <MappingFragment StoreEntitySet="VRA">
-                <ScalarProperty Name="IdEntradaArroz" ColumnName="IdEntradaArroz" />
-                <ScalarProperty Name="IdRecibido" ColumnName="IdRecibido" />
-                <ScalarProperty Name="EntradaDeArroz" ColumnName="EntradaDeArroz" />
-                <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Neto" ColumnName="Neto" />
-                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
-                <ScalarProperty Name="PorcentajeHumedad" ColumnName="PorcentajeHumedad" />
-                <ScalarProperty Name="PorcentajeImpurezas" ColumnName="PorcentajeImpurezas" />
-                <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
-                <ScalarProperty Name="Conductor" ColumnName="Conductor" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <EntitySetMapping Name="TiposVenta">
+            <EntityTypeMapping TypeName="slSiro.TiposVenta">
+              <MappingFragment StoreEntitySet="TiposVenta">
+                <ScalarProperty Name="TipoVenta" ColumnName="TipoVenta" />
+                <ScalarProperty Name="IdTipoVenta" ColumnName="IdTipoVenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendedores">
+            <EntityTypeMapping TypeName="slSiro.Vendedores">
+              <MappingFragment StoreEntitySet="Vendedores">
+                <ScalarProperty Name="Vendedor" ColumnName="Vendedor" />
+                <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventas">
+            <EntityTypeMapping TypeName="slSiro.Ventas">
+              <MappingFragment StoreEntitySet="Ventas">
+                <ScalarProperty Name="IdTipoVenta" ColumnName="IdTipoVenta" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdVentas" ColumnName="IdVentas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VentasMoviles">
+            <EntityTypeMapping TypeName="slSiro.VentasMoviles">
+              <MappingFragment StoreEntitySet="VentasMoviles">
                 <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-                <ScalarProperty Name="IdTipoFlete" ColumnName="IdTipoFlete" />
-                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="IdTipoArroz" ColumnName="IdTipoArroz" />
-                <ScalarProperty Name="TipoArroz" ColumnName="TipoArroz" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="NumeroRecibo" ColumnName="NumeroRecibo" />
+                <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
+                <ScalarProperty Name="FechaVenta" ColumnName="FechaVenta" />
                 <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
-                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
-                <ScalarProperty Name="FehaProceso" ColumnName="FehaProceso" />
-                <ScalarProperty Name="NumeroBoleta" ColumnName="NumeroBoleta" />
-                <ScalarProperty Name="Recibido" ColumnName="Recibido" />
-                <ScalarProperty Name="Apach" ColumnName="Apach" />
-                <ScalarProperty Name="PorcentajeEntero" ColumnName="PorcentajeEntero" />
-                <ScalarProperty Name="PorcentajeQuebrado" ColumnName="PorcentajeQuebrado" />
-                <ScalarProperty Name="Seco" ColumnName="Seco" />
-                <ScalarProperty Name="PorcentajeAjusteSeco" ColumnName="PorcentajeAjusteSeco" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdVentaMovil" ColumnName="IdVentaMovil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="VValoresAlmacenaje">
-            <EntityTypeMapping TypeName="slModel2.VValoresAlmacenaje">
+            <EntityTypeMapping TypeName="slSiro.VValoresAlmacenaje">
               <MappingFragment StoreEntitySet="VValoresAlmacenaje">
                 <ScalarProperty Name="TipoArroz" ColumnName="TipoArroz" />
                 <ScalarProperty Name="Almacen" ColumnName="Almacen" />
@@ -1047,23 +1241,39 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vendedores">
-            <EntityTypeMapping TypeName="slModel2.Vendedores">
-              <MappingFragment StoreEntitySet="Vendedores">
-                <ScalarProperty Name="Vendedor" ColumnName="Vendedor" />
-                <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ventas">
-            <EntityTypeMapping TypeName="slModel2.Ventas">
-              <MappingFragment StoreEntitySet="Ventas">
-                <ScalarProperty Name="IdTipoVenta" ColumnName="IdTipoVenta" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdVentas" ColumnName="IdVentas" />
+          <EntitySetMapping Name="VRA">
+            <EntityTypeMapping TypeName="slSiro.VRA">
+              <MappingFragment StoreEntitySet="VRA">
+                <ScalarProperty Name="PorcentajeAjusteSeco" ColumnName="PorcentajeAjusteSeco" />
+                <ScalarProperty Name="Seco" ColumnName="Seco" />
+                <ScalarProperty Name="PorcentajeQuebrado" ColumnName="PorcentajeQuebrado" />
+                <ScalarProperty Name="PorcentajeEntero" ColumnName="PorcentajeEntero" />
+                <ScalarProperty Name="Apach" ColumnName="Apach" />
+                <ScalarProperty Name="Recibido" ColumnName="Recibido" />
+                <ScalarProperty Name="NumeroBoleta" ColumnName="NumeroBoleta" />
+                <ScalarProperty Name="FehaProceso" ColumnName="FehaProceso" />
+                <ScalarProperty Name="Almacen" ColumnName="Almacen" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="TipoArroz" ColumnName="TipoArroz" />
+                <ScalarProperty Name="IdTipoArroz" ColumnName="IdTipoArroz" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdTipoFlete" ColumnName="IdTipoFlete" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Conductor" ColumnName="Conductor" />
+                <ScalarProperty Name="IdConductor" ColumnName="IdConductor" />
+                <ScalarProperty Name="PorcentajeImpurezas" ColumnName="PorcentajeImpurezas" />
+                <ScalarProperty Name="PorcentajeHumedad" ColumnName="PorcentajeHumedad" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Neto" ColumnName="Neto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+                <ScalarProperty Name="EntradaDeArroz" ColumnName="EntradaDeArroz" />
+                <ScalarProperty Name="IdRecibido" ColumnName="IdRecibido" />
+                <ScalarProperty Name="IdEntradaArroz" ColumnName="IdEntradaArroz" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1081,7 +1291,7 @@ warning 6002: The table/view 'sl.Siro.VRA' does not have a primary key defined. 
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

@@ -43,7 +43,7 @@ namespace Siro.F.P
             using(var db = new slPlanilla())
             {
                 var lst = new List<Model.Factor>();
-                db.Factores.ToList().ForEach(f=>lst.Add(new Model.Factor { IdFactor = f.IdFactor, TipoFactor= f.TiposFactor.Factor, Factor1 = f.Factor, DescripcionFactor = f.DescripcionFactor  }));
+                db.Factores.ToList().ForEach(f=>lst.Add(new Model.Factor { IdFactor = f.IdFactor, TipoFactor= f.TiposFactor.Factor, Factor1 = f.Factor, DescripcionFactor = f.DescripcionFactor }));
                 factoresBindingSource.DataSource = lst;
             }
         }

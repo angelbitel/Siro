@@ -22,7 +22,11 @@ namespace Siro
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Application.Run(new Principal());
+
+            var frm = new F.Login();
+            frm.ShowDialog();
+            if (Principal.Bariables.HabilitarP)
+                Application.Run(new Principal());
         }
     }
 }

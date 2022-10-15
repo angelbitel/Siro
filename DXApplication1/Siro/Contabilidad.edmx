@@ -266,9 +266,10 @@
           <Property Name="nombreCompleto" Type="nvarchar" MaxLength="100" />
           <Property Name="img" Type="varbinary(max)" />
           <Property Name="IdPerfil" Type="int" />
+          <Property Name="Activar" Type="bit" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'sl.dbo.VAsientos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Accounting.dbo.VAsientos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VAsientos">
           <Key>
             <PropertyRef Name="IdAsiento" />
@@ -285,8 +286,8 @@ warning 6002: The table/view 'sl.dbo.VAsientos' does not have a primary key defi
           <Property Name="Comentario" Type="nvarchar" MaxLength="250" />
           <Property Name="IdDetalleAsiento" Type="int" Nullable="false" />
           <Property Name="DetalleAsientos_IdAsiento" Type="int" />
-          <Property Name="Debito" Type="money" />
-          <Property Name="Credito" Type="money" />
+          <Property Name="Debito" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Credito" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IdCuentaContable" Type="int" Nullable="false" />
           <Property Name="Cuenta" Type="varchar" MaxLength="250" />
           <Property Name="Entidad" Type="varchar" MaxLength="250" />
@@ -302,9 +303,13 @@ warning 6002: The table/view 'sl.dbo.VAsientos' does not have a primary key defi
           <Property Name="IdCliente" Type="int" />
           <Property Name="idProvedor" Type="int" />
           <Property Name="usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CuentaContable" Type="varchar" MaxLength="50" />
+          <Property Name="Mayor" Type="varchar" MaxLength="250" />
+          <Property Name="Detalle" Type="varchar" MaxLength="250" />
+          <Property Name="IdOrigen" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'sl.dbo.VPrecioLista' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Accounting.dbo.VPrecioLista' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VPrecioLista">
           <Key>
             <PropertyRef Name="IdProducto" />
@@ -314,7 +319,7 @@ warning 6002: The table/view 'sl.dbo.VPrecioLista' does not have a primary key d
           <Property Name="IdCategoria" Type="int" />
           <Property Name="IdEmpresa" Type="int" />
           <Property Name="IdProducto" Type="int" Nullable="false" />
-          <Property Name="Cantidad" Type="int" />
+          <Property Name="Cantidad" Type="money" />
           <Property Name="CodigoBarras" Type="varchar" MaxLength="50" />
           <Property Name="PrecioCompra" Type="money" />
           <Property Name="PrecioVenta" Type="money" />
@@ -637,7 +642,11 @@ warning 6002: The table/view 'sl.dbo.VPrecioLista' does not have a primary key d
     [VAsientos].[NombreCompleto] AS [NombreCompleto], 
     [VAsientos].[IdCliente] AS [IdCliente], 
     [VAsientos].[idProvedor] AS [idProvedor], 
-    [VAsientos].[usuario] AS [usuario]
+    [VAsientos].[usuario] AS [usuario], 
+    [VAsientos].[CuentaContable] AS [CuentaContable], 
+    [VAsientos].[Mayor] AS [Mayor], 
+    [VAsientos].[Detalle] AS [Detalle], 
+    [VAsientos].[IdOrigen] AS [IdOrigen]
     FROM [dbo].[VAsientos] AS [VAsientos]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="VPrecioLista" EntityType="Self.VPrecioLista" store:Type="Views" store:Schema="dbo">
@@ -892,6 +901,7 @@ warning 6002: The table/view 'sl.dbo.VPrecioLista' does not have a primary key d
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IdPerfil" Type="Int32" />
           <NavigationProperty Name="RegistrosBanco" Relationship="slModel.FK_RegistrosBanco_Usuarios" FromRole="Usuarios" ToRole="RegistrosBanco" />
+          <Property Name="Activar" Type="Boolean" />
         </EntityType>
         <EntityType Name="ClasesCliente">
           <Key>
@@ -1069,8 +1079,8 @@ warning 6002: The table/view 'sl.dbo.VPrecioLista' does not have a primary key d
           <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="IdDetalleAsiento" Type="Int32" Nullable="false" />
           <Property Name="DetalleAsientos_IdAsiento" Type="Int32" />
-          <Property Name="Debito" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Credito" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Debito" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Credito" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="IdCuentaContable" Type="Int32" Nullable="false" />
           <Property Name="Cuenta" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="IdA" Type="Int64" />
@@ -1087,6 +1097,10 @@ warning 6002: The table/view 'sl.dbo.VPrecioLista' does not have a primary key d
           <Property Name="IdCliente" Type="Int32" />
           <Property Name="idProvedor" Type="Int32" />
           <Property Name="usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CuentaContable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mayor" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Detalle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdOrigen" Type="Int32" />
         </EntityType>
         <EntityType Name="FormasPago">
           <Key>
@@ -1547,6 +1561,7 @@ warning 6002: The table/view 'sl.dbo.VPrecioLista' does not have a primary key d
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="slModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Activar" ColumnName="Activar" />
                 <ScalarProperty Name="IdPerfil" ColumnName="IdPerfil" />
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
@@ -1656,6 +1671,10 @@ warning 6002: The table/view 'sl.dbo.VPrecioLista' does not have a primary key d
           <EntitySetMapping Name="VAsientos">
             <EntityTypeMapping TypeName="slModel.VAsientos">
               <MappingFragment StoreEntitySet="VAsientos">
+                <ScalarProperty Name="IdOrigen" ColumnName="IdOrigen" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Mayor" ColumnName="Mayor" />
+                <ScalarProperty Name="CuentaContable" ColumnName="CuentaContable" />
                 <ScalarProperty Name="usuario" ColumnName="usuario" />
                 <ScalarProperty Name="idProvedor" ColumnName="idProvedor" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />

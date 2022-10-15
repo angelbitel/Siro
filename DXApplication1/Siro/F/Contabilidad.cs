@@ -45,10 +45,10 @@ namespace Siro.F
                     GenerarReporte("Diario",null);
                     break;
                 case "navBarItem5":
-                    GenerarReporte("EstadosSituacion", null);
+                    GenerarReporte("EstadoDeSituacion", null);
                     break;
                 case "navBarItem6":
-                    GenerarReporte("BalancePruebaMes", null);
+                    GenerarReporte("BALANCE");
                     break;
                 case "navBarItem8":
                     GenerarReporte("Reporte Gastos", new int[]{6,9});
@@ -68,6 +68,18 @@ namespace Siro.F
                 case "navBarItem13":
                     GenerarReporte("EstadoResultados", null);
                     break;
+                case "navBarItem14":
+                    OpenForm(new F.D.Mayor());
+                    break;
+                case "navBarItem15":
+                   GenerarReporte("BALANCE CALCULADO", null);
+                    break;
+                case "navBarItem16":
+                    OpenForm(new F.D.VerCuentas());
+                    break;
+                case "navBarItem17":
+                    OpenForm(new F.D.VerCuentas());
+                    break;
             }
 
         }
@@ -75,12 +87,37 @@ namespace Siro.F
         {
             XtraReport report = new XtraReport();
             report.LoadLayout(string.Format(@"Reportes\\Diario\\{0}.repx", reporte));
+            if(report.Parameters["PrmAño"] != null)
+            {
             report.Parameters["PrmAño"].Value = Principal.Bariables.PeridoContable.Year;
             report.Parameters["PrmMes"].Value = Principal.Bariables.PeridoContable.Month;
             if (tip != null)
                 report.Parameters["prmTipo"].Value = tip;
-
+            }
+            for(int i =0; i< report.Parameters.Count; i++)
+            {
+                if (report.Parameters[i].Type.Name == "DateTime")
+                    report.Parameters[i].Value = DateTime.Now;
+            }
             report.Parameters["prmIdEmpresa"].Value = Principal.Bariables.IdEmpresa.Id;
+            var printTool3 = new ReportPrintTool(report);
+            printTool3.PreviewForm.MdiParent = this.MdiParent;
+            printTool3.PreviewForm.Text = "R. " + reporte;
+            printTool3.ShowPreview();
+        }
+        private void GenerarReporte(string reporte)
+        {
+            XtraReport report = new XtraReport();
+            report.LoadLayout(string.Format(@"Reportes\\Diario\\{0}.repx", reporte));
+            if (report.Parameters.Count >= 2)
+            {
+                report.Parameters[0].Value = DateTime.Now;
+                report.Parameters[1].Value = DateTime.Now;
+            }
+            if (report.Parameters.Count >= 3)
+            {
+                report.Parameters[2].Value = Principal.Bariables.IdEmpresa.Id;
+            }
             var printTool3 = new ReportPrintTool(report);
             printTool3.PreviewForm.MdiParent = this.MdiParent;
             printTool3.PreviewForm.Text = "R. " + reporte;

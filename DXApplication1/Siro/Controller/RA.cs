@@ -12,12 +12,12 @@ namespace Siro.Controller
     {
         //slEntities db;
         //slContabilidad db2;
-        slSiro db3;
+        slSiroCon db3;
         public RA()
         {
             //db = new slEntities();
             //db2 = new slContabilidad();
-            db3 = new slSiro();
+            db3 = new slSiroCon();
         }
         public void Dispose()
         {
@@ -50,7 +50,7 @@ namespace Siro.Controller
         public void Agregarkardex(Kardex kar)
         {
             var k = new Kardex { };
-            using (var context = new slSiro())
+            using (var context = new slSiroCon())
             {
                 using (var dbContextTransaction = context.Database.BeginTransaction())
                 {
@@ -77,7 +77,7 @@ namespace Siro.Controller
         }
         public bool Guardar(Siro.RA entidad)
         {
-            using (var context = new slSiro())
+            using (var context = new slSiroCon())
             {
                 using (var dbContextTransaction = context.Database.BeginTransaction())
                 {
@@ -121,7 +121,7 @@ namespace Siro.Controller
         }
         public bool Guardar(Siro.CicloAlmacenaje entidad)
         {
-            using (var context = new slSiro())
+            using (var context = new slSiroCon())
             {
                 using (var dbContextTransaction = context.Database.BeginTransaction())
                 {

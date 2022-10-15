@@ -177,7 +177,6 @@
             // 
             this.lblMsg.Id = 1;
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // bar1
             // 
@@ -197,8 +196,8 @@
             // barButtonItem4
             // 
             this.barButtonItem4.Caption = "Guardar Registros";
-            this.barButtonItem4.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.Glyph")));
             this.barButtonItem4.Id = 10;
+            this.barButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
@@ -207,7 +206,6 @@
             this.barStaticItem2.Caption = "Desde";
             this.barStaticItem2.Id = 15;
             this.barStaticItem2.Name = "barStaticItem2";
-            this.barStaticItem2.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barEditItem1
             // 
@@ -224,7 +222,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DtDesde.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DtDesde.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.DtDesde.Name = "DtDesde";
             this.DtDesde.EditValueChanged += new System.EventHandler(this.DtDesde_EditValueChanged);
             // 
@@ -233,7 +230,6 @@
             this.barStaticItem1.Caption = "Hasta";
             this.barStaticItem1.Id = 14;
             this.barStaticItem1.Name = "barStaticItem1";
-            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barEditItem2
             // 
@@ -250,15 +246,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.DtHasta.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DtHasta.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.DtHasta.Name = "DtHasta";
             this.DtHasta.EditValueChanged += new System.EventHandler(this.DtHasta_EditValueChanged);
             // 
             // barButtonItem5
             // 
             this.barButtonItem5.Caption = "Buscar Registros";
-            this.barButtonItem5.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.Glyph")));
             this.barButtonItem5.Id = 11;
+            this.barButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -267,86 +262,92 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(923, 44);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.barDockControlTop.Size = new System.Drawing.Size(2308, 108);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 610);
-            this.barDockControlBottom.Size = new System.Drawing.Size(923, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1547);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.barDockControlBottom.Size = new System.Drawing.Size(2308, 68);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 566);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 108);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1439);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(923, 44);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 566);
+            this.barDockControlRight.Location = new System.Drawing.Point(2308, 108);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 1439);
             // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Nuevo Cliente";
-            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
             this.barButtonItem1.Id = 0;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
             this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "Ocultar Panel Edición";
-            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
             this.barButtonItem2.Id = 2;
+            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barButtonItem3
             // 
             this.barButtonItem3.Caption = "Mostrar Panel Edición";
-            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
             this.barButtonItem3.Id = 3;
+            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
             this.barButtonItem3.Name = "barButtonItem3";
             // 
             // barStaticItemFecha
             // 
             this.barStaticItemFecha.Id = 4;
             this.barStaticItemFecha.Name = "barStaticItemFecha";
-            this.barStaticItemFecha.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barStaticItemEmpresa
             // 
             this.barStaticItemEmpresa.Id = 5;
             this.barStaticItemEmpresa.Name = "barStaticItemEmpresa";
-            this.barStaticItemEmpresa.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // btnBackWard
             // 
-            this.btnBackWard.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBackWard.Glyph")));
             this.btnBackWard.Id = 6;
+            this.btnBackWard.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBackWard.ImageOptions.Image")));
             this.btnBackWard.Name = "btnBackWard";
             // 
             // btnFordware
             // 
-            this.btnFordware.Glyph = ((System.Drawing.Image)(resources.GetObject("btnFordware.Glyph")));
             this.btnFordware.Id = 7;
+            this.btnFordware.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFordware.ImageOptions.Image")));
             this.btnFordware.Name = "btnFordware";
             // 
             // btnNew
             // 
             this.btnNew.Caption = "Nuevo";
-            this.btnNew.Glyph = ((System.Drawing.Image)(resources.GetObject("btnNew.Glyph")));
             this.btnNew.Id = 8;
+            this.btnNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.ImageOptions.Image")));
             this.btnNew.Name = "btnNew";
             // 
             // btnGuadar
             // 
             this.btnGuadar.Caption = "Guardar";
-            this.btnGuadar.Glyph = ((System.Drawing.Image)(resources.GetObject("btnGuadar.Glyph")));
             this.btnGuadar.Id = 9;
+            this.btnGuadar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGuadar.ImageOptions.Image")));
             this.btnGuadar.Name = "btnGuadar";
             // 
             // barButtonItem6
@@ -359,8 +360,10 @@
             // 
             this.gridControl1.DataSource = this.entradasSalidasBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 44);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.gridControl1.Location = new System.Drawing.Point(0, 108);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.txtPorcentaje,
@@ -369,7 +372,7 @@
             this.lstProductos,
             this.lstTipoMovimiento,
             this.LstTipoAlmacen});
-            this.gridControl1.Size = new System.Drawing.Size(923, 566);
+            this.gridControl1.Size = new System.Drawing.Size(2308, 1439);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -429,8 +432,8 @@
             this.lstProductos.DataSource = this.productosBindingSource;
             this.lstProductos.DisplayMember = "Productos1";
             this.lstProductos.Name = "lstProductos";
+            this.lstProductos.PopupView = this.repositoryItemSearchLookUpEdit1View;
             this.lstProductos.ValueMember = "IdProducto";
-            this.lstProductos.View = this.repositoryItemSearchLookUpEdit1View;
             // 
             // repositoryItemSearchLookUpEdit1View
             // 
@@ -554,8 +557,8 @@
             this.lstTipoMovimiento.DataSource = this.tiposMovimientoBindingSource;
             this.lstTipoMovimiento.DisplayMember = "TipoMovimiento";
             this.lstTipoMovimiento.Name = "lstTipoMovimiento";
+            this.lstTipoMovimiento.PopupView = this.gridView2;
             this.lstTipoMovimiento.ValueMember = "IdTipoMovimiento";
-            this.lstTipoMovimiento.View = this.gridView2;
             this.lstTipoMovimiento.EditValueChanged += new System.EventHandler(this.lstTipoMovimiento_EditValueChanged);
             // 
             // gridView2
@@ -598,8 +601,8 @@
             this.LstTipoAlmacen.DataSource = this.tiposAlmacenBindingSource;
             this.LstTipoAlmacen.DisplayMember = "Almacen";
             this.LstTipoAlmacen.Name = "LstTipoAlmacen";
+            this.LstTipoAlmacen.PopupView = this.gridView3;
             this.LstTipoAlmacen.ValueMember = "IdAlmacen";
-            this.LstTipoAlmacen.View = this.gridView3;
             // 
             // tiposAlmacenBindingSource
             // 
@@ -656,14 +659,15 @@
             // 
             // EntradasSalidas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 636);
+            this.ClientSize = new System.Drawing.Size(2308, 1615);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "EntradasSalidas";
             this.Text = "Kardex";
             this.Load += new System.EventHandler(this.EntradasSalidas_Load);

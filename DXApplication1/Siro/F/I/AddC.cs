@@ -13,8 +13,8 @@ using DevExpress.XtraEditors;
 namespace Siro.F.I
 {
     public partial class AddC : DevExpress.XtraEditors.XtraForm
-    {       
-        Siro.slSiro db = new Siro.slSiro();
+    {
+        Siro.slSiroCon db = new Siro.slSiroCon();
         public AddC()
         {
             InitializeComponent();

@@ -61,6 +61,7 @@
             this.colPeriodDecimo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSeguroSocialDecimo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSeguroSocialDecimoPatrono = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -69,6 +70,8 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.btnActualizar = new DevExpress.XtraBars.BarButtonItem();
             this.btnAtras = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.btnGenerarAsientos = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -81,6 +84,7 @@
             this.btnAdelante = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.btnActualizarPlanilla = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.planillaColaboradorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -95,14 +99,16 @@
             // 
             this.gridControl1.DataSource = this.planillaColaboradorBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 47);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gridControl1.Location = new System.Drawing.Point(0, 56);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3});
-            this.gridControl1.Size = new System.Drawing.Size(934, 611);
+            this.gridControl1.Size = new System.Drawing.Size(1155, 750);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -139,7 +145,8 @@
             this.colQuincena,
             this.colPeriodDecimo,
             this.colSeguroSocialDecimo,
-            this.colSeguroSocialDecimoPatrono});
+            this.colSeguroSocialDecimoPatrono,
+            this.colId});
             this.gridView1.CustomizationFormBounds = new System.Drawing.Rectangle(707, 315, 216, 183);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
@@ -154,8 +161,8 @@
             this.colIdColaborador.Name = "colIdColaborador";
             this.colIdColaborador.OptionsColumn.AllowEdit = false;
             this.colIdColaborador.Visible = true;
-            this.colIdColaborador.VisibleIndex = 3;
-            this.colIdColaborador.Width = 38;
+            this.colIdColaborador.VisibleIndex = 4;
+            this.colIdColaborador.Width = 41;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -174,8 +181,8 @@
             this.colSalarioQuincenal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SalarioQuincenal", "{0:0.00}")});
             this.colSalarioQuincenal.Visible = true;
-            this.colSalarioQuincenal.VisibleIndex = 4;
-            this.colSalarioQuincenal.Width = 38;
+            this.colSalarioQuincenal.VisibleIndex = 5;
+            this.colSalarioQuincenal.Width = 41;
             // 
             // repositoryItemTextEdit3
             // 
@@ -194,8 +201,8 @@
             this.colTotalHoras.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalHoras", "{0:0.00}")});
             this.colTotalHoras.Visible = true;
-            this.colTotalHoras.VisibleIndex = 5;
-            this.colTotalHoras.Width = 38;
+            this.colTotalHoras.VisibleIndex = 6;
+            this.colTotalHoras.Width = 41;
             // 
             // colSalarioBruto
             // 
@@ -209,8 +216,8 @@
             this.colSalarioBruto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SalarioBruto", "{0:0.00}")});
             this.colSalarioBruto.Visible = true;
-            this.colSalarioBruto.VisibleIndex = 6;
-            this.colSalarioBruto.Width = 38;
+            this.colSalarioBruto.VisibleIndex = 7;
+            this.colSalarioBruto.Width = 41;
             // 
             // colOtrasDeducciones
             // 
@@ -222,8 +229,8 @@
             this.colOtrasDeducciones.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "OtrasDeducciones", "{0:0.00}")});
             this.colOtrasDeducciones.Visible = true;
-            this.colOtrasDeducciones.VisibleIndex = 10;
-            this.colOtrasDeducciones.Width = 38;
+            this.colOtrasDeducciones.VisibleIndex = 11;
+            this.colOtrasDeducciones.Width = 41;
             // 
             // colCXCRecurrentes
             // 
@@ -235,8 +242,8 @@
             this.colCXCRecurrentes.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "CXCRecurrentes", "{0:0.00}")});
             this.colCXCRecurrentes.Visible = true;
-            this.colCXCRecurrentes.VisibleIndex = 11;
-            this.colCXCRecurrentes.Width = 38;
+            this.colCXCRecurrentes.VisibleIndex = 12;
+            this.colCXCRecurrentes.Width = 41;
             // 
             // colCXC
             // 
@@ -248,8 +255,8 @@
             this.colCXC.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "CXC", "{0:0.00}")});
             this.colCXC.Visible = true;
-            this.colCXC.VisibleIndex = 12;
-            this.colCXC.Width = 38;
+            this.colCXC.VisibleIndex = 13;
+            this.colCXC.Width = 41;
             // 
             // colSeguroSocial
             // 
@@ -261,8 +268,8 @@
             this.colSeguroSocial.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SeguroSocial", "{0:0.00}")});
             this.colSeguroSocial.Visible = true;
-            this.colSeguroSocial.VisibleIndex = 7;
-            this.colSeguroSocial.Width = 38;
+            this.colSeguroSocial.VisibleIndex = 8;
+            this.colSeguroSocial.Width = 41;
             // 
             // colSeguroEducativo
             // 
@@ -274,8 +281,8 @@
             this.colSeguroEducativo.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SeguroEducativo", "{0:0.00}")});
             this.colSeguroEducativo.Visible = true;
-            this.colSeguroEducativo.VisibleIndex = 8;
-            this.colSeguroEducativo.Width = 38;
+            this.colSeguroEducativo.VisibleIndex = 9;
+            this.colSeguroEducativo.Width = 41;
             // 
             // colISR
             // 
@@ -287,8 +294,8 @@
             this.colISR.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ISR", "{0:0.00}")});
             this.colISR.Visible = true;
-            this.colISR.VisibleIndex = 9;
-            this.colISR.Width = 38;
+            this.colISR.VisibleIndex = 10;
+            this.colISR.Width = 41;
             // 
             // colSeguroSocialPatronal
             // 
@@ -318,8 +325,8 @@
             this.colDecimo.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Decimo", "{0:0.00}")});
             this.colDecimo.Visible = true;
-            this.colDecimo.VisibleIndex = 14;
-            this.colDecimo.Width = 38;
+            this.colDecimo.VisibleIndex = 15;
+            this.colDecimo.Width = 41;
             // 
             // colVacacciones
             // 
@@ -331,8 +338,8 @@
             this.colVacacciones.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Vacacciones", "{0:0.00}")});
             this.colVacacciones.Visible = true;
-            this.colVacacciones.VisibleIndex = 15;
-            this.colVacacciones.Width = 38;
+            this.colVacacciones.VisibleIndex = 16;
+            this.colVacacciones.Width = 41;
             // 
             // colSalarioNeto
             // 
@@ -346,8 +353,8 @@
             this.colSalarioNeto.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SalarioNeto", "{0:0.00}")});
             this.colSalarioNeto.Visible = true;
-            this.colSalarioNeto.VisibleIndex = 13;
-            this.colSalarioNeto.Width = 38;
+            this.colSalarioNeto.VisibleIndex = 14;
+            this.colSalarioNeto.Width = 41;
             // 
             // colindemnizacion
             // 
@@ -359,8 +366,8 @@
             this.colindemnizacion.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "indemnizacion", "{0:0.00}")});
             this.colindemnizacion.Visible = true;
-            this.colindemnizacion.VisibleIndex = 16;
-            this.colindemnizacion.Width = 59;
+            this.colindemnizacion.VisibleIndex = 17;
+            this.colindemnizacion.Width = 65;
             // 
             // colAntiguedad
             // 
@@ -372,8 +379,8 @@
             this.colAntiguedad.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Antiguedad", "{0:0.00}")});
             this.colAntiguedad.Visible = true;
-            this.colAntiguedad.VisibleIndex = 17;
-            this.colAntiguedad.Width = 84;
+            this.colAntiguedad.VisibleIndex = 18;
+            this.colAntiguedad.Width = 93;
             // 
             // colRecerva
             // 
@@ -402,8 +409,8 @@
             this.colAño.Name = "colAño";
             this.colAño.OptionsColumn.AllowEdit = false;
             this.colAño.Visible = true;
-            this.colAño.VisibleIndex = 0;
-            this.colAño.Width = 40;
+            this.colAño.VisibleIndex = 1;
+            this.colAño.Width = 43;
             // 
             // colMes
             // 
@@ -412,8 +419,8 @@
             this.colMes.Name = "colMes";
             this.colMes.OptionsColumn.AllowEdit = false;
             this.colMes.Visible = true;
-            this.colMes.VisibleIndex = 1;
-            this.colMes.Width = 40;
+            this.colMes.VisibleIndex = 2;
+            this.colMes.Width = 43;
             // 
             // colQuincena
             // 
@@ -421,8 +428,8 @@
             this.colQuincena.Name = "colQuincena";
             this.colQuincena.OptionsColumn.AllowEdit = false;
             this.colQuincena.Visible = true;
-            this.colQuincena.VisibleIndex = 2;
-            this.colQuincena.Width = 61;
+            this.colQuincena.VisibleIndex = 3;
+            this.colQuincena.Width = 67;
             // 
             // colPeriodDecimo
             // 
@@ -432,8 +439,8 @@
             this.colPeriodDecimo.Name = "colPeriodDecimo";
             this.colPeriodDecimo.ToolTip = "Perio Decimo";
             this.colPeriodDecimo.Visible = true;
-            this.colPeriodDecimo.VisibleIndex = 18;
-            this.colPeriodDecimo.Width = 35;
+            this.colPeriodDecimo.VisibleIndex = 19;
+            this.colPeriodDecimo.Width = 38;
             // 
             // colSeguroSocialDecimo
             // 
@@ -446,8 +453,8 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SeguroSocialDecimo", "{0:0.00}")});
             this.colSeguroSocialDecimo.ToolTip = "Seguro Social Decimo Colaborador";
             this.colSeguroSocialDecimo.Visible = true;
-            this.colSeguroSocialDecimo.VisibleIndex = 19;
-            this.colSeguroSocialDecimo.Width = 47;
+            this.colSeguroSocialDecimo.VisibleIndex = 20;
+            this.colSeguroSocialDecimo.Width = 51;
             // 
             // colSeguroSocialDecimoPatrono
             // 
@@ -460,8 +467,17 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SeguroSocialDecimoPatrono", "{0:0.00}")});
             this.colSeguroSocialDecimoPatrono.ToolTip = "Seguro Social Decimo Patrono";
             this.colSeguroSocialDecimoPatrono.Visible = true;
-            this.colSeguroSocialDecimoPatrono.VisibleIndex = 20;
-            this.colSeguroSocialDecimoPatrono.Width = 56;
+            this.colSeguroSocialDecimoPatrono.VisibleIndex = 21;
+            this.colSeguroSocialDecimoPatrono.Width = 88;
+            // 
+            // colId
+            // 
+            this.colId.Caption = "#";
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            this.colId.Visible = true;
+            this.colId.VisibleIndex = 0;
+            this.colId.Width = 44;
             // 
             // repositoryItemTextEdit2
             // 
@@ -489,8 +505,11 @@
             this.btnActualizar,
             this.btnAtras,
             this.btnAdelante,
-            this.barEditItem1});
-            this.barManager1.MaxItemId = 11;
+            this.barEditItem1,
+            this.btnDelete,
+            this.btnGenerarAsientos,
+            this.btnActualizarPlanilla});
+            this.barManager1.MaxItemId = 14;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bar3;
@@ -524,7 +543,10 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem4, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnActualizar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAtras, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAtras, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnActualizarPlanilla, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnGenerarAsientos, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Custom 2";
             // 
             // barButtonItem4
@@ -551,33 +573,53 @@
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAtras_ItemClick);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Caption = "Eliminar Registro";
+            this.btnDelete.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDelete.Glyph")));
+            this.btnDelete.Id = 11;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
+            // 
+            // btnGenerarAsientos
+            // 
+            this.btnGenerarAsientos.Caption = "Generar Asientos";
+            this.btnGenerarAsientos.Glyph = ((System.Drawing.Image)(resources.GetObject("btnGenerarAsientos.Glyph")));
+            this.btnGenerarAsientos.Id = 12;
+            this.btnGenerarAsientos.Name = "btnGenerarAsientos";
+            this.btnGenerarAsientos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGenerarAsientos_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(934, 47);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(1155, 56);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 658);
-            this.barDockControlBottom.Size = new System.Drawing.Size(934, 25);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 806);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1155, 35);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 47);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 611);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 56);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 750);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(934, 47);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 611);
+            this.barDockControlRight.Location = new System.Drawing.Point(1155, 56);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 750);
             // 
             // barButtonItem1
             // 
@@ -633,16 +675,25 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
+            // btnActualizarPlanilla
+            // 
+            this.btnActualizarPlanilla.Caption = "Actualizar Planilla";
+            this.btnActualizarPlanilla.Glyph = ((System.Drawing.Image)(resources.GetObject("btnActualizarPlanilla.Glyph")));
+            this.btnActualizarPlanilla.Id = 13;
+            this.btnActualizarPlanilla.Name = "btnActualizarPlanilla";
+            this.btnActualizarPlanilla.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnActualizarPlanilla_ItemClick);
+            // 
             // PlanillaGenerada
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 683);
+            this.ClientSize = new System.Drawing.Size(1155, 841);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PlanillaGenerada";
             this.Text = "PlanillaGenerada";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -711,5 +762,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPeriodDecimo;
         private DevExpress.XtraGrid.Columns.GridColumn colSeguroSocialDecimo;
         private DevExpress.XtraGrid.Columns.GridColumn colSeguroSocialDecimoPatrono;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraBars.BarButtonItem btnDelete;
+        private DevExpress.XtraBars.BarButtonItem btnGenerarAsientos;
+        private DevExpress.XtraBars.BarButtonItem btnActualizarPlanilla;
     }
 }

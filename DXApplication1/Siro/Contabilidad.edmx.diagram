@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f439c7f545fc44cd8d6a34dc676881a5" Name="Diagram1" ZoomLevel="72" >
+      <Diagram DiagramId="f439c7f545fc44cd8d6a34dc676881a5" Name="Diagram1" ZoomLevel="64" >
         <EntityTypeShape EntityType="slModel.Usuarios" Width="1.5" PointX="16.25" PointY="4.625" />
         <EntityTypeShape EntityType="slModel.ClasesCliente" Width="1.5" PointX="0.5" PointY="3.375" />
         <EntityTypeShape EntityType="slModel.Clientes" Width="1.5" PointX="3.5" PointY="2.75" />
@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="slModel.Perfil" Width="1.5" PointX="24" PointY="8.125" />
         <AssociationConnector Association="slModel.FK_DetallesPerfil_Perfil" />
         <EntityTypeShape EntityType="slModel.Empresas" Width="1.5" PointX="19.125" PointY="10.5" />
-        <EntityTypeShape EntityType="slModel.VAsientos" Width="1.5" PointX="24" PointY="4.625" />
+        <EntityTypeShape EntityType="slModel.VAsientos" Width="1.5" PointX="20.375" PointY="0.5" />
         <EntityTypeShape EntityType="slModel.FormasPago" Width="1.5" PointX="11" PointY="16.75" />
         <EntityTypeShape EntityType="slModel.FPagoUilizada" Width="1.5" PointX="13.25" PointY="16.375" />
         <EntityTypeShape EntityType="slModel.Transacciones" Width="1.5" PointX="15.625" PointY="15.625" />

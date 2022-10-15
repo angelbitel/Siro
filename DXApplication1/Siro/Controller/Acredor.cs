@@ -47,8 +47,7 @@ namespace Siro.Controller
                     }
                 }
             }
-        }
-        
+        }        
         public List<Acredores> LstAcredores()
         {
             using (var context = new slPlanilla())

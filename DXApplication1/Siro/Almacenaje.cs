@@ -17,6 +17,7 @@ namespace Siro
         public Almacenaje()
         {
             this.RA = new HashSet<RA>();
+            this.VentasMoviles = new HashSet<VentasMoviles>();
         }
     
         public int IdAlmacen { get; set; }
@@ -28,5 +29,6 @@ namespace Siro
     
         public virtual TiposAlmacen TiposAlmacen { get; set; }
         public virtual ICollection<RA> RA { get; set; }
+        public virtual ICollection<VentasMoviles> VentasMoviles { get; set; }
     }
 }

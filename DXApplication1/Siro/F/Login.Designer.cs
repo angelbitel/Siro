@@ -35,7 +35,7 @@
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.lbl = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -62,19 +62,21 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.Location = new System.Drawing.Point(196, 88);
+            this.textEdit1.Location = new System.Drawing.Point(490, 223);
+            this.textEdit1.Margin = new System.Windows.Forms.Padding(8);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.NullText = "<Usuario>";
-            this.textEdit1.Size = new System.Drawing.Size(161, 20);
+            this.textEdit1.Size = new System.Drawing.Size(402, 42);
             this.textEdit1.TabIndex = 6;
             // 
             // textEdit2
             // 
-            this.textEdit2.Location = new System.Drawing.Point(196, 114);
+            this.textEdit2.Location = new System.Drawing.Point(490, 289);
+            this.textEdit2.Margin = new System.Windows.Forms.Padding(8);
             this.textEdit2.Name = "textEdit2";
             this.textEdit2.Properties.NullText = "<Contraseña>";
             this.textEdit2.Properties.PasswordChar = '*';
-            this.textEdit2.Size = new System.Drawing.Size(161, 20);
+            this.textEdit2.Size = new System.Drawing.Size(402, 42);
             this.textEdit2.TabIndex = 7;
             this.textEdit2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textEdit2_KeyUp);
             // 
@@ -90,7 +92,7 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.barButtonItem2,
-            this.barStaticItem1,
+            this.lbl,
             this.barButtonItem3,
             this.barMdiChildrenListItem1,
             this.barWorkspaceMenuItem1,
@@ -110,45 +112,52 @@
             this.bar3.DockRow = 0;
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.lbl)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
             // 
-            // barStaticItem1
+            // lbl
             // 
-            this.barStaticItem1.Id = 2;
-            this.barStaticItem1.Name = "barStaticItem1";
-            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.lbl.Id = 2;
+            this.lbl.Name = "lbl";
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(401, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(8);
+            this.barDockControlTop.Size = new System.Drawing.Size(1002, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 247);
-            this.barDockControlBottom.Size = new System.Drawing.Size(401, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 625);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(8);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1002, 68);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 247);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(8);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 625);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(401, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 247);
+            this.barDockControlRight.Location = new System.Drawing.Point(1002, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(8);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 625);
             // 
             // barButtonItem1
             // 
@@ -217,32 +226,35 @@
             // pictureEdit1
             // 
             this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(51, 32);
+            this.pictureEdit1.Location = new System.Drawing.Point(128, 81);
+            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(8);
             this.pictureEdit1.MenuManager = this.barManager1;
             this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureEdit1.Properties.ErrorImage")));
+            this.pictureEdit1.Properties.ErrorImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("pictureEdit1.Properties.ErrorImageOptions.Image")));
             this.pictureEdit1.Properties.ReadOnly = true;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.ShowScrollBars = true;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(139, 148);
+            this.pictureEdit1.Size = new System.Drawing.Size(348, 376);
             this.pictureEdit1.TabIndex = 16;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.LineVisible = true;
-            this.labelControl1.Location = new System.Drawing.Point(51, 228);
+            this.labelControl1.Location = new System.Drawing.Point(128, 579);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(8);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(284, 13);
+            this.labelControl1.Size = new System.Drawing.Size(681, 33);
             this.labelControl1.TabIndex = 17;
             this.labelControl1.Text = "Ingresa el usuario y contraseña y presiona enter...";
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 273);
+            this.ClientSize = new System.Drawing.Size(1002, 693);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.textEdit2);
@@ -252,6 +264,8 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(8);
             this.MaximizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -274,7 +288,7 @@
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar3;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarStaticItem lbl;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;

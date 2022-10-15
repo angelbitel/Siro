@@ -196,7 +196,7 @@ namespace Siro.F.D
                             Tipo = 2,
                             IdEmpresa = Principal.Bariables.IdEmpresa.Id,
                             ITBM = dtF.Sum(s=> s.ITBM),
-                            Monto =dtF.Sum(s=> s.Monto*s.Cantidad),
+                            Monto =dtF.Sum(s=> s.Monto*s.Cantidad??1),
                             MontoPagado =0
                         };
                         var cxcDetalle = new List<DetallesFactura>();
@@ -233,12 +233,12 @@ namespace Siro.F.D
                         }
                         dtAsiento.Add(new DetalleAsientos
                         {
-                            Debito = (f.Monto * f.Cantidad) + f.ITBM + f.IngresoSubsidio,
+                            Debito = (f.Monto * f.Cantidad) + f.ITBM + f.IngresoSubsidio??0,
                             IdMaestroCuenta = idCuenta
                         });
                         dtAsiento.Add(new DetalleAsientos
                         {
-                            Credito = f.Cantidad * f.Monto + f.IngresoSubsidio,
+                            Credito = f.Cantidad * f.Monto + f.IngresoSubsidio??0,
                             IdCliente = IdCliente,
                             IdMaestroCuenta = Principal.Bariables.IdCuentaCliente,
                             IdProducto = f.IdProducto
@@ -274,8 +274,8 @@ namespace Siro.F.D
         string Cliente { get; set; }
         private void gridLookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            IdCliente = int.Parse(gridLookUpEdit1.EditValue.ToString());
-            Cliente = gridLookUpEdit1.Text.ToString();
+            IdCliente = int.Parse(lukClientes.EditValue.ToString());
+            Cliente = lukClientes.Text.ToString();
             var clts = lstClientes.SingleOrDefault(w => w.idCliente == IdCliente);
             if(clts != null)
             {
@@ -374,6 +374,20 @@ namespace Siro.F.D
                 cnt = 1;
             detalle[i].ITBM = ((detalle[i].Monto * cnt) * detalle[i].ITBM) ?? 0;
             detalle[i].Total = (detalle[i].Monto * cnt) + detalle[i].ITBM;
+        }
+
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            var frm = new F.Facturacion.LitleClient();
+            frm.ShowDialog();
+            if (frm.Nuevo)
+            {
+                lstClientes.Add(frm.NuevoCliente);
+                lstClientes = lstClientes.OrderBy(o => o.NombreCompleto).ToList();
+                clientesBindingSource.DataSource = lstClientes;
+                lukClientes.Properties.DataSource = lstClientes;
+                lukClientes.EditValue = frm.NuevoCliente.idCliente;
+            }
         }
     }
 }

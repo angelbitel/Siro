@@ -11,19 +11,16 @@ namespace Siro.F
         {
             Dashboard = dashboard;
             InitializeComponent();
-        }
-
-        private void Dashboards_Load(object sender, EventArgs e)
-        {
             dashboardViewer1.LoadDashboard(String.Format(@"Dashboards\{0}.xml",Dashboard));
         }
         private void dashboardViewer1_ConfigureDataConnection(object sender, DevExpress.DashboardCommon.DashboardConfigureDataConnectionEventArgs e)
         {
-            var cnn = Settings.Default.slConnectionString.Split(';');
+            var cnn = Settings.Default.CnnReport.Split(';');
             var pcp = e.ConnectionParameters as MsSqlConnectionParameters;
             pcp.ServerName = cnn[0].Split('=')[1];
-            pcp.Password = cnn[3].Split('=')[1];
-            pcp.UserName = cnn[2].Split('=')[1];
+            pcp.DatabaseName = cnn[1].Split('=')[1];
+            pcp.UserName = cnn[3].Split('=')[1];
+            pcp.Password = cnn[4].Split('=')[1];
             pcp.AuthorizationType = MsSqlAuthorizationType.SqlServer;
         }
     }

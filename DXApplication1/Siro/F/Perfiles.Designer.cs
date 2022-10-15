@@ -116,18 +116,20 @@
             this.dataLayoutControl1.DataSource = this.usuariosBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.dataLayoutControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(470, 280);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(548, 342);
             this.dataLayoutControl1.TabIndex = 1;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // simpleButton1
             // 
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(246, 228);
+            this.simpleButton1.Location = new System.Drawing.Point(287, 268);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(212, 36);
+            this.simpleButton1.Size = new System.Drawing.Size(245, 36);
             this.simpleButton1.StyleController = this.dataLayoutControl1;
             this.simpleButton1.TabIndex = 16;
             this.simpleButton1.Text = "Guardar Cambios";
@@ -136,14 +138,15 @@
             // IdUsuarioTextEdit
             // 
             this.IdUsuarioTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "IdUser", true));
-            this.IdUsuarioTextEdit.Location = new System.Drawing.Point(251, 12);
+            this.IdUsuarioTextEdit.Location = new System.Drawing.Point(297, 16);
+            this.IdUsuarioTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.IdUsuarioTextEdit.Name = "IdUsuarioTextEdit";
             this.IdUsuarioTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.IdUsuarioTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.IdUsuarioTextEdit.Properties.Mask.EditMask = "N0";
             this.IdUsuarioTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.IdUsuarioTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.IdUsuarioTextEdit.Size = new System.Drawing.Size(207, 20);
+            this.IdUsuarioTextEdit.Size = new System.Drawing.Size(235, 22);
             this.IdUsuarioTextEdit.StyleController = this.dataLayoutControl1;
             this.IdUsuarioTextEdit.TabIndex = 4;
             // 
@@ -154,46 +157,51 @@
             // usuarioTextEdit
             // 
             this.usuarioTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "usuario", true));
-            this.usuarioTextEdit.Location = new System.Drawing.Point(251, 36);
+            this.usuarioTextEdit.Location = new System.Drawing.Point(297, 44);
+            this.usuarioTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.usuarioTextEdit.Name = "usuarioTextEdit";
-            this.usuarioTextEdit.Size = new System.Drawing.Size(207, 20);
+            this.usuarioTextEdit.Size = new System.Drawing.Size(235, 22);
             this.usuarioTextEdit.StyleController = this.dataLayoutControl1;
             this.usuarioTextEdit.TabIndex = 5;
             // 
             // contraseñaTextEdit
             // 
             this.contraseñaTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "contraseña", true));
-            this.contraseñaTextEdit.Location = new System.Drawing.Point(251, 84);
+            this.contraseñaTextEdit.Location = new System.Drawing.Point(297, 100);
+            this.contraseñaTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contraseñaTextEdit.Name = "contraseñaTextEdit";
             this.contraseñaTextEdit.Properties.PasswordChar = '*';
-            this.contraseñaTextEdit.Size = new System.Drawing.Size(207, 20);
+            this.contraseñaTextEdit.Size = new System.Drawing.Size(235, 22);
             this.contraseñaTextEdit.StyleController = this.dataLayoutControl1;
             this.contraseñaTextEdit.TabIndex = 6;
             // 
             // direccionTextEdit
             // 
             this.direccionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "direccion", true));
-            this.direccionTextEdit.Location = new System.Drawing.Point(251, 108);
+            this.direccionTextEdit.Location = new System.Drawing.Point(297, 128);
+            this.direccionTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.direccionTextEdit.Name = "direccionTextEdit";
-            this.direccionTextEdit.Size = new System.Drawing.Size(207, 20);
+            this.direccionTextEdit.Size = new System.Drawing.Size(235, 22);
             this.direccionTextEdit.StyleController = this.dataLayoutControl1;
             this.direccionTextEdit.TabIndex = 7;
             // 
             // telefonoTextEdit
             // 
             this.telefonoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "telefono", true));
-            this.telefonoTextEdit.Location = new System.Drawing.Point(251, 132);
+            this.telefonoTextEdit.Location = new System.Drawing.Point(297, 156);
+            this.telefonoTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.telefonoTextEdit.Name = "telefonoTextEdit";
-            this.telefonoTextEdit.Size = new System.Drawing.Size(207, 20);
+            this.telefonoTextEdit.Size = new System.Drawing.Size(235, 22);
             this.telefonoTextEdit.StyleController = this.dataLayoutControl1;
             this.telefonoTextEdit.TabIndex = 8;
             // 
             // emailTextEdit
             // 
             this.emailTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "email", true));
-            this.emailTextEdit.Location = new System.Drawing.Point(251, 156);
+            this.emailTextEdit.Location = new System.Drawing.Point(297, 184);
+            this.emailTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.emailTextEdit.Name = "emailTextEdit";
-            this.emailTextEdit.Size = new System.Drawing.Size(207, 20);
+            this.emailTextEdit.Size = new System.Drawing.Size(235, 22);
             this.emailTextEdit.StyleController = this.dataLayoutControl1;
             this.emailTextEdit.TabIndex = 9;
             // 
@@ -201,7 +209,8 @@
             // 
             this.fechaCumpleañoDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "fechaCumpleaño", true));
             this.fechaCumpleañoDateEdit.EditValue = null;
-            this.fechaCumpleañoDateEdit.Location = new System.Drawing.Point(251, 180);
+            this.fechaCumpleañoDateEdit.Location = new System.Drawing.Point(297, 212);
+            this.fechaCumpleañoDateEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fechaCumpleañoDateEdit.Name = "fechaCumpleañoDateEdit";
             this.fechaCumpleañoDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.fechaCumpleañoDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -209,7 +218,7 @@
             this.fechaCumpleañoDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.fechaCumpleañoDateEdit.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
-            this.fechaCumpleañoDateEdit.Size = new System.Drawing.Size(207, 20);
+            this.fechaCumpleañoDateEdit.Size = new System.Drawing.Size(235, 22);
             this.fechaCumpleañoDateEdit.StyleController = this.dataLayoutControl1;
             this.fechaCumpleañoDateEdit.TabIndex = 10;
             // 
@@ -217,7 +226,8 @@
             // 
             this.LastEditDateDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "LastEditDate", true));
             this.LastEditDateDateEdit.EditValue = null;
-            this.LastEditDateDateEdit.Location = new System.Drawing.Point(251, 204);
+            this.LastEditDateDateEdit.Location = new System.Drawing.Point(297, 240);
+            this.LastEditDateDateEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LastEditDateDateEdit.Name = "LastEditDateDateEdit";
             this.LastEditDateDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.LastEditDateDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -225,27 +235,29 @@
             this.LastEditDateDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.LastEditDateDateEdit.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
-            this.LastEditDateDateEdit.Size = new System.Drawing.Size(207, 20);
+            this.LastEditDateDateEdit.Size = new System.Drawing.Size(235, 22);
             this.LastEditDateDateEdit.StyleController = this.dataLayoutControl1;
             this.LastEditDateDateEdit.TabIndex = 12;
             // 
             // nombreCompletoTextEdit
             // 
             this.nombreCompletoTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "nombreCompleto", true));
-            this.nombreCompletoTextEdit.Location = new System.Drawing.Point(251, 60);
+            this.nombreCompletoTextEdit.Location = new System.Drawing.Point(297, 72);
+            this.nombreCompletoTextEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nombreCompletoTextEdit.Name = "nombreCompletoTextEdit";
-            this.nombreCompletoTextEdit.Size = new System.Drawing.Size(207, 20);
+            this.nombreCompletoTextEdit.Size = new System.Drawing.Size(235, 22);
             this.nombreCompletoTextEdit.StyleController = this.dataLayoutControl1;
             this.nombreCompletoTextEdit.TabIndex = 14;
             // 
             // imgPictureEdit
             // 
             this.imgPictureEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.usuariosBindingSource, "img", true));
-            this.imgPictureEdit.Location = new System.Drawing.Point(12, 12);
+            this.imgPictureEdit.Location = new System.Drawing.Point(16, 16);
+            this.imgPictureEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.imgPictureEdit.Name = "imgPictureEdit";
             this.imgPictureEdit.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.imgPictureEdit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.imgPictureEdit.Size = new System.Drawing.Size(148, 212);
+            this.imgPictureEdit.Size = new System.Drawing.Size(170, 246);
             this.imgPictureEdit.StyleController = this.dataLayoutControl1;
             this.imgPictureEdit.TabIndex = 15;
             // 
@@ -257,7 +269,7 @@
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(470, 280);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(548, 342);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -279,79 +291,79 @@
             this.layoutControlItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(450, 260);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(522, 316);
             // 
             // ItemForIdUsuario
             // 
             this.ItemForIdUsuario.Control = this.IdUsuarioTextEdit;
             this.ItemForIdUsuario.Enabled = false;
-            this.ItemForIdUsuario.Location = new System.Drawing.Point(152, 0);
+            this.ItemForIdUsuario.Location = new System.Drawing.Point(176, 0);
             this.ItemForIdUsuario.Name = "ItemForIdUsuario";
-            this.ItemForIdUsuario.Size = new System.Drawing.Size(298, 24);
+            this.ItemForIdUsuario.Size = new System.Drawing.Size(346, 28);
             this.ItemForIdUsuario.Text = "Id Usuario";
-            this.ItemForIdUsuario.TextSize = new System.Drawing.Size(84, 13);
+            this.ItemForIdUsuario.TextSize = new System.Drawing.Size(102, 16);
             // 
             // ItemForcontraseña
             // 
             this.ItemForcontraseña.Control = this.contraseñaTextEdit;
-            this.ItemForcontraseña.Location = new System.Drawing.Point(152, 72);
+            this.ItemForcontraseña.Location = new System.Drawing.Point(176, 84);
             this.ItemForcontraseña.Name = "ItemForcontraseña";
-            this.ItemForcontraseña.Size = new System.Drawing.Size(298, 24);
+            this.ItemForcontraseña.Size = new System.Drawing.Size(346, 28);
             this.ItemForcontraseña.Text = "contraseña";
-            this.ItemForcontraseña.TextSize = new System.Drawing.Size(84, 13);
+            this.ItemForcontraseña.TextSize = new System.Drawing.Size(102, 16);
             // 
             // ItemFordireccion
             // 
             this.ItemFordireccion.Control = this.direccionTextEdit;
-            this.ItemFordireccion.Location = new System.Drawing.Point(152, 96);
+            this.ItemFordireccion.Location = new System.Drawing.Point(176, 112);
             this.ItemFordireccion.Name = "ItemFordireccion";
-            this.ItemFordireccion.Size = new System.Drawing.Size(298, 24);
+            this.ItemFordireccion.Size = new System.Drawing.Size(346, 28);
             this.ItemFordireccion.Text = "direccion";
-            this.ItemFordireccion.TextSize = new System.Drawing.Size(84, 13);
+            this.ItemFordireccion.TextSize = new System.Drawing.Size(102, 16);
             // 
             // ItemFortelefono
             // 
             this.ItemFortelefono.Control = this.telefonoTextEdit;
-            this.ItemFortelefono.Location = new System.Drawing.Point(152, 120);
+            this.ItemFortelefono.Location = new System.Drawing.Point(176, 140);
             this.ItemFortelefono.Name = "ItemFortelefono";
-            this.ItemFortelefono.Size = new System.Drawing.Size(298, 24);
+            this.ItemFortelefono.Size = new System.Drawing.Size(346, 28);
             this.ItemFortelefono.Text = "telefono";
-            this.ItemFortelefono.TextSize = new System.Drawing.Size(84, 13);
+            this.ItemFortelefono.TextSize = new System.Drawing.Size(102, 16);
             // 
             // ItemForemail
             // 
             this.ItemForemail.Control = this.emailTextEdit;
-            this.ItemForemail.Location = new System.Drawing.Point(152, 144);
+            this.ItemForemail.Location = new System.Drawing.Point(176, 168);
             this.ItemForemail.Name = "ItemForemail";
-            this.ItemForemail.Size = new System.Drawing.Size(298, 24);
+            this.ItemForemail.Size = new System.Drawing.Size(346, 28);
             this.ItemForemail.Text = "email";
-            this.ItemForemail.TextSize = new System.Drawing.Size(84, 13);
+            this.ItemForemail.TextSize = new System.Drawing.Size(102, 16);
             // 
             // ItemForfechaCumpleaño
             // 
             this.ItemForfechaCumpleaño.Control = this.fechaCumpleañoDateEdit;
-            this.ItemForfechaCumpleaño.Location = new System.Drawing.Point(152, 168);
+            this.ItemForfechaCumpleaño.Location = new System.Drawing.Point(176, 196);
             this.ItemForfechaCumpleaño.Name = "ItemForfechaCumpleaño";
-            this.ItemForfechaCumpleaño.Size = new System.Drawing.Size(298, 24);
+            this.ItemForfechaCumpleaño.Size = new System.Drawing.Size(346, 28);
             this.ItemForfechaCumpleaño.Text = "fecha Cumpleaño";
-            this.ItemForfechaCumpleaño.TextSize = new System.Drawing.Size(84, 13);
+            this.ItemForfechaCumpleaño.TextSize = new System.Drawing.Size(102, 16);
             // 
             // ItemForLastEditDate
             // 
             this.ItemForLastEditDate.Control = this.LastEditDateDateEdit;
             this.ItemForLastEditDate.Enabled = false;
-            this.ItemForLastEditDate.Location = new System.Drawing.Point(152, 192);
+            this.ItemForLastEditDate.Location = new System.Drawing.Point(176, 224);
             this.ItemForLastEditDate.Name = "ItemForLastEditDate";
-            this.ItemForLastEditDate.Size = new System.Drawing.Size(298, 24);
+            this.ItemForLastEditDate.Size = new System.Drawing.Size(346, 28);
             this.ItemForLastEditDate.Text = "Last Edit Date";
-            this.ItemForLastEditDate.TextSize = new System.Drawing.Size(84, 13);
+            this.ItemForLastEditDate.TextSize = new System.Drawing.Size(102, 16);
             // 
             // ItemForimg
             // 
             this.ItemForimg.Control = this.imgPictureEdit;
             this.ItemForimg.Location = new System.Drawing.Point(0, 0);
             this.ItemForimg.Name = "ItemForimg";
-            this.ItemForimg.Size = new System.Drawing.Size(152, 216);
+            this.ItemForimg.Size = new System.Drawing.Size(176, 252);
             this.ItemForimg.StartNewLine = true;
             this.ItemForimg.Text = "img";
             this.ItemForimg.TextSize = new System.Drawing.Size(0, 0);
@@ -360,35 +372,35 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 216);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 252);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(234, 44);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(271, 64);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // ItemFornombreCompleto
             // 
             this.ItemFornombreCompleto.Control = this.nombreCompletoTextEdit;
-            this.ItemFornombreCompleto.Location = new System.Drawing.Point(152, 48);
+            this.ItemFornombreCompleto.Location = new System.Drawing.Point(176, 56);
             this.ItemFornombreCompleto.Name = "ItemFornombreCompleto";
-            this.ItemFornombreCompleto.Size = new System.Drawing.Size(298, 24);
+            this.ItemFornombreCompleto.Size = new System.Drawing.Size(346, 28);
             this.ItemFornombreCompleto.Text = "nombre Completo";
-            this.ItemFornombreCompleto.TextSize = new System.Drawing.Size(84, 13);
+            this.ItemFornombreCompleto.TextSize = new System.Drawing.Size(102, 16);
             // 
             // ItemForusuario
             // 
             this.ItemForusuario.Control = this.usuarioTextEdit;
-            this.ItemForusuario.Location = new System.Drawing.Point(152, 24);
+            this.ItemForusuario.Location = new System.Drawing.Point(176, 28);
             this.ItemForusuario.Name = "ItemForusuario";
-            this.ItemForusuario.Size = new System.Drawing.Size(298, 24);
+            this.ItemForusuario.Size = new System.Drawing.Size(346, 28);
             this.ItemForusuario.Text = "usuario";
-            this.ItemForusuario.TextSize = new System.Drawing.Size(84, 13);
+            this.ItemForusuario.TextSize = new System.Drawing.Size(102, 16);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.simpleButton1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(234, 216);
+            this.layoutControlItem1.Location = new System.Drawing.Point(271, 252);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(216, 44);
+            this.layoutControlItem1.Size = new System.Drawing.Size(251, 64);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -435,28 +447,32 @@
             this.barDockControl1.CausesValidation = false;
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl1.Size = new System.Drawing.Size(470, 0);
+            this.barDockControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControl1.Size = new System.Drawing.Size(548, 0);
             // 
             // barDockControl2
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 280);
-            this.barDockControl2.Size = new System.Drawing.Size(470, 26);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 342);
+            this.barDockControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControl2.Size = new System.Drawing.Size(548, 35);
             // 
             // barDockControl3
             // 
             this.barDockControl3.CausesValidation = false;
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControl3.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl3.Size = new System.Drawing.Size(0, 280);
+            this.barDockControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 342);
             // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(470, 0);
-            this.barDockControl4.Size = new System.Drawing.Size(0, 280);
+            this.barDockControl4.Location = new System.Drawing.Point(548, 0);
+            this.barDockControl4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 342);
             // 
             // barButtonItem1
             // 
@@ -488,14 +504,15 @@
             // 
             // Perfiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 306);
+            this.ClientSize = new System.Drawing.Size(548, 377);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.barDockControl3);
             this.Controls.Add(this.barDockControl4);
             this.Controls.Add(this.barDockControl2);
             this.Controls.Add(this.barDockControl1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Perfiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Perfiles";

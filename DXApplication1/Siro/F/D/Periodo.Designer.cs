@@ -55,18 +55,20 @@
             this.layoutControl1.Controls.Add(this.dateEdit1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(235, 113);
+            this.layoutControl1.Size = new System.Drawing.Size(588, 287);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(12, 60);
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(30, 134);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(211, 36);
+            this.simpleButton1.Size = new System.Drawing.Size(528, 52);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "Aceptar";
@@ -74,18 +76,20 @@
             // 
             // imageComboBoxEdit1
             // 
-            this.imageComboBoxEdit1.Location = new System.Drawing.Point(61, 36);
+            this.imageComboBoxEdit1.Location = new System.Drawing.Point(148, 82);
+            this.imageComboBoxEdit1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.imageComboBoxEdit1.Name = "imageComboBoxEdit1";
             this.imageComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.imageComboBoxEdit1.Size = new System.Drawing.Size(162, 20);
+            this.imageComboBoxEdit1.Size = new System.Drawing.Size(410, 42);
             this.imageComboBoxEdit1.StyleController = this.layoutControl1;
             this.imageComboBoxEdit1.TabIndex = 4;
             // 
             // dateEdit1
             // 
             this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(61, 12);
+            this.dateEdit1.Location = new System.Drawing.Point(148, 30);
+            this.dateEdit1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -95,9 +99,8 @@
             this.dateEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.dateEdit1.Properties.EditFormat.FormatString = "M";
             this.dateEdit1.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit1.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
             this.dateEdit1.Properties.Mask.EditMask = "M";
-            this.dateEdit1.Size = new System.Drawing.Size(162, 20);
+            this.dateEdit1.Size = new System.Drawing.Size(410, 42);
             this.dateEdit1.StyleController = this.layoutControl1;
             this.dateEdit1.TabIndex = 1;
             this.dateEdit1.Popup += new System.EventHandler(this.dateEdit1_Popup);
@@ -110,9 +113,8 @@
             this.layoutControlItem1,
             this.layoutControlItem2,
             this.layoutControlItem3});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(235, 113);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(588, 287);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -120,35 +122,36 @@
             this.layoutControlItem1.Control = this.dateEdit1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(215, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(538, 52);
             this.layoutControlItem1.Text = "Fecha";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(46, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(115, 33);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.imageComboBoxEdit1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 52);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(215, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(538, 52);
             this.layoutControlItem2.Text = "Empresas";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(46, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(115, 33);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.simpleButton1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 104);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(215, 45);
+            this.layoutControlItem3.Size = new System.Drawing.Size(538, 133);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // Periodo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(235, 113);
+            this.ClientSize = new System.Drawing.Size(588, 287);
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Name = "Periodo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Periodo";

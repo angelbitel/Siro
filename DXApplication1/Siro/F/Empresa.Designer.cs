@@ -61,6 +61,12 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.rpsBreadCrumb1 = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
+            this.colIdBanco = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdCliente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdEmpleado = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdEfectivoBanco = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdCaja = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdProveedor = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.empresasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -73,10 +79,12 @@
             // 
             this.gridControl1.DataSource = this.empresasBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(712, 535);
+            this.gridControl1.Size = new System.Drawing.Size(1780, 1359);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -94,7 +102,13 @@
             this.colDv,
             this.colDireccion,
             this.colTelefono,
-            this.colimg});
+            this.colimg,
+            this.colIdBanco,
+            this.colIdCliente,
+            this.colIdEmpleado,
+            this.colIdEfectivoBanco,
+            this.colIdCaja,
+            this.colIdProveedor});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView1_RowUpdated);
@@ -201,35 +215,42 @@
             // 
             this.lblMsg.Id = 2;
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(712, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.barDockControlTop.Size = new System.Drawing.Size(1780, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 535);
-            this.barDockControlBottom.Size = new System.Drawing.Size(712, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1359);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1780, 65);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 535);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1359);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(712, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 535);
+            this.barDockControlRight.Location = new System.Drawing.Point(1780, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 1359);
             // 
             // barButtonItem1
             // 
@@ -303,8 +324,8 @@
             // barButtonItem7
             // 
             this.barButtonItem7.Caption = "Guardar Perfil";
-            this.barButtonItem7.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.Glyph")));
             this.barButtonItem7.Id = 10;
+            this.barButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
             this.barButtonItem7.Name = "barButtonItem7";
             // 
             // rpsBreadCrumb1
@@ -314,16 +335,59 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.rpsBreadCrumb1.Name = "rpsBreadCrumb1";
             // 
+            // colIdBanco
+            // 
+            this.colIdBanco.FieldName = "IdBanco";
+            this.colIdBanco.Name = "colIdBanco";
+            this.colIdBanco.Visible = true;
+            this.colIdBanco.VisibleIndex = 7;
+            // 
+            // colIdCliente
+            // 
+            this.colIdCliente.FieldName = "IdCliente";
+            this.colIdCliente.Name = "colIdCliente";
+            this.colIdCliente.Visible = true;
+            this.colIdCliente.VisibleIndex = 8;
+            // 
+            // colIdEmpleado
+            // 
+            this.colIdEmpleado.FieldName = "IdEmpleado";
+            this.colIdEmpleado.Name = "colIdEmpleado";
+            this.colIdEmpleado.Visible = true;
+            this.colIdEmpleado.VisibleIndex = 9;
+            // 
+            // colIdEfectivoBanco
+            // 
+            this.colIdEfectivoBanco.FieldName = "IdEfectivoBanco";
+            this.colIdEfectivoBanco.Name = "colIdEfectivoBanco";
+            this.colIdEfectivoBanco.Visible = true;
+            this.colIdEfectivoBanco.VisibleIndex = 10;
+            // 
+            // colIdCaja
+            // 
+            this.colIdCaja.FieldName = "IdCaja";
+            this.colIdCaja.Name = "colIdCaja";
+            this.colIdCaja.Visible = true;
+            this.colIdCaja.VisibleIndex = 11;
+            // 
+            // colIdProveedor
+            // 
+            this.colIdProveedor.FieldName = "IdProveedor";
+            this.colIdProveedor.Name = "colIdProveedor";
+            this.colIdProveedor.Visible = true;
+            this.colIdProveedor.VisibleIndex = 12;
+            // 
             // Empresa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 561);
+            this.ClientSize = new System.Drawing.Size(1780, 1424);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Name = "Empresa";
             this.Text = "Empresa";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -369,5 +433,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn colDireccion;
         private DevExpress.XtraGrid.Columns.GridColumn colTelefono;
         private DevExpress.XtraGrid.Columns.GridColumn colimg;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdBanco;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdCliente;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdEmpleado;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdEfectivoBanco;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdCaja;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdProveedor;
     }
 }

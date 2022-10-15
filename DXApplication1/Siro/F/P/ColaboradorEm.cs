@@ -241,8 +241,7 @@ namespace Siro.F.P
 
             vacacionbindingSource.AddNew();
             var row = new Model.Vacacion();
-            decimal bruto = lst.Where(w=> w.Monto>0).Sum(s => s.Monto)??0;
-            bruto= (bruto)/11;
+            decimal bruto = lst.Where(w => w.Tipo == "Vacaciones").Sum(s => s.Monto) ?? 0;
             decimal desc = lst.Where(w=> w.Monto<0).Sum(s => s.Monto)??0;
             row.Brutas = bruto;
             row.Descuentos = desc*-1;

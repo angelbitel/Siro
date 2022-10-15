@@ -9,14 +9,8 @@ namespace Siro.Controller
     public class CuentasM
     {
         slContabilidad db;
-        public void Dispose()
-        {
-            db.Dispose();
-        }
-        public CuentasM()
-        {
-            db = new slContabilidad();
-        }
+        public void Dispose() => db.Dispose();
+        public CuentasM() => db = new slContabilidad();
         public List<CuentasMaestras> LstCuentasFiltradas(int idEmpresa, int[] idTipo)
         {
             List<CuentasMaestras> lst = new List<CuentasMaestras>();
@@ -113,6 +107,39 @@ namespace Siro.Controller
             var row= db.MaestroCuentas.SingleOrDefault(w=> w.IdMaestroCuenta == idCuenta);
             var row2 = db.MaestroCuentas.SingleOrDefault(s => s.Id == row.Id && s.IdEmpresa == idEmpresa);
             return row2.IdMaestroCuenta;
+        }
+        internal List<VCuentasMaestras> Padres
+        {
+            get
+            {
+                return db.VCuentasMaestras.ToList();
+            }
+        }
+
+        public string Mensaje { get; private set; }
+        public object Id { get; private set; }
+
+        public bool Guardar(MaestroCuentas inf)
+        {
+            if (inf.IdMaestroCuenta != 0)
+            {
+                var original = db.MaestroCuentas.Find(inf.IdMaestroCuenta);
+                if (original != null)
+                    db.Entry(original).CurrentValues.SetValues(inf);
+            }
+            else
+                db.MaestroCuentas.Add(inf);
+            try
+            {
+                db.SaveChanges();
+                Id = inf.IdMaestroCuenta;
+            }
+            catch (Exception ex0)
+            {
+                Mensaje = ex0.Message;
+                return false;
+            }
+            return true;
         }
     }
 }

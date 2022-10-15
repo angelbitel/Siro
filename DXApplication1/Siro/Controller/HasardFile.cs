@@ -2,6 +2,7 @@
 using Siro.Properties;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -40,8 +41,9 @@ namespace Siro.Controller
         {
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             //proc.StartInfo.FileName = PatchBat;
-            proc.StartInfo.FileName = @"C:\Tools1000fpa\wspooler.exe";
-            proc.StartInfo.Arguments = @"-p1 -z -f C:\Tools1000fpa\x.txt";
+            proc.StartInfo.FileName = Settings.Default.Spoolers;
+            proc.StartInfo.Arguments = string.Format(@"-p5 -z -f {0}\x.txt", Settings.Default.Spoolers.Replace("wspooler.exe", ""));
+            proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             proc.Start();
         }
         const char separadar = '\x39';

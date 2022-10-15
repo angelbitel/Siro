@@ -117,7 +117,7 @@ namespace Siro.F.D
                     var nNodoE = new MaestroCuentas
                     {
                         Text = txtCuenta.Text,
-                        ParentID = controller.IdParent(nNodo.ParentID, f.IdEmpresa),
+                        ParentID = controller.IdParent(nNodo.ParentID??0, f.IdEmpresa),
                         IdEmpresa = f.IdEmpresa,
                         Nivel = Nodo.Level + 1,
                         Tipo = Tipo,
@@ -190,7 +190,7 @@ namespace Siro.F.D
             if (rowAnterior != null)
             {
                 lst.SingleOrDefault(s => s.IdMaestroCuenta == rowActual.IdMaestroCuenta).ParentID = rowAnterior.ParentID;
-                controller.ActualizarPadrent(rowActual.IdMaestroCuenta, rowAnterior.ParentID);
+                controller.ActualizarPadrent(rowActual.IdMaestroCuenta, rowAnterior.ParentID??0);
                 //OrdenarLista();
             }
         }

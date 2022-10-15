@@ -192,6 +192,15 @@ namespace Siro.F
             else
                 q="Segunda ";
             this.labelControl2.Text = string.Format("Procesando Planilla de la {0} Quincena de {1} ", q, Principal.Bariables.PeridoContable.ToString("MMMM")).ToUpper();
+            var lstV = new List<string>();
+            var lstC = new List<string>();
+            using (var db =new slPlanilla())
+            {
+                db.Colaboradores.Where(s => s.IdEstadoColaborador != 2 && s.FechaIngreso.Value.Month == DateTime.Now.Month).Select(s => new { s.Colaborador }).ToList().ForEach(f => lstV.Add(f.Colaborador));
+                db.Colaboradores.Where(s => s.IdEstadoColaborador != 2 && s.FechaNacimiento.Value.Month == DateTime.Now.Month).Select(s => new { s.Colaborador }).ToList().ForEach(f => lstC.Add(f.Colaborador));
+                lblVacation.Text += String.Join(" • ", lstV);
+                lblCumple.Text += String.Join(" • ", lstC);
+            }
         }
         public void CalculosHoras()
         {

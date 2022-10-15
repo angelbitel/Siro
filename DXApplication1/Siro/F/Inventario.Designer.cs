@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inventario));
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem31 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem33 = new DevExpress.XtraNavBar.NavBarItem();
@@ -51,6 +48,15 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.lblMsg = new DevExpress.XtraBars.BarStaticItem();
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.btnRegistroArroz = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAjusteInventario = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCerrarCicloArroz = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMovil = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -61,20 +67,13 @@
             this.barStaticItemFecha = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItemEmpresa = new DevExpress.XtraBars.BarStaticItem();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            this.hideContainerLeft = new DevExpress.XtraBars.Docking.AutoHideContainer();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.dockPanel1.SuspendLayout();
-            this.dockPanel1_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
-            this.hideContainerLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // dockManager1
             // 
-            this.dockManager1.AutoHideContainers.AddRange(new DevExpress.XtraBars.Docking.AutoHideContainer[] {
-            this.hideContainerLeft});
             this.dockManager1.Form = this;
             this.dockManager1.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
@@ -86,60 +85,6 @@
             "DevExpress.XtraBars.Ribbon.RibbonControl",
             "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
             "DevExpress.XtraBars.Navigation.TileNavPane"});
-            // 
-            // dockPanel1
-            // 
-            this.dockPanel1.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.dockPanel1.Appearance.Options.UseBackColor = true;
-            this.dockPanel1.Controls.Add(this.dockPanel1_Container);
-            this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel1.FloatSize = new System.Drawing.Size(171, 273);
-            this.dockPanel1.ID = new System.Guid("9141c447-619d-4ac8-bd8d-c0cf4f61a27d");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 0);
-            this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(149, 142);
-            this.dockPanel1.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel1.SavedIndex = 0;
-            this.dockPanel1.Size = new System.Drawing.Size(149, 721);
-            this.dockPanel1.Text = "Menu Inventario";
-            this.dockPanel1.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-            // 
-            // dockPanel1_Container
-            // 
-            this.dockPanel1_Container.Controls.Add(this.navBarControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 38);
-            this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(141, 679);
-            this.dockPanel1_Container.TabIndex = 0;
-            // 
-            // navBarControl1
-            // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup6;
-            this.navBarControl1.BackColor = System.Drawing.Color.Transparent;
-            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup6,
-            this.navBarGroup8});
-            this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.navBarItem23,
-            this.navBarItem31,
-            this.navBarItem24,
-            this.navBarItem25,
-            this.navBarItem26,
-            this.navBarItem28,
-            this.navBarItem32,
-            this.navBarItem33,
-            this.navBarItem27,
-            this.navBarItem1,
-            this.navBarItem2,
-            this.navBarItem3});
-            this.navBarControl1.Location = new System.Drawing.Point(0, 0);
-            this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 141;
-            this.navBarControl1.Size = new System.Drawing.Size(141, 679);
-            this.navBarControl1.TabIndex = 2;
-            this.navBarControl1.Text = "navBarControl1";
-            this.navBarControl1.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkPressed);
             // 
             // navBarGroup6
             // 
@@ -225,7 +170,8 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar3});
+            this.bar3,
+            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -237,8 +183,16 @@
             this.barButtonItem2,
             this.barButtonItem3,
             this.barStaticItemFecha,
-            this.barStaticItemEmpresa});
-            this.barManager1.MaxItemId = 6;
+            this.barStaticItemEmpresa,
+            this.btnRegistroArroz,
+            this.btnAjusteInventario,
+            this.btnCerrarCicloArroz,
+            this.barSubItem1,
+            this.barButtonItem7,
+            this.barButtonItem8,
+            this.barButtonItem9,
+            this.btnMovil});
+            this.barManager1.MaxItemId = 14;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar3
@@ -261,33 +215,113 @@
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 2";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnRegistroArroz, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAjusteInventario, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCerrarCicloArroz, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnMovil, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar1.Text = "Custom 2";
+            // 
+            // btnRegistroArroz
+            // 
+            this.btnRegistroArroz.Caption = "Registro RA";
+            this.btnRegistroArroz.Glyph = ((System.Drawing.Image)(resources.GetObject("btnRegistroArroz.Glyph")));
+            this.btnRegistroArroz.Id = 6;
+            this.btnRegistroArroz.Name = "btnRegistroArroz";
+            this.btnRegistroArroz.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegistroArroz_ItemClick);
+            // 
+            // btnAjusteInventario
+            // 
+            this.btnAjusteInventario.Caption = "Ajuste Inventario";
+            this.btnAjusteInventario.Glyph = ((System.Drawing.Image)(resources.GetObject("btnAjusteInventario.Glyph")));
+            this.btnAjusteInventario.Id = 7;
+            this.btnAjusteInventario.Name = "btnAjusteInventario";
+            this.btnAjusteInventario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAjusteInventario_ItemClick);
+            // 
+            // btnCerrarCicloArroz
+            // 
+            this.btnCerrarCicloArroz.Caption = "Cerrar Ciclo";
+            this.btnCerrarCicloArroz.Glyph = ((System.Drawing.Image)(resources.GetObject("btnCerrarCicloArroz.Glyph")));
+            this.btnCerrarCicloArroz.Id = 8;
+            this.btnCerrarCicloArroz.Name = "btnCerrarCicloArroz";
+            this.btnCerrarCicloArroz.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCerrarCicloArroz_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Reportes";
+            this.barSubItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barSubItem1.Glyph")));
+            this.barSubItem1.Id = 9;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Inventario Silos";
+            this.barButtonItem7.Id = 10;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Inventario Productos";
+            this.barButtonItem8.Id = 11;
+            this.barButtonItem8.Name = "barButtonItem8";
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Tablero";
+            this.barButtonItem9.Id = 12;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
+            // 
+            // btnMovil
+            // 
+            this.btnMovil.Caption = "Ventas Moviles";
+            this.btnMovil.Glyph = ((System.Drawing.Image)(resources.GetObject("btnMovil.Glyph")));
+            this.btnMovil.Id = 13;
+            this.btnMovil.Name = "btnMovil";
+            this.btnMovil.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMovil_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(968, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(1129, 56);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 721);
-            this.barDockControlBottom.Size = new System.Drawing.Size(968, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 884);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1129, 35);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 721);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 56);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 828);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(968, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 721);
+            this.barDockControlRight.Location = new System.Drawing.Point(1129, 56);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 828);
             // 
             // barButtonItem1
             // 
@@ -326,43 +360,31 @@
             // 
             this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureEdit1.EditValue = global::Siro.Properties.Resources.silo3;
-            this.pictureEdit1.Location = new System.Drawing.Point(35, 0);
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 56);
+            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureEdit1.MenuManager = this.barManager1;
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Size = new System.Drawing.Size(933, 721);
+            this.pictureEdit1.Size = new System.Drawing.Size(1129, 828);
             this.pictureEdit1.TabIndex = 7;
             this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
             // 
-            // hideContainerLeft
-            // 
-            this.hideContainerLeft.BackColor = System.Drawing.Color.White;
-            this.hideContainerLeft.Controls.Add(this.dockPanel1);
-            this.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.hideContainerLeft.Location = new System.Drawing.Point(0, 0);
-            this.hideContainerLeft.Name = "hideContainerLeft";
-            this.hideContainerLeft.Size = new System.Drawing.Size(35, 721);
-            // 
             // Inventario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 747);
+            this.ClientSize = new System.Drawing.Size(1129, 919);
             this.Controls.Add(this.pictureEdit1);
-            this.Controls.Add(this.hideContainerLeft);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Inventario";
             this.Text = "Inventario";
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.dockPanel1.ResumeLayout(false);
-            this.dockPanel1_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
-            this.hideContainerLeft.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,8 +393,6 @@
         #endregion
 
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
-        private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -385,7 +405,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarStaticItem barStaticItemFecha;
         private DevExpress.XtraBars.BarStaticItem barStaticItemEmpresa;
-        private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup6;
         private DevExpress.XtraNavBar.NavBarItem navBarItem31;
         private DevExpress.XtraNavBar.NavBarItem navBarItem33;
@@ -401,6 +420,14 @@
         private DevExpress.XtraNavBar.NavBarItem navBarItem1;
         private DevExpress.XtraNavBar.NavBarItem navBarItem2;
         private DevExpress.XtraNavBar.NavBarItem navBarItem3;
-        private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerLeft;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.BarButtonItem btnRegistroArroz;
+        private DevExpress.XtraBars.BarButtonItem btnAjusteInventario;
+        private DevExpress.XtraBars.BarButtonItem btnCerrarCicloArroz;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraBars.BarButtonItem btnMovil;
     }
 }

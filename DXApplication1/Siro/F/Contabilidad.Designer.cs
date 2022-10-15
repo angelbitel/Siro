@@ -50,6 +50,8 @@
             this.navBarItem31 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem16 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem17 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup8 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
@@ -61,6 +63,8 @@
             this.navBarItem10 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem11 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem12 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem14 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem15 = new DevExpress.XtraNavBar.NavBarItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.lblEmpresa = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -124,68 +128,73 @@
             // 
             this.lblMsg.Id = 1;
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(890, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
+            this.barDockControlTop.Size = new System.Drawing.Size(1112, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 731);
-            this.barDockControlBottom.Size = new System.Drawing.Size(890, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 598);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1112, 29);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 731);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 598);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(890, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 731);
+            this.barDockControlRight.Location = new System.Drawing.Point(1112, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 598);
             // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Nuevo Cliente";
-            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
             this.barButtonItem1.Id = 0;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
             this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "Ocultar Panel Edición";
-            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
             this.barButtonItem2.Id = 2;
+            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barButtonItem3
             // 
             this.barButtonItem3.Caption = "Mostrar Panel Edición";
-            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
             this.barButtonItem3.Id = 3;
+            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
             this.barButtonItem3.Name = "barButtonItem3";
             // 
             // barStaticItemFecha
             // 
             this.barStaticItemFecha.Id = 4;
             this.barStaticItemFecha.Name = "barStaticItemFecha";
-            this.barStaticItemFecha.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barStaticItemEmpresa
             // 
             this.barStaticItemEmpresa.Id = 5;
             this.barStaticItemEmpresa.Name = "barStaticItemEmpresa";
-            this.barStaticItemEmpresa.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // dockManager1
             // 
@@ -208,18 +217,20 @@
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.dockPanel1.ID = new System.Guid("0a308090-ff71-47e0-a584-2ac0eb30219b");
-            this.dockPanel1.Location = new System.Drawing.Point(690, 0);
+            this.dockPanel1.Location = new System.Drawing.Point(649, 0);
+            this.dockPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.dockPanel1.Name = "dockPanel1";
-            this.dockPanel1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(200, 731);
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(463, 200);
+            this.dockPanel1.Size = new System.Drawing.Size(463, 598);
             this.dockPanel1.Text = "Menu";
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.navBarControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 38);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(7, 45);
+            this.dockPanel1_Container.Margin = new System.Windows.Forms.Padding(4);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(192, 689);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(451, 548);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // navBarControl1
@@ -242,11 +253,16 @@
             this.navBarItem11,
             this.navBarItem12,
             this.navBarItem3,
-            this.navBarItem13});
+            this.navBarItem13,
+            this.navBarItem14,
+            this.navBarItem15,
+            this.navBarItem16,
+            this.navBarItem17});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
+            this.navBarControl1.Margin = new System.Windows.Forms.Padding(4);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 192;
-            this.navBarControl1.Size = new System.Drawing.Size(192, 689);
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 451;
+            this.navBarControl1.Size = new System.Drawing.Size(451, 548);
             this.navBarControl1.TabIndex = 2;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkPressed);
@@ -258,14 +274,16 @@
             this.navBarGroup6.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem31),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem16),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem17)});
             this.navBarGroup6.Name = "navBarGroup6";
             // 
             // navBarItem31
             // 
             this.navBarItem31.Caption = "Diario";
+            this.navBarItem31.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem31.ImageOptions.SmallImage")));
             this.navBarItem31.Name = "navBarItem31";
-            this.navBarItem31.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem31.SmallImage")));
             // 
             // navBarItem1
             // 
@@ -277,10 +295,21 @@
             this.navBarItem2.Caption = "Ventas";
             this.navBarItem2.Name = "navBarItem2";
             // 
+            // navBarItem16
+            // 
+            this.navBarItem16.Caption = "Reporte Asientos";
+            this.navBarItem16.Name = "navBarItem16";
+            // 
+            // navBarItem17
+            // 
+            this.navBarItem17.Caption = "Asientos";
+            this.navBarItem17.Name = "navBarItem17";
+            // 
             // navBarGroup8
             // 
             this.navBarGroup8.Caption = "Reportes";
             this.navBarGroup8.Expanded = true;
+            this.navBarGroup8.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup8.ImageOptions.SmallImage")));
             this.navBarGroup8.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3),
@@ -291,9 +320,10 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem9),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem10),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem11),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem12)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem12),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem14),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem15)});
             this.navBarGroup8.Name = "navBarGroup8";
-            this.navBarGroup8.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarGroup8.SmallImage")));
             // 
             // navBarItem4
             // 
@@ -345,6 +375,16 @@
             this.navBarItem12.Caption = "Historial Pagos Por Proveedor";
             this.navBarItem12.Name = "navBarItem12";
             // 
+            // navBarItem14
+            // 
+            this.navBarItem14.Caption = "Mayor";
+            this.navBarItem14.Name = "navBarItem14";
+            // 
+            // navBarItem15
+            // 
+            this.navBarItem15.Caption = "BALANCE CALCULADO";
+            this.navBarItem15.Name = "navBarItem15";
+            // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.lblEmpresa);
@@ -352,19 +392,22 @@
             this.layoutControl1.Controls.Add(this.labelControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(4);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(690, 731);
+            this.layoutControl1.Size = new System.Drawing.Size(649, 598);
             this.layoutControl1.TabIndex = 5;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // lblEmpresa
             // 
             this.lblEmpresa.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.lblEmpresa.Appearance.Options.UseFont = true;
             this.lblEmpresa.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
             this.lblEmpresa.Location = new System.Drawing.Point(12, 12);
+            this.lblEmpresa.Margin = new System.Windows.Forms.Padding(4);
             this.lblEmpresa.Name = "lblEmpresa";
-            this.lblEmpresa.Size = new System.Drawing.Size(335, 23);
+            this.lblEmpresa.Size = new System.Drawing.Size(403, 28);
             this.lblEmpresa.StyleController = this.layoutControl1;
             this.lblEmpresa.TabIndex = 8;
             this.lblEmpresa.Text = "INFORMACION DE CONTABILIDAD";
@@ -372,10 +415,12 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl2.Location = new System.Drawing.Point(12, 39);
+            this.labelControl2.Location = new System.Drawing.Point(12, 44);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(239, 16);
+            this.labelControl2.Size = new System.Drawing.Size(325, 21);
             this.labelControl2.StyleController = this.layoutControl1;
             this.labelControl2.TabIndex = 7;
             this.labelControl2.Text = "INFORMACION BASICA DE CONTABILIDAD";
@@ -383,10 +428,12 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl1.Location = new System.Drawing.Point(12, 59);
+            this.labelControl1.Location = new System.Drawing.Point(12, 69);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(291, 23);
+            this.labelControl1.Size = new System.Drawing.Size(356, 28);
             this.labelControl1.StyleController = this.layoutControl1;
             this.labelControl1.TabIndex = 6;
             this.labelControl1.Text = "INFORMACION DE CONTABILIDAD";
@@ -400,35 +447,34 @@
             this.layoutControlItem2,
             this.emptySpaceItem1,
             this.layoutControlItem3});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(690, 731);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(649, 598);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.labelControl2;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 27);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 32);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(670, 20);
+            this.layoutControlItem1.Size = new System.Drawing.Size(629, 25);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.labelControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 47);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 57);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(670, 27);
+            this.layoutControlItem2.Size = new System.Drawing.Size(629, 32);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 74);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 89);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(670, 637);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(629, 489);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
@@ -436,7 +482,7 @@
             this.layoutControlItem3.Control = this.lblEmpresa;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(670, 27);
+            this.layoutControlItem3.Size = new System.Drawing.Size(629, 32);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -450,15 +496,16 @@
             // 
             // Contabilidad
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 757);
+            this.ClientSize = new System.Drawing.Size(1112, 627);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Contabilidad";
             this.Text = "Contabilidad";
             this.Load += new System.EventHandler(this.Contabilidad_Load);
@@ -524,5 +571,9 @@
         private DevExpress.XtraNavBar.NavBarItem navBarItem12;
         private DevExpress.XtraNavBar.NavBarItem navBarItem3;
         private DevExpress.XtraNavBar.NavBarItem navBarItem13;
+        private DevExpress.XtraNavBar.NavBarItem navBarItem14;
+        private DevExpress.XtraNavBar.NavBarItem navBarItem15;
+        private DevExpress.XtraNavBar.NavBarItem navBarItem16;
+        private DevExpress.XtraNavBar.NavBarItem navBarItem17;
     }
 }

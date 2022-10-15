@@ -14,7 +14,14 @@ namespace Siro
     
     public partial class Vendedores
     {
+        public Vendedores()
+        {
+            this.VentasMoviles = new HashSet<VentasMoviles>();
+        }
+    
         public int IdVendedor { get; set; }
         public string Vendedor { get; set; }
+    
+        public virtual ICollection<VentasMoviles> VentasMoviles { get; set; }
     }
 }

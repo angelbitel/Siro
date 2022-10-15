@@ -46,14 +46,14 @@ namespace Siro.F.P
 
         private void comboBoxEdit1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBoxEdit1.Text == "Descuento Unico")
+            if(comboBoxEditTipo.Text == "Descuento Unico")
             {
                 this.searchLookUpEdit2.Enabled = false;
                 textEdit3.Enabled = false;
                 textEdit4.Enabled = false;
                 textEdit1.Enabled = true;
             }
-            else if (comboBoxEdit1.Text == "Recurrente CXC")
+            else if (comboBoxEditTipo.Text == "Recurrente CXC")
             {
                 this.searchLookUpEdit2.Enabled = false;
                 textEdit3.Enabled = true;

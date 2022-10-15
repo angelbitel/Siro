@@ -32,17 +32,16 @@
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Conductor));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.repositoryItemTextEditPassword = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.conductoresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colIdConductor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colConductor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCedula = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTextEditPassword = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.lblMsg = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -59,12 +58,13 @@
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.rpsBreadCrumb1 = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conductoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conductoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itbcrumbCuentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBreadCrumb1)).BeginInit();
@@ -87,6 +87,10 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
+            // conductoresBindingSource
+            // 
+            this.conductoresBindingSource.DataSource = typeof(Siro.Conductores);
+            // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -97,23 +101,6 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
             this.gridView1.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridView1_RowUpdated);
-            // 
-            // repositoryItemTextEditPassword
-            // 
-            this.repositoryItemTextEditPassword.AutoHeight = false;
-            this.repositoryItemTextEditPassword.Name = "repositoryItemTextEditPassword";
-            this.repositoryItemTextEditPassword.PasswordChar = '*';
-            // 
-            // repositoryItemImageComboBox1
-            // 
-            this.repositoryItemImageComboBox1.AutoHeight = false;
-            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            // 
-            // conductoresBindingSource
-            // 
-            this.conductoresBindingSource.DataSource = typeof(Siro.Conductores);
             // 
             // colIdConductor
             // 
@@ -139,6 +126,19 @@
             this.colCedula.Visible = true;
             this.colCedula.VisibleIndex = 2;
             this.colCedula.Width = 288;
+            // 
+            // repositoryItemTextEditPassword
+            // 
+            this.repositoryItemTextEditPassword.AutoHeight = false;
+            this.repositoryItemTextEditPassword.Name = "repositoryItemTextEditPassword";
+            this.repositoryItemTextEditPassword.PasswordChar = '*';
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             // 
             // barManager1
             // 
@@ -187,13 +187,6 @@
             this.lblMsg.Id = 2;
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.TextAlignment = System.Drawing.StringAlignment.Near;
-            // 
-            // barButtonItem8
-            // 
-            this.barButtonItem8.Caption = "Administracion Perfiles";
-            this.barButtonItem8.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.Glyph")));
-            this.barButtonItem8.Id = 11;
-            this.barButtonItem8.Name = "barButtonItem8";
             // 
             // barDockControlTop
             // 
@@ -256,12 +249,12 @@
             this.barWorkspaceMenuItem1.Caption = "barWorkspaceMenuItem1";
             this.barWorkspaceMenuItem1.Id = 5;
             this.barWorkspaceMenuItem1.Name = "barWorkspaceMenuItem1";
+            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
             // 
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
             this.workspaceManager1.TransitionType = pushTransition1;
-            this.barWorkspaceMenuItem1.WorkspaceManager = this.workspaceManager1;
             // 
             // barButtonItem4
             // 
@@ -303,6 +296,13 @@
             this.barButtonItem7.Id = 10;
             this.barButtonItem7.Name = "barButtonItem7";
             // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Administracion Perfiles";
+            this.barButtonItem8.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.Glyph")));
+            this.barButtonItem8.Id = 11;
+            this.barButtonItem8.Name = "barButtonItem8";
+            // 
             // rpsBreadCrumb1
             // 
             this.rpsBreadCrumb1.AutoHeight = false;
@@ -323,10 +323,10 @@
             this.Name = "Conductor";
             this.Text = "Conductor";
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.conductoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEditPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.conductoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itbcrumbCuentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBreadCrumb1)).EndInit();

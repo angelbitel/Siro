@@ -40,7 +40,7 @@
             this.colAcredor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIdAcredor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.comboBoxEditTipo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.searchLookUpEdit1 = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -78,7 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.acredoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit2View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTipo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).BeginInit();
@@ -103,25 +103,27 @@
             this.layoutControl1.Controls.Add(this.textEdit3);
             this.layoutControl1.Controls.Add(this.searchLookUpEdit2);
             this.layoutControl1.Controls.Add(this.simpleButton1);
-            this.layoutControl1.Controls.Add(this.comboBoxEdit1);
+            this.layoutControl1.Controls.Add(this.comboBoxEditTipo);
             this.layoutControl1.Controls.Add(this.textEdit2);
             this.layoutControl1.Controls.Add(this.textEdit1);
             this.layoutControl1.Controls.Add(this.searchLookUpEdit1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(781, 158, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(415, 182);
+            this.layoutControl1.Size = new System.Drawing.Size(484, 221);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // textEdit4
             // 
             this.textEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "ArregloRecurrente", true));
-            this.textEdit4.Location = new System.Drawing.Point(287, 108);
+            this.textEdit4.Location = new System.Drawing.Point(337, 128);
+            this.textEdit4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Size = new System.Drawing.Size(116, 20);
+            this.textEdit4.Size = new System.Drawing.Size(131, 22);
             this.textEdit4.StyleController = this.layoutControl1;
             this.textEdit4.TabIndex = 37;
             // 
@@ -132,9 +134,10 @@
             // textEdit3
             // 
             this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Monto", true));
-            this.textEdit3.Location = new System.Drawing.Point(93, 108);
+            this.textEdit3.Location = new System.Drawing.Point(113, 128);
+            this.textEdit3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(113, 20);
+            this.textEdit3.Size = new System.Drawing.Size(127, 22);
             this.textEdit3.StyleController = this.layoutControl1;
             this.textEdit3.TabIndex = 36;
             // 
@@ -142,7 +145,8 @@
             // 
             this.searchLookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "IdAcredor", true));
             this.searchLookUpEdit2.Enabled = false;
-            this.searchLookUpEdit2.Location = new System.Drawing.Point(59, 84);
+            this.searchLookUpEdit2.Location = new System.Drawing.Point(71, 100);
+            this.searchLookUpEdit2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchLookUpEdit2.Name = "searchLookUpEdit2";
             this.searchLookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -150,7 +154,7 @@
             this.searchLookUpEdit2.Properties.DisplayMember = "Acredor";
             this.searchLookUpEdit2.Properties.ValueMember = "IdAcredor";
             this.searchLookUpEdit2.Properties.View = this.searchLookUpEdit2View;
-            this.searchLookUpEdit2.Size = new System.Drawing.Size(344, 20);
+            this.searchLookUpEdit2.Size = new System.Drawing.Size(397, 22);
             this.searchLookUpEdit2.StyleController = this.layoutControl1;
             this.searchLookUpEdit2.TabIndex = 35;
             // 
@@ -183,52 +187,57 @@
             // simpleButton1
             // 
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(179, 132);
+            this.simpleButton1.Location = new System.Drawing.Point(210, 156);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(224, 38);
+            this.simpleButton1.Size = new System.Drawing.Size(258, 40);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 34;
             this.simpleButton1.Text = "Guardar Deducción";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
-            // comboBoxEdit1
+            // comboBoxEditTipo
             // 
-            this.comboBoxEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "TipoDeduccion", true));
-            this.comboBoxEdit1.Location = new System.Drawing.Point(41, 60);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.comboBoxEditTipo.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "TipoDeduccion", true));
+            this.comboBoxEditTipo.Location = new System.Drawing.Point(51, 72);
+            this.comboBoxEditTipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxEditTipo.Name = "comboBoxEditTipo";
+            this.comboBoxEditTipo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
+            this.comboBoxEditTipo.Properties.Items.AddRange(new object[] {
             "Descuento Unico",
             "Recurrente Quincenal",
             "Recurrente CXC"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(132, 20);
-            this.comboBoxEdit1.StyleController = this.layoutControl1;
-            this.comboBoxEdit1.TabIndex = 33;
-            this.comboBoxEdit1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEdit1_SelectedIndexChanged);
+            this.comboBoxEditTipo.Size = new System.Drawing.Size(150, 22);
+            this.comboBoxEditTipo.StyleController = this.layoutControl1;
+            this.comboBoxEditTipo.TabIndex = 33;
+            this.comboBoxEditTipo.SelectedIndexChanged += new System.EventHandler(this.comboBoxEdit1_SelectedIndexChanged);
             // 
             // textEdit2
             // 
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Deduccion", true));
-            this.textEdit2.Location = new System.Drawing.Point(70, 36);
+            this.textEdit2.Location = new System.Drawing.Point(84, 44);
+            this.textEdit2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(333, 20);
+            this.textEdit2.Size = new System.Drawing.Size(384, 22);
             this.textEdit2.StyleController = this.layoutControl1;
             this.textEdit2.TabIndex = 32;
             // 
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Monto", true));
-            this.textEdit1.Location = new System.Drawing.Point(252, 60);
+            this.textEdit1.Location = new System.Drawing.Point(295, 72);
+            this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(151, 20);
+            this.textEdit1.Size = new System.Drawing.Size(173, 22);
             this.textEdit1.StyleController = this.layoutControl1;
             this.textEdit1.TabIndex = 30;
             // 
             // searchLookUpEdit1
             // 
             this.searchLookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "IdColaborador", true));
-            this.searchLookUpEdit1.Location = new System.Drawing.Point(113, 12);
+            this.searchLookUpEdit1.Location = new System.Drawing.Point(136, 16);
+            this.searchLookUpEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchLookUpEdit1.Name = "searchLookUpEdit1";
             this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -236,7 +245,7 @@
             this.searchLookUpEdit1.Properties.DisplayMember = "Colaborador";
             this.searchLookUpEdit1.Properties.ValueMember = "IdColaborador";
             this.searchLookUpEdit1.Properties.View = this.gridView1;
-            this.searchLookUpEdit1.Size = new System.Drawing.Size(290, 20);
+            this.searchLookUpEdit1.Size = new System.Drawing.Size(332, 22);
             this.searchLookUpEdit1.StyleController = this.layoutControl1;
             this.searchLookUpEdit1.TabIndex = 29;
             // 
@@ -284,7 +293,7 @@
             this.layoutControlItem8});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(415, 182);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(484, 221);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem5
@@ -293,92 +302,92 @@
             this.layoutControlItem5.CustomizationFormText = "Buscar Colaborador:";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(395, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(458, 28);
             this.layoutControlItem5.Text = "Buscar Colaborador:";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Left;
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(98, 13);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(117, 16);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.textEdit2;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 28);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(395, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(458, 28);
             this.layoutControlItem3.Text = "Deducción:";
             this.layoutControlItem3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(53, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(63, 16);
             this.layoutControlItem3.TextToControlDistance = 5;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(167, 120);
+            this.layoutControlItem4.Location = new System.Drawing.Point(194, 140);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(228, 42);
+            this.layoutControlItem4.Size = new System.Drawing.Size(264, 55);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 120);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 140);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(167, 42);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(194, 55);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.textEdit3;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 112);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(198, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(230, 28);
             this.layoutControlItem7.Text = "Total Prestamo:";
             this.layoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(76, 13);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(92, 16);
             this.layoutControlItem7.TextToControlDistance = 5;
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.comboBoxEdit1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem2.Control = this.comboBoxEditTipo;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 56);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(165, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(191, 28);
             this.layoutControlItem2.Text = "Tipo:";
             this.layoutControlItem2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(24, 13);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(30, 16);
             this.layoutControlItem2.TextToControlDistance = 5;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.textEdit1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(165, 48);
+            this.layoutControlItem1.Location = new System.Drawing.Point(191, 56);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(230, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(267, 28);
             this.layoutControlItem1.Text = "Monto Cobrar:";
             this.layoutControlItem1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(70, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(83, 16);
             this.layoutControlItem1.TextToControlDistance = 5;
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.searchLookUpEdit2;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 84);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(395, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(458, 28);
             this.layoutControlItem6.Text = "Acredor:";
             this.layoutControlItem6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(42, 13);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(50, 16);
             this.layoutControlItem6.TextToControlDistance = 5;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.textEdit4;
-            this.layoutControlItem8.Location = new System.Drawing.Point(198, 96);
+            this.layoutControlItem8.Location = new System.Drawing.Point(230, 112);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(197, 24);
+            this.layoutControlItem8.Size = new System.Drawing.Size(228, 28);
             this.layoutControlItem8.Text = "Monto Arreglo:";
             this.layoutControlItem8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(72, 13);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(86, 16);
             this.layoutControlItem8.TextToControlDistance = 5;
             // 
             // barManager1
@@ -425,28 +434,32 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(415, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(484, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 182);
-            this.barDockControlBottom.Size = new System.Drawing.Size(415, 25);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 221);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(484, 34);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 182);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 221);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(415, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 182);
+            this.barDockControlRight.Location = new System.Drawing.Point(484, 0);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 221);
             // 
             // barButtonItem1
             // 
@@ -483,15 +496,16 @@
             // 
             // AgregarDeduccion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 207);
+            this.ClientSize = new System.Drawing.Size(484, 255);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AgregarDeduccion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AgregarDeduccion";
@@ -504,7 +518,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.acredoresBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit2View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTipo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1.Properties)).EndInit();
@@ -541,7 +555,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEditTipo;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;

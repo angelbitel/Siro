@@ -13,10 +13,10 @@ namespace Siro
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class slSiro : DbContext
+    public partial class slSiroCon : DbContext
     {
-        public slSiro()
-            : base("name=slSiro")
+        public slSiroCon()
+            : base("name=slSiroCon")
         {
         }
     
@@ -29,6 +29,7 @@ namespace Siro
         public virtual DbSet<CicloAlmacenaje> CicloAlmacenaje { get; set; }
         public virtual DbSet<ClasesRA> ClasesRA { get; set; }
         public virtual DbSet<Conductores> Conductores { get; set; }
+        public virtual DbSet<DetalleVentasMovil> DetalleVentasMovil { get; set; }
         public virtual DbSet<Kardex> Kardex { get; set; }
         public virtual DbSet<Procedencias> Procedencias { get; set; }
         public virtual DbSet<Productores> Productores { get; set; }
@@ -37,9 +38,11 @@ namespace Siro
         public virtual DbSet<TiposAlmacen> TiposAlmacen { get; set; }
         public virtual DbSet<TiposArroz> TiposArroz { get; set; }
         public virtual DbSet<TiposMovimiento> TiposMovimiento { get; set; }
-        public virtual DbSet<VRA> VRA { get; set; }
-        public virtual DbSet<VValoresAlmacenaje> VValoresAlmacenaje { get; set; }
+        public virtual DbSet<TiposVenta> TiposVenta { get; set; }
         public virtual DbSet<Vendedores> Vendedores { get; set; }
         public virtual DbSet<Ventas> Ventas { get; set; }
+        public virtual DbSet<VentasMoviles> VentasMoviles { get; set; }
+        public virtual DbSet<VValoresAlmacenaje> VValoresAlmacenaje { get; set; }
+        public virtual DbSet<VRA> VRA { get; set; }
     }
 }

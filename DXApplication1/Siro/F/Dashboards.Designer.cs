@@ -55,7 +55,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dashboards";
             this.Text = "Dashboards";
-            this.Load += new System.EventHandler(this.Dashboards_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dashboardViewer1)).EndInit();
             this.ResumeLayout(false);
 

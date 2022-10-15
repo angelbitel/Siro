@@ -35,5 +35,7 @@ namespace Siro.Model
         public int IdBancoCXC { get; set; }
         public DateTime Desde { get; set; }
         public DateTime Hasta { get; set; }
+        public int? IdPerfil { get; internal set; }
+        public string Usuario { get; internal set; }
     }
 }

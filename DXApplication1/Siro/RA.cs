@@ -48,8 +48,9 @@ namespace Siro
         public Nullable<decimal> PorcentajeAdicionalSecado { get; set; }
         public Nullable<decimal> PorcentajeSecado { get; set; }
         public Nullable<decimal> Flete { get; set; }
+        public Nullable<decimal> Tara { get; set; }
     
-        public virtual Almacenaje Almacenes { get; set; }
+        public virtual Almacenaje Almacenaje { get; set; }
         public virtual Conductores Conductores { get; set; }
         public virtual Recibidos Recibidos { get; set; }
         public virtual TiposArroz TiposArroz { get; set; }

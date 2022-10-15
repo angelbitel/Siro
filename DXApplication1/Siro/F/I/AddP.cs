@@ -46,7 +46,11 @@ namespace Siro.F.I
             if (IdProv == 0)
             {
                 lblMsg.Caption = "Seleccione Un Provedor";
-                e.Cancel = true;
+
+                if (XtraMessageBox.Show($"DESE CERRAR LA VENTANA?", "ALERTA", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
         }
 

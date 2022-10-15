@@ -1,11 +1,13 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using Newtonsoft.Json;
 using Siro.F.D;
 using Siro.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Siro.F
 {
@@ -13,7 +15,7 @@ namespace Siro.F
     {
         /*VARIABLES DE LA FORMA DIARIO*/
         //Siro.slEntities dbContext = new Siro.slEntities();
-        private BindingList<AsientoContable> Asiento = new BindingList<AsientoContable>();
+        public static BindingList<AsientoContable> Asiento = new BindingList<AsientoContable>();
 
         /*VARIABLE QUE SE TRASLADAN DE OTROS FORMS*/
         public static int? IdCliente { get; set; }
@@ -64,6 +66,11 @@ namespace Siro.F
                         Asiento[e.NewIndex].Debito = mnt;
                         break;
                 }
+                if ((Asiento[0].Comentario != null || Asiento[0].Fecha != null) && tComentario.Text.Length == 0 && Asiento.Count == 2)
+                {
+                    tComentario.Text = Asiento[0].Comentario;
+                    dtFechaAsiento.DateTime = Asiento[0].Fecha ?? DateTime.Now;
+                }
             }
             /*Diferencia Debito Credito*/
             var sumD = Asiento.Sum(s => s.Debito);
@@ -84,10 +91,6 @@ namespace Siro.F
         {
             this.barStaticItemFecha.Caption = Principal.Bariables.PeridoContable.ToString("yyyy MMMM");
             this.barStaticItemEmpresa.Caption = Principal.Bariables.IdEmpresa.Nombre;
-            //if(Principal.Bariables.PeridoContable != DateTime.Now)
-            //{
-            //    Principal.Bariables.PeridoContable = DateTime.Now;
-            //}
             if(Principal.Bariables.IdEmpresa.Nombre == null)
             {
                 btnQuitar.PerformClick(); 
@@ -106,8 +109,60 @@ namespace Siro.F
             /*CARGAR CUENTAS CONTABLES*/
             var contol = new Controller.Diario();
             gridControl1.DataSource = Asiento;
-            var control = new Controller.Contabilidad().CuentasMaestras(Principal.Bariables.IdEmpresa.Id);
+            var control = new Controller.Contabilidad().CuentasMaestras();
             Cuentas = control;
+            var db = new Controller.Lst();
+            var id = db.UltimOAsiento(Principal.Bariables.IdEmpresa.Id);
+            linkLabelAsiento.Text = $"ULTIMO ASIENTO GENERADO: {id}";
+            UltimoId = id;
+            int cntPen = new Controller.VMSesiones().SesionesAbiertas.Count;
+            if (cntPen > 0)
+                barButtonItem1.Caption = $"Asientos Pendientes ({cntPen})";
+            else
+                barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
+        }
+
+        private void BuscarPendientes()
+        {
+            var frm = new F.D.SesionesPendientes();
+            frm.ShowDialog();
+            if (frm.CantidadPendientes > 0)
+                barButtonItem1.Caption = $"Asientos Pendientes ({frm.CantidadPendientes})";
+            else
+                barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            if (frm.Sesion != null)
+            {
+                Asiento.Clear();
+                IdCliente = null;
+                IdRegistroBanco = null;
+                IdTransaccion = null;
+                IdSesion = frm.Sesion.IdSesion;
+                dtFechaAsiento.EditValue = frm.Sesion.Fecha;
+                tComentario.Text = frm.Sesion.Comentario;
+                var lst = JsonConvert.DeserializeObject<List<DetalleAsientoCorto>>(frm.Sesion.Sesion);
+                if (lst.Count > 0)
+                    lst.ForEach(f => Asiento.Add(new AsientoContable
+                    {
+                        Comentario = f.Comentario,
+                        Credito = f.Credito,
+                        CuentaContable = f.CuentaContable,
+                        CuentasCombinadas = f.CuentasCombinadas,
+                        Debito = f.Debito,
+                        Detlle = f.Detlle,
+                        Fecha = f.Fecha,
+                        IdAsiento = 0,
+                        IdBanco = f.IdBanco,
+                        IdCliente = f.IdCliente,
+                        IdColaborador = f.IdColaborador,
+                        IdCuentaContable = f.IdCuentaContable,
+                        IdDetalleAsiento = 0,
+                        IdProveedor = f.IdProveedor,
+                        IdUsuario = f.IdUsuario,
+                        Mayor = f.Mayor,
+                        Monto = f.Monto
+                    }));
+            }
         }
 
         private void gridView1_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
@@ -132,23 +187,24 @@ namespace Siro.F
         bool EsDesdeTxt { get; set; }
         private void txtFindAcountId_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (e.KeyCode == System.Windows.Forms.Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 //EsDesdeTxt = true;
-                var txt = sender as DevExpress.XtraEditors.TextEdit;
+                var txt = sender as TextEdit;
                 int prsN = 0;
-                if (!int.TryParse(txt.Text, out prsN))
-                    return;
+                //if (!int.TryParse(txt.Text, out prsN))
+                //    return;
                 if (txt.Text.Trim() == string.Empty)
                     return;
-                var row = Cuentas.SingleOrDefault(s => s.Id == int.Parse(txt.Text));
+                var row = new Model.Cuentas();
+                row = BuscarCuentaPorId(txt.Text, row);
                 if (row == null)
                 {
                     XtraMessageBox.Show("No existe Esta Cuenta!");
                     return;
                 }
                 gridView1.SetFocusedRowCellValue(colCuentaContable, row.Text);
-                gridView1.SetFocusedRowCellValue(colIdCuentaContable, row.Id);
+                gridView1.SetFocusedRowCellValue(colIdCuentaContable, row.ID);
                 var r = gridView1.GetFocusedRow() as AsientoContable;
                 r.IdCuentaContable = row.ID;
                 switch (row.Tipo)
@@ -178,7 +234,7 @@ namespace Siro.F
                         gridView1.FocusedColumn = colDebito;
                         break;
                 }
-                if(Principal.Bariables.IdCuentaProveedor == row.ID)
+                if (Principal.Bariables.IdCuentaProveedor.ToString() == row.CuentaContable)
                 {
                     var frmP = new ShowProveedor();
                     frmP.ShowDialog(this);
@@ -188,7 +244,7 @@ namespace Siro.F
                         gridView1.SetFocusedRowCellValue(colComentario, frmP.Proveedor);
                     }
                 }
-                if (Principal.Bariables.IdCuentaCliente == row.ID)
+                if (Principal.Bariables.IdCuentaCliente.ToString() == row.CuentaContable)
                 {
                     var frmP = new ShowClientes();
                     frmP.ShowDialog(this);
@@ -198,7 +254,7 @@ namespace Siro.F
                         gridView1.SetFocusedRowCellValue(colComentario, frmP.Cliente);
                     }
                 }
-                if (Principal.Bariables.IdCuentaEmpleado == row.ID)
+                if (Principal.Bariables.IdCuentaEmpleado.ToString() == row.CuentaContable)
                 {
                     var frmP = new ShowEmpleados();
                     frmP.ShowDialog(this);
@@ -208,7 +264,7 @@ namespace Siro.F
                         gridView1.SetFocusedRowCellValue(colComentario, frmP.Colaborador);
                     }
                 }
-                if (Principal.Bariables.IdCuentaBanco == row.ID)
+                if (Principal.Bariables.IdCuentaBanco.ToString() == row.CuentaContable)
                 {
                     var frmP = new ShowBanco2();
                     frmP.ShowDialog(this);
@@ -221,23 +277,46 @@ namespace Siro.F
             }
         }
 
+        private Cuentas BuscarCuentaPorId(string txt, Cuentas row)
+        {
+            Cuentas.Where(s => s.CuentaContable == txt.Trim()).ToList().ForEach(f =>
+            {
+                if (row.ID == 0)
+                    row = f;
+            });
+            return row;
+        }
+
+        private int UltimoId { get; set; }
         private void btnGuardar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var detalleDiario = new List<DetalleAsientos>();
+            if (Asiento.Count == 0)
+                return;
             Asiento.ToList().ForEach(f =>
             {
-                detalleDiario.Add(new DetalleAsientos
+                if((f.Debito??0m)+ (f.Credito??0m) >0)
                 {
-                    Credito = f.Credito,
-                    Debito = f.Debito,
-                    IdAsiento = f.IdAsiento,
-                    IdMaestroCuenta = f.IdCuentaContable,
-                    IdCliente = f.IdCliente,
-                    idProvedor = f.IdProveedor,
-                    IdBanco = f.IdBanco,
-                    IdColaborador = f.IdColaborador,
-                    IdDetalleAsiento = f.IdDetalleAsiento
-                });
+                    var row = new Cuentas();
+                    row = BuscarCuentaPorId(f.CuentasCombinadas, row);
+                    if (f.IdCuentaContable == 0)
+                    {
+
+                    }
+                    f.IdCuentaContable = row.ID;
+                    detalleDiario.Add(new DetalleAsientos
+                    {
+                        Credito = f.Credito,
+                        Debito = f.Debito,
+                        IdAsiento = Asiento[0].IdAsiento > 0 ? Asiento[0].IdAsiento : f.IdAsiento,
+                        IdMaestroCuenta = f.IdCuentaContable,
+                        IdCliente = f.IdCliente,
+                        idProvedor = f.IdProveedor,
+                        IdBanco = f.IdBanco,
+                        IdColaborador = f.IdColaborador,
+                        IdDetalleAsiento = f.IdDetalleAsiento
+                    });
+                }
             });
             var asiento = new Asientos
             {
@@ -253,6 +332,7 @@ namespace Siro.F
             /****** Enviar Asiento Contable ******/
             var diario = new Controller.Diario();
             bool respuesta = diario.AgregarAsiento(asiento);
+            UltimoId= diario.NuevoId??0;
             lblMsg.Caption = diario.MSG + " " + diario.NuevoId.ToString();
             if (respuesta)
             {
@@ -260,13 +340,35 @@ namespace Siro.F
                 IdCliente = null;
                 IdRegistroBanco = null;
                 IdTransaccion = null;
+                linkLabelAsiento.Text = $"ULTIMO ASIENTO GENERADO: {UltimoId}";
+                if (IdSesion != 0)
+                {
+                    new Controller.VMSesiones().ActualizarSesion(IdSesion);
+                    IdSesion = 0;
+                    int cntPen = new Controller.VMSesiones().SesionesAbiertas.Count;
+                    if (cntPen > 0)
+                        barButtonItem1.Caption = $"Asientos Pendientes ({cntPen})";
+                    else
+                        barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                }
             }
             tComentario.ResetText();
         }
 
-        private void btnQuitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
+        private void btnQuitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            var row = gridView1.GetFocusedRow() as AsientoContable;
             gridView1.DeleteRow(gridView1.FocusedRowHandle);
+
+            /****** ELIMINAR SI EXISTE EN DB ******/
+            if (row != null)
+            {
+                if (row.IdDetalleAsiento > 0)
+                {
+                    var diario = new Controller.Diario();
+                    if (diario.EliminarDetalleAsiento(row.IdDetalleAsiento))
+                        barButtonItem1.Caption = $"SE ELIMINA ASIENTO TAMBIEN DE BASE DE DATOS........";
+                }
+            }
         }
         Model.Cuentas idC { get; set; }
         private void btnEditColumn_Click(object sender, EventArgs e)
@@ -275,10 +377,44 @@ namespace Siro.F
             {
                 var frmSelectCuenta = new F.D.SelectorCuentas();
                 frmSelectCuenta.ShowDialog(this);
-                if (frmSelectCuenta.Id != 0)
+                if (!string.IsNullOrEmpty(frmSelectCuenta.CuentaContable))
                 {
-                    idC = Cuentas.SingleOrDefault(s => s.Id == frmSelectCuenta.Id);
+                    if (frmSelectCuenta.Cuenta != null)
+                    {
+                        var f = frmSelectCuenta.MCuenta;
+                        if (frmSelectCuenta.MCuenta != null)
+                        {
+                            //Cuentas.Add(new Cuentas
+                            //{
+                            //    ParentID = f.ParentID ?? 0,
+                            //    Text = f.Text,
+                            //    ID = f.IdMaestroCuenta,
+                            //    Tipo = f.Tipo ?? 0,
+                            //    Id = f.Id ?? 0,
+                            //    CuentaContable = f.CuentaContable,
+                            //    Nivel = f.Nivel ?? 0,
+                            //    Nivel0 = f.Nivel0,
+                            //    Nivel1 = f.Nivel1,
+                            //    Nivel2 = f.Nivel2,
+                            //    Nivel3 = f.Nivel3,
+                            //    Habilitar = f.Habilitar,
+                            //    SumaResta = f.SumaResta,
+                            //    CuentaMadre = Buscar(f.Tipo ?? 0, lstCUentas)
+                            //});
+                        }
+                    }
+                    idC = Cuentas.SingleOrDefault(s => s.CuentaContable == frmSelectCuenta.CuentaContable);
                     (sender as TextEdit).Text = frmSelectCuenta.Cuenta;
+
+                    var r = gridView1.GetFocusedRow() as AsientoContable;
+                    if (r == null)
+                        return;
+                    r.IdCuentaContable = idC.ID;
+                    gridView1.SetFocusedRowCellValue(colIdCuentaContable, idC.ID);
+                    gridView1.SetFocusedRowCellValue(colCuentaContable, idC.Text);
+                    gridView1.SetFocusedRowCellValue(colCuentasCombinadas, idC.CuentaContable);
+
+
                     if (frmSelectCuenta.Id == 0)
                     {
                         lblMsg.Caption = "Seleccione una cuenta";
@@ -383,9 +519,6 @@ namespace Siro.F
                 frmSelectCuenta.ShowDialog(this);
                 if (frmSelectCuenta.Id != 0)
                 {
-                    //idC = Cuentas.SingleOrDefault(s => s.Id == frmSelectCuenta.Id);
-                    //Asiento.Add(new AsientoContable { CuentasCombinadas = idC.Id, CuentaContable =frmSelectCuenta.Cuenta });
-
                     if ((sender as TextEdit) == null) return;
                     (sender as TextEdit).Text = frmSelectCuenta.Cuenta;
                     if (frmSelectCuenta.Id == 0)
@@ -400,12 +533,57 @@ namespace Siro.F
         private void btnLstAsientos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var vc = new F.D.VerCuentas();
-            vc.ShowDialog(this);
-            if (vc.Asientos != null)
+            T.OpenForm(vc);
+            if (vc.IdAsiento != null && vc.Modificar)
+            {
+                //Asiento = vc.Asientos;
+                //gridControl1.DataSource = Asiento;
+                //tComentario.Text = Asiento[0].Comentario;
+
+                var diario = new Controller.Diario().Asiento(vc.IdAsiento);
+                if(diario != null)
+                {
+
+                }
+            }
+        }
+        private void linkLabelAsiento_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+        {
+            var vc = new F.D.VerCuentas();
+            if (UltimoId > 0)
+                if (XtraMessageBox.Show("DESEA VER EL ULTIMO ASIENTO?", "MENSAJE DE ALERTA", MessageBoxButtons.OKCancel) == DialogResult.Yes)
+                    vc.UltimoAsiento = UltimoId;
+            T.OpenForm(vc);
+            if (vc.Asientos != null && vc.Modificar)
             {
                 Asiento = vc.Asientos;
                 gridControl1.DataSource = Asiento;
                 tComentario.Text = Asiento[0].Comentario;
+            }
+        }
+        int IdSesion { get; set; }
+        private void gridView1_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            var db = new Controller.VMSesiones();
+            if(db.GuardarSesion(dtFechaAsiento.DateTime, tComentario.Text, Asiento.ToList(), "Diario", IdSesion) && Asiento.Count >0)
+                if (IdSesion == 0) IdSesion = db.Id;
+        }
+
+        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            BuscarPendientes();
+        }
+
+        private void Diario_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        {
+            if (Asiento.Count > 0)
+            {
+                if (XtraMessageBox.Show("EXISTEN SESIONES ABIERTAS DESEA GUARDARLAS?", "MENSAJES", System.Windows.Forms.MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    var db = new Controller.VMSesiones();
+                    if (db.GuardarSesion(dtFechaAsiento.DateTime, tComentario.Text, Asiento.ToList(), "Diario", IdSesion))
+                        if (IdSesion == 0) IdSesion = db.Id;
+                }
             }
         }
     }

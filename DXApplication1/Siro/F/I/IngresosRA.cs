@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Siro.F.I
 {
-    public partial class IngresosRA : DevExpress.XtraEditors.XtraForm
+    public partial class IngresosRA : XtraForm
     {
         BindingList<RA> lstRegistroArroz = new  BindingList<RA>();
         List<Almacenaje> lstAlmacenes = new List<Almacenaje>();
@@ -18,10 +17,7 @@ namespace Siro.F.I
         List<provedores> lstprovedores = new List<provedores>();
         List<Recibidos> lstRecibidos = new List<Recibidos>();
         private RA UltimoRa {get; set;}
-        public IngresosRA()
-        {
-            InitializeComponent();
-        }
+        public IngresosRA() => InitializeComponent();
 
         private void IngresosRA_Load(object sender, EventArgs e)
         {
@@ -41,35 +37,16 @@ namespace Siro.F.I
             lstprovedores = lst.Proveedores.OrderBy(o=> o.Proveedor).ToList();
             lstRecibidos = lst.Recibido;
 
-            foreach (Model.TipoFlete current in lst.TiposFlete)
-            {
-                ImageComboBoxItem item = new ImageComboBoxItem
-                {
-                    Value = current.IdTipoFlete,
-                    Description = current.TiposFlete
-                };
-                this.icbeTipoFlete.Properties.Items.Add(item);
-            }
-            foreach (Almacenaje current in lstAlmacenes)
-            {
-                ImageComboBoxItem item = new ImageComboBoxItem
-                {
-                    Value = current.IdAlmacen,
-                    Description = current.Almacen
-                };
-                this.slueSilo.Properties.Items.Add(item);
-            }
+            lst.TiposFlete.ForEach(f => icbeTipoFlete.Properties.Items.Add(T.Item(f.IdTipoFlete, f.TiposFlete)));
+            lstAlmacenes.ForEach(f => slueSilo.Properties.Items.Add(T.Item(f.IdAlmacen, f.Almacen)));
         }
 
-        private void textEdit5_KeyUp(object sender, KeyEventArgs e)
-        {
-            Calcular();
-        }
+        private void textEdit5_KeyUp(object sender, KeyEventArgs e) => Calcular();
 
         private void Calcular()
         {
-            decimal bruto = 0, humedad = 0, precio = 0, impureza = 0, seco = 0, total = 0, pesoPagar=0, neto=0, flete=0;
-            decimal totalImpureza = 0, totalHumedad = 0, totalSeco=0, totalSecoAdic=0;
+            decimal bruto = 0, humedad = 0, precio = 0, impureza = 0, seco = 0, total = 0, pesoPagar=0, neto=0, flete=0, tara =0;
+            decimal totalImpureza = 0, totalHumedad = 0, totalSeco=0, totalSecoAdic=0, peso=0;
             decimal porcentajeImpureza = 0, porcentajeHumedad = 0, porcentajeSeco = 0, porcentajeAdicSeco=0;
             decimal.TryParse(txtBruto.Text, out bruto);
             decimal.TryParse(txtHumedad.Text, out humedad);
@@ -78,26 +55,28 @@ namespace Siro.F.I
             decimal.TryParse(txtAdicSecado.Text, out totalSecoAdic);
             decimal.TryParse(txtSecado.Text, out totalSeco);
             decimal.TryParse(txtFlete.Text, out flete);
+            decimal.TryParse(txtTara.Text, out tara);
+            peso = bruto - tara;
             if (impureza > 4)
             {
                 totalImpureza = impureza - 4;
-                porcentajeImpureza = bruto * totalImpureza / 100;
+                porcentajeImpureza = peso * totalImpureza / 100;
             }
             if (humedad > 24)
             {
                 totalHumedad = (humedad - 24) * 1.2M;
-                porcentajeHumedad = bruto * totalHumedad / 100;
+                porcentajeHumedad = peso * totalHumedad / 100;
             }
 
-            porcentajeSeco = bruto * totalSeco / 100;
-            porcentajeAdicSeco = bruto * totalSecoAdic / 100;
+            porcentajeSeco = peso * totalSeco / 100;
+            porcentajeAdicSeco = peso * totalSecoAdic / 100;
 
             if (checkEdit1.Checked)
-                pesoPagar=bruto;
+                pesoPagar= peso;
             else
-                pesoPagar = bruto - porcentajeHumedad - porcentajeImpureza;
+                pesoPagar = peso - porcentajeHumedad - porcentajeImpureza;
 
-            seco = bruto - porcentajeHumedad - porcentajeImpureza-porcentajeAdicSeco-porcentajeSeco;
+            seco = peso - porcentajeHumedad - porcentajeImpureza-porcentajeAdicSeco-porcentajeSeco;
 
 
             total = pesoPagar * precio;
@@ -112,7 +91,7 @@ namespace Siro.F.I
             {
                 row.Neto = neto;
                 row.Total = total - row.Apach - flete;
-                row.Apach = bruto * 0.05M;
+                row.Apach = peso * 0.05M;
                 row.Precio = precio;
                 row.Seco = seco;
                 row.Rendimiento = row.PorcentajeQuebrado + row.PorcentajeEntero;
@@ -206,23 +185,15 @@ namespace Siro.F.I
 
         }
 
-        private void textEdit4_KeyUp(object sender, KeyEventArgs e)
-        {
-            Calcular();
-        }
+        private void textEdit4_KeyUp(object sender, KeyEventArgs e) => Calcular();
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            gridControl1.ShowPrintPreview();
-        }
+        private void toolStripButton2_Click(object sender, EventArgs e) => gridControl1.ShowPrintPreview();
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            var row = gridView1.GetFocusedRow() as Siro.RA;
+            var row = gridView1.GetFocusedRow() as RA;
             if (row != null)
-            {
                 GenerarReporteDFecha("Registro Arroz", row.IdEntradaArroz);
-            }
             else
                 lblMsg.Caption = "Seleccione Algun Registro De Arroz Para Poder Imprimir!...";
         }
@@ -269,24 +240,22 @@ namespace Siro.F.I
                 slueConductores.EditValue = f.IdConductor;
             }
         }
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
-            Calcular();
-        }
+        private void simpleButton3_Click(object sender, EventArgs e) => Calcular();
 
-        private void icbeTipoFlete_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtBruto.Focus();
-        }
+        private void icbeTipoFlete_SelectedIndexChanged(object sender, EventArgs e) => txtBruto.Focus();
         private void txtKeyCodeValue(object sender, KeyEventArgs e)
         {
             if (((TextEdit)sender).Text.Trim().Length >0)
                 Calcular();
         }
 
-        private void checkEdit1_CheckedChanged(object sender, EventArgs e)
+        private void checkEdit1_CheckedChanged(object sender, EventArgs e) => Calcular();
+
+        private void txtTara_KeyUp(object sender, KeyEventArgs e) => Calcular();
+
+        private void slueConductores_EditValueChanged(object sender, EventArgs e)
         {
-            Calcular();
+
         }
     }
 }

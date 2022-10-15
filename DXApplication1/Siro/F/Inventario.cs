@@ -41,54 +41,6 @@ namespace Siro.F
             printTool3.PreviewForm.Text = reporte;
             printTool3.ShowPreview();
         }
-        private void navBarControl1_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            switch (e.Link.ItemName)
-            {
-                case "navBarItem1":
-                   new I.CerrarCiclo().ShowDialog();
-                   break;
-                case "navBarItem2":
-                   GenerarReporte("Iventario Fecha");
-                   break;
-                case "navBarItem3":
-                   GenerarReporte("Inventario Silos");
-                   break;
-                case "navBarItem31":
-                    OpenForm(new I.IngresosRA());
-                    break;
-                case "navBarItem20":
-                    GenerarReporte("ReporteFirmaDecimo");
-                    break;
-                case "navBarItem21":
-                    GenerarReporte("TalonariosDecimo");
-                    break;
-                case "navBarItem27":
-                    OpenForm(new F.P.VerFactores());
-                    break;
-                case "navBarItem28":
-                    OpenForm(new F.I.InventarioActual());
-                    break;
-                case "navBarItem29":
-                    GenerarReporte("Planilla03");
-                    break;
-                case "navBarItem30":
-                    GenerarReporte("ReporteFirma");
-                    break;
-                case "navBarItem32":
-                    new F.P.PruebaPlanilla().Show();
-                    break;
-                case "navBarItem33":
-                    OpenForm(new I.EntradasSalidas());
-                    break;
-                case "navBarItem34":
-                    if (XtraMessageBox.Show("Seguro Que Desea Realizar La Operación", "Mensaje De Alerta", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                    {
-                        lblMsg.Caption = "";
-                    }
-                    break;
-            }
-        }
         private void OpenForm(DevExpress.XtraEditors.XtraForm frm)
         {
             if (!IsFormAlreadyOpen(frm.Name))
@@ -100,6 +52,31 @@ namespace Siro.F
         private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnRegistroArroz_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm(new I.IngresosRA());
+        }
+
+        private void btnAjusteInventario_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm(new I.EntradasSalidas());
+        }
+
+        private void btnCerrarCicloArroz_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new I.CerrarCiclo().ShowDialog();
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new F.Dashboards("Inventario Silos").Show();
+        }
+
+        private void btnMovil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm(new I.VentasMovilesAgre());
         }
     }
 }

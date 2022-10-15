@@ -161,28 +161,32 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(683, 44);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(797, 56);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 637);
-            this.barDockControlBottom.Size = new System.Drawing.Size(683, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 781);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(797, 35);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 593);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 56);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 725);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(683, 44);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 593);
+            this.barDockControlRight.Location = new System.Drawing.Point(797, 56);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 725);
             // 
             // barButtonItem1
             // 
@@ -251,7 +255,8 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 44);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 56);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -261,16 +266,18 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.layoutControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(683, 593);
-            this.splitContainer1.SplitterDistance = 292;
+            this.splitContainer1.Size = new System.Drawing.Size(797, 725);
+            this.splitContainer1.SplitterDistance = 340;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 4;
             // 
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(292, 593);
+            this.treeView1.Size = new System.Drawing.Size(340, 725);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -280,26 +287,29 @@
             this.layoutControl1.Controls.Add(this.textBox1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(387, 593);
+            this.layoutControl1.Size = new System.Drawing.Size(452, 725);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // treeView2
             // 
             this.treeView2.CheckBoxes = true;
-            this.treeView2.Location = new System.Drawing.Point(12, 36);
+            this.treeView2.Location = new System.Drawing.Point(16, 42);
+            this.treeView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(363, 545);
+            this.treeView2.Size = new System.Drawing.Size(420, 667);
             this.treeView2.TabIndex = 5;
             this.treeView2.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterCheck);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(79, 12);
+            this.textBox1.Location = new System.Drawing.Point(97, 16);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(296, 20);
+            this.textBox1.Size = new System.Drawing.Size(339, 20);
             this.textBox1.TabIndex = 4;
             // 
             // layoutControlGroup1
@@ -311,7 +321,7 @@
             this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(387, 593);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(452, 725);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -319,30 +329,31 @@
             this.layoutControlItem1.Control = this.textBox1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(367, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(426, 26);
             this.layoutControlItem1.Text = "Nombre Perfil";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(64, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(78, 16);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.treeView2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(367, 549);
+            this.layoutControlItem2.Size = new System.Drawing.Size(426, 673);
             this.layoutControlItem2.Text = "Menus";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // Perfil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 663);
+            this.ClientSize = new System.Drawing.Size(797, 816);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Perfil";
             this.Text = "Perfil";
             this.Load += new System.EventHandler(this.Perfil_Load);

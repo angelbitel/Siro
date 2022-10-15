@@ -65,6 +65,7 @@
             this.navBarItem19 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem22 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem34 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem35 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup8 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem28 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem29 = new DevExpress.XtraNavBar.NavBarItem();
@@ -91,6 +92,8 @@
             this.barStaticItemFecha = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItemEmpresa = new DevExpress.XtraBars.BarStaticItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.lblCumple = new DevExpress.XtraEditors.LabelControl();
+            this.lblVacation = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -100,7 +103,8 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.navBarItem35 = new DevExpress.XtraNavBar.NavBarItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel2.SuspendLayout();
             this.dockPanel3.SuspendLayout();
@@ -116,6 +120,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // navBarGroup1
@@ -321,18 +327,20 @@
             this.dockPanel3.Controls.Add(this.dockPanel3_Container);
             this.dockPanel3.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.dockPanel3.ID = new System.Guid("52913d44-81eb-4351-9f8b-ddbc2b4e4bff");
-            this.dockPanel3.Location = new System.Drawing.Point(615, 0);
+            this.dockPanel3.Location = new System.Drawing.Point(751, 0);
+            this.dockPanel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dockPanel3.Name = "dockPanel3";
             this.dockPanel3.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel3.Size = new System.Drawing.Size(200, 620);
+            this.dockPanel3.Size = new System.Drawing.Size(200, 760);
             this.dockPanel3.Text = "Menu";
             // 
             // dockPanel3_Container
             // 
             this.dockPanel3_Container.Controls.Add(this.navBarControl1);
-            this.dockPanel3_Container.Location = new System.Drawing.Point(4, 23);
+            this.dockPanel3_Container.Location = new System.Drawing.Point(5, 27);
+            this.dockPanel3_Container.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dockPanel3_Container.Name = "dockPanel3_Container";
-            this.dockPanel3_Container.Size = new System.Drawing.Size(192, 593);
+            this.dockPanel3_Container.Size = new System.Drawing.Size(190, 728);
             this.dockPanel3_Container.TabIndex = 0;
             // 
             // navBarControl1
@@ -362,9 +370,10 @@
             this.navBarItem34,
             this.navBarItem35});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
+            this.navBarControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 192;
-            this.navBarControl1.Size = new System.Drawing.Size(192, 593);
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 190;
+            this.navBarControl1.Size = new System.Drawing.Size(190, 728);
             this.navBarControl1.TabIndex = 3;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkPressed);
@@ -407,6 +416,12 @@
             // 
             this.navBarItem34.Caption = "Generar Asientos";
             this.navBarItem34.Name = "navBarItem34";
+            // 
+            // navBarItem35
+            // 
+            this.navBarItem35.Caption = "Cumpleaños Del Mes";
+            this.navBarItem35.Name = "navBarItem35";
+            this.navBarItem35.SmallImage = global::Siro.Properties.Resources.birthday2;
             // 
             // navBarGroup8
             // 
@@ -532,28 +547,32 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(815, 0);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(951, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 620);
-            this.barDockControlBottom.Size = new System.Drawing.Size(815, 25);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 760);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(951, 34);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 620);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 760);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(815, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 620);
+            this.barDockControlRight.Location = new System.Drawing.Point(951, 0);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 760);
             // 
             // barButtonItem1
             // 
@@ -590,24 +609,46 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.lblCumple);
+            this.layoutControl1.Controls.Add(this.lblVacation);
             this.layoutControl1.Controls.Add(this.labelControl2);
             this.layoutControl1.Controls.Add(this.labelControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(421, 421, 250, 350);
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(509, 428, 579, 477);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(615, 620);
+            this.layoutControl1.Size = new System.Drawing.Size(751, 760);
             this.layoutControl1.TabIndex = 5;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // lblCumple
+            // 
+            this.lblCumple.Appearance.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.lblCumple.Location = new System.Drawing.Point(200, 115);
+            this.lblCumple.Name = "lblCumple";
+            this.lblCumple.Size = new System.Drawing.Size(535, 24);
+            this.lblCumple.StyleController = this.layoutControl1;
+            this.lblCumple.TabIndex = 7;
+            // 
+            // lblVacation
+            // 
+            this.lblVacation.Appearance.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.lblVacation.Location = new System.Drawing.Point(200, 77);
+            this.lblVacation.Name = "lblVacation";
+            this.lblVacation.Size = new System.Drawing.Size(447, 32);
+            this.lblVacation.StyleController = this.layoutControl1;
+            this.lblVacation.TabIndex = 6;
             // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl2.Location = new System.Drawing.Point(12, 39);
+            this.labelControl2.Location = new System.Drawing.Point(16, 50);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(206, 16);
+            this.labelControl2.Size = new System.Drawing.Size(278, 21);
             this.labelControl2.StyleController = this.layoutControl1;
             this.labelControl2.TabIndex = 5;
             this.labelControl2.Text = "INFORMACION BASICA DE PLANILLA";
@@ -616,9 +657,10 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Horizontal;
-            this.labelControl1.Location = new System.Drawing.Point(12, 12);
+            this.labelControl1.Location = new System.Drawing.Point(16, 16);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(241, 23);
+            this.labelControl1.Size = new System.Drawing.Size(294, 28);
             this.labelControl1.StyleController = this.layoutControl1;
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "INFORMACION DE PLANILLA";
@@ -633,18 +675,20 @@
             this.emptySpaceItem3,
             this.layoutControlItem2,
             this.emptySpaceItem4,
-            this.emptySpaceItem1});
+            this.emptySpaceItem1,
+            this.layoutControlItem3,
+            this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(615, 620);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(751, 760);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(245, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(300, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(350, 27);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(425, 34);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
@@ -652,7 +696,7 @@
             this.layoutControlItem1.Control = this.labelControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(245, 27);
+            this.layoutControlItem1.Size = new System.Drawing.Size(300, 34);
             this.layoutControlItem1.Text = "Inf";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
@@ -660,53 +704,72 @@
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 67);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 129);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(595, 276);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(725, 269);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.labelControl2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 27);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(595, 20);
+            this.layoutControlItem2.Size = new System.Drawing.Size(725, 27);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 343);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 398);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(595, 257);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(725, 336);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 47);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(637, 61);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(595, 20);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(88, 38);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // navBarItem35
+            // layoutControlItem3
             // 
-            this.navBarItem35.Caption = "Cumpleaños Del Mes";
-            this.navBarItem35.Name = "navBarItem35";
-            this.navBarItem35.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem35.SmallImage")));
+            this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem3.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem3.Control = this.lblVacation;
+            this.layoutControlItem3.Image = ((System.Drawing.Image)(resources.GetObject("layoutControlItem3.Image")));
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 61);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(637, 38);
+            this.layoutControlItem3.Text = "VACACIONES DEL MES:";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(181, 32);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
+            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem4.Control = this.lblCumple;
+            this.layoutControlItem4.Image = global::Siro.Properties.Resources.birthday2;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 99);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(725, 30);
+            this.layoutControlItem4.Text = "CUMPLEAÑOS DEL MES:";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(181, 24);
             // 
             // Planilla
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 645);
+            this.ClientSize = new System.Drawing.Size(951, 794);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.dockPanel3);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Planilla";
             this.Text = "Planilla";
             this.Load += new System.EventHandler(this.Planilla_Load);
@@ -725,6 +788,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -803,5 +868,9 @@
         private DevExpress.XtraNavBar.NavBarItem navBarItem32;
         private DevExpress.XtraNavBar.NavBarItem navBarItem27;
         private DevExpress.XtraNavBar.NavBarItem navBarItem35;
+        private DevExpress.XtraEditors.LabelControl lblVacation;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.LabelControl lblCumple;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }

@@ -16,12 +16,12 @@ namespace Siro
     {
         public TiposAlmacen()
         {
-            this.Almacenes = new HashSet<Almacenaje>();
+            this.Almacenaje = new HashSet<Almacenaje>();
         }
     
         public int IdTipoAlmacen { get; set; }
         public string TipoAlmacen { get; set; }
     
-        public virtual ICollection<Almacenaje> Almacenes { get; set; }
+        public virtual ICollection<Almacenaje> Almacenaje { get; set; }
     }
 }

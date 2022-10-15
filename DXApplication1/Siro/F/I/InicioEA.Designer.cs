@@ -77,18 +77,20 @@
             this.layoutControl1.Controls.Add(this.searchLookUpEdit1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(344, 153);
+            this.layoutControl1.Size = new System.Drawing.Size(859, 388);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // textEdit1
             // 
             this.textEdit1.EditValue = "1.55";
-            this.textEdit1.Location = new System.Drawing.Point(125, 103);
+            this.textEdit1.Location = new System.Drawing.Point(305, 234);
+            this.textEdit1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(207, 20);
+            this.textEdit1.Size = new System.Drawing.Size(524, 42);
             this.textEdit1.StyleController = this.layoutControl1;
             this.textEdit1.TabIndex = 9;
             this.textEdit1.EditValueChanged += new System.EventHandler(this.textEdit1_EditValueChanged);
@@ -97,15 +99,16 @@
             // searchLookUpEdit2
             // 
             this.searchLookUpEdit2.EditValue = "";
-            this.searchLookUpEdit2.Location = new System.Drawing.Point(125, 79);
+            this.searchLookUpEdit2.Location = new System.Drawing.Point(305, 182);
+            this.searchLookUpEdit2.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.searchLookUpEdit2.Name = "searchLookUpEdit2";
             this.searchLookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpEdit2.Properties.DataSource = this.tiposMovimientoBindingSource;
             this.searchLookUpEdit2.Properties.DisplayMember = "TipoMovimiento";
+            this.searchLookUpEdit2.Properties.PopupView = this.searchLookUpEdit2View;
             this.searchLookUpEdit2.Properties.ValueMember = "IdTipoMovimiento";
-            this.searchLookUpEdit2.Properties.View = this.searchLookUpEdit2View;
-            this.searchLookUpEdit2.Size = new System.Drawing.Size(207, 20);
+            this.searchLookUpEdit2.Size = new System.Drawing.Size(524, 42);
             this.searchLookUpEdit2.StyleController = this.layoutControl1;
             this.searchLookUpEdit2.TabIndex = 8;
             this.searchLookUpEdit2.EditValueChanged += new System.EventHandler(this.searchLookUpEdit2_EditValueChanged);
@@ -135,14 +138,14 @@
             // dateEdit1
             // 
             this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(125, 31);
+            this.dateEdit1.Location = new System.Drawing.Point(305, 78);
+            this.dateEdit1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
-            this.dateEdit1.Size = new System.Drawing.Size(207, 20);
+            this.dateEdit1.Size = new System.Drawing.Size(524, 42);
             this.dateEdit1.StyleController = this.layoutControl1;
             this.dateEdit1.TabIndex = 7;
             this.dateEdit1.EditValueChanged += new System.EventHandler(this.dateEdit1_EditValueChanged);
@@ -150,15 +153,16 @@
             // searchLookUpEdit1
             // 
             this.searchLookUpEdit1.EditValue = "Seleccione Un Silo";
-            this.searchLookUpEdit1.Location = new System.Drawing.Point(125, 55);
+            this.searchLookUpEdit1.Location = new System.Drawing.Point(305, 130);
+            this.searchLookUpEdit1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.searchLookUpEdit1.Name = "searchLookUpEdit1";
             this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpEdit1.Properties.DataSource = this.almacenesBindingSource;
             this.searchLookUpEdit1.Properties.DisplayMember = "Almacen";
-            this.searchLookUpEdit1.Properties.ValueMember = "IdTipoAlmacen";
-            this.searchLookUpEdit1.Properties.View = this.searchLookUpEdit1View;
-            this.searchLookUpEdit1.Size = new System.Drawing.Size(207, 20);
+            this.searchLookUpEdit1.Properties.PopupView = this.searchLookUpEdit1View;
+            this.searchLookUpEdit1.Properties.ValueMember = "IdAlmacen";
+            this.searchLookUpEdit1.Size = new System.Drawing.Size(524, 42);
             this.searchLookUpEdit1.StyleController = this.layoutControl1;
             this.searchLookUpEdit1.TabIndex = 6;
             this.searchLookUpEdit1.EditValueChanged += new System.EventHandler(this.searchLookUpEdit1_EditValueChanged);
@@ -196,9 +200,8 @@
             this.layoutControlItem5,
             this.layoutControlItem4,
             this.layoutControlItem1});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(344, 153);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(859, 388);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // emptySpaceItem1
@@ -206,54 +209,54 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(324, 19);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(809, 48);
             this.emptySpaceItem1.Text = "SELECCIONE LOS VALORES DE INICIO DE AJUSTE";
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(110, 0);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(272, 0);
             this.emptySpaceItem1.TextVisible = true;
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 115);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 256);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(324, 18);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(809, 82);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.searchLookUpEdit1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 43);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 100);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(324, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(809, 52);
             this.layoutControlItem3.Text = "Silo En Producción:";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(110, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(272, 33);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.searchLookUpEdit2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 67);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 152);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(324, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(809, 52);
             this.layoutControlItem5.Text = "Movimiento A Realizar:";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(110, 13);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(272, 33);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.dateEdit1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 19);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(324, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(809, 52);
             this.layoutControlItem4.Text = "Fecha Inventario:";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(110, 13);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(272, 33);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.textEdit1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 91);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 204);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(324, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(809, 52);
             this.layoutControlItem1.Text = "Porcentaje Descuento:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(110, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(272, 33);
             // 
             // tiposMovimientoBindingSource
             // 
@@ -261,15 +264,16 @@
             // 
             // almacenesBindingSource
             // 
-            this.almacenesBindingSource.DataSource = typeof(Siro.Almacenaje);
+            this.almacenesBindingSource.DataSource = typeof(Siro.Almacenes);
             // 
             // InicioEA
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 153);
+            this.ClientSize = new System.Drawing.Size(859, 388);
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "InicioEA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cambios De Valores Inventario";
