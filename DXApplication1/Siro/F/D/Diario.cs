@@ -16,7 +16,7 @@ namespace Siro.F
         /*VARIABLES DE LA FORMA DIARIO*/
         //Siro.slEntities dbContext = new Siro.slEntities();
         public static BindingList<AsientoContable> Asiento = new BindingList<AsientoContable>();
-
+        public List<PeriodoFiscal> LstPeriodosFiscales { get; set; }
         /*VARIABLE QUE SE TRASLADAN DE OTROS FORMS*/
         public static int? IdCliente { get; set; }
         public static string NombreCliente { get; set; }
@@ -107,7 +107,9 @@ namespace Siro.F
         private void Diario_Load(object sender, EventArgs e)
         {
             /*CARGAR CUENTAS CONTABLES*/
+
             var contol = new Controller.Diario();
+            LstPeriodosFiscales = contol.LstPeriodos;
             gridControl1.DataSource = Asiento;
             var control = new Controller.Contabilidad().CuentasMaestras();
             Cuentas = control;
@@ -329,6 +331,15 @@ namespace Siro.F
                 IdRegistroBanco = IdRegistroBanco,
                 IdTransaccion = IdTransaccion
             };
+            if (LstPeriodosFiscales.Count > 0)
+            {
+                /**PERIODIOS FISCALES VALIDAR QUE NO INGRESE TRANSACCIONES ANTERIORES*/
+                if(asiento.Fecha.Value.CompareTo(LstPeriodosFiscales[0].Hasta) < 0)
+                {
+                    MessageBox.Show($" ALERTA {asiento.Fecha} ESTA DENTRO DEL ULTIMO CIERRE FISCAL ({LstPeriodosFiscales[0].Hasta})" );
+                    return;
+                }
+            }
             /****** Enviar Asiento Contable ******/
             var diario = new Controller.Diario();
             bool respuesta = diario.AgregarAsiento(asiento);

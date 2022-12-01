@@ -81,6 +81,9 @@
             this.colCuentaContable = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colText = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.barButtonItemBuscar = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -100,6 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.maestroContableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxCuentas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,7 +119,7 @@
             this.gridControl1.DataSource = this.vAsientosBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gridControl1.Location = new System.Drawing.Point(0, 83);
+            this.gridControl1.Location = new System.Drawing.Point(0, 57);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridControl1.Name = "gridControl1";
@@ -123,7 +127,7 @@
             this.cmbOrigen,
             this.repositoryItemHyperLinkEditComentario,
             this.repositoryItemButtonEditPasar});
-            this.gridControl1.Size = new System.Drawing.Size(1429, 524);
+            this.gridControl1.Size = new System.Drawing.Size(1421, 520);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -359,11 +363,14 @@
             this.barButtonItemClonar,
             this.barButtonItem3,
             this.barEditItem2,
-            this.barStaticItem2});
-            this.barManager1.MaxItemId = 27;
+            this.barStaticItem2,
+            this.barEditItem1,
+            this.barButtonItemBuscar});
+            this.barManager1.MaxItemId = 29;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBoxCuentas,
-            this.repositoryItemSearchLookUpEdit1});
+            this.repositoryItemSearchLookUpEdit1,
+            this.repositoryItemTextEdit1});
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -481,10 +488,14 @@
             this.bar2.BarName = "Personalizada 3";
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 1;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar2.FloatLocation = new System.Drawing.Point(133, 792);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem2, "", false, true, true, 460)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem2, "", false, true, true, 320),
+            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.PaintStyle | DevExpress.XtraBars.BarLinkUserDefines.Width))), this.barEditItem1, "", false, true, true, 62, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBuscar)});
+            this.bar2.Offset = 3;
             this.bar2.Text = "Personalizada 3";
             // 
             // barStaticItem2
@@ -562,6 +573,29 @@
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
             // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "BUSCAR NUMERO ASIENTO";
+            this.barEditItem1.Edit = this.repositoryItemTextEdit1;
+            this.barEditItem1.Id = 27;
+            this.barEditItem1.Name = "barEditItem1";
+            this.barEditItem1.EditValueChanged += new System.EventHandler(this.barEditItem1_EditValueChanged);
+            this.barEditItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barEditItem1_ItemClick);
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            this.repositoryItemTextEdit1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.repositoryItemTextEdit1_KeyUp);
+            // 
+            // barButtonItemBuscar
+            // 
+            this.barButtonItemBuscar.Caption = "barButtonItem4";
+            this.barButtonItemBuscar.Id = 28;
+            this.barButtonItemBuscar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemBuscar.ImageOptions.SvgImage")));
+            this.barButtonItemBuscar.Name = "barButtonItemBuscar";
+            this.barButtonItemBuscar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBuscar_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -569,34 +603,34 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1429, 83);
+            this.barDockControlTop.Size = new System.Drawing.Size(1421, 57);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 607);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 577);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1429, 29);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1421, 64);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 83);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 524);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 520);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1429, 83);
+            this.barDockControlRight.Location = new System.Drawing.Point(1421, 57);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 524);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 520);
             // 
             // barToolbarsListItem1
             // 
@@ -630,7 +664,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1429, 636);
+            this.ClientSize = new System.Drawing.Size(1421, 641);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -652,6 +686,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.maestroContableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxCuentas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -712,5 +747,8 @@
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarStaticItem barStaticItem2;
         private DevExpress.XtraGrid.Columns.GridColumn colText;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemBuscar;
     }
 }

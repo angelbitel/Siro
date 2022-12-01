@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Siro.Controller
@@ -26,10 +27,10 @@ namespace Siro.Controller
                 MSG = "Seleccione las cuentas";
                 return false;
             }
-            if(asiento.DetalleAsientos.Sum(s=> s.Debito) != asiento.DetalleAsientos.Sum(s=> s.Credito))
+            if (asiento.DetalleAsientos.Sum(s => s.Debito) != asiento.DetalleAsientos.Sum(s => s.Credito))
             {
-                decimal? d1 = Math.Abs(asiento.DetalleAsientos.Sum(s => s.Debito)??0m);
-                decimal? d2 = Math.Abs(asiento.DetalleAsientos.Sum(s => s.Credito)??0m);
+                decimal? d1 = Math.Abs(asiento.DetalleAsientos.Sum(s => s.Debito) ?? 0m);
+                decimal? d2 = Math.Abs(asiento.DetalleAsientos.Sum(s => s.Credito) ?? 0m);
                 MSG = "Sumatoria de debitos y los creditos no es igual";
                 return false;
             }
@@ -40,7 +41,7 @@ namespace Siro.Controller
                 {
                     try
                     {
-                        if (asiento.IdAsiento == 0 || asiento.DetalleAsientos.Sum(s=> s.IdDetalleAsiento)==0)
+                        if (asiento.IdAsiento == 0 || asiento.DetalleAsientos.Sum(s => s.IdDetalleAsiento) == 0)
                             context.Asientos.Add(asiento);
                         else
                         {
@@ -60,11 +61,11 @@ namespace Siro.Controller
                             asiento.DetalleAsientos.ToList().ForEach(f =>
                             {
                                 idDetalle++;
-                                if ((f.IdAsiento??0) == 0 && asiento.IdAsiento > 0)
+                                if ((f.IdAsiento ?? 0) == 0 && asiento.IdAsiento > 0)
                                     f.IdAsiento = asiento.IdAsiento;
                                 if (f.IdDetalleAsiento == 0)
                                 {
-                                    if ((f.Debito??0) + (f.Credito??0) > 0)
+                                    if ((f.Debito ?? 0) + (f.Credito ?? 0) > 0)
                                         context.DetalleAsientos.Add(f);
                                 }
                                 else
@@ -141,6 +142,13 @@ namespace Siro.Controller
                         return false;
                     }
                 }
+            }
+        }
+        internal List<Model.PeriodoFiscal> LstPeriodos
+        {
+            get
+            {
+                return db.Database.SqlQuery<Model.PeriodoFiscal>($"SELECT TOP 1 IdCierreFinanciero AS IdPeriodoFiscal, Desde, Hasta FROM Contabilidad.CierreFinanciero WHERE IdEmpresa ={Principal.Bariables.IdEmpresa.Id}  ORDER BY Hasta DESC").ToList();
             }
         }
     }

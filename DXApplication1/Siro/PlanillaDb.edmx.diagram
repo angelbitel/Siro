@@ -37,7 +37,6 @@
         <EntityTypeShape EntityType="slModelPlanilla.IngresosDeduccionesHoras" Width="1.5" PointX="7.75" PointY="9.625" />
         <AssociationConnector Association="slModelPlanilla.FK_IngresosDeduccionesHoras_Colaboradores" />
         <AssociationConnector Association="slModelPlanilla.FK_IngresosDeduccionesHoras_Factores" />
-        <EntityTypeShape EntityType="slModelPlanilla.VPlanilla" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="slModelPlanilla.RegistroOtrosDeducciones" Width="1.5" PointX="7.75" PointY="13.625" />
         <AssociationConnector Association="slModelPlanilla.FK_RegistroOtrosDeducciones_Colaboradores" />
         <EntityTypeShape EntityType="slModelPlanilla.RegistroVacaciones" Width="1.5" PointX="7.75" PointY="17" />

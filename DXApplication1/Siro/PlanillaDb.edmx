@@ -36,7 +36,7 @@
           <Property Name="HoraSalida" Type="time" Precision="7" />
           <Property Name="IdDepartamento" Type="int" />
           <Property Name="IdPosicion" Type="int" />
-          <Property Name="RataPorHora" Type="money" />
+          <Property Name="RataPorHora" Type="decimal" Precision="18" Scale="10" />
           <Property Name="Bonificaciones" Type="money" />
           <Property Name="SeguroSocial" Type="varchar" MaxLength="250" />
           <Property Name="Sangre" Type="varchar" MaxLength="50" />
@@ -47,6 +47,8 @@
           <Property Name="Telefono" Type="varchar" MaxLength="250" />
           <Property Name="Dependientes" Type="int" />
           <Property Name="ExentoRenta" Type="bit" />
+          <Property Name="IdTurno" Type="int" />
+          <Property Name="IdUsuario" Type="int" />
         </EntityType>
         <EntityType Name="ContratosColaborador">
           <Key>
@@ -88,8 +90,8 @@
           <Property Name="DescuentoDiciembre" Type="bit" />
           <Property Name="Monto" Type="money" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'sl.Planilla.DetallesDescuento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="DetallesDescuento">
           <Key>
             <PropertyRef Name="IdDetalleDescuento" />
@@ -265,56 +267,6 @@ warning 6002: The table/view 'sl.Planilla.DetallesDescuento' does not have a pri
           <Property Name="IdTipoFactor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Factor" Type="varchar" MaxLength="250" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="VPlanilla">
-          <Key>
-            <PropertyRef Name="IdColaborador" />
-            <PropertyRef Name="Sexo" />
-            <PropertyRef Name="Renta" />
-            <PropertyRef Name="OtrasDeducciones" />
-            <PropertyRef Name="Extras" />
-            <PropertyRef Name="Amonestacion" />
-            <PropertyRef Name="CXC" />
-            <PropertyRef Name="Domingos" />
-            <PropertyRef Name="Feriados" />
-          </Key>
-          <Property Name="IdColaborador" Type="int" Nullable="false" />
-          <Property Name="Colaborador" Type="varchar" MaxLength="250" />
-          <Property Name="Sexo" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="SalarioDevengado" Type="money" />
-          <Property Name="SeguroEducativo" Type="money" />
-          <Property Name="SeguroSocial" Type="money" />
-          <Property Name="Renta" Type="money" Nullable="false" />
-          <Property Name="IdEmpresa" Type="int" />
-          <Property Name="OtrasDeducciones" Type="money" Nullable="false" />
-          <Property Name="Mes" Type="nvarchar" MaxLength="30" />
-          <Property Name="Extras" Type="money" Nullable="false" />
-          <Property Name="Amonestacion" Type="money" Nullable="false" />
-          <Property Name="CXC" Type="money" Nullable="false" />
-          <Property Name="DesdeHasta" Type="varchar" MaxLength="161" />
-          <Property Name="Departamento" Type="varchar" MaxLength="250" />
-          <Property Name="RataPorHora" Type="money" />
-          <Property Name="Domingos" Type="money" Nullable="false" />
-          <Property Name="Feriados" Type="money" Nullable="false" />
-          <Property Name="Dias" Type="int" />
-          <Property Name="Posicion" Type="varchar" MaxLength="250" />
-          <Property Name="Empresa" Type="varchar" MaxLength="55" />
-          <Property Name="Ruc" Type="varchar" MaxLength="20" />
-          <Property Name="Dv" Type="varchar" MaxLength="12" />
-        </EntityType>
-        <Association Name="FK_Colaboradores_Colaboradores">
-          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="1" />
-          <End Role="Colaboradores1" Type="Self.Colaboradores" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Colaboradores">
-              <PropertyRef Name="IdColaborador" />
-            </Principal>
-            <Dependent Role="Colaboradores1">
-              <PropertyRef Name="IdColaborador" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Colaboradores_ContratosColaborador">
           <End Role="ContratosColaborador" Type="Self.ContratosColaborador" Multiplicity="0..1" />
           <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="*" />
@@ -536,18 +488,6 @@ warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defi
           <Parameter Name="IdEmpresa" Type="int" Mode="In" />
           <Parameter Name="GetDate" Type="datetime" Mode="In" />
         </Function>
-        <Function Name="MaestroPlanillaCuentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IdUser" Type="int" Mode="In" />
-          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
-          <Parameter Name="GetDate" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="MaestroPlanillaIndividual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="IdUser" Type="int" Mode="In" />
-          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
-          <Parameter Name="GetDate" Type="datetime" Mode="In" />
-          <Parameter Name="IdColaborador" Type="int" Mode="In" />
-          <Parameter Name="SalarioQ" Type="money" Mode="In" />
-        </Function>
         <EntityContainer Name="slModelPlanillaStoreContainer">
           <EntitySet Name="Acredores" EntityType="Self.Acredores" Schema="Planilla" store:Type="Tables" />
           <EntitySet Name="Colaboradores" EntityType="Self.Colaboradores" Schema="Planilla" store:Type="Tables" />
@@ -577,37 +517,6 @@ warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defi
     [DetallesDescuento].[Monto] AS [Monto]
     FROM [Planilla].[DetallesDescuento] AS [DetallesDescuento]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="VPlanilla" EntityType="Self.VPlanilla" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VPlanilla].[IdColaborador] AS [IdColaborador], 
-    [VPlanilla].[Colaborador] AS [Colaborador], 
-    [VPlanilla].[Sexo] AS [Sexo], 
-    [VPlanilla].[SalarioDevengado] AS [SalarioDevengado], 
-    [VPlanilla].[SeguroEducativo] AS [SeguroEducativo], 
-    [VPlanilla].[SeguroSocial] AS [SeguroSocial], 
-    [VPlanilla].[Renta] AS [Renta], 
-    [VPlanilla].[IdEmpresa] AS [IdEmpresa], 
-    [VPlanilla].[OtrasDeducciones] AS [OtrasDeducciones], 
-    [VPlanilla].[Mes] AS [Mes], 
-    [VPlanilla].[Extras] AS [Extras], 
-    [VPlanilla].[Amonestacion] AS [Amonestacion], 
-    [VPlanilla].[CXC] AS [CXC], 
-    [VPlanilla].[DesdeHasta] AS [DesdeHasta], 
-    [VPlanilla].[Departamento] AS [Departamento], 
-    [VPlanilla].[RataPorHora] AS [RataPorHora], 
-    [VPlanilla].[Domingos] AS [Domingos], 
-    [VPlanilla].[Feriados] AS [Feriados], 
-    [VPlanilla].[Dias] AS [Dias], 
-    [VPlanilla].[Posicion] AS [Posicion], 
-    [VPlanilla].[Empresa] AS [Empresa], 
-    [VPlanilla].[Ruc] AS [Ruc], 
-    [VPlanilla].[Dv] AS [Dv]
-    FROM [dbo].[VPlanilla] AS [VPlanilla]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_Colaboradores_Colaboradores" Association="Self.FK_Colaboradores_Colaboradores">
-            <End Role="Colaboradores" EntitySet="Colaboradores" />
-            <End Role="Colaboradores1" EntitySet="Colaboradores" />
-          </AssociationSet>
           <AssociationSet Name="FK_Colaboradores_ContratosColaborador" Association="Self.FK_Colaboradores_ContratosColaborador">
             <End Role="ContratosColaborador" EntitySet="ContratosColaborador" />
             <End Role="Colaboradores" EntitySet="Colaboradores" />
@@ -863,7 +772,6 @@ warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defi
             <End Role="Factores" EntitySet="Factores" />
             <End Role="IngresosDeduccionesHoras" EntitySet="IngresosDeduccionesHoras" />
           </AssociationSet>
-          <EntitySet Name="VPlanilla" EntityType="slModelPlanilla.VPlanilla" />
           <EntitySet Name="RegistroOtrosDeducciones" EntityType="slModelPlanilla.RegistroOtrosDeducciones" />
           <AssociationSet Name="FK_RegistroOtrosDeducciones_Colaboradores" Association="slModelPlanilla.FK_RegistroOtrosDeducciones_Colaboradores">
             <End Role="Colaboradores" EntitySet="Colaboradores" />
@@ -922,7 +830,7 @@ warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defi
           <Property Name="HoraSalida" Type="Time" Precision="7" />
           <Property Name="IdDepartamento" Type="Int32" />
           <Property Name="IdPosicion" Type="Int32" />
-          <Property Name="RataPorHora" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RataPorHora" Type="Decimal" Precision="18" Scale="10" />
           <Property Name="Bonificaciones" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="SeguroSocial" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Sangre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -948,6 +856,8 @@ warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defi
           <NavigationProperty Name="RegistroVacaciones" Relationship="slModelPlanilla.FK_RegistroVacaciones_Colaboradores" FromRole="Colaboradores" ToRole="RegistroVacaciones" />
           <NavigationProperty Name="RegistroLiquidaciones" Relationship="slModelPlanilla.FK_RegistroLiquidaciones_Colaboradores" FromRole="Colaboradores" ToRole="RegistroLiquidaciones" />
           <NavigationProperty Name="PlanillaColaborador" Relationship="slModelPlanilla.FK_PlanillaColaborador_Colaboradores" FromRole="Colaboradores" ToRole="PlanillaColaborador" />
+          <Property Name="IdTurno" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" />
         </EntityType>
         <Association Name="FK_Colaboradores_ContratosColaborador">
           <End Type="slModelPlanilla.ContratosColaborador" Role="ContratosColaborador" Multiplicity="0..1" />
@@ -1208,42 +1118,6 @@ warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defi
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="VPlanilla">
-          <Key>
-            <PropertyRef Name="IdColaborador" />
-            <PropertyRef Name="Sexo" />
-            <PropertyRef Name="Renta" />
-            <PropertyRef Name="OtrasDeducciones" />
-            <PropertyRef Name="Extras" />
-            <PropertyRef Name="Amonestacion" />
-            <PropertyRef Name="CXC" />
-            <PropertyRef Name="Domingos" />
-            <PropertyRef Name="Feriados" />
-          </Key>
-          <Property Name="IdColaborador" Type="Int32" Nullable="false" />
-          <Property Name="Colaborador" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="SalarioDevengado" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="SeguroEducativo" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="SeguroSocial" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Renta" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="IdEmpresa" Type="Int32" />
-          <Property Name="OtrasDeducciones" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="Mes" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Extras" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="Amonestacion" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="CXC" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="DesdeHasta" Type="String" MaxLength="161" FixedLength="false" Unicode="false" />
-          <Property Name="Departamento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="RataPorHora" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Domingos" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="Feriados" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="Dias" Type="Int32" />
-          <Property Name="Posicion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Empresa" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
-          <Property Name="Ruc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Dv" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="RegistroOtrosDeducciones">
           <Key>
             <PropertyRef Name="IdOtraDeduccion" />
@@ -1473,6 +1347,8 @@ warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defi
           <EntitySetMapping Name="Colaboradores">
             <EntityTypeMapping TypeName="slModelPlanilla.Colaboradores">
               <MappingFragment StoreEntitySet="Colaboradores">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
                 <ScalarProperty Name="ExentoRenta" ColumnName="ExentoRenta" />
                 <ScalarProperty Name="Dependientes" ColumnName="Dependientes" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
@@ -1576,35 +1452,6 @@ warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defi
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VPlanilla">
-            <EntityTypeMapping TypeName="slModelPlanilla.VPlanilla">
-              <MappingFragment StoreEntitySet="VPlanilla">
-                <ScalarProperty Name="Dv" ColumnName="Dv" />
-                <ScalarProperty Name="Ruc" ColumnName="Ruc" />
-                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
-                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
-                <ScalarProperty Name="Dias" ColumnName="Dias" />
-                <ScalarProperty Name="Feriados" ColumnName="Feriados" />
-                <ScalarProperty Name="Domingos" ColumnName="Domingos" />
-                <ScalarProperty Name="RataPorHora" ColumnName="RataPorHora" />
-                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
-                <ScalarProperty Name="DesdeHasta" ColumnName="DesdeHasta" />
-                <ScalarProperty Name="CXC" ColumnName="CXC" />
-                <ScalarProperty Name="Amonestacion" ColumnName="Amonestacion" />
-                <ScalarProperty Name="Extras" ColumnName="Extras" />
-                <ScalarProperty Name="Mes" ColumnName="Mes" />
-                <ScalarProperty Name="OtrasDeducciones" ColumnName="OtrasDeducciones" />
-                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-                <ScalarProperty Name="Renta" ColumnName="Renta" />
-                <ScalarProperty Name="SeguroSocial" ColumnName="SeguroSocial" />
-                <ScalarProperty Name="SeguroEducativo" ColumnName="SeguroEducativo" />
-                <ScalarProperty Name="SalarioDevengado" ColumnName="SalarioDevengado" />
-                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-                <ScalarProperty Name="Colaborador" ColumnName="Colaborador" />
-                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="RegistroOtrosDeducciones">
             <EntityTypeMapping TypeName="slModelPlanilla.RegistroOtrosDeducciones">
               <MappingFragment StoreEntitySet="RegistroOtrosDeducciones">
@@ -1693,9 +1540,7 @@ warning 6002: The table/view 'sl.dbo.VPlanilla' does not have a primary key defi
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="MaestroPlanillaCuentas" FunctionName="slModelPlanilla.Store.MaestroPlanillaCuentas" />
-          <FunctionImportMapping FunctionImportName="MaestroPlanillaIndividual" FunctionName="slModelPlanilla.Store.MaestroPlanillaIndividual" />
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

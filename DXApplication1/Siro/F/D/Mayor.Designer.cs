@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mayor));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.colDeshabilitar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -216,16 +216,16 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlTop.Size = new System.Drawing.Size(835, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(827, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 476);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 483);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(835, 29);
+            this.barDockControlBottom.Size = new System.Drawing.Size(827, 27);
             // 
             // barDockControlLeft
             // 
@@ -234,16 +234,16 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 476);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 483);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(835, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(827, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 476);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 483);
             // 
             // barButtonItem1
             // 
@@ -326,16 +326,16 @@
             this.layoutControl1.Margin = new System.Windows.Forms.Padding(1);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(835, 476);
+            this.layoutControl1.Size = new System.Drawing.Size(827, 483);
             this.layoutControl1.TabIndex = 9;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(679, 43);
+            this.simpleButton3.Location = new System.Drawing.Point(667, 43);
             this.simpleButton3.Margin = new System.Windows.Forms.Padding(1);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(144, 27);
+            this.simpleButton3.Size = new System.Drawing.Size(148, 27);
             this.simpleButton3.StyleController = this.layoutControl1;
             this.simpleButton3.TabIndex = 27;
             this.simpleButton3.Text = "FECHAS";
@@ -343,10 +343,10 @@
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(760, 12);
+            this.simpleButton2.Location = new System.Drawing.Point(750, 12);
             this.simpleButton2.Margin = new System.Windows.Forms.Padding(1);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(63, 27);
+            this.simpleButton2.Size = new System.Drawing.Size(65, 27);
             this.simpleButton2.StyleController = this.layoutControl1;
             this.simpleButton2.TabIndex = 26;
             this.simpleButton2.Text = "IMPRIMIR";
@@ -354,10 +354,10 @@
             // 
             // simpleButtonRefrescar
             // 
-            this.simpleButtonRefrescar.Location = new System.Drawing.Point(679, 12);
+            this.simpleButtonRefrescar.Location = new System.Drawing.Point(667, 12);
             this.simpleButtonRefrescar.Margin = new System.Windows.Forms.Padding(1);
             this.simpleButtonRefrescar.Name = "simpleButtonRefrescar";
-            this.simpleButtonRefrescar.Size = new System.Drawing.Size(77, 27);
+            this.simpleButtonRefrescar.Size = new System.Drawing.Size(79, 27);
             this.simpleButtonRefrescar.StyleController = this.layoutControl1;
             this.simpleButtonRefrescar.TabIndex = 25;
             this.simpleButtonRefrescar.Text = "REFRESCAR";
@@ -374,7 +374,7 @@
             this.gridControl3.Name = "gridControl3";
             this.gridControl3.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkEdit2});
-            this.gridControl3.Size = new System.Drawing.Size(183, 452);
+            this.gridControl3.Size = new System.Drawing.Size(181, 459);
             this.gridControl3.TabIndex = 24;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -463,11 +463,11 @@
             // 
             this.gridControl2.DataSource = this.resumenBindingSource;
             this.gridControl2.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(0);
-            this.gridControl2.Location = new System.Drawing.Point(679, 114);
+            this.gridControl2.Location = new System.Drawing.Point(667, 114);
             this.gridControl2.MainView = this.layoutView1;
             this.gridControl2.Margin = new System.Windows.Forms.Padding(1);
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(144, 350);
+            this.gridControl2.Size = new System.Drawing.Size(148, 357);
             this.gridControl2.TabIndex = 23;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.layoutView1});
@@ -645,14 +645,14 @@
             // gridControl1
             // 
             this.gridControl1.DataSource = this.resumenCreditosBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(199, 12);
+            this.gridControl1.Location = new System.Drawing.Point(197, 12);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.cmbTiposMovimientos,
             this.repositoryItemHyperLinkEdit1,
             this.btnDehabilitar});
-            this.gridControl1.Size = new System.Drawing.Size(476, 452);
+            this.gridControl1.Size = new System.Drawing.Size(466, 459);
             this.gridControl1.TabIndex = 15;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -680,16 +680,16 @@
             this.gridView1.DetailHeight = 170;
             this.gridView1.FixedLineWidth = 1;
             this.gridView1.FooterPanelHeight = 0;
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Column = this.colDeshabilitar;
-            gridFormatRule1.ColumnApplyTo = this.colDeshabilitar;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Expression = "True";
-            formatConditionRuleValue1.PredefinedName = "Strikeout Text";
-            formatConditionRuleValue1.Value1 = true;
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            this.gridView1.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Column = this.colDeshabilitar;
+            gridFormatRule2.ColumnApplyTo = this.colDeshabilitar;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Expression = "True";
+            formatConditionRuleValue2.PredefinedName = "Strikeout Text";
+            formatConditionRuleValue2.Value1 = true;
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            this.gridView1.FormatRules.Add(gridFormatRule2);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupRowHeight = 0;
             this.gridView1.LevelIndent = 0;
@@ -826,9 +826,9 @@
             // btnDehabilitar
             // 
             this.btnDehabilitar.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.btnDehabilitar.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.btnDehabilitar.Name = "btnDehabilitar";
             this.btnDehabilitar.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -883,15 +883,15 @@
             this.layoutControlItem6});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.OptionsItemText.TextToControlDistance = 8;
-            this.layoutControlGroup1.Size = new System.Drawing.Size(835, 476);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(827, 483);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(187, 0);
+            this.layoutControlItem1.Location = new System.Drawing.Point(185, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(480, 456);
+            this.layoutControlItem1.Size = new System.Drawing.Size(470, 463);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -899,9 +899,9 @@
             // 
             this.layoutControlItem2.Control = this.gridControl2;
             this.layoutControlItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("layoutControlItem2.ImageOptions.Image")));
-            this.layoutControlItem2.Location = new System.Drawing.Point(667, 62);
+            this.layoutControlItem2.Location = new System.Drawing.Point(655, 62);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(148, 394);
+            this.layoutControlItem2.Size = new System.Drawing.Size(152, 401);
             this.layoutControlItem2.Text = "RESUMEN:";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(98, 32);
@@ -911,34 +911,34 @@
             this.layoutControlItem3.Control = this.gridControl3;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(187, 456);
+            this.layoutControlItem3.Size = new System.Drawing.Size(185, 463);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButtonRefrescar;
-            this.layoutControlItem4.Location = new System.Drawing.Point(667, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(655, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(81, 31);
+            this.layoutControlItem4.Size = new System.Drawing.Size(83, 31);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.simpleButton2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(748, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(738, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(67, 31);
+            this.layoutControlItem5.Size = new System.Drawing.Size(69, 31);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.simpleButton3;
-            this.layoutControlItem6.Location = new System.Drawing.Point(667, 31);
+            this.layoutControlItem6.Location = new System.Drawing.Point(655, 31);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(148, 31);
+            this.layoutControlItem6.Size = new System.Drawing.Size(152, 31);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -946,7 +946,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 505);
+            this.ClientSize = new System.Drawing.Size(827, 510);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

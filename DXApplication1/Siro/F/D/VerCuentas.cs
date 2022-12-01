@@ -317,5 +317,62 @@ namespace Siro.F.D
             gridControl1.DataSource = Asientos;
 
         }
+
+        private void barEditItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void repositoryItemTextEdit1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+            }
+        }
+
+        private void barButtonItemBuscar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var lst = new Controller.Lst();
+            Asientos.Clear();
+            int idAsiento = 0;
+            if (int.TryParse(barEditItem1.EditValue.ToString(), out idAsiento))
+            {
+                lst.LstAsientosResumen(idAsiento).ToList().ForEach(f =>
+                {
+                    Asientos.Add(new AsientoContable
+                    {
+                        Comentario = string.Format("# ASIENTO:[{0}] {1}", f.IdAsiento, f.Comentario.ToUpper()),
+                        IdAsiento = f.IdAsiento,
+                        Credito = Math.Abs(f.Credito ?? 0m),
+                        CuentaContable = f.CuentaContable,
+                        Debito = Math.Abs(f.Debito ?? 0m),
+                        Fecha = f.Fecha,
+                        IdCuentaContable = f.IdCuentaContable,
+                        Mayor = f.Mayor,
+                        Detlle = f.Detalle,
+                        IdOrigen = f.IdOrigen
+                    });
+                });
+                lblMsg.Caption = $"CANTIDAD DE ASIENTOS: {Asientos.ToList().GroupBy(g => g.IdAsiento).Select(s => s.Key).Count()}";
+                var asientosDesba = Asientos.GroupBy(g => new { g.IdAsiento }).Select(s => new { s.Key.IdAsiento, Debito = s.Sum(su => su.Debito), Credito = s.Sum(su => su.Credito) }).ToList();
+                asientosDesba.ToList().Where(w => w.Debito - w.Credito != 0).ToList().ForEach(f =>
+                {
+                    Asientos.Where(w => w.IdAsiento == f.IdAsiento).ToList().ForEach(g =>
+                    {
+                        g.Desbalanceado = true;
+                    });
+                });
+                lblMsg.Caption = $"CANTIDAD DE ASIENTOS: {asientosDesba.Count()};";
+            }
+
+            btnDesba.Caption = $"ASIENTOS DESBALANCEADOS:{Asientos.Where(w => w.Desbalanceado == true).GroupBy(g => IdAsiento = g.IdAsiento).Select(s => s.Key).Count()}";
+            gridControl1.DataSource = Asientos;
+
+        }
+
+        private void barEditItem1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

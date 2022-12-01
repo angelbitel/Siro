@@ -980,9 +980,6 @@
     <Compile Include="VPagosProveedor.cs">
       <DependentUpon>slContabilidad.tt</DependentUpon>
     </Compile>
-    <Compile Include="VPlanilla.cs">
-      <DependentUpon>PlanillaDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="VPrecioLista.cs">
       <DependentUpon>Contabilidad.tt</DependentUpon>
     </Compile>

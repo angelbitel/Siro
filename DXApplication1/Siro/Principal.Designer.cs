@@ -116,17 +116,17 @@
             this.dockPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(465, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(465, 736);
+            this.dockPanel1.Size = new System.Drawing.Size(465, 743);
             this.dockPanel1.Text = "Menu";
             this.dockPanel1.CustomButtonChecked += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.dockPanel1_CustomButtonChecked);
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.navBarControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(5, 50);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(5, 29);
             this.dockPanel1_Container.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(453, 681);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(453, 709);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // navBarControl1
@@ -184,7 +184,7 @@
             this.navBarControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 453;
-            this.navBarControl1.Size = new System.Drawing.Size(453, 681);
+            this.navBarControl1.Size = new System.Drawing.Size(453, 709);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkPressed);
@@ -490,13 +490,13 @@
             // 
             // defaultLookAndFeel1
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2013";
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "DevExpress Style";
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1297, 736);
+            this.ClientSize = new System.Drawing.Size(1303, 743);
             this.Controls.Add(this.dockPanel1);
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("Principal.IconOptions.Icon")));
             this.IsMdiContainer = true;
