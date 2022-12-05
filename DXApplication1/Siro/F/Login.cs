@@ -55,6 +55,8 @@ namespace Siro.F
                     Settings.Default.Save();
                     Principal.Bariables.HabilitarP = true;
                     Principal.Bariables.IdUsuario = res.IdUsuario;
+                    Principal.Bariables.IdPerfil = res.IdPerfil;
+                    Principal.Bariables.Usuario = res.Usuario;
                     Pasar = true;
                     this.Close();
                 }

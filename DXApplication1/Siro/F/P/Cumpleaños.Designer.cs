@@ -90,8 +90,8 @@
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "Imprimir";
-            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
             this.barButtonItem2.Id = 2;
+            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -115,76 +115,77 @@
             // 
             this.lblMsg.Id = 1;
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barStaticItemFecha
             // 
             this.barStaticItemFecha.Id = 4;
             this.barStaticItemFecha.Name = "barStaticItemFecha";
-            this.barStaticItemFecha.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barStaticItemEmpresa
             // 
             this.barStaticItemEmpresa.Id = 5;
             this.barStaticItemEmpresa.Name = "barStaticItemEmpresa";
-            this.barStaticItemEmpresa.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(758, 59);
+            this.barDockControlTop.Size = new System.Drawing.Size(920, 57);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 684);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 691);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(758, 34);
+            this.barDockControlBottom.Size = new System.Drawing.Size(920, 27);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 59);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 625);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 634);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(758, 59);
+            this.barDockControlRight.Location = new System.Drawing.Point(920, 57);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 625);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 634);
             // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Eliminar Categoria";
-            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
             this.barButtonItem1.Id = 0;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
             this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barButtonItem3
             // 
             this.barButtonItem3.Caption = "Mayorizar";
-            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
             this.barButtonItem3.Id = 3;
+            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
             this.barButtonItem3.Name = "barButtonItem3";
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gridControl1.Location = new System.Drawing.Point(0, 59);
+            this.gridControl1.Location = new System.Drawing.Point(0, 57);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(758, 625);
+            this.gridControl1.Size = new System.Drawing.Size(920, 634);
             this.gridControl1.TabIndex = 15;
             this.gridControl1.ToolTipController = this.toolTipController1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -194,12 +195,6 @@
             // 
             this.gridView1.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.DimGray;
             this.gridView1.Appearance.ColumnFilterButton.Options.UseForeColor = true;
-            this.gridView1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.DarkGray;
-            this.gridView1.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 15F);
-            this.gridView1.Appearance.Row.ForeColor = System.Drawing.Color.Gray;
-            this.gridView1.Appearance.Row.Options.UseFont = true;
-            this.gridView1.Appearance.Row.Options.UseForeColor = true;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -216,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 718);
+            this.ClientSize = new System.Drawing.Size(920, 718);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
