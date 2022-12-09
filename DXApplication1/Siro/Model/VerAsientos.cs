@@ -10,6 +10,7 @@ namespace Siro.Model
         public string CuentaContable { get; set; }
         public decimal? Debito { get; set; }
         public DateTime? Fecha { get; set; }
+        public DateTime? FechaOperacion { get; set; }
         //IdAsiento = f.IdAsiento,
         public int? IdBanco  { get; set; }
         public int? IdCliente { get; set; }

@@ -280,6 +280,12 @@
     <Compile Include="F\D\FiltroFecha.Designer.cs">
       <DependentUpon>FiltroFecha.cs</DependentUpon>
     </Compile>
+    <Compile Include="F\D\frmLogAsientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\D\frmLogAsientos.Designer.cs">
+      <DependentUpon>frmLogAsientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="F\D\MaestrosCuentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1039,6 +1045,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F\D\FormaPago.resx">
       <DependentUpon>FormaPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F\D\frmLogAsientos.resx">
+      <DependentUpon>frmLogAsientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F\D\MaestrosCuentas.resx">
       <DependentUpon>MaestrosCuentas.cs</DependentUpon>

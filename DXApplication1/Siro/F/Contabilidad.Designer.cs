@@ -52,6 +52,7 @@
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem16 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem17 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem18 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup8 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
@@ -227,10 +228,10 @@
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.navBarControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(7, 25);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(6, 32);
             this.dockPanel1_Container.Margin = new System.Windows.Forms.Padding(4);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(451, 575);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(453, 569);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // navBarControl1
@@ -257,12 +258,13 @@
             this.navBarItem14,
             this.navBarItem15,
             this.navBarItem16,
-            this.navBarItem17});
+            this.navBarItem17,
+            this.navBarItem18});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Margin = new System.Windows.Forms.Padding(4);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 451;
-            this.navBarControl1.Size = new System.Drawing.Size(451, 575);
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 453;
+            this.navBarControl1.Size = new System.Drawing.Size(453, 569);
             this.navBarControl1.TabIndex = 2;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkPressed);
@@ -276,7 +278,8 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem16),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem17)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem17),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem18)});
             this.navBarGroup6.Name = "navBarGroup6";
             // 
             // navBarItem31
@@ -304,6 +307,11 @@
             // 
             this.navBarItem17.Caption = "Asientos";
             this.navBarItem17.Name = "navBarItem17";
+            // 
+            // navBarItem18
+            // 
+            this.navBarItem18.Caption = "Log";
+            this.navBarItem18.Name = "navBarItem18";
             // 
             // navBarGroup8
             // 
@@ -575,5 +583,6 @@
         private DevExpress.XtraNavBar.NavBarItem navBarItem15;
         private DevExpress.XtraNavBar.NavBarItem navBarItem16;
         private DevExpress.XtraNavBar.NavBarItem navBarItem17;
+        private DevExpress.XtraNavBar.NavBarItem navBarItem18;
     }
 }

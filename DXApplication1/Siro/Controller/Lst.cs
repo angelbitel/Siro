@@ -132,6 +132,53 @@ namespace Siro.Controller
             });
             return lstAs;
         }
+        public List<VerAsientos> LstAsientosResumenLog(DateTime desde, DateTime hasta, int idEmpresa)
+        {
+            var lstR = db.Database.SqlQuery<VerAsientos>($@"
+                                            SELECT 
+                                                s.Detalle, 
+                                                s.IdAsiento, 
+                                                s.Comentario, 
+                                                s.Credito, 
+                                                s.CuentaContable, 
+                                                s.Debito, 
+                                                s.Fecha, 
+                                                s.IdCuentaContable, 
+                                                s.Mayor, 
+                                                s.Año, 
+                                                s.Mes, 
+                                                s.IdEmpresa, 
+                                                s.Cuenta, 
+                                                s.IdOrigen,
+                                                s.FechaOperacion
+                                            FROM VAsientosLog s
+                                                WHERE s.IdEmpresa = {idEmpresa} 
+                                                AND CONVERT(CHAR(8),FechaOperacion,112) >= '{desde:yyyyMMdd}'
+                                                AND CONVERT(CHAR(8),FechaOperacion,112) <= '{hasta:yyyyMMdd}'
+                  ").ToList();
+            var lstAs = new List<VerAsientos>();
+            lstR.ForEach(f =>
+            {
+                var cuenta = string.Format("[{0}] {1}", f.CuentaContable, f.CuentaContable);
+                if (f.Debito == 0)
+                    cuenta = "             " + cuenta;
+                lstAs.Add(new VerAsientos
+                {
+                    Comentario = string.Format("# ASIENTO:[{0}] {1}", f.IdAsiento, (f.Comentario ?? "").ToUpper()),
+                    IdAsiento = f.IdAsiento,
+                    Credito = Math.Abs(f.Credito ?? 0m),
+                    CuentaContable = cuenta,
+                    Debito = Math.Abs(f.Debito ?? 0m),
+                    Fecha = f.Fecha,
+                    IdCuentaContable = f.IdCuentaContable,
+                    Mayor = f.Mayor,
+                    Detalle = f.Detalle,
+                    IdOrigen = f.IdOrigen,
+                    FechaOperacion = f.FechaOperacion
+                });
+            });
+            return lstAs;
+        }
         public List<VerAsientos> LstAsientosResumen(int idMaestroCuenta, int idEmpresa)
         {
             var lstBuscarAsiento = new List<int>();

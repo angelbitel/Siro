@@ -70,8 +70,13 @@ namespace Siro.F
         {
             if (WindowsIdentity.GetCurrent().Name.IndexOf("angel") != -1)
             {
-                var res = new Controller.MVSeguridad().UserLogin("Angel");
-                string pwd = res != null ? res.Contraseña : string.Empty;
+                var db = new Controller.MVSeguridad();
+                var res = db.UserLogin("Angel");
+                if (db.Mensaje != null)
+                {
+                    MessageBox.Show(db.Mensaje);
+                    return;
+                }
 
                 Settings.Default.UltimoUsuario = textEdit1.Text;
                 Settings.Default.Save();

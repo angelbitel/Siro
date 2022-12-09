@@ -9,6 +9,9 @@ namespace Siro.Controller
     {
         slEntities context;
         public MVSeguridad() => context = new slEntities();
+
+        public string Mensaje { get; private set; }
+
         public byte[] UserImg(string userName)
         {
             var len = context.Database.SqlQuery<Int64>("SELECT TOP 1 DATALENGTH(Img) FROM Usuarios WHERE usuario = @Usuario", new SqlParameter("@Usuario", userName)).Single();
@@ -26,10 +29,17 @@ namespace Siro.Controller
         public Model.Login UserLogin(string userName)
         {
             var user = new Model.Login { };
-            var dbUs = context.Database.SqlQuery<Model.Login>("SELECT IdUsuario, usuario AS NombreUsuario, IdPerfil, Contraseña, Usuario FROM Usuarios WHERE Usuario = @Usuario", new SqlParameter("Usuario", userName)).ToList();
-            //var res = context.Usuarios.Where(s => s.usuario == userName).Select(s => new Model.Login { IdUsuario = s.IdUser, NombreUsuario = s.usuario, IdPerfil = s.IdPerfil, Contraseña = s.contraseña }).Take(1).ToList();
-            if (dbUs.Count > 0)
-                user = dbUs[0];
+            try
+            {
+                var dbUs = context.Database.SqlQuery<Model.Login>("SELECT IdUsuario, usuario AS NombreUsuario, IdPerfil, Contraseña, Usuario FROM Usuarios WHERE Usuario = @Usuario", new SqlParameter("Usuario", userName)).ToList();
+                if (dbUs.Count > 0)
+                    user = dbUs[0];
+
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+            }
             return user;
         }
     }

@@ -25,5 +25,6 @@ namespace Siro.Model
         public string Mayor { get; set; }
         public string Detlle { get; set; }
         public bool Desbalanceado { get; set; }
+        public DateTime? FechaOperacion { get; set; }
     }
 }

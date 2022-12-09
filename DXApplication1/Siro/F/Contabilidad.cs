@@ -80,6 +80,9 @@ namespace Siro.F
                 case "navBarItem17":
                     OpenForm(new F.D.VerCuentas());
                     break;
+                case "navBarItem18":
+                    OpenForm(new F.D.frmLogAsientos());
+                    break;
             }
 
         }
