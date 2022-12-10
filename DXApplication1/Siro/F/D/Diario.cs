@@ -329,7 +329,8 @@ namespace Siro.F
                 DetalleAsientos = detalleDiario,
                 IdUser = Principal.Bariables.IdUsuario,
                 IdRegistroBanco = IdRegistroBanco,
-                IdTransaccion = IdTransaccion
+                IdTransaccion = Asiento[0].IdTransaccion,
+                IdOrigen = = Asiento[0].IdOrigen
             };
             if (LstPeriodosFiscales.Count > 0)
             {

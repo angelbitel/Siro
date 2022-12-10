@@ -85,6 +85,8 @@ namespace Siro.F.D
                     F.Diario.Asiento[0].IdAsiento = d.IdAsiento;
                     F.Diario.Asiento[0].Comentario = d.Comentario;
                     F.Diario.Asiento[0].IdUsuario = d.IdUser;
+                    F.Diario.Asiento[0].IdOrigen = d.IdOrigen;
+                    F.Diario.Asiento[0].id = d.IdUser;
 
                     d.DetalleAsientos.ToList().ForEach(f =>
                     {
@@ -160,6 +162,8 @@ namespace Siro.F.D
                     F.Diario.Asiento[0].IdAsiento = 0;
                     F.Diario.Asiento[0].Comentario = d.Comentario;
                     F.Diario.Asiento[0].IdUsuario = d.IdUser;
+                    F.Diario.Asiento[0].IdOrigen = d.IdOrigen;
+                    F.Diario.Asiento[0].IdTransaccion = d.IdTransaccion;
 
                     d.DetalleAsientos.ToList().ForEach(f =>
                     {

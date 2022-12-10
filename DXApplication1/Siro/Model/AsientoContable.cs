@@ -7,6 +7,7 @@ namespace Siro.Model
         public int IdAsiento { get; set; }
         public int IdDetalleAsiento { get; set; }
         public int? IdOrigen { get; set; }
+        public int? IdTransaccion { get; set; }
         public Nullable<int> IdCuentaContable { get; set; }
         public Nullable<int> IdProveedor { get; set; }
         public Nullable<int> IdCliente { get; set; }
