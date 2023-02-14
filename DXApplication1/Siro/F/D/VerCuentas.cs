@@ -86,7 +86,7 @@ namespace Siro.F.D
                     F.Diario.Asiento[0].Comentario = d.Comentario;
                     F.Diario.Asiento[0].IdUsuario = d.IdUser;
                     F.Diario.Asiento[0].IdOrigen = d.IdOrigen;
-                    F.Diario.Asiento[0].id = d.IdUser;
+                    //F.Diario.Asiento[0]. = d.IdUser;
 
                     d.DetalleAsientos.ToList().ForEach(f =>
                     {

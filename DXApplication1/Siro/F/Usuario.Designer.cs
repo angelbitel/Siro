@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Usuario));
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.usuariosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -51,6 +51,8 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.lblMsg = new DevExpress.XtraBars.BarStaticItem();
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -60,7 +62,7 @@
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barMdiChildrenListItem1 = new DevExpress.XtraBars.BarMdiChildrenListItem();
             this.barWorkspaceMenuItem1 = new DevExpress.XtraBars.BarWorkspaceMenuItem();
-            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
+            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager(this.components);
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.itbcrumbCuentas = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
@@ -68,8 +70,6 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.rpsBreadCrumb1 = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
-            this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usuariosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -84,13 +84,15 @@
             // 
             this.gridControl1.DataSource = this.usuariosBindingSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 44);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gridControl1.Location = new System.Drawing.Point(0, 50);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEditPassword,
             this.repositoryItemImageComboBox1});
-            this.gridControl1.Size = new System.Drawing.Size(585, 480);
+            this.gridControl1.Size = new System.Drawing.Size(1214, 600);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -114,6 +116,7 @@
             this.colnombreCompleto,
             this.colimg,
             this.colIdPerfil});
+            this.gridView1.DetailHeight = 431;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
@@ -125,27 +128,30 @@
             // 
             this.colIdUser.Caption = "# Usuario";
             this.colIdUser.FieldName = "IdUser";
+            this.colIdUser.MinWidth = 23;
             this.colIdUser.Name = "colIdUser";
             this.colIdUser.Visible = true;
             this.colIdUser.VisibleIndex = 0;
-            this.colIdUser.Width = 70;
+            this.colIdUser.Width = 82;
             // 
             // colusuario
             // 
             this.colusuario.FieldName = "usuario";
+            this.colusuario.MinWidth = 23;
             this.colusuario.Name = "colusuario";
             this.colusuario.Visible = true;
             this.colusuario.VisibleIndex = 1;
-            this.colusuario.Width = 70;
+            this.colusuario.Width = 82;
             // 
             // colcontraseña
             // 
             this.colcontraseña.ColumnEdit = this.repositoryItemTextEditPassword;
             this.colcontraseña.FieldName = "contraseña";
+            this.colcontraseña.MinWidth = 23;
             this.colcontraseña.Name = "colcontraseña";
             this.colcontraseña.Visible = true;
             this.colcontraseña.VisibleIndex = 2;
-            this.colcontraseña.Width = 70;
+            this.colcontraseña.Width = 82;
             // 
             // repositoryItemTextEditPassword
             // 
@@ -156,65 +162,78 @@
             // coldireccion
             // 
             this.coldireccion.FieldName = "direccion";
+            this.coldireccion.MinWidth = 23;
             this.coldireccion.Name = "coldireccion";
+            this.coldireccion.Width = 87;
             // 
             // coltelefono
             // 
             this.coltelefono.FieldName = "telefono";
+            this.coltelefono.MinWidth = 23;
             this.coltelefono.Name = "coltelefono";
             this.coltelefono.Visible = true;
             this.coltelefono.VisibleIndex = 3;
-            this.coltelefono.Width = 70;
+            this.coltelefono.Width = 82;
             // 
             // colemail
             // 
             this.colemail.FieldName = "email";
+            this.colemail.MinWidth = 23;
             this.colemail.Name = "colemail";
             this.colemail.Visible = true;
             this.colemail.VisibleIndex = 4;
-            this.colemail.Width = 70;
+            this.colemail.Width = 82;
             // 
             // colfechaCumpleaño
             // 
             this.colfechaCumpleaño.FieldName = "fechaCumpleaño";
+            this.colfechaCumpleaño.MinWidth = 23;
             this.colfechaCumpleaño.Name = "colfechaCumpleaño";
+            this.colfechaCumpleaño.Width = 87;
             // 
             // colLastEditDate
             // 
             this.colLastEditDate.FieldName = "LastEditDate";
+            this.colLastEditDate.MinWidth = 23;
             this.colLastEditDate.Name = "colLastEditDate";
+            this.colLastEditDate.Width = 87;
             // 
             // colCreationDate
             // 
             this.colCreationDate.FieldName = "CreationDate";
+            this.colCreationDate.MinWidth = 23;
             this.colCreationDate.Name = "colCreationDate";
+            this.colCreationDate.Width = 87;
             // 
             // colnombreCompleto
             // 
             this.colnombreCompleto.Caption = "Nombre";
             this.colnombreCompleto.FieldName = "nombreCompleto";
+            this.colnombreCompleto.MinWidth = 23;
             this.colnombreCompleto.Name = "colnombreCompleto";
             this.colnombreCompleto.Visible = true;
             this.colnombreCompleto.VisibleIndex = 5;
-            this.colnombreCompleto.Width = 83;
+            this.colnombreCompleto.Width = 97;
             // 
             // colimg
             // 
             this.colimg.FieldName = "img";
+            this.colimg.MinWidth = 23;
             this.colimg.Name = "colimg";
             this.colimg.Visible = true;
             this.colimg.VisibleIndex = 6;
-            this.colimg.Width = 63;
+            this.colimg.Width = 73;
             // 
             // colIdPerfil
             // 
             this.colIdPerfil.Caption = "Perfil";
             this.colIdPerfil.ColumnEdit = this.repositoryItemImageComboBox1;
             this.colIdPerfil.FieldName = "IdPerfil";
+            this.colIdPerfil.MinWidth = 23;
             this.colIdPerfil.Name = "colIdPerfil";
             this.colIdPerfil.Visible = true;
             this.colIdPerfil.VisibleIndex = 7;
-            this.colIdPerfil.Width = 68;
+            this.colIdPerfil.Width = 79;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -270,35 +289,60 @@
             // 
             this.lblMsg.Id = 2;
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 2";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem8, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar1.Text = "Custom 2";
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Administracion Perfiles";
+            this.barButtonItem8.Id = 11;
+            this.barButtonItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.Image")));
+            this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(585, 44);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(1214, 50);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 524);
-            this.barDockControlBottom.Size = new System.Drawing.Size(585, 26);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 650);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1214, 27);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 480);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 50);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 600);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(585, 44);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 480);
+            this.barDockControlRight.Location = new System.Drawing.Point(1214, 50);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 600);
             // 
             // barButtonItem1
             // 
@@ -372,8 +416,8 @@
             // barButtonItem7
             // 
             this.barButtonItem7.Caption = "Guardar Perfil";
-            this.barButtonItem7.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.Glyph")));
             this.barButtonItem7.Id = 10;
+            this.barButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
             this.barButtonItem7.Name = "barButtonItem7";
             // 
             // rpsBreadCrumb1
@@ -383,34 +427,17 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.rpsBreadCrumb1.Name = "rpsBreadCrumb1";
             // 
-            // bar1
-            // 
-            this.bar1.BarName = "Custom 2";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem8, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar1.Text = "Custom 2";
-            // 
-            // barButtonItem8
-            // 
-            this.barButtonItem8.Caption = "Administracion Perfiles";
-            this.barButtonItem8.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.Glyph")));
-            this.barButtonItem8.Id = 11;
-            this.barButtonItem8.Name = "barButtonItem8";
-            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
-            // 
             // Usuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 550);
+            this.ClientSize = new System.Drawing.Size(1214, 677);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Usuario";
             this.Text = "Usuario";
             this.Load += new System.EventHandler(this.Usuario_Load);

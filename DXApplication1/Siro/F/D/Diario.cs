@@ -330,17 +330,19 @@ namespace Siro.F
                 IdUser = Principal.Bariables.IdUsuario,
                 IdRegistroBanco = IdRegistroBanco,
                 IdTransaccion = Asiento[0].IdTransaccion,
-                IdOrigen = = Asiento[0].IdOrigen
+                IdOrigen = Asiento[0].IdOrigen
             };
-            if (LstPeriodosFiscales.Count > 0)
-            {
-                /**PERIODIOS FISCALES VALIDAR QUE NO INGRESE TRANSACCIONES ANTERIORES*/
-                if(asiento.Fecha.Value.CompareTo(LstPeriodosFiscales[0].Hasta) < 0)
-                {
-                    MessageBox.Show($" ALERTA {asiento.Fecha} ESTA DENTRO DEL ULTIMO CIERRE FISCAL ({LstPeriodosFiscales[0].Hasta})" );
-                    return;
-                }
-            }
+            
+            //if (LstPeriodosFiscales.Count > 0)
+            //{
+            //    /**PERIODIOS FISCALES VALIDAR QUE NO INGRESE TRANSACCIONES ANTERIORES*/
+            //    if(asiento.Fecha.Value.CompareTo(LstPeriodosFiscales[0].Hasta) < 0)
+            //    {
+            //        MessageBox.Show($" ALERTA {asiento.Fecha} ESTA DENTRO DEL ULTIMO CIERRE FISCAL ({LstPeriodosFiscales[0].Hasta})" );
+            //        return;
+            //    }
+            //}
+            
             /****** Enviar Asiento Contable ******/
             var diario = new Controller.Diario();
             bool respuesta = diario.AgregarAsiento(asiento);
