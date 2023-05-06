@@ -86,18 +86,18 @@ namespace Siro.F
             }
 
         }
-        private void GenerarReporte(string reporte, int[] tip )
+        private void GenerarReporte(string reporte, int[] tip)
         {
             XtraReport report = new XtraReport();
             report.LoadLayout(string.Format(@"Reportes\\Diario\\{0}.repx", reporte));
-            if(report.Parameters["PrmAño"] != null)
+            if (report.Parameters["PrmAño"] != null)
             {
-            report.Parameters["PrmAño"].Value = Principal.Bariables.PeridoContable.Year;
-            report.Parameters["PrmMes"].Value = Principal.Bariables.PeridoContable.Month;
-            if (tip != null)
-                report.Parameters["prmTipo"].Value = tip;
+                report.Parameters["PrmAño"].Value = Principal.Bariables.PeridoContable.Year;
+                report.Parameters["PrmMes"].Value = Principal.Bariables.PeridoContable.Month;
+                if (tip != null)
+                    report.Parameters["prmTipo"].Value = tip;
             }
-            for(int i =0; i< report.Parameters.Count; i++)
+            for (int i = 0; i < report.Parameters.Count; i++)
             {
                 if (report.Parameters[i].Type.Name == "DateTime")
                     report.Parameters[i].Value = DateTime.Now;
