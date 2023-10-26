@@ -129,6 +129,16 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
           <Property Name="RestaSaldo" Type="bit" />
           <Property Name="TipoDia" Type="char" MaxLength="1" />
         </EntityType>
+        <EntityType Name="HistorialHoras">
+          <Key>
+            <PropertyRef Name="IdHorario" />
+          </Key>
+          <Property Name="IdHorario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdColaborador" Type="int" />
+          <Property Name="Mes" Type="date" />
+          <Property Name="Entrada" Type="time" Precision="7" />
+          <Property Name="Salida" Type="time" Precision="7" />
+        </EntityType>
         <EntityType Name="HorasTrabajadas">
           <Key>
             <PropertyRef Name="IdHoraTrabjada" />
@@ -375,6 +385,18 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HistorialHoras_Colaboradores">
+          <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="0..1" />
+          <End Role="HistorialHoras" Type="Self.HistorialHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="HistorialHoras">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HorasTrabajadas_Colaboradores">
           <End Role="Colaboradores" Type="Self.Colaboradores" Multiplicity="0..1" />
           <End Role="HorasTrabajadas" Type="Self.HorasTrabajadas" Multiplicity="*" />
@@ -498,6 +520,7 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
           <EntitySet Name="EntedidadesFinanciera" EntityType="Self.EntedidadesFinanciera" Schema="Planilla" store:Type="Tables" />
           <EntitySet Name="EstadosColaborador" EntityType="Self.EstadosColaborador" Schema="Planilla" store:Type="Tables" />
           <EntitySet Name="Factores" EntityType="Self.Factores" Schema="Planilla" store:Type="Tables" />
+          <EntitySet Name="HistorialHoras" EntityType="Self.HistorialHoras" Schema="Planilla" store:Type="Tables" />
           <EntitySet Name="HorasTrabajadas" EntityType="Self.HorasTrabajadas" Schema="Planilla" store:Type="Tables" />
           <EntitySet Name="IngresosDeducciones" EntityType="Self.IngresosDeducciones" Schema="Planilla" store:Type="Tables" />
           <EntitySet Name="IngresosDeduccionesHoras" EntityType="Self.IngresosDeduccionesHoras" Schema="Planilla" store:Type="Tables" />
@@ -552,6 +575,10 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
           <AssociationSet Name="FK_Factores_TiposFactor" Association="Self.FK_Factores_TiposFactor">
             <End Role="TiposFactor" EntitySet="TiposFactor" />
             <End Role="Factores" EntitySet="Factores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialHoras_Colaboradores" Association="Self.FK_HistorialHoras_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="HistorialHoras" EntitySet="HistorialHoras" />
           </AssociationSet>
           <AssociationSet Name="FK_HorasTrabajadas_Colaboradores" Association="Self.FK_HorasTrabajadas_Colaboradores">
             <End Role="Colaboradores" EntitySet="Colaboradores" />
@@ -809,6 +836,11 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
             <Parameter Name="IdColaborador" Mode="In" Type="Int32" />
             <Parameter Name="SalarioQ" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <EntitySet Name="HistorialHoras" EntityType="slModelPlanilla.HistorialHoras" />
+          <AssociationSet Name="FK_HistorialHoras_Colaboradores" Association="slModelPlanilla.FK_HistorialHoras_Colaboradores">
+            <End Role="Colaboradores" EntitySet="Colaboradores" />
+            <End Role="HistorialHoras" EntitySet="HistorialHoras" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Colaboradores">
           <Key>
@@ -858,6 +890,7 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
           <NavigationProperty Name="PlanillaColaborador" Relationship="slModelPlanilla.FK_PlanillaColaborador_Colaboradores" FromRole="Colaboradores" ToRole="PlanillaColaborador" />
           <Property Name="IdTurno" Type="Int32" />
           <Property Name="IdUsuario" Type="Int32" />
+          <NavigationProperty Name="HistorialHoras" Relationship="slModelPlanilla.FK_HistorialHoras_Colaboradores" FromRole="Colaboradores" ToRole="HistorialHoras" />
         </EntityType>
         <Association Name="FK_Colaboradores_ContratosColaborador">
           <End Type="slModelPlanilla.ContratosColaborador" Role="ContratosColaborador" Multiplicity="0..1" />
@@ -1253,6 +1286,29 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="HistorialHoras">
+          <Key>
+            <PropertyRef Name="IdHorario" />
+          </Key>
+          <Property Name="IdHorario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdColaborador" Type="Int32" />
+          <Property Name="Mes" Type="DateTime" Precision="0" />
+          <Property Name="Entrada" Type="Time" Precision="7" />
+          <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_HistorialHoras_Colaboradores" FromRole="HistorialHoras" ToRole="Colaboradores" />
+          <Property Name="Salida" Type="Time" Precision="7" />
+        </EntityType>
+        <Association Name="FK_HistorialHoras_Colaboradores">
+          <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="0..1" />
+          <End Type="slModelPlanilla.HistorialHoras" Role="HistorialHoras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colaboradores">
+              <PropertyRef Name="IdColaborador" />
+            </Principal>
+            <Dependent Role="HistorialHoras">
+              <PropertyRef Name="IdColaborador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1537,6 +1593,17 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
                 <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
                 <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialHoras">
+            <EntityTypeMapping TypeName="slModelPlanilla.HistorialHoras">
+              <MappingFragment StoreEntitySet="HistorialHoras">
+                <ScalarProperty Name="Salida" ColumnName="Salida" />
+                <ScalarProperty Name="Entrada" ColumnName="Entrada" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="IdColaborador" ColumnName="IdColaborador" />
+                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

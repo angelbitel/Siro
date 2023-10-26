@@ -1,11 +1,11 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
 using Siro.Properties;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,17 +14,19 @@ namespace Siro.F.P
 {
     public partial class ColaboradorEm : DevExpress.XtraEditors.XtraForm
     {
+        List<Colaboradores> LstColaborador = new List<Colaboradores>();
+        List<Colaboradores> LstColaborador2 = new List<Colaboradores>();
+        BindingList<HistorialHoras> LstHistorialHoras = new BindingList<HistorialHoras>();
         public ColaboradorEm()
         {
             InitializeComponent();
         }
-        List<Colaboradores> LstColaborador = new List<Colaboradores>();
-        List<Colaboradores> LstColaborador2 = new List<Colaboradores>();
         private void ColaboradorEm_Load(object sender, EventArgs e)
         {
             Parallel.Invoke(() => FillList1(), () => FillList2());
             colaboradorBindingSource.DataSource = LstColaborador;
             this.Text += string.Format(" [{0}]",Settings.Default.DEmpresa);
+            gridControlHistorialHorario.DataSource = LstHistorialHoras;
         }
         private void FillList1()
         {
@@ -305,7 +307,6 @@ namespace Siro.F.P
         }
         private void btnProcesarLiquidacion_Click(object sender, EventArgs e)
         {
-
             if (XtraMessageBox.Show("Seguro Que Desea Realizar La Operación", "Mensaje De Alerta", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 var liq = LiquidacionBindingSource.DataSource as RegistroLiquidaciones;
@@ -394,6 +395,56 @@ namespace Siro.F.P
         private void gridView1_MasterRowExpanding(object sender, MasterRowCanExpandEventArgs e)
         {
 
+        }
+
+        private void tabbedControlGroupColaborador_SelectedPageChanged(object sender, DevExpress.XtraLayout.LayoutTabPageChangedEventArgs e)
+        {
+            var row = colaboradorBindingSource.Current as Colaboradores;
+            switch (e.Page.Name)
+            {
+                case "layoutControlGroupHistorialHorario":
+                    LstHistorialHoras.Clear();
+                    new Controller.Colaborador().LstHistorialHoras(row.IdColaborador).ToList().ForEach(f => LstHistorialHoras.Add(f));
+                break;
+                default:
+                break;
+            }
+        }
+
+        private void gridViewHistorialHorario_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            var db = new Controller.Colaborador();
+            var rowColaborador = colaboradorBindingSource.Current as Colaboradores;
+            var row = e.Row as HistorialHoras;
+            if (row.IdColaborador == null)
+                row.IdColaborador = rowColaborador.IdColaborador;
+            if (db.Guardar(row))
+            {
+                lblMsg.Caption = "Se agrego historial de horas correctamente";
+                row.IdHorario = db.NuevoId??0;
+            }
+            else
+            {
+                lblMsg.Caption = $"Error al tratar de agregar la hora {db.MSG}";
+            }
+        }
+
+        private void gridViewHistorialHorario_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            GridView view = sender as GridView;
+            var row = e.Row as HistorialHoras;
+            if(LstHistorialHoras.Where(w=> w.Mes.Value.Year == row.Mes.Value.Year && w.Mes.Value.Month == row.Mes.Value.Month && w.IdHorario != 0 ).Any() && row.IdHorario ==0)
+            {
+                e.Valid = false;
+                e.ErrorText = "Ya existe este registro de horas";
+                lblMsg.Caption = "Ya existe este registro de horas";
+            }
+            if(row.Entrada == null || row.Salida == null || row.Mes==null)
+            {
+                e.Valid = false;
+                e.ErrorText = "NO SE PUEDE DEJAR ALGUN CAMPO EN BLANCO";
+                lblMsg.Caption = "NO SE PUEDE DEJAR ALGUN CAMPO EN BLANCO";
+            }
         }
     }
 }

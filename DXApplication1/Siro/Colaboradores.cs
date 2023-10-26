@@ -23,6 +23,7 @@ namespace Siro
             this.RegistroVacaciones = new HashSet<RegistroVacaciones>();
             this.RegistroLiquidaciones = new HashSet<RegistroLiquidaciones>();
             this.PlanillaColaborador = new HashSet<PlanillaColaborador>();
+            this.HistorialHoras = new HashSet<HistorialHoras>();
         }
     
         public int IdColaborador { get; set; }
@@ -70,5 +71,6 @@ namespace Siro
         public virtual ICollection<RegistroVacaciones> RegistroVacaciones { get; set; }
         public virtual ICollection<RegistroLiquidaciones> RegistroLiquidaciones { get; set; }
         public virtual ICollection<PlanillaColaborador> PlanillaColaborador { get; set; }
+        public virtual ICollection<HistorialHoras> HistorialHoras { get; set; }
     }
 }

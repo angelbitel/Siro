@@ -546,6 +546,9 @@
     <Compile Include="HistorialCliente.cs">
       <DependentUpon>slGestiones.tt</DependentUpon>
     </Compile>
+    <Compile Include="HistorialHoras.cs">
+      <DependentUpon>PlanillaDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Kardex.cs">
       <DependentUpon>slSiro.tt</DependentUpon>
     </Compile>
@@ -1283,6 +1286,7 @@
     <None Include="DataSources\DetallesFacturaItem.datasource" />
     <None Include="DataSources\Marcas.datasource" />
     <None Include="DetalleVentasMovil.datasource" />
+    <None Include="HistorialHoras.datasource" />
     <None Include="packages.config" />
     <EntityDeploy Include="PlanillaDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

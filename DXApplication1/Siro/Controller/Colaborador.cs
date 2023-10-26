@@ -149,6 +149,42 @@ namespace Siro.Controller
                 }
             }
         }
+
+        public bool Guardar(HistorialHoras inf)
+        {
+            using (var context = new slPlanilla())
+            {
+                using (var dbContextTransaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (inf.IdHorario== 0)
+                            context.HistorialHoras.Add(inf);
+                        else
+                            context.Entry(inf).State = EntityState.Modified;
+
+                        context.SaveChanges();
+                        dbContextTransaction.Commit();
+
+                        NuevoId = inf.IdHorario;
+                        MSG = "Datos Guardados Correctamente!!";
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContextTransaction.Rollback();
+                        MSG = "Ocurrio un error: " + ex.Message;
+                        return false;
+                    }
+                }
+            }
+        }
+        internal List<HistorialHoras> LstHistorialHoras(int idCOlabarodar)
+        {
+            var lst = new List<HistorialHoras>();
+                lst = db.HistorialHoras.Where(w => w.IdColaborador == idCOlabarodar).OrderByDescending(o => o.Mes).ToList();
+            return lst;
+        }
         public List<Model.Deduccion> DeduccionesColaboradores(int idColaborador)
         {
             var lst = new List<Model.Deduccion>();

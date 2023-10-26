@@ -10,9 +10,9 @@
         <EntityTypeShape EntityType="slModelPlanilla.Departamentos" Width="1.5" PointX="7.875" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="slModelPlanilla.Descuentos" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="slModelPlanilla.EntedidadesFinanciera" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="slModelPlanilla.EstadosColaborador" Width="1.5" PointX="2.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModelPlanilla.EstadosColaborador" Width="1.5" PointX="1.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="slModelPlanilla.Posiciones" Width="1.5" PointX="7.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="slModelPlanilla.Rentas" Width="1.5" PointX="3.375" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="slModelPlanilla.Rentas" Width="1.5" PointX="1.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="slModelPlanilla.DetallesDescuento" Width="1.5" PointX="2.25" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="slModelPlanilla.FK_DetallesDescuento_Descuentos" ManuallyRouted="false" />
         <EntityTypeShape EntityType="slModelPlanilla.Colaboradores" Width="1.5" PointX="5.5" PointY="1.5" />
@@ -45,6 +45,8 @@
         <AssociationConnector Association="slModelPlanilla.FK_RegistroLiquidaciones_Colaboradores" />
         <EntityTypeShape EntityType="slModelPlanilla.PlanillaColaborador" Width="1.5" PointX="7.75" PointY="27" />
         <AssociationConnector Association="slModelPlanilla.FK_PlanillaColaborador_Colaboradores" />
+        <EntityTypeShape EntityType="slModelPlanilla.HistorialHoras" Width="1.5" PointX="1.25" PointY="8" />
+        <AssociationConnector Association="slModelPlanilla.FK_HistorialHoras_Colaboradores" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

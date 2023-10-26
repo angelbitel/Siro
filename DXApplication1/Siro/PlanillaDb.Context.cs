@@ -47,6 +47,7 @@ namespace Siro
         public virtual DbSet<RegistroVacaciones> RegistroVacaciones { get; set; }
         public virtual DbSet<RegistroLiquidaciones> RegistroLiquidaciones { get; set; }
         public virtual DbSet<PlanillaColaborador> PlanillaColaborador { get; set; }
+        public virtual DbSet<HistorialHoras> HistorialHoras { get; set; }
     
         public virtual int MaestroPlanilla(Nullable<int> idUser, Nullable<int> idEmpresa, Nullable<System.DateTime> getDate)
         {

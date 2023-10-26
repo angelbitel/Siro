@@ -811,6 +811,9 @@
         AAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="historialHorasBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>892, 50</value>
+  </metadata>
   <data name="btnEliminarHora.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACl0RVh0VGl0
@@ -1482,6 +1485,20 @@
         6bqxf0dPideiH4pz8Q1mhK59VZWxfwWUNPm0iRtR7PYKUtb/CvFblmDv68/X0G9+QbxIcMo4vRw5jjJv
         YvS97IfiXHyDZ95fNP+l/Uvnnvd6c16995vz4LVsLva9Pkch+f1zFxbPm8rPfn4F44rnomPHozsfW49z
         8F1MWHwzvjk/3zmvPGIZLlJ2zLvlVI05feRYrClT/g9qpJo0nePWGwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="layoutControlGroupHistorialHorario.CaptionImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAWdEVYdFRpdGxlAFRpbWU7Q2xvY2s7V2F0Y2hviDio
+        AAAByElEQVRYR8WWsW0DMQxFPYEHSenKTbqMkA3SGJnA6T1EJgjgxgNkEm+RykC6C59BGhQpn9lEVzzA
+        R/3/xTtJd15N07Qo3eJIusWRdIsjSYXz28scW2EvnISzcFH4TY0xND3vlThfKvRMwrPwKfwI0wPQoMWT
+        suJ8qdAxvQvcYW+yOfDgbfLifKkQDB/Cr2ChPO6jsBM2wlrhNzXG0JgeLxm3zDhfKjgx3fvJv4XXqI+g
+        Ua1v4vYkoj4VQISsn3/sX8JT1B0Oh0lp6mjVY36yrnvC6yAVQIRsIjNzN2lyuNcA4FGv5ZCZdKkgIo6R
+        7XbW8+5jn2sA8GoGWWRuo6a5ABFxlq3rYxz3PGoAyHB5+zjeXICIeKGYYRfHPcUGOB2Wd4rjzQWIyG++
+        TRz3FBvgiFreOY43FyAif47XcdzjGmjwGjJc3sWPQXMBiJxhkQbKS1CBDJdXWoLyJqxAhssrbcLyMaxA
+        hssrHcPyi+gReDWDrPKLCEqv4jnwqNdyyq9iKH2M7oFWPeavf4wQKct8jk2oLPqHxKB7vxxV8Nzu3Ijz
+        pUI0KKwfm8hOxxxo0F7XPBLnS4WeyfH/f8tH0y2OpFscSbc4jmn1Bw8VkFVeTnsNAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="imageCollection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
