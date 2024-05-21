@@ -85,9 +85,10 @@
             this.layoutControl1.Controls.Add(this.searchLookUpEdit1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(318, 135);
+            this.layoutControl1.Size = new System.Drawing.Size(363, 175);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -95,15 +96,15 @@
             // 
             this.dateEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "FechaProceso", true));
             this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(81, 36);
+            this.dateEdit1.Location = new System.Drawing.Point(95, 38);
+            this.dateEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateEdit1.MenuManager = this.barManager1;
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.FirstDayOfWeek = System.DayOfWeek.Sunday;
-            this.dateEdit1.Size = new System.Drawing.Size(225, 20);
+            this.dateEdit1.Size = new System.Drawing.Size(256, 22);
             this.dateEdit1.StyleController = this.layoutControl1;
             this.dateEdit1.TabIndex = 34;
             // 
@@ -148,75 +149,81 @@
             // 
             this.lblMsg.Id = 1;
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(318, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(363, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 135);
-            this.barDockControlBottom.Size = new System.Drawing.Size(318, 25);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 175);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(363, 27);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 135);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 175);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(318, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 135);
+            this.barDockControlRight.Location = new System.Drawing.Point(363, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 175);
             // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Nuevo Cliente";
-            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
             this.barButtonItem1.Id = 0;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
             this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "Ocultar Panel Edición";
-            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
             this.barButtonItem2.Id = 2;
+            this.barButtonItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barButtonItem3
             // 
             this.barButtonItem3.Caption = "Mostrar Panel Edición";
-            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
             this.barButtonItem3.Id = 3;
+            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
             this.barButtonItem3.Name = "barButtonItem3";
             // 
             // barStaticItemFecha
             // 
             this.barStaticItemFecha.Id = 4;
             this.barStaticItemFecha.Name = "barStaticItemFecha";
-            this.barStaticItemFecha.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barStaticItemEmpresa
             // 
             this.barStaticItemEmpresa.Id = 5;
             this.barStaticItemEmpresa.Name = "barStaticItemEmpresa";
-            this.barStaticItemEmpresa.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(131, 84);
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(150, 90);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(175, 38);
+            this.simpleButton1.Size = new System.Drawing.Size(201, 38);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 33;
             this.simpleButton1.Text = "Guardar";
@@ -225,9 +232,10 @@
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "HoraTrabajada", true));
-            this.textEdit1.Location = new System.Drawing.Point(81, 60);
+            this.textEdit1.Location = new System.Drawing.Point(95, 64);
+            this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(225, 20);
+            this.textEdit1.Size = new System.Drawing.Size(256, 22);
             this.textEdit1.StyleController = this.layoutControl1;
             this.textEdit1.TabIndex = 32;
             // 
@@ -235,15 +243,16 @@
             // 
             this.searchLookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "IdFactor", true));
             this.searchLookUpEdit1.EditValue = "Seleccione Tipo Hora";
-            this.searchLookUpEdit1.Location = new System.Drawing.Point(81, 12);
+            this.searchLookUpEdit1.Location = new System.Drawing.Point(95, 12);
+            this.searchLookUpEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchLookUpEdit1.Name = "searchLookUpEdit1";
             this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpEdit1.Properties.DataSource = this.factoresBindingSource;
             this.searchLookUpEdit1.Properties.DisplayMember = "DescripcionFactor";
+            this.searchLookUpEdit1.Properties.PopupView = this.gridView1;
             this.searchLookUpEdit1.Properties.ValueMember = "IdFactor";
-            this.searchLookUpEdit1.Properties.View = this.gridView1;
-            this.searchLookUpEdit1.Size = new System.Drawing.Size(225, 20);
+            this.searchLookUpEdit1.Size = new System.Drawing.Size(256, 22);
             this.searchLookUpEdit1.StyleController = this.layoutControl1;
             this.searchLookUpEdit1.TabIndex = 30;
             // 
@@ -257,6 +266,7 @@
             this.colDescripcionFactor,
             this.colFactor1,
             this.colTipoFactor});
+            this.gridView1.DetailHeight = 431;
             this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -266,24 +276,30 @@
             // 
             this.colDescripcionFactor.Caption = "Tipo Dia";
             this.colDescripcionFactor.FieldName = "DescripcionFactor";
+            this.colDescripcionFactor.MinWidth = 23;
             this.colDescripcionFactor.Name = "colDescripcionFactor";
             this.colDescripcionFactor.Visible = true;
             this.colDescripcionFactor.VisibleIndex = 0;
+            this.colDescripcionFactor.Width = 87;
             // 
             // colFactor1
             // 
             this.colFactor1.Caption = "Factor";
             this.colFactor1.FieldName = "Factor1";
+            this.colFactor1.MinWidth = 23;
             this.colFactor1.Name = "colFactor1";
             this.colFactor1.Visible = true;
             this.colFactor1.VisibleIndex = 1;
+            this.colFactor1.Width = 87;
             // 
             // colTipoFactor
             // 
             this.colTipoFactor.FieldName = "TipoFactor";
+            this.colTipoFactor.MinWidth = 23;
             this.colTipoFactor.Name = "colTipoFactor";
             this.colTipoFactor.Visible = true;
             this.colTipoFactor.VisibleIndex = 2;
+            this.colTipoFactor.Width = 87;
             // 
             // layoutControlGroup1
             // 
@@ -295,9 +311,8 @@
             this.layoutControlItem4,
             this.emptySpaceItem1,
             this.layoutControlItem5});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(318, 135);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(363, 175);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -305,55 +320,56 @@
             this.layoutControlItem1.Control = this.searchLookUpEdit1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(298, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(343, 26);
             this.layoutControlItem1.Text = "Tipo De Hora:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(66, 13);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(80, 16);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.textEdit1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 52);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(298, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(343, 26);
             this.layoutControlItem3.Text = "Cantidad:";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(66, 13);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(80, 16);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(119, 72);
+            this.layoutControlItem4.Location = new System.Drawing.Point(138, 78);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(179, 43);
+            this.layoutControlItem4.Size = new System.Drawing.Size(205, 77);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 72);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 78);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(119, 43);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(138, 77);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.dateEdit1;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(298, 24);
+            this.layoutControlItem5.Size = new System.Drawing.Size(343, 26);
             this.layoutControlItem5.Text = "Feha:";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(66, 13);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(80, 16);
             // 
             // AgregarHoras
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 160);
+            this.ClientSize = new System.Drawing.Size(363, 202);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AgregarHoras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AgregarHoras";
