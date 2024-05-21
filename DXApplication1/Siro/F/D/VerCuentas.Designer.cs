@@ -128,7 +128,7 @@
             this.cmbOrigen,
             this.repositoryItemHyperLinkEditComentario,
             this.repositoryItemButtonEditPasar});
-            this.gridControl1.Size = new System.Drawing.Size(1413, 525);
+            this.gridControl1.Size = new System.Drawing.Size(1405, 530);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -614,16 +614,16 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1413, 57);
+            this.barDockControlTop.Size = new System.Drawing.Size(1405, 57);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 582);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 587);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1413, 64);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1405, 64);
             // 
             // barDockControlLeft
             // 
@@ -632,16 +632,16 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 525);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 530);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1413, 57);
+            this.barDockControlRight.Location = new System.Drawing.Point(1405, 57);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 525);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 530);
             // 
             // barToolbarsListItem1
             // 
@@ -675,7 +675,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1413, 646);
+            this.ClientSize = new System.Drawing.Size(1405, 651);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

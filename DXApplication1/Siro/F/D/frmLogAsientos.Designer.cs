@@ -155,14 +155,14 @@ namespace Siro.F.D
             this.layoutControl1.Location = new System.Drawing.Point(0, 57);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1279, 531);
+            this.layoutControl1.Size = new System.Drawing.Size(1271, 536);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.simpleButton2.Location = new System.Drawing.Point(759, 12);
+            this.simpleButton2.Location = new System.Drawing.Point(755, 12);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(184, 46);
             this.simpleButton2.StyleController = this.layoutControl1;
@@ -182,7 +182,7 @@ namespace Siro.F.D
             this.cmbOrigen,
             this.repositoryItemHyperLinkEditComentario,
             this.repositoryItemButtonEditPasar});
-            this.gridControl1.Size = new System.Drawing.Size(1255, 457);
+            this.gridControl1.Size = new System.Drawing.Size(1247, 462);
             this.gridControl1.TabIndex = 8;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -402,7 +402,7 @@ namespace Siro.F.D
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.simpleButton1.Location = new System.Drawing.Point(552, 12);
+            this.simpleButton1.Location = new System.Drawing.Point(548, 12);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(203, 46);
             this.simpleButton1.StyleController = this.layoutControl1;
@@ -413,13 +413,13 @@ namespace Siro.F.D
             // dateEditHasta
             // 
             this.dateEditHasta.EditValue = null;
-            this.dateEditHasta.Location = new System.Drawing.Point(387, 24);
+            this.dateEditHasta.Location = new System.Drawing.Point(385, 24);
             this.dateEditHasta.Name = "dateEditHasta";
             this.dateEditHasta.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditHasta.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditHasta.Size = new System.Drawing.Size(161, 22);
+            this.dateEditHasta.Size = new System.Drawing.Size(159, 22);
             this.dateEditHasta.StyleController = this.layoutControl1;
             this.dateEditHasta.TabIndex = 6;
             // 
@@ -432,7 +432,7 @@ namespace Siro.F.D
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditdesde.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditdesde.Size = new System.Drawing.Size(185, 22);
+            this.dateEditdesde.Size = new System.Drawing.Size(183, 22);
             this.dateEditdesde.StyleController = this.layoutControl1;
             this.dateEditdesde.TabIndex = 5;
             // 
@@ -449,7 +449,7 @@ namespace Siro.F.D
             this.layoutControlItem1,
             this.layoutControlItem5});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1279, 531);
+            this.Root.Size = new System.Drawing.Size(1271, 536);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem2
@@ -461,7 +461,7 @@ namespace Siro.F.D
             this.layoutControlItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("layoutControlItem2.ImageOptions.SvgImage")));
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(282, 50);
+            this.layoutControlItem2.Size = new System.Drawing.Size(280, 50);
             this.layoutControlItem2.Text = "DESDE:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(90, 40);
             // 
@@ -472,16 +472,16 @@ namespace Siro.F.D
             this.layoutControlItem3.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
             this.layoutControlItem3.Control = this.dateEditHasta;
             this.layoutControlItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("layoutControlItem3.ImageOptions.SvgImage")));
-            this.layoutControlItem3.Location = new System.Drawing.Point(282, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(280, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(258, 50);
+            this.layoutControlItem3.Size = new System.Drawing.Size(256, 50);
             this.layoutControlItem3.Text = "HASTA:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(90, 40);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(540, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(536, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(207, 50);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -490,17 +490,17 @@ namespace Siro.F.D
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(935, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(931, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(324, 25);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(320, 25);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(935, 25);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(931, 25);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(324, 25);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(320, 25);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
@@ -508,14 +508,14 @@ namespace Siro.F.D
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 50);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1259, 461);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1251, 466);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.simpleButton2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(747, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(743, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(188, 50);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
@@ -763,16 +763,16 @@ namespace Siro.F.D
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1279, 57);
+            this.barDockControlTop.Size = new System.Drawing.Size(1271, 57);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 588);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 593);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1279, 64);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1271, 64);
             // 
             // barDockControlLeft
             // 
@@ -781,16 +781,16 @@ namespace Siro.F.D
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 531);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 536);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1279, 57);
+            this.barDockControlRight.Location = new System.Drawing.Point(1271, 57);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 531);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 536);
             // 
             // barToolbarsListItem1
             // 
@@ -824,7 +824,7 @@ namespace Siro.F.D
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1279, 652);
+            this.ClientSize = new System.Drawing.Size(1271, 657);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
