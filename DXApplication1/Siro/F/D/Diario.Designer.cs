@@ -242,16 +242,16 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1357, 57);
+            this.barDockControlTop.Size = new System.Drawing.Size(1349, 57);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 589);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 594);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1357, 27);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1349, 27);
             // 
             // barDockControlLeft
             // 
@@ -260,16 +260,16 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 532);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 537);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1357, 57);
+            this.barDockControlRight.Location = new System.Drawing.Point(1349, 57);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 532);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 537);
             // 
             // barToolbarsListItem1
             // 
@@ -293,25 +293,25 @@
             this.barDockControl1.Location = new System.Drawing.Point(0, 57);
             this.barDockControl1.Manager = null;
             this.barDockControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl1.Size = new System.Drawing.Size(0, 532);
+            this.barDockControl1.Size = new System.Drawing.Size(0, 537);
             // 
             // barDockControl2
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl2.Location = new System.Drawing.Point(1357, 57);
+            this.barDockControl2.Location = new System.Drawing.Point(1349, 57);
             this.barDockControl2.Manager = null;
             this.barDockControl2.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl2.Size = new System.Drawing.Size(0, 532);
+            this.barDockControl2.Size = new System.Drawing.Size(0, 537);
             // 
             // barDockControl3
             // 
             this.barDockControl3.CausesValidation = false;
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl3.Location = new System.Drawing.Point(0, 589);
+            this.barDockControl3.Location = new System.Drawing.Point(0, 594);
             this.barDockControl3.Manager = null;
             this.barDockControl3.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl3.Size = new System.Drawing.Size(1357, 0);
+            this.barDockControl3.Size = new System.Drawing.Size(1349, 0);
             // 
             // barDockControl4
             // 
@@ -320,7 +320,7 @@
             this.barDockControl4.Location = new System.Drawing.Point(0, 57);
             this.barDockControl4.Manager = null;
             this.barDockControl4.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl4.Size = new System.Drawing.Size(1357, 0);
+            this.barDockControl4.Size = new System.Drawing.Size(1349, 0);
             // 
             // layoutControl1
             // 
@@ -334,16 +334,16 @@
             this.layoutControl1.Margin = new System.Windows.Forms.Padding(4);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1357, 532);
+            this.layoutControl1.Size = new System.Drawing.Size(1349, 537);
             this.layoutControl1.TabIndex = 22;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // linkLabelAsiento
             // 
-            this.linkLabelAsiento.Location = new System.Drawing.Point(788, 128);
+            this.linkLabelAsiento.Location = new System.Drawing.Point(783, 130);
             this.linkLabelAsiento.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.linkLabelAsiento.Name = "linkLabelAsiento";
-            this.linkLabelAsiento.Size = new System.Drawing.Size(557, 25);
+            this.linkLabelAsiento.Size = new System.Drawing.Size(554, 25);
             this.linkLabelAsiento.TabIndex = 15;
             this.linkLabelAsiento.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelAsiento_LinkClicked);
             // 
@@ -351,7 +351,7 @@
             // 
             this.gridControl1.DataSource = this.bindingSource1;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gridControl1.Location = new System.Drawing.Point(12, 157);
+            this.gridControl1.Location = new System.Drawing.Point(12, 159);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl1.MenuManager = this.barManager1;
@@ -359,7 +359,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.txtFindAcountId,
             this.btnEditColumn});
-            this.gridControl1.Size = new System.Drawing.Size(1333, 343);
+            this.gridControl1.Size = new System.Drawing.Size(1325, 346);
             this.gridControl1.TabIndex = 14;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -554,7 +554,7 @@
             // dtFechaAsiento
             // 
             this.dtFechaAsiento.EditValue = null;
-            this.dtFechaAsiento.Location = new System.Drawing.Point(134, 128);
+            this.dtFechaAsiento.Location = new System.Drawing.Point(134, 130);
             this.dtFechaAsiento.Margin = new System.Windows.Forms.Padding(4);
             this.dtFechaAsiento.MenuManager = this.barManager1;
             this.dtFechaAsiento.Name = "dtFechaAsiento";
@@ -562,7 +562,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtFechaAsiento.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dtFechaAsiento.Size = new System.Drawing.Size(91, 22);
+            this.dtFechaAsiento.Size = new System.Drawing.Size(90, 22);
             this.dtFechaAsiento.StyleController = this.layoutControl1;
             this.dtFechaAsiento.TabIndex = 13;
             // 
@@ -570,7 +570,7 @@
             // 
             this.LblHelp.Appearance.BackColor = System.Drawing.SystemColors.Info;
             this.LblHelp.Appearance.Options.UseBackColor = true;
-            this.LblHelp.Location = new System.Drawing.Point(12, 504);
+            this.LblHelp.Location = new System.Drawing.Point(12, 509);
             this.LblHelp.Margin = new System.Windows.Forms.Padding(4);
             this.LblHelp.Name = "LblHelp";
             this.LblHelp.Size = new System.Drawing.Size(759, 16);
@@ -585,7 +585,7 @@
             this.tComentario.Margin = new System.Windows.Forms.Padding(4);
             this.tComentario.Multiline = true;
             this.tComentario.Name = "tComentario";
-            this.tComentario.Size = new System.Drawing.Size(1333, 93);
+            this.tComentario.Size = new System.Drawing.Size(1325, 95);
             this.tComentario.TabIndex = 11;
             // 
             // layoutControlGroup1
@@ -600,7 +600,7 @@
             this.layoutControlItem5,
             this.emptySpaceItem1});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1357, 532);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1349, 537);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -609,7 +609,7 @@
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(120, 47);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1337, 116);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1329, 118);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "Comentario O Glosa:";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
@@ -618,19 +618,19 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.LblHelp;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 492);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 497);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1337, 20);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1329, 20);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.dtFechaAsiento;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 116);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 118);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(145, 25);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(217, 29);
+            this.layoutControlItem4.Size = new System.Drawing.Size(216, 29);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.Text = "Fecha Del Asiento:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(119, 16);
@@ -638,34 +638,34 @@
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 145);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 147);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1337, 347);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1329, 350);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.linkLabelAsiento;
-            this.layoutControlItem5.Location = new System.Drawing.Point(776, 116);
+            this.layoutControlItem5.Location = new System.Drawing.Point(771, 118);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(561, 29);
+            this.layoutControlItem5.Size = new System.Drawing.Size(558, 29);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(217, 116);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(216, 118);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(559, 29);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(555, 29);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // Diario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1357, 616);
+            this.ClientSize = new System.Drawing.Size(1349, 621);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControl1);
             this.Controls.Add(this.barDockControl2);
