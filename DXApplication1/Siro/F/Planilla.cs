@@ -51,12 +51,7 @@ namespace Siro.F
                     GenerarReporte("TalonariosDecimo", Principal.Bariables.PeridoContable);
                     break;
                 case "navBarItem27":
-                    fr = new F.P.VerFactores();
-                    if (!IsFormAlreadyOpen(fr.Name))
-                    {
-                        fr.MdiParent = this.MdiParent;
-                        fr.Show();
-                    }
+                    OpenForm(new F.P.VerFactores());
                     break;
                 case "navBarItem28":
                     GenerarReporte("Talonarios", Principal.Bariables.PeridoContable);
@@ -68,12 +63,7 @@ namespace Siro.F
                     GenerarReporte("ReporteFirma", Principal.Bariables.PeridoContable);
                     break;
                 case "navBarItem31":
-                    var f = new P.ColaboradorEm();
-                    if (!IsFormAlreadyOpen(f.Name))
-                    {
-                        f.MdiParent = this.MdiParent;
-                        f.Show();
-                    }
+                    OpenForm(new P.ColaboradorEm());
                     break;
                 case "navBarItem32":
                     new F.P.PruebaPlanilla().Show();
@@ -97,12 +87,10 @@ namespace Siro.F
                     OpenForm(new F.P.Cumpleaños());
                     break;
                 case "navBarItem22":
-                    var f1 = new P.PlanillaGenerada();
-                    if (!IsFormAlreadyOpen(f1.Name))
-                    {
-                        f1.MdiParent = this.MdiParent;
-                        f1.Show();
-                    }
+                    OpenForm(new P.PlanillaGenerada());
+                    break;
+                case "navBarItem36":
+                    OpenForm(new P.ArchivosHoras());
                     break;
             }
         }

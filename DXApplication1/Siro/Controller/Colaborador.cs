@@ -531,7 +531,12 @@ namespace Siro.Controller
                     SeguroSocial = f.SeguroSocial,
                     Sexo = f.Sexo,
                     Dependientes = f.Dependientes,
-                    FechaNacimiento= f.FechaNacimiento
+                    FechaNacimiento = f.FechaNacimiento,
+                    Reloj = f.Reloj,
+                    HoraEntradaDomingo = f.HoraEntradaDomingo,
+                    HoraEntradaSabado = f.HoraEntradaSabado,
+                    HoraSalidaDomingo = f.HoraSalidaDomingo,
+                    HoraSalidaSabado = f.HoraSalidaSabado
                 });
             });
             return lst;
@@ -570,7 +575,8 @@ namespace Siro.Controller
                     Sangre = f.Sangre,
                     SeguroSocial = f.SeguroSocial,
                     Sexo = f.Sexo,
-                    Dependientes = f.Dependientes
+                    Dependientes = f.Dependientes,
+                    Reloj = f.Reloj
                 });
             });
             return lst;

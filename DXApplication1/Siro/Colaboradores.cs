@@ -55,6 +55,11 @@ namespace Siro
         public Nullable<bool> ExentoRenta { get; set; }
         public Nullable<int> IdTurno { get; set; }
         public Nullable<int> IdUsuario { get; set; }
+        public string Reloj { get; set; }
+        public Nullable<System.TimeSpan> HoraEntradaSabado { get; set; }
+        public Nullable<System.TimeSpan> HoraSalidaSabado { get; set; }
+        public Nullable<System.TimeSpan> HoraEntradaDomingo { get; set; }
+        public Nullable<System.TimeSpan> HoraSalidaDomingo { get; set; }
     
         public virtual ContratosColaborador ContratosColaborador { get; set; }
         public virtual Departamentos Departamentos { get; set; }

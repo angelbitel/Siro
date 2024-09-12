@@ -36,7 +36,7 @@
           <Property Name="HoraSalida" Type="time" Precision="7" />
           <Property Name="IdDepartamento" Type="int" />
           <Property Name="IdPosicion" Type="int" />
-          <Property Name="RataPorHora" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="RataPorHora" Type="money" />
           <Property Name="Bonificaciones" Type="money" />
           <Property Name="SeguroSocial" Type="varchar" MaxLength="250" />
           <Property Name="Sangre" Type="varchar" MaxLength="50" />
@@ -49,6 +49,11 @@
           <Property Name="ExentoRenta" Type="bit" />
           <Property Name="IdTurno" Type="int" />
           <Property Name="IdUsuario" Type="int" />
+          <Property Name="Reloj" Type="varchar" MaxLength="250" />
+          <Property Name="HoraEntradaSabado" Type="time" Precision="7" />
+          <Property Name="HoraSalidaSabado" Type="time" Precision="7" />
+          <Property Name="HoraEntradaDomingo" Type="time" Precision="7" />
+          <Property Name="HoraSalidaDomingo" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="ContratosColaborador">
           <Key>
@@ -91,7 +96,7 @@
           <Property Name="Monto" Type="money" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="DetallesDescuento">
           <Key>
             <PropertyRef Name="IdDetalleDescuento" />
@@ -862,7 +867,7 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
           <Property Name="HoraSalida" Type="Time" Precision="7" />
           <Property Name="IdDepartamento" Type="Int32" />
           <Property Name="IdPosicion" Type="Int32" />
-          <Property Name="RataPorHora" Type="Decimal" Precision="18" Scale="10" />
+          <Property Name="RataPorHora" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Bonificaciones" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="SeguroSocial" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Sangre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -891,6 +896,11 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
           <Property Name="IdTurno" Type="Int32" />
           <Property Name="IdUsuario" Type="Int32" />
           <NavigationProperty Name="HistorialHoras" Relationship="slModelPlanilla.FK_HistorialHoras_Colaboradores" FromRole="Colaboradores" ToRole="HistorialHoras" />
+          <Property Name="Reloj" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="HoraEntradaSabado" Type="Time" Precision="7" />
+          <Property Name="HoraSalidaSabado" Type="Time" Precision="7" />
+          <Property Name="HoraEntradaDomingo" Type="Time" Precision="7" />
+          <Property Name="HoraSalidaDomingo" Type="Time" Precision="7" />
         </EntityType>
         <Association Name="FK_Colaboradores_ContratosColaborador">
           <End Type="slModelPlanilla.ContratosColaborador" Role="ContratosColaborador" Multiplicity="0..1" />
@@ -1403,6 +1413,11 @@ advertencia 6002: La tabla o vista 'MultiCafeParque.Planilla.DetallesDescuento' 
           <EntitySetMapping Name="Colaboradores">
             <EntityTypeMapping TypeName="slModelPlanilla.Colaboradores">
               <MappingFragment StoreEntitySet="Colaboradores">
+                <ScalarProperty Name="HoraSalidaDomingo" ColumnName="HoraSalidaDomingo" />
+                <ScalarProperty Name="HoraEntradaDomingo" ColumnName="HoraEntradaDomingo" />
+                <ScalarProperty Name="HoraSalidaSabado" ColumnName="HoraSalidaSabado" />
+                <ScalarProperty Name="HoraEntradaSabado" ColumnName="HoraEntradaSabado" />
+                <ScalarProperty Name="Reloj" ColumnName="Reloj" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
                 <ScalarProperty Name="ExentoRenta" ColumnName="ExentoRenta" />

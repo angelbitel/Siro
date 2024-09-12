@@ -59,7 +59,7 @@ namespace Siro.F.P
                     };
                     this.IdDepartamentoCmb.Properties.Items.Add(item);
                 });
-                db.Posiciones.ToList().ForEach(f => {                    
+                db.Posiciones.OrderBy(o=> o.Posicion).ToList().ForEach(f => {                    
                     ImageComboBoxItem item = new ImageComboBoxItem
                     {
                         Value = f.IdPosicion,
@@ -101,13 +101,17 @@ namespace Siro.F.P
         private void LimpiarActividades()
         {
             lblMsg.Caption = "";
-            if((colaboradorBindingSource.Current as Colaboradores).IdEstadoColaborador==2)
+            var currentColaborador = colaboradorBindingSource.Current as Colaboradores; if (currentColaborador != null)
+            if (currentColaborador != null)
             {
-                lblMsg.Caption = "Colaborador Esta Inactivo";
-                this.Colaborador1TextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout);
+                if (currentColaborador.IdEstadoColaborador == 2)
+                {
+                    lblMsg.Caption = "Colaborador Esta Inactivo";
+                    this.Colaborador1TextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Strikeout);
+                }
+                else
+                    this.Colaborador1TextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular);
             }
-            else
-                this.Colaborador1TextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular);
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
