@@ -32,7 +32,6 @@ namespace Siro.F.P
             this.components = new System.ComponentModel.Container();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barButtonItemVerificar = new DevExpress.XtraBars.BarButtonItem();
@@ -54,6 +53,7 @@ namespace Siro.F.P
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.spreadsheetBarController1 = new DevExpress.XtraSpreadsheet.UI.SpreadsheetBarController(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.horaRelojBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -64,6 +64,7 @@ namespace Siro.F.P
             this.colTimeConverter = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHabilitar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colColaborador = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDelay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -120,12 +121,6 @@ namespace Siro.F.P
             this.bar1.OptionsBar.MultiLine = true;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "MainMenu";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // bar2
             // 
@@ -293,6 +288,12 @@ namespace Siro.F.P
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 621);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // spreadsheetBarController1
             // 
             this.spreadsheetBarController1.BarItems.Add(this.spreadsheetCommandBarButtonItem1);
@@ -332,7 +333,8 @@ namespace Siro.F.P
             this.colTime,
             this.colTimeConverter,
             this.colHabilitar,
-            this.colColaborador});
+            this.colColaborador,
+            this.colDelay});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
@@ -390,6 +392,15 @@ namespace Siro.F.P
             this.colColaborador.Visible = true;
             this.colColaborador.VisibleIndex = 5;
             this.colColaborador.Width = 94;
+            // 
+            // colDelay
+            // 
+            this.colDelay.FieldName = "Delay";
+            this.colDelay.MinWidth = 25;
+            this.colDelay.Name = "colDelay";
+            this.colDelay.Visible = true;
+            this.colDelay.VisibleIndex = 6;
+            this.colDelay.Width = 94;
             // 
             // layoutControl1
             // 
@@ -501,5 +512,6 @@ namespace Siro.F.P
         private DevExpress.XtraGrid.Columns.GridColumn colTimeConverter;
         private DevExpress.XtraGrid.Columns.GridColumn colHabilitar;
         private DevExpress.XtraGrid.Columns.GridColumn colColaborador;
+        private DevExpress.XtraGrid.Columns.GridColumn colDelay;
     }
 }

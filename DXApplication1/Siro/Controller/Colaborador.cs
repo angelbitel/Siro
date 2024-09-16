@@ -285,7 +285,7 @@ namespace Siro.Controller
                     f.Deducciones.ToList().ForEach(g =>
                     {
                         decimal mntPago = g.MontoPagado ?? 0;
-                        if (mntPago < g.Monto && "Recurrente Quincenal Recurrente CXC".IndexOf(g.TipoDeduccion)!= -1)
+                        if (mntPago < g.Monto && "Recurrente Quincenal".IndexOf(g.TipoDeduccion)!= -1 )
                         {
                             IQueryable<IngresosDeducciones> verificaDec = context.IngresosDeducciones;
                             if (DateTime.Now.Day <= 15)

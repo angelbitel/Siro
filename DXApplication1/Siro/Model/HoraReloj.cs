@@ -16,5 +16,6 @@ namespace Siro.Model
         }
         public bool Habilitar { get; set; }
         public string Colaborador { get; set; }
+        public TimeSpan? Delay { get; set; }
     }
 }

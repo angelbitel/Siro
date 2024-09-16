@@ -92,7 +92,10 @@ namespace Siro.F.P
             {
                 var colaborador = LstColaboradores.SingleOrDefault(s => s.Reloj == f.User);
                 if (colaborador != null)
+                {
                     f.Colaborador = colaborador.Colaborador;
+                    f.Delay = GetTimeAttended(colaborador.HoraEntrada ?? new TimeSpan(8, 0, 0), f.TimeConverter);
+                }
             });
         }
         private DataTable Range(CellRange range, DataTable dataTable)
@@ -110,6 +113,17 @@ namespace Siro.F.P
                 }
             }
             return dataTable;
+        }
+        private TimeSpan GetTimeAttended(TimeSpan startTime, TimeSpan endTime)
+        {
+            // Ensure that the endTime is later than startTime
+            if (endTime < startTime)
+            {
+                //throw new ArgumentException("End time must be greater than start time.");
+            }
+            // Calculate the time attended
+            TimeSpan timeAttended = endTime - startTime;
+            return timeAttended;
         }
 
         private void spreadsheetControl1_DocumentLoaded(object sender, EventArgs e)

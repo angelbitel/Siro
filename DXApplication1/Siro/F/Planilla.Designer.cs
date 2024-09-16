@@ -79,6 +79,7 @@
             this.navBarItem26 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem32 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem27 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem36 = new DevExpress.XtraNavBar.NavBarItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.lblMsg = new DevExpress.XtraBars.BarStaticItem();
@@ -105,7 +106,6 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.navBarItem36 = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel2.SuspendLayout();
             this.dockPanel3.SuspendLayout();
@@ -507,6 +507,11 @@
             this.navBarItem27.Caption = "Factores";
             this.navBarItem27.Name = "navBarItem27";
             // 
+            // navBarItem36
+            // 
+            this.navBarItem36.Caption = "Subir Archivo Horas";
+            this.navBarItem36.Name = "navBarItem36";
+            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -765,11 +770,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(731, 28);
             this.layoutControlItem4.Text = "CUMPLEAÑOS DEL MES:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(181, 24);
-            // 
-            // navBarItem36
-            // 
-            this.navBarItem36.Caption = "Subir Archivo Horas";
-            this.navBarItem36.Name = "navBarItem36";
             // 
             // Planilla
             // 
