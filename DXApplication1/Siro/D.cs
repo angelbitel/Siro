@@ -7,6 +7,7 @@ namespace Siro
 {
     internal class T
     {
+        internal static ImageComboBoxItem Item(string desc, string value) => new ImageComboBoxItem { Description = desc, Value = value };
         internal static ImageComboBoxItem Item(string desc, int value) => new ImageComboBoxItem { Description = desc, Value = value };
         internal static ImageComboBoxItem Item(int value, string desc) => new ImageComboBoxItem { Description = desc, Value = value };
         public static bool IsFormAlreadyOpen(string frmName, Form[] frms)

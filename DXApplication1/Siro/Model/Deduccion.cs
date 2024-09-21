@@ -8,6 +8,7 @@ namespace Siro.Model
         public string Deducciones { get; set; }
         public string TipoDeduccion { get; set; }
         public string Acredor { get; set; }
+        public int? IdAcredor{ get; set; }
         public Nullable<decimal> Monto { get; set; }
         public Nullable<decimal> MontoPagado { get; set; }
         public Nullable<decimal> ArregloRecurrente { get; set; }

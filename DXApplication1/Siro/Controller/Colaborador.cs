@@ -106,6 +106,47 @@ namespace Siro.Controller
                 }
             }
         }
+        public bool Guardar(Model.Deduccion deducccion)
+        {
+            using (var context = new slPlanilla())
+            {
+                using (var dbContextTransaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var entidad = context.Deducciones.SingleOrDefault(s => s.IdDeduccion == deducccion.IdDeduccion);
+                        if (entidad != null)
+                        {
+                            entidad.FechaIngreso = deducccion.FechaIngreso;
+                            entidad.Deduccion = deducccion.Deducciones;
+                            entidad.TipoDeduccion = deducccion.TipoDeduccion;
+                            entidad.IdAcredor = deducccion.IdAcredor;
+                            entidad.Monto = deducccion.Monto;
+                            entidad.MontoPagado = deducccion.MontoPagado;
+                            entidad.ArregloRecurrente = deducccion.ArregloRecurrente;
+
+                            context.Entry(entidad).State = EntityState.Modified;
+                            context.SaveChanges();
+
+                            NuevoId = entidad.IdDeduccion;
+                            dbContextTransaction.Commit();
+                            MSG = "Datos Guardados Correctamente!!";
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContextTransaction.Rollback();
+                        MSG = "Ocurrio un error: " + ex.Message;
+                        return false;
+                    }
+                }
+            }
+        }
         public bool Guardar(HorasTrabajadas entidad)
         {
             entidad.FechaProceso = Principal.Bariables.PeridoContable;
@@ -188,7 +229,7 @@ namespace Siro.Controller
         public List<Model.Deduccion> DeduccionesColaboradores(int idColaborador)
         {
             var lst = new List<Model.Deduccion>();
-            var result = db.Deducciones.Where(w => w.IdColaborador == idColaborador).Select(s => new { s.IdDeduccion, s.FechaIngreso, s.Acredores.Acredor, s.ArregloRecurrente, s.Deduccion, s.Monto, s.MontoPagado, s.TipoDeduccion }).OrderByDescending(o => o.FechaIngreso).ToList();
+            var result = db.Deducciones.Where(w => w.IdColaborador == idColaborador).Select(s => new { s.IdAcredor, s.IdDeduccion, s.FechaIngreso, s.Acredores.Acredor, s.ArregloRecurrente, s.Deduccion, s.Monto, s.MontoPagado, s.TipoDeduccion }).OrderByDescending(o => o.FechaIngreso).ToList();
             result.ForEach(f =>
             {
                 lst.Add(new Model.Deduccion
@@ -200,7 +241,8 @@ namespace Siro.Controller
                     Monto = f.Monto,
                     MontoPagado = f.MontoPagado,
                     TipoDeduccion = f.TipoDeduccion,
-                    FechaIngreso = f.FechaIngreso
+                    FechaIngreso = f.FechaIngreso,
+                    IdAcredor = f.IdAcredor
                 });
             });
             return lst;

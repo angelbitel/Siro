@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Seguro Educativo");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Seguro Social");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Impuesto Sobre La Renta");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Fijas", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Otras");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Mes");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Ultima Quincena");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Anual");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Salarios Brutos");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Todos");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColaboradorEm));
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Seguro Educativo");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Seguro Social");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Impuesto Sobre La Renta");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Fijas", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
-            treeNode13});
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Otras");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Mes");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Ultima Quincena");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Anual");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Salarios Brutos");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Todos");
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.timeSpanEditSalidaDomingo = new DevExpress.XtraEditors.TimeSpanEdit();
@@ -270,12 +270,13 @@
             this.colMontoXHoras = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAño2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMes4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.gridControlDeduccciones = new DevExpress.XtraGrid.GridControl();
             this.deduccionesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewDeduccciones = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colDeducciones = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTipoDeduccion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAcredor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBoxAcredor = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.colMonto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMontoPagado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFechaIngreso = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -283,6 +284,8 @@
             this.colMes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colArregloRecurrente = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdAcredor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIdDeduccion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnNuevaDeduccion = new DevExpress.XtraEditors.SimpleButton();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -484,9 +487,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.movimientoColaboradorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlDeduccciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deduccionesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDeduccciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxAcredor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroupColaborador)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
@@ -1760,7 +1764,7 @@
             this.layoutControl1.Controls.Add(this.layoutControl2);
             this.layoutControl1.Controls.Add(this.simpleButton2);
             this.layoutControl1.Controls.Add(this.gridControl1);
-            this.layoutControl1.Controls.Add(this.gridControl2);
+            this.layoutControl1.Controls.Add(this.gridControlDeduccciones);
             this.layoutControl1.Controls.Add(this.btnNuevaDeduccion);
             this.layoutControl1.Controls.Add(this.treeView1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -3169,28 +3173,30 @@
             this.colMes4.VisibleIndex = 4;
             this.colMes4.Width = 35;
             // 
-            // gridControl2
+            // gridControlDeduccciones
             // 
-            this.gridControl2.DataSource = this.deduccionesBindingSource;
-            this.gridControl2.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gridControl2.Location = new System.Drawing.Point(201, 108);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gridControl2.MenuManager = this.barManager1;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(834, 261);
-            this.gridControl2.TabIndex = 9;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gridControlDeduccciones.DataSource = this.deduccionesBindingSource;
+            this.gridControlDeduccciones.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gridControlDeduccciones.Location = new System.Drawing.Point(201, 108);
+            this.gridControlDeduccciones.MainView = this.gridViewDeduccciones;
+            this.gridControlDeduccciones.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gridControlDeduccciones.MenuManager = this.barManager1;
+            this.gridControlDeduccciones.Name = "gridControlDeduccciones";
+            this.gridControlDeduccciones.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBoxAcredor});
+            this.gridControlDeduccciones.Size = new System.Drawing.Size(834, 261);
+            this.gridControlDeduccciones.TabIndex = 9;
+            this.gridControlDeduccciones.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewDeduccciones});
             // 
             // deduccionesBindingSource
             // 
             this.deduccionesBindingSource.DataSource = typeof(Siro.Model.Deduccion);
             // 
-            // gridView2
+            // gridViewDeduccciones
             // 
-            this.gridView2.ColumnPanelRowHeight = 0;
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewDeduccciones.ColumnPanelRowHeight = 0;
+            this.gridViewDeduccciones.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colDeducciones,
             this.colTipoDeduccion,
             this.colAcredor,
@@ -3200,18 +3206,22 @@
             this.colAño,
             this.colMes,
             this.colDia,
-            this.colArregloRecurrente});
-            this.gridView2.DetailHeight = 170;
-            this.gridView2.FixedLineWidth = 1;
-            this.gridView2.FooterPanelHeight = 0;
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.GroupRowHeight = 0;
-            this.gridView2.LevelIndent = 0;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsView.ShowGroupPanel = false;
-            this.gridView2.PreviewIndent = 0;
-            this.gridView2.RowHeight = 0;
-            this.gridView2.ViewCaptionHeight = 0;
+            this.colArregloRecurrente,
+            this.colIdAcredor,
+            this.colIdDeduccion});
+            this.gridViewDeduccciones.DetailHeight = 170;
+            this.gridViewDeduccciones.FixedLineWidth = 1;
+            this.gridViewDeduccciones.FooterPanelHeight = 0;
+            this.gridViewDeduccciones.GridControl = this.gridControlDeduccciones;
+            this.gridViewDeduccciones.GroupRowHeight = 0;
+            this.gridViewDeduccciones.LevelIndent = 0;
+            this.gridViewDeduccciones.Name = "gridViewDeduccciones";
+            this.gridViewDeduccciones.OptionsView.ShowGroupPanel = false;
+            this.gridViewDeduccciones.PreviewIndent = 0;
+            this.gridViewDeduccciones.RowHeight = 0;
+            this.gridViewDeduccciones.ViewCaptionHeight = 0;
+            this.gridViewDeduccciones.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridViewDeduccciones_ValidateRow);
+            this.gridViewDeduccciones.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.gridViewDeduccciones_RowUpdated);
             // 
             // colDeducciones
             // 
@@ -3220,7 +3230,7 @@
             this.colDeducciones.Name = "colDeducciones";
             this.colDeducciones.Visible = true;
             this.colDeducciones.VisibleIndex = 2;
-            this.colDeducciones.Width = 32;
+            this.colDeducciones.Width = 86;
             // 
             // colTipoDeduccion
             // 
@@ -3230,16 +3240,22 @@
             this.colTipoDeduccion.Name = "colTipoDeduccion";
             this.colTipoDeduccion.Visible = true;
             this.colTipoDeduccion.VisibleIndex = 1;
-            this.colTipoDeduccion.Width = 32;
+            this.colTipoDeduccion.Width = 86;
             // 
             // colAcredor
             // 
+            this.colAcredor.ColumnEdit = this.repositoryItemImageComboBoxAcredor;
             this.colAcredor.FieldName = "Acredor";
             this.colAcredor.MinWidth = 10;
             this.colAcredor.Name = "colAcredor";
-            this.colAcredor.Visible = true;
-            this.colAcredor.VisibleIndex = 3;
             this.colAcredor.Width = 32;
+            // 
+            // repositoryItemImageComboBoxAcredor
+            // 
+            this.repositoryItemImageComboBoxAcredor.AutoHeight = false;
+            this.repositoryItemImageComboBoxAcredor.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBoxAcredor.Name = "repositoryItemImageComboBoxAcredor";
             // 
             // colMonto
             // 
@@ -3250,7 +3266,7 @@
             this.colMonto.Name = "colMonto";
             this.colMonto.Visible = true;
             this.colMonto.VisibleIndex = 4;
-            this.colMonto.Width = 32;
+            this.colMonto.Width = 109;
             // 
             // colMontoPagado
             // 
@@ -3261,7 +3277,7 @@
             this.colMontoPagado.Name = "colMontoPagado";
             this.colMontoPagado.Visible = true;
             this.colMontoPagado.VisibleIndex = 6;
-            this.colMontoPagado.Width = 33;
+            this.colMontoPagado.Width = 117;
             // 
             // colFechaIngreso
             // 
@@ -3272,7 +3288,7 @@
             this.colFechaIngreso.Name = "colFechaIngreso";
             this.colFechaIngreso.Visible = true;
             this.colFechaIngreso.VisibleIndex = 0;
-            this.colFechaIngreso.Width = 44;
+            this.colFechaIngreso.Width = 118;
             // 
             // colAño
             // 
@@ -3305,7 +3321,25 @@
             this.colArregloRecurrente.Name = "colArregloRecurrente";
             this.colArregloRecurrente.Visible = true;
             this.colArregloRecurrente.VisibleIndex = 5;
-            this.colArregloRecurrente.Width = 32;
+            this.colArregloRecurrente.Width = 109;
+            // 
+            // colIdAcredor
+            // 
+            this.colIdAcredor.Caption = "Acredor";
+            this.colIdAcredor.ColumnEdit = this.repositoryItemImageComboBoxAcredor;
+            this.colIdAcredor.FieldName = "IdAcredor";
+            this.colIdAcredor.MinWidth = 25;
+            this.colIdAcredor.Name = "colIdAcredor";
+            this.colIdAcredor.Visible = true;
+            this.colIdAcredor.VisibleIndex = 3;
+            this.colIdAcredor.Width = 179;
+            // 
+            // colIdDeduccion
+            // 
+            this.colIdDeduccion.FieldName = "IdDeduccion";
+            this.colIdDeduccion.MinWidth = 25;
+            this.colIdDeduccion.Name = "colIdDeduccion";
+            this.colIdDeduccion.Width = 94;
             // 
             // btnNuevaDeduccion
             // 
@@ -3324,36 +3358,36 @@
             this.treeView1.Location = new System.Drawing.Point(24, 68);
             this.treeView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeView1.Name = "treeView1";
-            treeNode11.Checked = true;
-            treeNode11.Name = "NdF1";
-            treeNode11.Text = "Seguro Educativo";
-            treeNode12.Checked = true;
-            treeNode12.Name = "NdF2";
-            treeNode12.Text = "Seguro Social";
-            treeNode13.Name = "NdF3";
-            treeNode13.Text = "Impuesto Sobre La Renta";
-            treeNode14.Name = "NdFijas";
-            treeNode14.Text = "Fijas";
-            treeNode15.Name = "Nd2";
-            treeNode15.Text = "Otras";
-            treeNode16.Name = "Nd3";
-            treeNode16.Text = "Mes";
-            treeNode17.Name = "Nd4";
-            treeNode17.Text = "Ultima Quincena";
-            treeNode18.Name = "Nd5";
-            treeNode18.Text = "Anual";
-            treeNode19.Name = "Nd6";
-            treeNode19.Text = "Salarios Brutos";
-            treeNode20.Name = "Nd0";
-            treeNode20.Text = "Todos";
+            treeNode1.Checked = true;
+            treeNode1.Name = "NdF1";
+            treeNode1.Text = "Seguro Educativo";
+            treeNode2.Checked = true;
+            treeNode2.Name = "NdF2";
+            treeNode2.Text = "Seguro Social";
+            treeNode3.Name = "NdF3";
+            treeNode3.Text = "Impuesto Sobre La Renta";
+            treeNode4.Name = "NdFijas";
+            treeNode4.Text = "Fijas";
+            treeNode5.Name = "Nd2";
+            treeNode5.Text = "Otras";
+            treeNode6.Name = "Nd3";
+            treeNode6.Text = "Mes";
+            treeNode7.Name = "Nd4";
+            treeNode7.Text = "Ultima Quincena";
+            treeNode8.Name = "Nd5";
+            treeNode8.Text = "Anual";
+            treeNode9.Name = "Nd6";
+            treeNode9.Text = "Salarios Brutos";
+            treeNode10.Name = "Nd0";
+            treeNode10.Text = "Todos";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode14,
-            treeNode15,
-            treeNode16,
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20});
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9,
+            treeNode10});
             this.treeView1.Size = new System.Drawing.Size(173, 301);
             this.treeView1.TabIndex = 4;
             this.treeView1.Visible = false;
@@ -3373,7 +3407,7 @@
             // 
             this.tabbedControlGroupColaborador.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroupColaborador.Name = "tabbedControlGroupColaborador";
-            this.tabbedControlGroupColaborador.SelectedTabPage = this.layoutControlGroup8;
+            this.tabbedControlGroupColaborador.SelectedTabPage = this.layoutControlGroup7;
             this.tabbedControlGroupColaborador.Size = new System.Drawing.Size(1039, 373);
             this.tabbedControlGroupColaborador.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup8,
@@ -3445,7 +3479,7 @@
             // 
             // layoutControlItem15
             // 
-            this.layoutControlItem15.Control = this.gridControl2;
+            this.layoutControlItem15.Control = this.gridControlDeduccciones;
             this.layoutControlItem15.Location = new System.Drawing.Point(177, 40);
             this.layoutControlItem15.Name = "layoutControlItem15";
             this.layoutControlItem15.Size = new System.Drawing.Size(838, 265);
@@ -3817,9 +3851,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.movimientoColaboradorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlDeduccciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deduccionesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewDeduccciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBoxAcredor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroupColaborador)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
@@ -3942,8 +3977,8 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraEditors.SimpleButton btnNuevaDeduccion;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup7;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.GridControl gridControlDeduccciones;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewDeduccciones;
         private System.Windows.Forms.BindingSource deduccionesBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colTipoDeduccion;
         private DevExpress.XtraGrid.Columns.GridColumn colMonto;
@@ -4121,5 +4156,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem56;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem57;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem14;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBoxAcredor;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdAcredor;
+        private DevExpress.XtraGrid.Columns.GridColumn colIdDeduccion;
     }
 }

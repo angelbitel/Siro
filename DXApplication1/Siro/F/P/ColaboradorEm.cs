@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraReports.UI;
 using Siro.Properties;
@@ -32,41 +31,16 @@ namespace Siro.F.P
         {
             using (var db = new slPlanilla())
             {
-                db.EstadosColaborador.ToList().ForEach(f =>
-                    {
-                        ImageComboBoxItem item = new ImageComboBoxItem
-                        {
-                            Value = f.IdEstadoColaborador,
-                            Description = f.EstadoColaborador
-                        };
-                        this.IdEstadoColaboradorComboBoxEdit.Properties.Items.Add(item);
-                    });
-                db.ContratosColaborador.ToList().ForEach(f =>
-                {
-                    ImageComboBoxItem item = new ImageComboBoxItem
-                    {
-                        Value = f.IdContratoColaborador,
-                        Description = f.ContratoColaborador
-                    };
-                    this.IdContratoColaboradorCmb.Properties.Items.Add(item);
-                });
-                db.Departamentos.ToList().ForEach(f =>
-                {
-                    ImageComboBoxItem item = new ImageComboBoxItem
-                    {
-                        Value = f.IdDepartamento,
-                        Description = f.Departamento
-                    };
-                    this.IdDepartamentoCmb.Properties.Items.Add(item);
-                });
-                db.Posiciones.OrderBy(o=> o.Posicion).ToList().ForEach(f => {                    
-                    ImageComboBoxItem item = new ImageComboBoxItem
-                    {
-                        Value = f.IdPosicion,
-                        Description = f.Posicion
-                    };
-                    this.IdPosicionComboBoxEdit.Properties.Items.Add(item);                    
-                });
+                db.EstadosColaborador.ToList().ForEach(f => 
+                    this.IdEstadoColaboradorComboBoxEdit.Properties.Items.Add(T.Item(f.IdEstadoColaborador, f.EstadoColaborador)));
+                db.ContratosColaborador.ToList().ForEach(f => 
+                    this.IdContratoColaboradorCmb.Properties.Items.Add(T.Item(f.IdContratoColaborador, f.ContratoColaborador)));
+                db.Departamentos.ToList().ForEach(f => 
+                    this.IdDepartamentoCmb.Properties.Items.Add(T.Item(f.Departamento, f.IdDepartamento)));
+                db.Posiciones.OrderBy(o=> o.Posicion).ToList().ForEach(f => 
+                    this.IdPosicionComboBoxEdit.Properties.Items.Add(T.Item(f.IdPosicion, f.Posicion)));
+                db.Acredores.OrderBy(o => o.Acredor).ToList().ForEach(f => 
+                    this.repositoryItemImageComboBoxAcredor.Items.Add(T.Item(f.Acredor, f.IdAcredor)));
             }
         }
         private void FillList2()
@@ -214,7 +188,7 @@ namespace Siro.F.P
                 default:
                     break;
             }
-            gridView2.ActiveFilterString = filter;
+            gridViewDeduccciones.ActiveFilterString = filter;
         }
         private void simpleButton2_Click(object sender, EventArgs e)
         {
@@ -448,6 +422,32 @@ namespace Siro.F.P
                 e.Valid = false;
                 e.ErrorText = "NO SE PUEDE DEJAR ALGUN CAMPO EN BLANCO";
                 lblMsg.Caption = "NO SE PUEDE DEJAR ALGUN CAMPO EN BLANCO";
+            }
+        }
+
+        private void gridViewDeduccciones_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            var db = new Controller.Colaborador();
+            var deduciones = deduccionesBindingSource.Current as Siro.Model.Deduccion;
+            var row = e.Row as Siro.Model.Deduccion;
+
+            if (db.Guardar(row))
+            {
+                lblMsg.Caption = "Se agrego historial de horas correctamente";
+                row.IdDeduccion = db.NuevoId ?? 0;
+            }
+            else
+            {
+                lblMsg.Caption = $"Error al tratar de agregar la hora {db.MSG}";
+            }
+        }
+
+        private void gridViewDeduccciones_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
+        {
+            if (XtraMessageBox.Show("Esta seguro que desea modificar este registro!!", "Mensaje De Alerta", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
+            {
+                e.Valid = false;
+                e.ErrorText = "No se va a realizar la modificacion";
             }
         }
     }
