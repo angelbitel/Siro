@@ -3407,7 +3407,7 @@
             // 
             this.tabbedControlGroupColaborador.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroupColaborador.Name = "tabbedControlGroupColaborador";
-            this.tabbedControlGroupColaborador.SelectedTabPage = this.layoutControlGroup7;
+            this.tabbedControlGroupColaborador.SelectedTabPage = this.layoutControlGroup8;
             this.tabbedControlGroupColaborador.Size = new System.Drawing.Size(1039, 373);
             this.tabbedControlGroupColaborador.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup8,

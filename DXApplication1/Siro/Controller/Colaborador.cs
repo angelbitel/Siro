@@ -581,7 +581,7 @@ namespace Siro.Controller
                     HoraSalidaSabado = f.HoraSalidaSabado
                 });
             });
-            return lst;
+            return lst.OrderBy(o=>o.IdEstadoColaborador).ThenBy(o=>o.Colaborador).ToList();
         }
 
         public List<Colaboradores> ListaColaboradores(int? idEmpresa)
@@ -621,7 +621,7 @@ namespace Siro.Controller
                     Reloj = f.Reloj
                 });
             });
-            return lst;
+            return lst.OrderBy(o => o.IdEstadoColaborador).ThenBy(o => o.Colaborador).ToList();
         }
         internal List<Model.TiposCalculos> CalculosVacaciones(int? IdColaborador, bool agregaDescuentos)
         {

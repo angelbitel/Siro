@@ -29,9 +29,13 @@ namespace Siro.Controller
                     try
                     {
                         if (entidad.IdHoraTrabjada == 0)
+                        {
                             context.HorasTrabajadas.Add(entidad);
+                        }
                         else
+                        {
                             context.Entry(entidad).State = EntityState.Modified;
+                        }
 
                         context.SaveChanges();
 
