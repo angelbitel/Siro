@@ -32,18 +32,74 @@ namespace Siro.F.P
         {                     
             using (var db = new slPlanilla())
             {  
-                var lst = new List<PlanillaColaborador>();
-                db.Colaboradores.Where(w => w.IdEstadoColaborador != 2).ToList().ForEach(f =>
-                    {
-                        ImageComboBoxItem item = new ImageComboBoxItem
-                        {
-                            Value = f.IdColaborador,
-                            Description = f.Colaborador
-                        };
-                        this.repositoryItemImageComboBox1.Items.Add(item);
-                    });
+                var lst = new List<Model.Planilla>();
 
-                db.PlanillaColaborador.Where(w => w.Año == Year && w.Mes == Month && w.Quincena == moiety && w.IdEmpresa == Settings.Default.DIdEmpresa).ToList().ForEach(f => lst.Add(f));
+                db.PlanillaColaborador.Where(w => w.Año == Year && w.Mes == Month && w.Quincena == moiety && w.IdEmpresa == Settings.Default.DIdEmpresa).ToList().ForEach(f =>
+                {
+                    lst.Add(new Model.Planilla
+                    {
+                        Id = f.Id,
+                        IdColaborador = f.IdColaborador,
+                        IdEmpresa = f.IdEmpresa,
+                        IdUser = f.IdUser,
+                        FechaProceso = f.FechaProceso,
+                        Año = f.Año,
+                        Mes = f.Mes,
+                        Quincena = f.Quincena,
+                        RataPorHora = f.RataPorHora,
+                        SalarioQuincenal = f.SalarioQuincenal,
+                        TotalHoras = f.TotalHoras,
+                        SalarioBruto = f.SalarioBruto,
+                        OtrasDeducciones = f.OtrasDeducciones,
+                        CXCRecurrentes = f.CXCRecurrentes,
+                        CXC = f.CXC,
+                        SeguroSocial = f.SeguroSocial,
+                        SeguroEducativo = f.SeguroEducativo,
+                        ISR = f.ISR,
+                        SeguroSocialPatronal = f.SeguroSocialPatronal,
+                        SeguroEducativoPatronal = f.SeguroEducativoPatronal,
+                        Decimo = f.Decimo,
+                        Vacacciones = f.Vacacciones,
+                        SalarioNeto = f.SalarioNeto,
+                        indemnizacion = f.indemnizacion,
+                        Antiguedad = f.Antiguedad,
+                        Recerva = f.Recerva,
+                        Riesgo = f.Riesgo,
+                        PeriodDecimo = f.PeriodDecimo,
+                        SeguroSocialDecimo = f.SeguroSocialDecimo,
+                        SeguroSocialDecimoPatrono = f.SeguroSocialDecimoPatrono,
+                        Bonificaciones = f.Bonificaciones,
+                        TipoContrato = f.Colaboradores.ContratosColaborador.ContratoColaborador??"",
+                        Estado = f.Colaboradores.EstadosColaborador.EstadoColaborador??""
+                    });
+                });
+                if(repositoryItemImageComboBoxEstado.Items.Count == 0)
+                {
+                    db.EstadosColaborador.ToList().ForEach(f => repositoryItemImageComboBoxEstado.Items.Add(T.Item(f.EstadoColaborador, f.EstadoColaborador)));
+                }
+                db.Colaboradores.ToList().ForEach(f =>
+                {
+                    ImageComboBoxItem item = new ImageComboBoxItem
+                    {
+                        Value = f.IdColaborador,
+                        Description = f.Colaborador
+                    };
+                    this.repositoryItemImageComboBox1.Items.Add(item);
+                    if (f.IdEstadoColaborador == 2)
+                        lst.Add(new Model.Planilla
+                        {
+                            IdColaborador = f.IdColaborador,
+                            IdEmpresa = f.IdEmpresa ?? 0,
+                            Quincena = (int)f.SalarioQuincenal,
+                            RataPorHora = f.RataPorHora,
+                            SalarioQuincenal = f.SalarioQuincenal,
+                            SalarioBruto = (int)f.SalarioQuincenal,
+                            SalarioNeto = (int)f.SalarioQuincenal,
+                            Bonificaciones = f.Bonificaciones,
+                            TipoContrato = f.ContratosColaborador.ContratoColaborador ?? "",
+                            Estado = f.EstadosColaborador.EstadoColaborador ?? ""
+                        });
+                });
                 planillaColaboradorBindingSource.DataSource = lst;
             }
         }

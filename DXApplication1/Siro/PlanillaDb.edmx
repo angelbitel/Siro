@@ -212,6 +212,7 @@ advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento'
           <Property Name="PeriodDecimo" Type="int" />
           <Property Name="SeguroSocialDecimo" Type="money" />
           <Property Name="SeguroSocialDecimoPatrono" Type="money" />
+          <Property Name="Bonificaciones" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Posiciones">
           <Key>
@@ -1283,6 +1284,7 @@ advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento'
           <Property Name="PeriodDecimo" Type="Int32" />
           <Property Name="SeguroSocialDecimo" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="SeguroSocialDecimoPatrono" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Bonificaciones" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_PlanillaColaborador_Colaboradores">
           <End Type="slModelPlanilla.Colaboradores" Role="Colaboradores" Multiplicity="1" />
@@ -1578,6 +1580,7 @@ advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento'
           <EntitySetMapping Name="PlanillaColaborador">
             <EntityTypeMapping TypeName="slModelPlanilla.PlanillaColaborador">
               <MappingFragment StoreEntitySet="PlanillaColaborador">
+                <ScalarProperty Name="Bonificaciones" ColumnName="Bonificaciones" />
                 <ScalarProperty Name="SeguroSocialDecimoPatrono" ColumnName="SeguroSocialDecimoPatrono" />
                 <ScalarProperty Name="SeguroSocialDecimo" ColumnName="SeguroSocialDecimo" />
                 <ScalarProperty Name="PeriodDecimo" ColumnName="PeriodDecimo" />

@@ -598,6 +598,7 @@
     <Compile Include="Model\Notificacion.cs" />
     <Compile Include="Model\OrigenesTransacciones.cs" />
     <Compile Include="Model\PeriodoFiscal.cs" />
+    <Compile Include="Model\Planilla.cs" />
     <Compile Include="Model\Prmts.cs" />
     <Compile Include="Model\RegistroArroz.cs" />
     <Compile Include="Model\Resumen.cs" />
@@ -1378,6 +1379,7 @@
     <None Include="Siro.Model.HoraReloj.datasource" />
     <None Include="Siro.Model.MaestroContable.datasource" />
     <None Include="Siro.Model.PeriodoFiscal.datasource" />
+    <None Include="Siro.Model.Planilla.datasource" />
     <None Include="slContabilidad.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>slContabilidad.edmx</DependentUpon>

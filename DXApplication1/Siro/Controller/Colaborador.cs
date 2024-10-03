@@ -247,10 +247,47 @@ namespace Siro.Controller
             });
             return lst;
         }
-        public List<PlanillaColaborador> Planilla(int idColaborador)
+        public List<Model.Planilla> Planilla(int idColaborador)
         {
-            var lst = new List<PlanillaColaborador>();
-            db.PlanillaColaborador.Where(w => w.IdColaborador == idColaborador).OrderByDescending(o => new { o.Año, o.Mes, o.Quincena }).ToList().ForEach(f => lst.Add(f));
+            var lst = new List<Model.Planilla>();
+            db.PlanillaColaborador.Where(w => w.IdColaborador == idColaborador).OrderByDescending(o => new { o.Año, o.Mes, o.Quincena }).ToList().ForEach(f => 
+            {
+
+                lst.Add(new Model.Planilla
+                {
+                    Id = f.Id,
+                    IdColaborador = f.IdColaborador,
+                    IdEmpresa = f.IdEmpresa,
+                    IdUser = f.IdUser,
+                    FechaProceso = f.FechaProceso,
+                    Año = f.Año,
+                    Mes = f.Mes,
+                    Quincena = f.Quincena,
+                    RataPorHora = f.RataPorHora,
+                    SalarioQuincenal = f.SalarioQuincenal,
+                    TotalHoras = f.TotalHoras,
+                    SalarioBruto = f.SalarioBruto,
+                    OtrasDeducciones = f.OtrasDeducciones,
+                    CXCRecurrentes = f.CXCRecurrentes,
+                    CXC = f.CXC,
+                    SeguroSocial = f.SeguroSocial,
+                    SeguroEducativo = f.SeguroEducativo,
+                    ISR = f.ISR,
+                    SeguroSocialPatronal = f.SeguroSocialPatronal,
+                    SeguroEducativoPatronal = f.SeguroEducativoPatronal,
+                    Decimo = f.Decimo,
+                    Vacacciones = f.Vacacciones,
+                    SalarioNeto = f.SalarioNeto,
+                    indemnizacion = f.indemnizacion,
+                    Antiguedad = f.Antiguedad,
+                    Recerva = f.Recerva,
+                    Riesgo = f.Riesgo,
+                    PeriodDecimo = f.PeriodDecimo,
+                    SeguroSocialDecimo = f.SeguroSocialDecimo,
+                    SeguroSocialDecimoPatrono = f.SeguroSocialDecimoPatrono,
+                    Bonificaciones = f.Bonificaciones
+                });
+            });
             return lst;
         }
         public bool EliminarHora(int idHora)
