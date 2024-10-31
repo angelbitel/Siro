@@ -655,7 +655,9 @@ namespace Siro.Controller
                     SeguroSocial = f.SeguroSocial,
                     Sexo = f.Sexo,
                     Dependientes = f.Dependientes,
-                    Reloj = f.Reloj
+                    Reloj = f.Reloj,
+                    HoraEntradaSabado = f.HoraEntradaSabado,
+                    HoraSalidaSabado = f.HoraSalidaSabado
                 });
             });
             return lst.OrderBy(o => o.IdEstadoColaborador).ThenBy(o => o.Colaborador).ToList();

@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraReports.UI;
 using Siro.Properties;
 using System;
 using System.Collections.Generic;
@@ -85,20 +86,20 @@ namespace Siro.F.P
                         Description = f.Colaborador
                     };
                     this.repositoryItemImageComboBox1.Items.Add(item);
-                    if (f.IdEstadoColaborador == 2)
-                        lst.Add(new Model.Planilla
-                        {
-                            IdColaborador = f.IdColaborador,
-                            IdEmpresa = f.IdEmpresa ?? 0,
-                            Quincena = (int)f.SalarioQuincenal,
-                            RataPorHora = f.RataPorHora,
-                            SalarioQuincenal = f.SalarioQuincenal,
-                            SalarioBruto = (int)f.SalarioQuincenal,
-                            SalarioNeto = (int)f.SalarioQuincenal,
-                            Bonificaciones = f.Bonificaciones,
-                            TipoContrato = f.ContratosColaborador.ContratoColaborador ?? "",
-                            Estado = f.EstadosColaborador.EstadoColaborador ?? ""
-                        });
+                    //if (f.IdEstadoColaborador == 2)
+                    //    lst.Add(new Model.Planilla
+                    //    {
+                    //        IdColaborador = f.IdColaborador,
+                    //        IdEmpresa = f.IdEmpresa ?? 0,
+                    //        Quincena = (int)f.SalarioQuincenal,
+                    //        RataPorHora = f.RataPorHora,
+                    //        SalarioQuincenal = f.SalarioQuincenal,
+                    //        SalarioBruto = (int)f.SalarioQuincenal,
+                    //        SalarioNeto = (int)f.SalarioQuincenal,
+                    //        Bonificaciones = f.Bonificaciones,
+                    //        TipoContrato = f.ContratosColaborador.ContratoColaborador ?? "",
+                    //        Estado = f.EstadosColaborador.EstadoColaborador ?? ""
+                    //    });
                 });
                 planillaColaboradorBindingSource.DataSource = lst;
             }
@@ -256,6 +257,20 @@ namespace Siro.F.P
                 CalculosHoras();
                 lblMsg.Caption = "Planilla Generada!.....";
             }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {// Year && w.Mes == Month && w.Quincena == moiety && w.IdEmpresa == Settings.Default.DIdEmpresa
+            var report = XtraReport.FromFile(string.Format(@"Reportes\\Planilla\\{0}.repx", "ResumenPlanilla"));
+            report.Parameters["prmIdEmpresa"].Value = Settings.Default.DIdEmpresa;
+            report.Parameters["prmAnio"].Value = Year;
+            report.Parameters["prmMes"].Value = Month;
+            report.Parameters["prmQuincena"].Value = moiety;
+            var printTool3 = new ReportPrintTool(report, true); 
+            
+            printTool3.PreviewForm.MdiParent = this.MdiParent;
+            printTool3.PreviewForm.Text = "PLANILLA";
+            printTool3.ShowPreview();
         }
     }
 }

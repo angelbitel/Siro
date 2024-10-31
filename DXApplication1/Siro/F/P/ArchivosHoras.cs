@@ -85,6 +85,7 @@ namespace Siro.F.P
 
         private void spreadsheetControl1_DocumentLoaded(object sender, EventArgs e)
         {
+            LstHoraTrajadas.Clear();
             var workSheet = spreadsheetControl1.Document.Worksheets[0];
             var range = workSheet.GetDataRange();
             DataTable dataTable = workSheet.CreateDataTable(range, true);
@@ -135,6 +136,19 @@ namespace Siro.F.P
                 {
                     lbl.Caption = $"EL PERIDO DE  {Principal.Bariables.PeridoContable:yyyyMM}  QUE ESTA TRABAJANDO NO CONCUERDA CON EL DEL ARCHIVO { hora.Date:yyyyMM}";
                 }
+                var colaborador = LstColaboradores.SingleOrDefault(s => s.Reloj == item[CUser].ToString());
+                if (colaborador != null)
+                {
+                    hora.IdUser = colaborador.IdColaborador;
+
+                    hora.HoraEntrada = new TimeSpan(colaborador.HoraEntrada.Value.Hours, colaborador.HoraEntrada.Value.Minutes, 0);
+
+                    TimeSpan limitTime = new TimeSpan(colaborador.HoraEntrada.Value.Hours, colaborador.HoraEntrada.Value.Minutes, 0);
+
+                    // Verificar si es sábado
+                    if (hora.Date.DayOfWeek == DayOfWeek.Saturday)
+                        hora.HoraEntrada = new TimeSpan(colaborador.HoraEntradaSabado.Value.Hours, colaborador.HoraEntradaSabado.Value.Minutes, 0);
+                }
                 datos.Add(hora);
             }
 
@@ -157,7 +171,7 @@ namespace Siro.F.P
                     Colaborador = f.Colaborador,
                     Date = f.Date,
                     User = f.User,
-                    EntroALas = f.MinHour
+                    EntroALas = f.MinHour,
                 }));
 
             LstHoraTrajadas.ToList().ForEach(f =>
@@ -167,26 +181,95 @@ namespace Siro.F.P
                 {
                     f.Colaborador = colaborador.Colaborador;
                     f.IdUser = colaborador.IdColaborador;
+
+                    TimeSpan enterTime = new TimeSpan(f.EntroALas.Value.Hours, f.EntroALas.Value.Minutes, 0);
+
+                    TimeSpan limitTime = new TimeSpan(colaborador.HoraEntrada.Value.Hours, colaborador.HoraEntrada.Value.Minutes, 0);
+
                     // Verificar si es sábado
                     if (f.Date.DayOfWeek == DayOfWeek.Saturday)
                     {
+                        limitTime = new TimeSpan(colaborador.HoraEntradaSabado.Value.Hours, colaborador.HoraEntradaSabado.Value.Minutes, 0);
                         f.HoraEntradaSabado = colaborador.HoraEntradaSabado;
-                        // Si el usuario entró después de la hora de entrada de sábado, calcular el retraso
-                        if (f.EntroALas > f.HoraEntradaSabado)
-                        {
-                            f.Delay = GetTimeAttended(f.EntroALas ?? TimeSpan.Zero, f.HoraEntradaSabado ?? TimeSpan.Zero);
-                        }
                     }
-                    else // Si no es sábado, verificar la hora de entrada habitual
-                    {
+                    else
                         f.HoraEntrada = colaborador.HoraEntrada;
-                        if (f.EntroALas > f.HoraEntrada)
-                        {
-                            f.Delay = GetTimeAttended(f.EntroALas ?? TimeSpan.Zero, f.HoraEntrada ?? TimeSpan.Zero);
-                        }
+
+                    if (enterTime > limitTime)
+                    {
+                        f.Delay = GetTimeAttended(enterTime, limitTime);
                     }
                 }
+                else
+                    f.Colaborador = $"ACTUALIZAR DATOS --> {f.User}";
             });
+
+
+            //BUSCAR AUSENCIAS DIAS
+            var ausencias = new List<Model.HoraReloj>();
+            var minDay = datos.Min(m => m.Date);
+            var maxDay = datos.Max(m => m.Date);
+
+            // Group work hours by date and user
+            var horaColaborador = datos
+                .GroupBy(g => new { g.Date.Date, g.IdUser })
+                .Select(s => new { Dia = s.Key.Date, IdUser = s.Key.IdUser })
+                .ToList();
+
+            // Iterate over active employees
+            LstColaboradores
+                .Where(w => w.IdEstadoColaborador == 1 && !string.IsNullOrEmpty(w.Reloj))
+                .ToList()
+                .ForEach(f =>
+                {
+                    // Iterate over the date range
+                    foreach (var g in CreateDateArray(minDay, maxDay))
+                    {
+                        if (!dbH.DiasFeriados.Any(a => a.Date == g.Date) && g.DayOfWeek != DayOfWeek.Sunday)
+                        {
+                            var horasAusencia = g.DayOfWeek == DayOfWeek.Saturday ? 4 : 8;
+
+                            // Check if the employee worked on the current day
+                            var workedOnDay = horaColaborador.Any(w => w.IdUser == f.IdColaborador && g.Date == w.Dia.Date);
+
+                            // If no worked hours, add an absence
+                            if (!workedOnDay)
+                            {
+                                ausencias.Add(new Model.HoraReloj
+                                {
+                                    User = f.Reloj,
+                                    Colaborador = f.Colaborador,
+                                    Date = g.Date,
+                                    Delay = new TimeSpan(horasAusencia, 0, 0),
+                                    Habilitar = true,
+                                    IdUser = f.IdColaborador,
+                                });
+                            }
+                        }
+                    }
+                });
+            ausencias.ForEach(f => LstHoraTrajadas.Add(f));
+            LstHoraTrajadas.ToList().ForEach(f =>
+            {
+                if (f.Delay == TimeSpan.Zero)
+                    LstHoraTrajadas.Remove(f);
+            });
+        }
+        private DateTime[] CreateDateArray(DateTime minDate, DateTime maxDate)
+        {
+            // Calculate the number of days between the two dates
+            int totalDays = (maxDate - minDate).Days + 1; // +1 to include the maxDate
+
+            // Create an array of days
+            DateTime[] daysArray = new DateTime[totalDays];
+
+            // Fill the array with the range of dates
+            for (int i = 0; i < totalDays; i++)
+            {
+                daysArray[i] = minDate.AddDays(i);
+            }
+
+            return daysArray;
         }
 
         private void repositoryItemHyperLinkEditElimnar_Click(object sender, EventArgs e)

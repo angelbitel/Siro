@@ -71,6 +71,7 @@ namespace Siro.F.P
             this.colDayOfWeek = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colQuitar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemHyperLinkEditElimnar = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
+            this.colTotalHours = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -93,8 +94,6 @@ namespace Siro.F.P
             this.colDelay.FieldName = "Delay";
             this.colDelay.MinWidth = 25;
             this.colDelay.Name = "colDelay";
-            this.colDelay.Visible = true;
-            this.colDelay.VisibleIndex = 3;
             this.colDelay.Width = 94;
             // 
             // colDate
@@ -165,7 +164,6 @@ namespace Siro.F.P
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItemVerificar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItemProcesar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.lbl)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
@@ -220,7 +218,7 @@ namespace Siro.F.P
             this.spreadsheetControl1.MenuManager = this.barManager1;
             this.spreadsheetControl1.Name = "spreadsheetControl1";
             this.spreadsheetControl1.Options.Culture = new System.Globalization.CultureInfo("es-PA");
-            this.spreadsheetControl1.Size = new System.Drawing.Size(874, 578);
+            this.spreadsheetControl1.Size = new System.Drawing.Size(777, 578);
             this.spreadsheetControl1.TabIndex = 0;
             this.spreadsheetControl1.DocumentLoaded += new System.EventHandler(this.spreadsheetControl1_DocumentLoaded);
             // 
@@ -346,13 +344,13 @@ namespace Siro.F.P
             // gridControl1
             // 
             this.gridControl1.DataSource = this.horaRelojBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(890, 12);
+            this.gridControl1.Location = new System.Drawing.Point(793, 12);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHyperLinkEditElimnar});
-            this.gridControl1.Size = new System.Drawing.Size(654, 597);
+            this.gridControl1.Size = new System.Drawing.Size(751, 597);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -372,7 +370,8 @@ namespace Siro.F.P
             this.colHoraEntrada,
             this.colHoraEntradaSabado,
             this.colDayOfWeek,
-            this.colQuitar});
+            this.colQuitar,
+            this.colTotalHours});
             gridFormatRule1.Column = this.colDelay;
             gridFormatRule1.ColumnApplyTo = this.colDelay;
             gridFormatRule1.Name = "Format0";
@@ -406,7 +405,7 @@ namespace Siro.F.P
             this.colEntroALas.MinWidth = 25;
             this.colEntroALas.Name = "colEntroALas";
             this.colEntroALas.Visible = true;
-            this.colEntroALas.VisibleIndex = 4;
+            this.colEntroALas.VisibleIndex = 3;
             this.colEntroALas.Width = 94;
             // 
             // colHoraEntrada
@@ -453,6 +452,17 @@ namespace Siro.F.P
             this.repositoryItemHyperLinkEditElimnar.Name = "repositoryItemHyperLinkEditElimnar";
             this.repositoryItemHyperLinkEditElimnar.Click += new System.EventHandler(this.repositoryItemHyperLinkEditElimnar_Click);
             // 
+            // colTotalHours
+            // 
+            this.colTotalHours.DisplayFormat.FormatString = "N2";
+            this.colTotalHours.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colTotalHours.FieldName = "TotalHours";
+            this.colTotalHours.MinWidth = 25;
+            this.colTotalHours.Name = "colTotalHours";
+            this.colTotalHours.Visible = true;
+            this.colTotalHours.VisibleIndex = 4;
+            this.colTotalHours.Width = 94;
+            // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.gridControl1);
@@ -481,7 +491,7 @@ namespace Siro.F.P
             this.layoutControlItem1.Control = this.spreadsheetControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(878, 601);
+            this.layoutControlItem1.Size = new System.Drawing.Size(781, 601);
             this.layoutControlItem1.Text = "DATOS DEL RELOJ:";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(110, 16);
@@ -489,9 +499,9 @@ namespace Siro.F.P
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.gridControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(878, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(781, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(658, 601);
+            this.layoutControlItem2.Size = new System.Drawing.Size(755, 601);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -569,5 +579,6 @@ namespace Siro.F.P
         private DevExpress.XtraBars.BarStaticItem lbl;
         private DevExpress.XtraGrid.Columns.GridColumn colQuitar;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEditElimnar;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalHours;
     }
 }

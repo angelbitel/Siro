@@ -48,5 +48,49 @@ namespace Siro.Controller
                 return lst;
             }
         }
+        internal List<DateTime> DiasFeriados
+        {
+            get
+            {
+                var dias = new List<DateTime>();
+                // Add Panama public holidays for 2024 and 2025
+                dias.AddRange(
+                new DateTime[]
+                {
+                    // 2024 Public Holidays in Panama
+                    new DateTime(2024, 1, 1),   // New Year's Day
+                    new DateTime(2024, 1, 9),   // Martyrs' Day
+                    new DateTime(2024, 2, 12),  // Carnival Monday
+                    new DateTime(2024, 2, 13),  // Carnival Tuesday
+                    new DateTime(2024, 4, 1),   // Holy Thursday
+                    new DateTime(2024, 4, 2),   // Good Friday
+                    new DateTime(2024, 5, 1),   // Labour Day
+                    new DateTime(2024, 11, 3),  // Independence from Colombia
+                    new DateTime(2024, 11, 4),  // National Flag Day
+                    new DateTime(2024, 11, 5),  // Colon Day
+                    new DateTime(2024, 11, 10), // Los Santos Uprising
+                    new DateTime(2024, 11, 28), // Independence from Spain
+                    new DateTime(2024, 12, 8),  // Mother's Day
+                    new DateTime(2024, 12, 25), // Christmas Day
+
+                    // 2025 Public Holidays in Panama
+                    new DateTime(2025, 1, 1),   // New Year's Day
+                    new DateTime(2025, 1, 9),   // Martyrs' Day
+                    new DateTime(2025, 2, 24),  // Carnival Monday
+                    new DateTime(2025, 2, 25),  // Carnival Tuesday
+                    new DateTime(2025, 4, 17),  // Good Friday
+                    new DateTime(2025, 5, 1),   // Labour Day
+                    new DateTime(2025, 11, 3),  // Independence from Colombia
+                    new DateTime(2025, 11, 4),  // National Flag Day
+                    new DateTime(2025, 11, 5),  // Colon Day
+                    new DateTime(2025, 11, 10), // Los Santos Uprising
+                    new DateTime(2025, 11, 28), // Independence from Spain
+                    new DateTime(2025, 12, 8),  // Mother's Day
+                    new DateTime(2025, 12, 25)  // Christmas Day
+                }
+                );
+                return dias;
+            }
+        }
     }
 }

@@ -106,6 +106,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.navBarItem37 = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel2.SuspendLayout();
             this.dockPanel3.SuspendLayout();
@@ -370,7 +371,8 @@
             this.navBarItem22,
             this.navBarItem34,
             this.navBarItem35,
-            this.navBarItem36});
+            this.navBarItem36,
+            this.navBarItem37});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.navBarControl1.Name = "navBarControl1";
@@ -435,7 +437,8 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem29),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem30),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem20),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem21)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem21),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem37)});
             this.navBarGroup8.Name = "navBarGroup8";
             // 
             // navBarItem28
@@ -771,6 +774,11 @@
             this.layoutControlItem4.Text = "CUMPLEAÑOS DEL MES:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(181, 24);
             // 
+            // navBarItem37
+            // 
+            this.navBarItem37.Caption = "Colaboradores";
+            this.navBarItem37.Name = "navBarItem37";
+            // 
             // Planilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -886,5 +894,6 @@
         private DevExpress.XtraEditors.LabelControl lblCumple;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraNavBar.NavBarItem navBarItem36;
+        private DevExpress.XtraNavBar.NavBarItem navBarItem37;
     }
 }

@@ -41,6 +41,20 @@ namespace Siro.Model
                 return SalarioNeto + Bonificaciones??0m;
             }
         }
+        public Nullable<decimal> SSSPatrono
+        {
+            get
+            {
+                return SalarioNeto + Bonificaciones ?? 0m;
+            }
+        }
+        public Nullable<decimal> ISSRPatrono
+        {
+            get
+            {
+                return SalarioNeto + Bonificaciones ?? 0m;
+            }
+        }
         public string TipoContrato { get; set; }
         public string Estado { get; set; }
     }

@@ -92,6 +92,9 @@ namespace Siro.F
                 case "navBarItem36":
                     OpenForm(new P.ArchivosHoras());
                     break;
+                case "navBarItem37":
+                    GenerarReporte("Colaboradores", Principal.Bariables.PeridoContable);
+                    break;
             }
         }
         private void OpenForm(DevExpress.XtraEditors.XtraForm frm)
@@ -206,13 +209,21 @@ namespace Siro.F
 
             lblMsg.Caption = proces.MSG;
         }
-        private void GenerarReporte(string reporte, DateTime? perido )
+        private void GenerarReporte(string reporte, DateTime? perido)
         {
             XtraReport report = new XtraReport();
             report.LoadLayout(string.Format(@"Reportes\\Planilla\\{0}.repx", reporte));
-            report.Parameters["prmIdEmpresa"].Value = Settings.Default.DIdEmpresa;
-            if(perido != null)
-                report.Parameters["prmFecha"].Value = perido;
+
+            for (int i = 0; i < report.Parameters.Count; i++)
+            {
+                if (report.Parameters[i].Name == "prmIdEmpresa")
+                    report.Parameters["prmIdEmpresa"].Value = Settings.Default.DIdEmpresa;
+
+                if (report.Parameters[i].Name == "prmFecha")
+                    if (perido != null)
+                        report.Parameters["prmFecha"].Value = perido;
+            }
+
             var printTool3 = new ReportPrintTool(report);
             printTool3.PreviewForm.MdiParent = this.MdiParent;
             printTool3.PreviewForm.Text = reporte;

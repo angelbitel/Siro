@@ -1462,6 +1462,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\xaxissettings.svg" />
+    <None Include="Resources\defaultprinter.svg" />
     <Content Include="SiroAccounting.ico" />
     <Content Include="slSiro.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
