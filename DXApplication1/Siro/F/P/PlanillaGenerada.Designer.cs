@@ -621,7 +621,8 @@
             // 
             this.barButtonItem5.Caption = "Imprimir Resumen";
             this.barButtonItem5.Id = 14;
-            this.barButtonItem5.ImageOptions.SvgImage = global::Siro.Properties.Resources.defaultprinter;
+            this.barButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 

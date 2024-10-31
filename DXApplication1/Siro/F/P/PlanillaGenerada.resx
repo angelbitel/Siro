@@ -169,6 +169,34 @@
         HfNhGQlLqn4/eNq+jQX/BRbqweZ/Pa0K/+6HvEAAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="barButtonItem5.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAbdEVYdFRpdGxlAFByaW50UHJldmlldztQcmV2aWV3Oy1y+q4AAAG5SURBVFhH7ZUxTsNAEEXT
+        RLkCVSSOkUPQpKQgqTgIuPMVcgAOQGEpF+AGoaPmAJFQhGT+s9bSzno2wSE2TVZ6sv7s7Pzx4CyTuq7/
+        FTc4Jm5wTNzgmLjBmKIo6r+Q1ktxgzGhyFnr2sC1gbMa0KEtBwMXaSCqt0XHGAFRMly6gUbHGAFxskh1
+        b9KarU+LERAni87+OajOrq2Z7hkBbWIPSnFz91QtxUbsxCE80Uv2Q54srJ8RQFIPyofnl1uZlOJb1A7E
+        mzzyUz8jIDE4BmPlzTHH6EMUYiFm4Ykmzn4zqdTPCIgMTrFSUcbOG2Jyr/NrUYl9eK6Jh33ylooZPyPA
+        McoxV0H+xrxd8fb+uRZfoo5A0wSTIG+T+hkBjlGOqQryoVF4IaMqMo6p2A95u9TPCHCMGpw1UUG+dgrP
+        pBm7t/bsh7yDtPEzAmT2mpoDKxRpGWYCHm0DyRrmG/DITGCYX4FHZgKMs889AI/C1DYiR2YCgPlvbsJY
+        myaMUY7MBNrF9Xr0f4HA1G2iY+ZBAyfgWl6JuZiGM80TMAumnSY6ZkOAUaDThHtgCGTmNuEmD0EwT5sY
+        bwI+9eQHsqin4j0dKUsAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="barButtonItem5.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAbdEVYdFRpdGxlAFByaW50UHJldmlldztQcmV2aWV3Oy1y+q4AAAG5SURBVFhH7ZUxTsNAEEXT
+        RLkCVSSOkUPQpKQgqTgIuPMVcgAOQGEpF+AGoaPmAJFQhGT+s9bSzno2wSE2TVZ6sv7s7Pzx4CyTuq7/
+        FTc4Jm5wTNzgmLjBmKIo6r+Q1ktxgzGhyFnr2sC1gbMa0KEtBwMXaSCqt0XHGAFRMly6gUbHGAFxskh1
+        b9KarU+LERAni87+OajOrq2Z7hkBbWIPSnFz91QtxUbsxCE80Uv2Q54srJ8RQFIPyofnl1uZlOJb1A7E
+        mzzyUz8jIDE4BmPlzTHH6EMUYiFm4Ykmzn4zqdTPCIgMTrFSUcbOG2Jyr/NrUYl9eK6Jh33ylooZPyPA
+        McoxV0H+xrxd8fb+uRZfoo5A0wSTIG+T+hkBjlGOqQryoVF4IaMqMo6p2A95u9TPCHCMGpw1UUG+dgrP
+        pBm7t/bsh7yDtPEzAmT2mpoDKxRpGWYCHm0DyRrmG/DITGCYX4FHZgKMs889AI/C1DYiR2YCgPlvbsJY
+        myaMUY7MBNrF9Xr0f4HA1G2iY+ZBAyfgWl6JuZiGM80TMAumnSY6ZkOAUaDThHtgCGTmNuEmD0EwT5sY
+        bwI+9eQHsqin4j0dKUsAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btnActualizar.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACN0RVh0VGl0

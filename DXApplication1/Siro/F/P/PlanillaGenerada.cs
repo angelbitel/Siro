@@ -260,7 +260,7 @@ namespace Siro.F.P
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {// Year && w.Mes == Month && w.Quincena == moiety && w.IdEmpresa == Settings.Default.DIdEmpresa
+        {
             var report = XtraReport.FromFile(string.Format(@"Reportes\\Planilla\\{0}.repx", "ResumenPlanilla"));
             report.Parameters["prmIdEmpresa"].Value = Settings.Default.DIdEmpresa;
             report.Parameters["prmAnio"].Value = Year;
