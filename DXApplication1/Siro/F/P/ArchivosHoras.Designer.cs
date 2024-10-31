@@ -30,8 +30,8 @@ namespace Siro.F.P
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.colDelay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -39,8 +39,8 @@ namespace Siro.F.P
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barButtonItemVerificar = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemProcesar = new DevExpress.XtraBars.BarButtonItem();
             this.lbl = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemEliminar = new DevExpress.XtraBars.BarButtonItem();
             this.commonBar1 = new DevExpress.XtraSpreadsheet.UI.CommonBar();
             this.spreadsheetControl1 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
             this.spreadsheetCommandBarButtonItem1 = new DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem();
@@ -59,6 +59,7 @@ namespace Siro.F.P
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemProcesar = new DevExpress.XtraBars.BarButtonItem();
             this.spreadsheetBarController1 = new DevExpress.XtraSpreadsheet.UI.SpreadsheetBarController(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.horaRelojBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -132,9 +133,10 @@ namespace Siro.F.P
             this.spreadsheetCommandBarButtonItem11,
             this.barButtonItemProcesar,
             this.barButtonItemVerificar,
-            this.lbl});
+            this.lbl,
+            this.barButtonItemEliminar});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 15;
+            this.barManager1.MaxItemId = 16;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -164,7 +166,8 @@ namespace Siro.F.P
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItemVerificar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.lbl)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.lbl),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItemEliminar, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
@@ -178,20 +181,19 @@ namespace Siro.F.P
             this.barButtonItemVerificar.Name = "barButtonItemVerificar";
             this.barButtonItemVerificar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemVerificar_ItemClick);
             // 
-            // barButtonItemProcesar
-            // 
-            this.barButtonItemProcesar.Caption = "Procesar Informacion";
-            this.barButtonItemProcesar.Id = 12;
-            this.barButtonItemProcesar.ImageOptions.SvgImage = global::Siro.Properties.Resources.xaxissettings;
-            this.barButtonItemProcesar.Name = "barButtonItemProcesar";
-            this.barButtonItemProcesar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemProcesar_ItemClick);
-            // 
             // lbl
             // 
             this.lbl.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
             this.lbl.Caption = "..";
             this.lbl.Id = 14;
             this.lbl.Name = "lbl";
+            // 
+            // barButtonItemEliminar
+            // 
+            this.barButtonItemEliminar.Caption = "Eliminar Marcacion";
+            this.barButtonItemEliminar.Id = 15;
+            this.barButtonItemEliminar.ImageOptions.SvgImage = global::Siro.Properties.Resources.adateoccuring;
+            this.barButtonItemEliminar.Name = "barButtonItemEliminar";
             // 
             // commonBar1
             // 
@@ -326,6 +328,14 @@ namespace Siro.F.P
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // barButtonItemProcesar
+            // 
+            this.barButtonItemProcesar.Caption = "Procesar Informacion";
+            this.barButtonItemProcesar.Id = 12;
+            this.barButtonItemProcesar.ImageOptions.SvgImage = global::Siro.Properties.Resources.xaxissettings;
+            this.barButtonItemProcesar.Name = "barButtonItemProcesar";
+            this.barButtonItemProcesar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemProcesar_ItemClick);
+            // 
             // spreadsheetBarController1
             // 
             this.spreadsheetBarController1.BarItems.Add(this.spreadsheetCommandBarButtonItem1);
@@ -372,14 +382,14 @@ namespace Siro.F.P
             this.colDayOfWeek,
             this.colQuitar,
             this.colTotalHours});
-            gridFormatRule1.Column = this.colDelay;
-            gridFormatRule1.ColumnApplyTo = this.colDelay;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            formatConditionRuleExpression1.Appearance.Options.UseBackColor = true;
-            formatConditionRuleExpression1.Expression = "Iif([Delay] Is Null, False, True)";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.gridView1.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.Column = this.colDelay;
+            gridFormatRule2.ColumnApplyTo = this.colDelay;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            formatConditionRuleExpression2.Appearance.Options.UseBackColor = true;
+            formatConditionRuleExpression2.Expression = "Iif([Delay] Is Null, False, True)";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.gridView1.FormatRules.Add(gridFormatRule2);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
@@ -580,5 +590,6 @@ namespace Siro.F.P
         private DevExpress.XtraGrid.Columns.GridColumn colQuitar;
         private DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit repositoryItemHyperLinkEditElimnar;
         private DevExpress.XtraGrid.Columns.GridColumn colTotalHours;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemEliminar;
     }
 }

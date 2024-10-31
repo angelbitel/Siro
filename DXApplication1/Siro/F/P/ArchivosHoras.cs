@@ -23,6 +23,7 @@ namespace Siro.F.P
         public ArchivosHoras()
         {
             InitializeComponent();
+            barButtonItemEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItemEliminar_ItemClick);
             dbH = new Controller.Horas();
         }
 
@@ -49,7 +50,8 @@ namespace Siro.F.P
                         IdColaborador = f.IdUser,
                         IdEmpresa = Principal.Bariables.IdEmpresa.Id,
                         IdFactor = 1,
-                        Mes = f.Date.Month
+                        Mes = f.Date.Month,
+                        Fecha = f.Date
                     };
                     new Controller.HoraTrabjada().Guardar(horaTrabajada);
                 });
@@ -282,5 +284,36 @@ namespace Siro.F.P
                 }
             }
         }
+
+        private async void barButtonItemEliminar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            // Initialize a new XtraInputBoxArgs instance
+            XtraInputBoxArgs args = new XtraInputBoxArgs();
+            // Set required Input Box options
+            args.Caption = "SELECCIONE LA FECHA";
+            args.Prompt = "FECHA DE PROCESO";
+            args.DefaultButtonIndex = 0;
+            // Initialize a DateEdit editor with custom settings
+            DateEdit editor = new DateEdit();
+            editor.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.TouchUI;
+            editor.Properties.Mask.EditMask = "MMMM d, yyyy";
+            args.Editor = editor;
+            // A default DateEdit value
+            args.DefaultResponse = DateTime.Now.Date;
+            // Display an Input Box with the custom editor
+            var result = XtraInputBox.Show(args);
+            if(result != null)
+            {
+                var res = await dbH.EliminarHorasProcesadas(((System.DateTime)result).Date);
+                if (res)
+                    lbl.Caption = $"SE ELIMNARON {dbH.Id} REGISTROS DE LA FECHA DE PROCESO {((System.DateTime)result):d}";
+            }
+
+        }
+            // Set a dialog icon
+            private void Args_Showing(object sender, XtraMessageShowingArgs e)
+            {
+                //e.Buttons..MessageBoxForm.Icon = this.Icon;
+            }
     }
 }

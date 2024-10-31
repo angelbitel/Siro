@@ -1465,6 +1465,7 @@
     <None Include="Resources\defaultprinter.svg" />
     <None Include="Resources\printpreview_32x32.png" />
     <None Include="Resources\printpreview_16x16.png" />
+    <None Include="Resources\adateoccuring.svg" />
     <Content Include="SiroAccounting.ico" />
     <Content Include="slSiro.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

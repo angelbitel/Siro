@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,6 +91,46 @@ namespace Siro.Controller
                 }
                 );
                 return dias;
+            }
+        }
+
+        public int Id { get; set; }
+
+        internal async Task<bool> EliminarHorasProcesadas(DateTime fecha)
+        {
+            try
+            {
+                using (var context = new slPlanilla())
+                {
+                    using (var dbContextTransaction = context.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            var registros = await context.HorasTrabajadas
+                                .Where(h => DbFunctions.TruncateTime(fecha) == DbFunctions.TruncateTime(h.FechaProceso))
+                                .ToListAsync();
+                            if (registros.Count() > 0)
+                            {
+                                Id = registros.Count();
+                                context.HorasTrabajadas.RemoveRange(registros);
+                                await context.SaveChangesAsync();
+                                dbContextTransaction.Commit();
+                            }
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            Mensaje = ex.Message;
+                            dbContextTransaction.Rollback();
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensaje = ex.Message;
+                return false;
             }
         }
     }

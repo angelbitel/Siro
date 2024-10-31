@@ -328,7 +328,8 @@ namespace Siro.Controller
                 TipoFactor = s.Factores.TiposFactor.Factor,
                 s.IdFactor,
                 s.Factores.RestaSaldo,
-                s.FechaProceso
+                s.FechaProceso,
+                s.Fecha
             }).OrderByDescending(od=>od.FechaProceso).ToList();
             resul.ToList().ForEach(g =>
             {
@@ -348,10 +349,12 @@ namespace Siro.Controller
 
                 lst.Add(new Model.MovimientoColaborador { 
                     IdHoraTrabjada= g.IdHoraTrabjada,
-                    Fecha = g.FechaProceso ?? DateTime.Now, 
+                    Fecha = g.Fecha ?? DateTime.Now, 
                     MontoXHoras = total, 
                     Cantidad = g.HoraTrabajada, 
-                    TipoHora = g.DescripcionFactor });
+                    TipoHora = g.DescripcionFactor,
+                    FechaProceso = g.FechaProceso ?? DateTime.Now
+                });
             });
             return lst;
         }
