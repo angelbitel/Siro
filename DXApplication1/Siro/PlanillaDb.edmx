@@ -157,6 +157,7 @@ advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento'
           <Property Name="Año" Type="int" />
           <Property Name="FechaProceso" Type="datetime" />
           <Property Name="Procesado" Type="bit" />
+          <Property Name="Fecha" Type="datetime" />
         </EntityType>
         <EntityType Name="IngresosDeducciones">
           <Key>
@@ -990,6 +991,7 @@ advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento'
           <NavigationProperty Name="Colaboradores" Relationship="slModelPlanilla.FK_HorasTrabajadas_Colaboradores" FromRole="HorasTrabajadas" ToRole="Colaboradores" />
           <NavigationProperty Name="Factores" Relationship="slModelPlanilla.FK_HorasTrabajadas_Factores" FromRole="HorasTrabajadas" ToRole="Factores" />
           <Property Name="Procesado" Type="Boolean" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="TiposFactor">
           <Key>
@@ -1455,6 +1457,7 @@ advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento'
           <EntitySetMapping Name="HorasTrabajadas">
             <EntityTypeMapping TypeName="slModelPlanilla.HorasTrabajadas">
               <MappingFragment StoreEntitySet="HorasTrabajadas">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Procesado" ColumnName="Procesado" />
                 <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
                 <ScalarProperty Name="Año" ColumnName="Año" />
