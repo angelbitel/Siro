@@ -329,7 +329,8 @@ namespace Siro.Controller
                 s.IdFactor,
                 s.Factores.RestaSaldo,
                 s.FechaProceso,
-                s.Fecha
+                s.Fecha,
+                s.Comentario
             }).OrderByDescending(od=>od.FechaProceso).ToList();
             resul.ToList().ForEach(g =>
             {

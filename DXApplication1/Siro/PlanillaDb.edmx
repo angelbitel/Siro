@@ -158,6 +158,8 @@ advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento'
           <Property Name="FechaProceso" Type="datetime" />
           <Property Name="Procesado" Type="bit" />
           <Property Name="Fecha" Type="datetime" />
+          <Property Name="Comentario" Type="varchar" MaxLength="250" />
+          <Property Name="Quincena" Type="int" />
         </EntityType>
         <EntityType Name="IngresosDeducciones">
           <Key>
@@ -992,6 +994,8 @@ advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento'
           <NavigationProperty Name="Factores" Relationship="slModelPlanilla.FK_HorasTrabajadas_Factores" FromRole="HorasTrabajadas" ToRole="Factores" />
           <Property Name="Procesado" Type="Boolean" />
           <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Quincena" Type="Int32" />
         </EntityType>
         <EntityType Name="TiposFactor">
           <Key>
@@ -1457,6 +1461,8 @@ advertencia 6002: La tabla o vista 'SiroSolcosaAdmin.Planilla.DetallesDescuento'
           <EntitySetMapping Name="HorasTrabajadas">
             <EntityTypeMapping TypeName="slModelPlanilla.HorasTrabajadas">
               <MappingFragment StoreEntitySet="HorasTrabajadas">
+                <ScalarProperty Name="Quincena" ColumnName="Quincena" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Procesado" ColumnName="Procesado" />
                 <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />

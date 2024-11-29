@@ -6,6 +6,7 @@ namespace Siro.Model
     {
         public DateTime Date { get; set; }
         public string User { get; set; }
+        public int Id { get; set; }
         public int IdUser { get; set; }
         public string Time { get; set; }
         public TimeSpan TimeConverter
@@ -44,5 +45,7 @@ namespace Siro.Model
                 return "Quitar";
             }
         }
+        public bool EsAusenciaJustificada { get; set; }
+        public string Comentario { get; set; }
     }
 }

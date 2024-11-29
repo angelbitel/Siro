@@ -113,6 +113,16 @@ namespace Siro.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage date {
+            get {
+                object obj = ResourceManager.GetObject("date", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage defaultprinter {
             get {
                 object obj = ResourceManager.GetObject("defaultprinter", resourceCulture);

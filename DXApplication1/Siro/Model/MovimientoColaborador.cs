@@ -12,5 +12,6 @@ namespace Siro.Model
         public int Año { get { return this.FechaProceso.Year; } }
         public int Mes { get { return this.FechaProceso.Month; } }
         public string TipoHora { get; set; }
+        public string Comentario { get; set; }
     }
 }

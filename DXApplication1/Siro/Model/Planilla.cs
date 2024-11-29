@@ -38,21 +38,21 @@ namespace Siro.Model
         public Nullable<decimal> SalarioNetoBonificaciones {
             get 
             {
-                return SalarioNeto + Bonificaciones??0m;
+                return SalarioNeto + (Bonificaciones ?? 0m);
             }
         }
         public Nullable<decimal> SSSPatrono
         {
             get
             {
-                return SalarioNeto + Bonificaciones ?? 0m;
+                return SalarioNeto + (Bonificaciones ?? 0m);
             }
         }
         public Nullable<decimal> ISSRPatrono
         {
             get
             {
-                return SalarioNeto + Bonificaciones ?? 0m;
+                return SalarioNeto + (Bonificaciones ?? 0m);
             }
         }
         public string TipoContrato { get; set; }

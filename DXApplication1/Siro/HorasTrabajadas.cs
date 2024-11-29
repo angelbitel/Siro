@@ -24,6 +24,8 @@ namespace Siro
         public Nullable<System.DateTime> FechaProceso { get; set; }
         public Nullable<bool> Procesado { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
+        public string Comentario { get; set; }
+        public Nullable<int> Quincena { get; set; }
     
         public virtual Colaboradores Colaboradores { get; set; }
         public virtual Factores Factores { get; set; }

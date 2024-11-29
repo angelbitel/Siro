@@ -4,10 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.Spreadsheet.Export;
 using Siro.Properties;
@@ -17,6 +14,7 @@ namespace Siro.F.P
     public partial class ArchivosHoras : DevExpress.XtraEditors.XtraForm
     {
         private List<Model.ConfiguracionHoras> Columnas { get; set; }
+        private BindingList<Model.DiasFeriados> DiasFeriados { get; set; }
         private BindingList<Model.HoraReloj> LstHoraTrajadas = new BindingList<Model.HoraReloj>();
         private List<Colaboradores> LstColaboradores = new List<Colaboradores>();
         private readonly Controller.Horas dbH;
@@ -25,10 +23,8 @@ namespace Siro.F.P
             InitializeComponent();
             barButtonItemEliminar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItemEliminar_ItemClick);
             dbH = new Controller.Horas();
-        }
-
-        private void barButtonItemProcesar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
+            Load += new System.EventHandler(ArchivosHoras_Load);
+            barButtonItemBuscarFecha.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItemBuscarFecha_ItemClick);
         }
 
         private void ArchivosHoras_Load(object sender, EventArgs e)
@@ -36,27 +32,10 @@ namespace Siro.F.P
             Columnas = dbH.LstColumnaOrigen;
             LstColaboradores = new Controller.Colaborador().ListaColaboradores(Settings.Default.DIdEmpresa);
             gridControl1.DataSource = LstHoraTrajadas;
+            barEditItemPrmDesde.EditValue = DateTime.Now.AddDays(-15).Date;
+            barEditItemPrmHasta.EditValue = DateTime.Now.Date;
         }
 
-        private void barButtonItemVerificar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (XtraMessageBox.Show("DESEA CREAR LOS REGISTROS?", "ALERTA", MessageBoxButtons.OKCancel) == DialogResult.OK)
-            {
-                LstHoraTrajadas.Where(w => w.TotalHours > 0).ToList().ForEach(f=>{
-                    var horaTrabajada = new HorasTrabajadas
-                    {
-                        Año = f.Date.Year,
-                        HoraTrabajada = f.TotalHours,
-                        IdColaborador = f.IdUser,
-                        IdEmpresa = Principal.Bariables.IdEmpresa.Id,
-                        IdFactor = 1,
-                        Mes = f.Date.Month,
-                        Fecha = f.Date
-                    };
-                    new Controller.HoraTrabjada().Guardar(horaTrabajada);
-                });
-            }
-        }
         private DataTable Range(CellRange range, DataTable dataTable)
         {
             for (int col = 0; col < range.ColumnCount; col++)
@@ -211,51 +190,70 @@ namespace Siro.F.P
             var ausencias = new List<Model.HoraReloj>();
             var minDay = datos.Min(m => m.Date);
             var maxDay = datos.Max(m => m.Date);
+            
+
+            //AGREGAR DIA FERIADOS DEL PERIDO
+            var diasFeriadoPeriodo = dbH.DiasFeriados.Where(w => w.Date >= minDay.Date && w.Date <= maxDay.Date).ToList();
+            if (diasFeriadoPeriodo.Count > 0)
+            {
+                DiasFeriados = new BindingList<Model.DiasFeriados>();
+                diasFeriadoPeriodo.ForEach(f => DiasFeriados.Add(new Model.DiasFeriados { DiaLibre = f }));
+                var frm = new frmDiasLibres();
+                frm.LstDiasFeriados = DiasFeriados;
+                frm.ShowDialog();
+                if (frm.Aceptar)
+                    DiasFeriados = frm.LstDiasFeriados;
+            }
 
             // Group work hours by date and user
             var horaColaborador = datos
                 .GroupBy(g => new { g.Date.Date, g.IdUser })
                 .Select(s => new { Dia = s.Key.Date, IdUser = s.Key.IdUser })
                 .ToList();
+            if (DiasFeriados == null)
+                DiasFeriados = new BindingList<Model.DiasFeriados>();
 
-            // Iterate over active employees
-            LstColaboradores
-                .Where(w => w.IdEstadoColaborador == 1 && !string.IsNullOrEmpty(w.Reloj))
-                .ToList()
-                .ForEach(f =>
-                {
-                    // Iterate over the date range
-                    foreach (var g in CreateDateArray(minDay, maxDay))
+                // Iterate over active employees
+                LstColaboradores
+                    .Where(w => w.IdEstadoColaborador == 1 && !string.IsNullOrEmpty(w.Reloj))
+                    .ToList()
+                    .ForEach(f =>
                     {
-                        if (!dbH.DiasFeriados.Any(a => a.Date == g.Date) && g.DayOfWeek != DayOfWeek.Sunday)
+                        // Iterate over the date range
+                        foreach (var g in CreateDateArray(minDay, maxDay))
                         {
-                            var horasAusencia = g.DayOfWeek == DayOfWeek.Saturday ? 4 : 8;
-
-                            // Check if the employee worked on the current day
-                            var workedOnDay = horaColaborador.Any(w => w.IdUser == f.IdColaborador && g.Date == w.Dia.Date);
-
-                            // If no worked hours, add an absence
-                            if (!workedOnDay)
+                            if (!DiasFeriados.Any(a => a.DiaLibre.Date == g.Date) && g.DayOfWeek != DayOfWeek.Sunday)
                             {
-                                ausencias.Add(new Model.HoraReloj
+                                var horasAusencia = g.DayOfWeek == DayOfWeek.Saturday ? 4 : 8;
+
+                                // Check if the employee worked on the current day
+                                var workedOnDay = horaColaborador.Any(w => w.IdUser == f.IdColaborador && g.Date == w.Dia.Date);
+
+                                // If no worked hours, add an absence
+                                if (!workedOnDay)
                                 {
-                                    User = f.Reloj,
-                                    Colaborador = f.Colaborador,
-                                    Date = g.Date,
-                                    Delay = new TimeSpan(horasAusencia, 0, 0),
-                                    Habilitar = true,
-                                    IdUser = f.IdColaborador,
-                                });
+                                    ausencias.Add(new Model.HoraReloj
+                                    {
+                                        User = f.Reloj,
+                                        Colaborador = f.Colaborador,
+                                        Date = g.Date,
+                                        Delay = new TimeSpan(horasAusencia, 0, 0),
+                                        Habilitar = true,
+                                        IdUser = f.IdColaborador,
+                                        EsAusenciaJustificada = false
+                                    });
+                                }
                             }
                         }
-                    }
-                });
+                    });
             ausencias.ForEach(f => LstHoraTrajadas.Add(f));
             LstHoraTrajadas.ToList().ForEach(f =>
             {
                 if (f.Delay == TimeSpan.Zero)
                     LstHoraTrajadas.Remove(f);
             });
+            int j = 0;
+            LstHoraTrajadas.ToList().ForEach(f =>f.Id =j++);
         }
         private DateTime[] CreateDateArray(DateTime minDate, DateTime maxDate)
         {
@@ -278,13 +276,35 @@ namespace Siro.F.P
         {
             if (XtraMessageBox.Show("DESEA ELIMINAR ESTE REGISTRO?", "ALERTA", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                if (gridView1.GetFocusedRow() is Model.HoraReloj row)
+                if (gridViewMarcacion.GetFocusedRow() is Model.HoraReloj row)
                 {
                     LstHoraTrajadas.Remove(row);
                 }
             }
         }
 
+        private void barButtonItemVerificar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (XtraMessageBox.Show("DESEA CREAR LOS REGISTROS?", "ALERTA", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                LstHoraTrajadas.Where(w => w.TotalHours > 0).ToList().ForEach(f =>
+                {
+                    var horaTrabajada = new HorasTrabajadas
+                    {
+                        Año = f.Date.Year,
+                        HoraTrabajada = f.TotalHours,
+                        IdColaborador = f.IdUser,
+                        IdEmpresa = Principal.Bariables.IdEmpresa.Id,
+                        IdFactor = !f.EsAusenciaJustificada?  1 :1001,
+                        Mes = Principal.Bariables.PeridoContable.Month,
+                        Fecha = f.Date,
+                        Comentario = f.Comentario,
+                        Quincena = Principal.Bariables.PeridoContable.Day <= 15? 1 : 2
+                    };
+                    new Controller.HoraTrabjada().Guardar(horaTrabajada);
+                });
+            }
+        }
         private async void barButtonItemEliminar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // Initialize a new XtraInputBoxArgs instance
@@ -302,7 +322,7 @@ namespace Siro.F.P
             args.DefaultResponse = DateTime.Now.Date;
             // Display an Input Box with the custom editor
             var result = XtraInputBox.Show(args);
-            if(result != null)
+            if (result != null)
             {
                 var res = await dbH.EliminarHorasProcesadas(((System.DateTime)result).Date);
                 if (res)
@@ -310,10 +330,49 @@ namespace Siro.F.P
             }
 
         }
-            // Set a dialog icon
-            private void Args_Showing(object sender, XtraMessageShowingArgs e)
+
+        private void barButtonItemQuitar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (XtraMessageBox.Show("DESEA ELIMINAR ESTOS REGISTROS?", "ALERTA", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                //e.Buttons..MessageBoxForm.Icon = this.Icon;
+                if (gridViewMarcacion.GetSelectedRows().Count() > 0)
+                {
+                    var idArr = new List<int>();
+
+                    foreach (int rowHandle in gridViewMarcacion.GetSelectedRows())
+                        if (rowHandle >= 0)
+                            idArr.Add((gridViewMarcacion.GetRow(rowHandle) as Model.HoraReloj).Id);
+
+                    idArr.ForEach(f =>
+                            LstHoraTrajadas.Remove(LstHoraTrajadas.SingleOrDefault(s => s.Id == f)));
+
+                    int i = 0;
+                    LstHoraTrajadas.ToList().ForEach(f => f.Id = i++);
+                }
             }
+        }
+
+        private void barButtonItemBuscarFecha_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var report = new DevExpress.XtraReports.UI.XtraReport();
+            report.LoadLayout("Reportes\\Planilla\\ColaboradoresHoras.repx");
+
+            for (int i = 0; i < report.Parameters.Count; i++)
+            {
+                if (report.Parameters[i].Name == "prmIdEmpresa")
+                    report.Parameters["prmIdEmpresa"].Value = Settings.Default.DIdEmpresa;
+
+                if (report.Parameters[i].Name == "prmDesde")
+                        report.Parameters["prmDesde"].Value = (DateTime)barEditItemPrmDesde.EditValue;
+
+                if (report.Parameters[i].Name == "prmHasta")
+                    report.Parameters["prmHasta"].Value = (DateTime)barEditItemPrmHasta.EditValue;
+            }
+            var printTool3 = new DevExpress.XtraReports.UI.ReportPrintTool(report, true);
+
+            printTool3.PreviewForm.MdiParent = this.MdiParent;
+            printTool3.PreviewForm.Text = "HORAS TRABJADAS";
+            printTool3.ShowPreview();
+        }
     }
 }

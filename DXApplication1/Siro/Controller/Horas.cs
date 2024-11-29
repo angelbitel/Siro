@@ -133,5 +133,16 @@ namespace Siro.Controller
                 return false;
             }
         }
+        internal async Task<List<DateTime>> ListFechaProceso()
+        {
+            using (var context = db) // Asegúrate de usar tu contexto correctamente
+            {
+                var res = await context.Database.SqlQuery<DateTime>(
+                    "SELECT DISTINCT CAST(FechaProceso AS DATE) AS FechaProceso FROM Planilla.HorasTrabajadas ORDER BY FechaProceso"
+                ).ToListAsync();
+
+                return res;
+            }
+        }
     }
 }

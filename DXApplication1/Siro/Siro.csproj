@@ -553,6 +553,12 @@
     <Compile Include="F\P\Cumpleaños.Designer.cs">
       <DependentUpon>Cumpleaños.cs</DependentUpon>
     </Compile>
+    <Compile Include="F\P\frmDiasLibres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F\P\frmDiasLibres.Designer.cs">
+      <DependentUpon>frmDiasLibres.cs</DependentUpon>
+    </Compile>
     <Compile Include="F\P\PlanillaGenerada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -588,6 +594,7 @@
     <Compile Include="Model\CuentaMayor.cs" />
     <Compile Include="Model\Cuentas.cs" />
     <Compile Include="Model\DetalleAsientoCorto.cs" />
+    <Compile Include="Model\DiasFeriados.cs" />
     <Compile Include="Model\EntradasSalidas.cs" />
     <Compile Include="Model\HoraReloj.cs" />
     <Compile Include="Model\Items.cs" />
@@ -1228,6 +1235,9 @@
     <EmbeddedResource Include="F\P\Cumpleaños.resx">
       <DependentUpon>Cumpleaños.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F\P\frmDiasLibres.resx">
+      <DependentUpon>frmDiasLibres.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F\P\PlanillaGenerada.resx">
       <DependentUpon>PlanillaGenerada.cs</DependentUpon>
     </EmbeddedResource>
@@ -1376,6 +1386,7 @@
     <None Include="DataSources\Siro.Model.Resumen.datasource" />
     <None Include="DataSources\Siro.Model.ResumenCreditos.datasource" />
     <None Include="SesionesAplicacion.datasource" />
+    <None Include="Siro.Model.DiasFeriados.datasource" />
     <None Include="Siro.Model.HoraReloj.datasource" />
     <None Include="Siro.Model.MaestroContable.datasource" />
     <None Include="Siro.Model.PeriodoFiscal.datasource" />
@@ -1466,6 +1477,7 @@
     <None Include="Resources\printpreview_32x32.png" />
     <None Include="Resources\printpreview_16x16.png" />
     <None Include="Resources\adateoccuring.svg" />
+    <None Include="Resources\date.svg" />
     <Content Include="SiroAccounting.ico" />
     <Content Include="slSiro.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
