@@ -72,6 +72,7 @@
             this.navBarItem30 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem20 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem21 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem37 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup7 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem23 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem24 = new DevExpress.XtraNavBar.NavBarItem();
@@ -106,7 +107,6 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.navBarItem37 = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.dockPanel2.SuspendLayout();
             this.dockPanel3.SuspendLayout();
@@ -466,6 +466,11 @@
             this.navBarItem21.Caption = "Decimo Tercer Mes Talonario";
             this.navBarItem21.Name = "navBarItem21";
             // 
+            // navBarItem37
+            // 
+            this.navBarItem37.Caption = "Colaboradores";
+            this.navBarItem37.Name = "navBarItem37";
+            // 
             // navBarGroup7
             // 
             this.navBarGroup7.Caption = "Mantenimientos";
@@ -773,11 +778,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(1072, 28);
             this.layoutControlItem4.Text = "CUMPLEAÑOS DEL MES:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(181, 24);
-            // 
-            // navBarItem37
-            // 
-            this.navBarItem37.Caption = "Colaboradores";
-            this.navBarItem37.Name = "navBarItem37";
             // 
             // Planilla
             // 

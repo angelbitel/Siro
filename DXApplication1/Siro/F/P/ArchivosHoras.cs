@@ -30,7 +30,7 @@ namespace Siro.F.P
         private void ArchivosHoras_Load(object sender, EventArgs e)
         {
             Columnas = dbH.LstColumnaOrigen;
-            LstColaboradores = new Controller.Colaborador().ListaColaboradores(Settings.Default.DIdEmpresa);
+            LstColaboradores = new Controller.Colaborador().ListaColaboradoresActivo(Settings.Default.DIdEmpresa);
             gridControl1.DataSource = LstHoraTrajadas;
             barEditItemPrmDesde.EditValue = DateTime.Now.AddDays(-15).Date;
             barEditItemPrmHasta.EditValue = DateTime.Now.Date;
@@ -117,7 +117,9 @@ namespace Siro.F.P
                 {
                     lbl.Caption = $"EL PERIDO DE  {Principal.Bariables.PeridoContable:yyyyMM}  QUE ESTA TRABAJANDO NO CONCUERDA CON EL DEL ARCHIVO { hora.Date:yyyyMM}";
                 }
-                var colaborador = LstColaboradores.SingleOrDefault(s => s.Reloj == item[CUser].ToString());
+                var colaborador = LstColaboradores.FirstOrDefault(s => s.Reloj == item[CUser].ToString());
+                //if (LstColaboradores.Where(s => s.Reloj == item[CUser].ToString()).ToList().Count > 1)
+                //    colaborador = colaborador;
                 if (colaborador != null)
                 {
                     hora.IdUser = colaborador.IdColaborador;

@@ -85,12 +85,12 @@ namespace Siro.F.P
             this.colTotalHours = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEsAusenciaJustificada = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colComentario = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEditTotalHoras = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.colComentario = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEditFechaHistoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEditFechaHistoria.CalendarTimeProperties)).BeginInit();
@@ -600,6 +600,15 @@ namespace Siro.F.P
             this.colEsAusenciaJustificada.VisibleIndex = 8;
             this.colEsAusenciaJustificada.Width = 104;
             // 
+            // colComentario
+            // 
+            this.colComentario.FieldName = "Comentario";
+            this.colComentario.MinWidth = 25;
+            this.colComentario.Name = "colComentario";
+            this.colComentario.Visible = true;
+            this.colComentario.VisibleIndex = 9;
+            this.colComentario.Width = 84;
+            // 
             // repositoryItemCalcEditTotalHoras
             // 
             this.repositoryItemCalcEditTotalHoras.AutoHeight = false;
@@ -648,15 +657,6 @@ namespace Siro.F.P
             this.layoutControlItem2.Size = new System.Drawing.Size(953, 601);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
-            // 
-            // colComentario
-            // 
-            this.colComentario.FieldName = "Comentario";
-            this.colComentario.MinWidth = 25;
-            this.colComentario.Name = "colComentario";
-            this.colComentario.Visible = true;
-            this.colComentario.VisibleIndex = 9;
-            this.colComentario.Width = 84;
             // 
             // ArchivosHoras
             // 

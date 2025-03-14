@@ -625,6 +625,47 @@ namespace Siro.Controller
             return lst.OrderBy(o=>o.IdEstadoColaborador).ThenBy(o=>o.Colaborador).ToList();
         }
 
+        public List<Colaboradores> ListaColaboradoresActivo(int? idEmpresa)
+        {
+            IQueryable<Colaboradores> colaborador = db.Colaboradores;
+            var lst = new List<Colaboradores>();
+            colaborador = colaborador.Where(w => w.IdEmpresa == idEmpresa && w.IdEstadoColaborador ==1);
+
+            colaborador.OrderBy(o => o.Colaborador).ToList().ForEach(f =>
+            {
+                lst.Add(new Colaboradores
+                {
+                    Bonificaciones = f.Bonificaciones,
+                    Colaborador = f.Colaborador,
+                    CTORepresentacion = f.CTORepresentacion,
+                    Direccion = f.Direccion,
+                    EstadoCivil = f.EstadoCivil,
+                    FechaIngreso = f.FechaIngreso,
+                    HoraEntrada = f.HoraEntrada,
+                    HoraSalida = f.HoraSalida,
+                    IdColaborador = f.IdColaborador,
+                    IdContratoColaborador = f.IdContratoColaborador,
+                    IdDepartamento = f.IdDepartamento,
+                    IdEntidadFinanciera = f.IdEntidadFinanciera,
+                    IdEmpresa = f.IdEmpresa,
+                    IdentificacionPersonal = f.IdentificacionPersonal,
+                    IdEstadoColaborador = f.IdEstadoColaborador,
+                    IdPosicion = f.IdPosicion,
+                    IdRenta = f.IdRenta,
+                    Img = f.Img,
+                    RataPorHora = f.RataPorHora,
+                    SalarioQuincenal = f.SalarioQuincenal,
+                    Sangre = f.Sangre,
+                    SeguroSocial = f.SeguroSocial,
+                    Sexo = f.Sexo,
+                    Dependientes = f.Dependientes,
+                    Reloj = f.Reloj,
+                    HoraEntradaSabado = f.HoraEntradaSabado,
+                    HoraSalidaSabado = f.HoraSalidaSabado
+                });
+            });
+            return lst.OrderBy(o => o.IdEstadoColaborador).ThenBy(o => o.Colaborador).ToList();
+        }
         public List<Colaboradores> ListaColaboradores(int? idEmpresa)
         {
             IQueryable<Colaboradores> colaborador = db.Colaboradores;
