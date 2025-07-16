@@ -34,6 +34,7 @@ namespace Siro.F.P
             gridControl1.DataSource = LstHoraTrajadas;
             barEditItemPrmDesde.EditValue = DateTime.Now.AddDays(-15).Date;
             barEditItemPrmHasta.EditValue = DateTime.Now.Date;
+            gridControlResumenHorario.DataSource = LstHoraTrajadas;
         }
 
         private DataTable Range(CellRange range, DataTable dataTable)
@@ -147,7 +148,8 @@ namespace Siro.F.P
                     Date = s.Key.Date,
                     Colaborador = s.Key.Colaborador,
                     User = s.Key.User,
-                    MinHour = s.Min(t => t.TimeConverter)
+                    MinHour = s.Min(t => t.TimeConverter),
+                    MaxHour = s.Max(x => x.TimeConverter)
                 }).ToList().
                 ForEach(f => LstHoraTrajadas.Add(new Model.HoraReloj
                 {
@@ -155,6 +157,7 @@ namespace Siro.F.P
                     Date = f.Date,
                     User = f.User,
                     EntroALas = f.MinHour,
+                    SalioALas = f.MaxHour,
                 }));
 
             LstHoraTrajadas.ToList().ForEach(f =>
@@ -256,6 +259,49 @@ namespace Siro.F.P
             });
             int j = 0;
             LstHoraTrajadas.ToList().ForEach(f =>f.Id =j++);
+            LstHoraTrajadas.ToList().ForEach(f =>
+            {
+                var colaborador = LstColaboradores.SingleOrDefault(s => s.IdColaborador == f.IdUser);
+                if(colaborador != null)
+                {
+                    if(f.Date.DayOfWeek != DayOfWeek.Saturday)
+                    {
+                        f.HoraEntrada = colaborador.HoraEntrada;
+                        f.HoraSalida = colaborador.HoraSalida;
+                    }
+                    else
+                    {
+                        f.HoraEntrada = colaborador.HoraEntradaSabado;
+                        f.HoraSalida = colaborador.HoraSalidaSabado;
+                    }
+                }
+
+                //Verificar si solo marco entrada
+                if(f.EntroALas == f.SalioALas && f.EntroALas !=null)
+                {
+                    f.SalioALas = null;
+                    f.Delay = new TimeSpan(f.Date.DayOfWeek == DayOfWeek.Saturday ? 4 : 8, 0, 0);
+                    f.Comentario = "NO MARCO SALIDA..";
+                }
+
+                //Verificar si solo marco salida
+                if (f.EntroALas == f.SalioALas && f.SalioALas != null)
+                {
+                    f.SalioALas = null;
+                    f.Delay = new TimeSpan(f.Date.DayOfWeek == DayOfWeek.Saturday ? 4 : 8, 0, 0);
+                    f.Comentario = "NO MARCO ENTRADA..";
+                }
+
+                //Verificar si solo marco salida
+                if (f.EntroALas == null && f.SalioALas == null)
+                {
+                    f.Comentario = "SIN MARCACION..";
+                }
+                if(f.Delay < TimeSpan.FromMinutes(15))
+                {
+                    f.Comentario = "TARDANZA..";
+                }
+            });
         }
         private DateTime[] CreateDateArray(DateTime minDate, DateTime maxDate)
         {
@@ -375,6 +421,11 @@ namespace Siro.F.P
             printTool3.PreviewForm.MdiParent = this.MdiParent;
             printTool3.PreviewForm.Text = "HORAS TRABJADAS";
             printTool3.ShowPreview();
+        }
+
+        private void barButtonItemImprimir_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridControlResumenHorario.ShowPrintPreview();
         }
     }
 }

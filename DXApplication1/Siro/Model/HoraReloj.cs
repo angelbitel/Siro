@@ -13,14 +13,25 @@ namespace Siro.Model
         {
             get
             {
-                if (string.IsNullOrEmpty(Time))
+                if (string.IsNullOrWhiteSpace(Time))
                     return TimeSpan.Zero;
-                return TimeSpan.Parse(Time);
+
+                if (TimeSpan.TryParse(Time, out TimeSpan resultado))
+                    return resultado;
+
+                return TimeSpan.Zero; // o lanza una excepción si prefieres
             }
         }
         public bool Habilitar { get; set; }
         public string Colaborador { get; set; }
         public TimeSpan Delay { get; set; }
+        public string DelayFormat
+        {
+            get
+            {
+                return Delay.ToString((@"hh\:mm"));
+            }
+        }
         public decimal TotalHours
         {
             get
@@ -29,8 +40,10 @@ namespace Siro.Model
             }
         }
         public TimeSpan? HoraEntrada { get; set; }
+        public TimeSpan? HoraSalida { get; set; }
         public TimeSpan? HoraEntradaSabado { get; set; }
         public TimeSpan? EntroALas { get; set; }
+        public TimeSpan? SalioALas { get; set; }
         public string DayOfWeek
         {
             get

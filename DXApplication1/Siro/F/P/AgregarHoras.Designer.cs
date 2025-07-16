@@ -94,7 +94,7 @@
             // 
             // dateEdit1
             // 
-            this.dateEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "FechaProceso", true));
+            this.dateEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "Fecha", true));
             this.dateEdit1.EditValue = null;
             this.dateEdit1.Location = new System.Drawing.Point(95, 38);
             this.dateEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -223,7 +223,7 @@
             this.simpleButton1.Location = new System.Drawing.Point(144, 90);
             this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(191, 38);
+            this.simpleButton1.Size = new System.Drawing.Size(191, 36);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 33;
             this.simpleButton1.Text = "Guardar";
@@ -231,7 +231,7 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "HoraTrabajada", true));
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "HoraTrabajada", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit1.Location = new System.Drawing.Point(95, 64);
             this.textEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEdit1.Name = "textEdit1";
@@ -241,7 +241,7 @@
             // 
             // searchLookUpEdit1
             // 
-            this.searchLookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "IdFactor", true));
+            this.searchLookUpEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSource1, "IdFactor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.searchLookUpEdit1.EditValue = "Seleccione Tipo Hora";
             this.searchLookUpEdit1.Location = new System.Drawing.Point(95, 12);
             this.searchLookUpEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

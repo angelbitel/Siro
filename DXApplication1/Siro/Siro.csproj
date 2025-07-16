@@ -1478,6 +1478,15 @@
     <None Include="Resources\printpreview_16x16.png" />
     <None Include="Resources\adateoccuring.svg" />
     <None Include="Resources\date.svg" />
+    <None Include="Resources\newemployee.svg" />
+    <None Include="Resources\last.svg" />
+    <None Include="Resources\next.svg" />
+    <None Include="Resources\first.svg" />
+    <None Include="Resources\first1.svg" />
+    <None Include="Resources\prev.svg" />
+    <None Include="Resources\saveandnew.svg" />
+    <None Include="Resources\enablesearch.svg" />
+    <None Include="Resources\driving.svg" />
     <Content Include="SiroAccounting.ico" />
     <Content Include="slSiro.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

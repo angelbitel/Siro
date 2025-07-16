@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Siro.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
@@ -149,7 +150,7 @@ namespace Siro.Controller
         }
         public bool Guardar(HorasTrabajadas entidad)
         {
-            entidad.FechaProceso = Principal.Bariables.PeridoContable;
+            //entidad.FechaProceso = Principal.Bariables.PeridoContable;
             entidad.Mes = Principal.Bariables.PeridoContable.Month;
             entidad.Año = Principal.Bariables.PeridoContable.Year;
 
@@ -313,6 +314,32 @@ namespace Siro.Controller
                 }
             }
         }
+        public bool ModificarHora(HorasTrabajadas info)
+        {
+            using (var context = new slPlanilla())
+            {
+                using (var dbContextTransaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (context.HorasTrabajadas.SingleOrDefault(s => s.IdHoraTrabjada == info.IdHoraTrabjada) is HorasTrabajadas horaTrabjada)
+                        {
+                            horaTrabjada.IdFactor = info.IdFactor;
+                            context.SaveChanges();
+                            dbContextTransaction.Commit();
+
+                        }
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MSG = ex.Message;
+                        dbContextTransaction.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
         public List<Model.MovimientoColaborador> MovimentoColaboradores(Colaboradores colaborador)
         {
             var lst = new List<Model.MovimientoColaborador>();
@@ -330,7 +357,7 @@ namespace Siro.Controller
                 s.Factores.RestaSaldo,
                 s.FechaProceso,
                 s.Fecha,
-                s.Comentario
+                s.Comentario,
             }).OrderByDescending(od=>od.FechaProceso).ToList();
             resul.ToList().ForEach(g =>
             {
@@ -354,7 +381,8 @@ namespace Siro.Controller
                     MontoXHoras = total, 
                     Cantidad = g.HoraTrabajada, 
                     TipoHora = g.DescripcionFactor,
-                    FechaProceso = g.FechaProceso ?? DateTime.Now
+                    FechaProceso = g.FechaProceso ?? DateTime.Now,
+                    IdFactor = g.IdFactor
                 });
             });
             return lst;
@@ -585,6 +613,8 @@ namespace Siro.Controller
                 colaborador = colaborador.Where(w => w.IdEstadoColaborador != 2 && w.IdEmpresa == idEmpresa && w.FechaIngreso.Value.Month == DateTime.Now.Month);
             else
                 colaborador = colaborador.Where(w => w.IdEmpresa == idEmpresa);
+            
+            colaborador = colaborador.Where(w => w.Colaborador != null);
 
             colaborador.OrderBy(o => o.Colaborador).ToList().ForEach(f =>
             {

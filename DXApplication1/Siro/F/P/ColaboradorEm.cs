@@ -50,27 +50,6 @@ namespace Siro.F.P
         }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (searchLookUpEdit1.EditValue.ToString() != "")
-            {
-                int idColaborador = int.Parse(searchLookUpEdit1.EditValue.ToString());
-                int newPos=0, oldPos = colaboradorBindingSource.Position;
-                bool entro = false;
-                for (int i = 0; i <= LstColaborador.Count(); i++)
-                {
-                    if ((colaboradorBindingSource.Current as Colaboradores).IdColaborador == idColaborador)
-                    {
-                        entro = true;
-                        newPos = colaboradorBindingSource.Position;
-                        break;
-                    }
-                    colaboradorBindingSource.Position = i;
-                }
-                if(entro )
-                    colaboradorBindingSource.Position=newPos;
-                else
-                    colaboradorBindingSource.Position=oldPos;
-            }
-            LimpiarActividades();
         }
         private void LimpiarActividades()
         {
@@ -89,52 +68,21 @@ namespace Siro.F.P
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (Settings.Default.DIdEmpresa == 0)
-            {
-                lblMsg.Caption = "Seleccione una empresa!";
-                new D.Periodo().ShowDialog(this);
-            }
-            if (Settings.Default.DIdEmpresa != 0)
-            {
-                var row = colaboradorBindingSource.Current as Colaboradores;
-                var save = new Controller.Colaborador();
-                if (row.IdEmpresa == 0)
-                    row.IdEmpresa = Settings.Default.DIdEmpresa;
-                save.Guardar(row);
-                (colaboradorBindingSource.Current as Colaboradores).IdColaborador = (save.NuevoId ?? 0);
-                lblMsg.Caption = "Los Datos Fueron Guardados Correctamente";
-            }
-            else
-            {
-                lblMsg.Caption = "Debe Seleccionar una empresa!!!";
-            }
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            colaboradorBindingSource.AddNew();
-            (colaboradorBindingSource.Current as Colaboradores).FechaIngreso = DateTime.Now;
-            (colaboradorBindingSource.Current as Colaboradores).IdEstadoColaborador = 1;
-            (colaboradorBindingSource.Current as Colaboradores).IdEmpresa = Settings.Default.DIdEmpresa;
         }
         private void btnAdelante_Click(object sender, EventArgs e)
         {
-            colaboradorBindingSource.MovePrevious();
-            LimpiarActividades();
         }
         private void btnAtras_Click(object sender, EventArgs e)
         {
-            colaboradorBindingSource.MoveNext();
-            LimpiarActividades();
         }
         private void btnfirst_Click(object sender, EventArgs e)
         {
-            colaboradorBindingSource.MoveFirst();
-            LimpiarActividades();
         }
         private void btnLast_Click(object sender, EventArgs e)
         {
-            colaboradorBindingSource.MoveLast();
-            LimpiarActividades();
         }
         private void DeduccionesColaborador()
         {
@@ -193,7 +141,8 @@ namespace Siro.F.P
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             var row = colaboradorBindingSource.Current as Colaboradores;
-            new F.P.AgregarHoras(row.IdColaborador).ShowDialog(this);
+            var frm = new F.P.AgregarHoras(row.IdColaborador);
+            frm.ShowDialog(this);
             movimientoColaboradorBindingSource.DataSource = new Controller.Colaborador().MovimentoColaboradores(row);
         }
         private void btnAgrgarVacaciones_Click(object sender, EventArgs e)
@@ -209,8 +158,6 @@ namespace Siro.F.P
         }
         private void btnVacaciones_Click(object sender, EventArgs e)
         {
-            LstColaborador = new Controller.Colaborador().ListaColaboradores(true, Settings.Default.DIdEmpresa);
-            colaboradorBindingSource.DataSource = LstColaborador;
         }
         private void btnCalcularVacaciones_Click(object sender, EventArgs e)
         {
@@ -448,6 +395,105 @@ namespace Siro.F.P
             {
                 e.Valid = false;
                 e.ErrorText = "No se va a realizar la modificacion";
+            }
+        }
+
+        private void barButtonItemNuevoColaborador_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            colaboradorBindingSource.AddNew();
+            (colaboradorBindingSource.Current as Colaboradores).FechaIngreso = DateTime.Now;
+            (colaboradorBindingSource.Current as Colaboradores).IdEstadoColaborador = 1;
+            (colaboradorBindingSource.Current as Colaboradores).IdEmpresa = Settings.Default.DIdEmpresa;
+        }
+
+        private void barButtonItemGuardarDatos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (Settings.Default.DIdEmpresa == 0)
+            {
+                lblMsg.Caption = "Seleccione una empresa!";
+                new D.Periodo().ShowDialog(this);
+            }
+            if (Settings.Default.DIdEmpresa != 0)
+            {
+                var row = colaboradorBindingSource.Current as Colaboradores;
+                var save = new Controller.Colaborador();
+                if (row.IdEmpresa == 0)
+                    row.IdEmpresa = Settings.Default.DIdEmpresa;
+                save.Guardar(row);
+                (colaboradorBindingSource.Current as Colaboradores).IdColaborador = (save.NuevoId ?? 0);
+                lblMsg.Caption = "Los Datos Fueron Guardados Correctamente";
+            }
+            else
+            {
+                lblMsg.Caption = "Debe Seleccionar una empresa!!!";
+            }
+        }
+
+        private void barButtonItemAlInicio_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            colaboradorBindingSource.MoveFirst();
+            LimpiarActividades();
+        }
+
+        private void barButtonItemAtras_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            colaboradorBindingSource.MovePrevious();
+            LimpiarActividades();
+        }
+
+        private void barButtonItemAdelante_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            colaboradorBindingSource.MoveNext();
+            LimpiarActividades();
+        }
+
+        private void barButtonItemAlFinal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            colaboradorBindingSource.MoveLast();
+            LimpiarActividades();
+        }
+
+        private void barButtonItembuscar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (barEditItemColaboradores.EditValue != null && int.TryParse(barEditItemColaboradores.EditValue.ToString(), out int idColaborador))
+            {
+                int newPos = 0, oldPos = colaboradorBindingSource.Position;
+                bool entro = false;
+                for (int i = 0; i <= LstColaborador.Count(); i++)
+                {
+                    if ((colaboradorBindingSource.Current as Colaboradores).IdColaborador == idColaborador)
+                    {
+                        entro = true;
+                        newPos = colaboradorBindingSource.Position;
+                        break;
+                    }
+                    colaboradorBindingSource.Position = i;
+                }
+                if (entro)
+                    colaboradorBindingSource.Position = newPos;
+                else
+                    colaboradorBindingSource.Position = oldPos;
+            }
+            LimpiarActividades();
+        }
+
+        private void barButtonItemVacaciones_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            LstColaborador = new Controller.Colaborador().ListaColaboradores(true, Settings.Default.DIdEmpresa);
+            colaboradorBindingSource.DataSource = LstColaborador;
+        }
+
+        private void repositoryItemHyperLinkEditEditarHora_Click(object sender, EventArgs e)
+        {
+            if (XtraMessageBox.Show("Seguro Que Desea Modificar Hora Selecionada!!", "Mensaje De Alerta", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                var row = movimientoColaboradorBindingSource.Current as Siro.Model.MovimientoColaborador;
+                var rowColaborador = colaboradorBindingSource.Current as Colaboradores;
+                var col = new Controller.Colaborador();
+                var frm = new F.P.AgregarHoras(rowColaborador.IdColaborador);
+                frm.MovimientoColaborador = row;
+                frm.ShowDialog(this);
+                movimientoColaboradorBindingSource.DataSource = new Controller.Colaborador().MovimentoColaboradores(rowColaborador);
             }
         }
     }
