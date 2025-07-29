@@ -41,6 +41,7 @@ namespace Siro.F.P
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barButtonItemImprimir = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barButtonItemVerificar = new DevExpress.XtraBars.BarButtonItem();
             this.lbl = new DevExpress.XtraBars.BarStaticItem();
@@ -91,6 +92,7 @@ namespace Siro.F.P
             this.colComentario = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEditTotalHoras = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.listBoxControlColaboradores = new DevExpress.XtraEditors.ListBoxControl();
             this.gridControlResumenHorario = new DevExpress.XtraGrid.GridControl();
             this.gridViewResumenHorario = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -103,11 +105,13 @@ namespace Siro.F.P
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSalioALas = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHoraSalida = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalHours1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.repositoryItemMemoExEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit();
@@ -115,10 +119,10 @@ namespace Siro.F.P
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.barButtonItemImprimir = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEditFechaHistoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEditFechaHistoria.CalendarTimeProperties)).BeginInit();
@@ -134,9 +138,11 @@ namespace Siro.F.P
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEditTotalHoras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControlColaboradores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlResumenHorario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewResumenHorario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit1)).BeginInit();
@@ -144,6 +150,7 @@ namespace Siro.F.P
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -161,6 +168,7 @@ namespace Siro.F.P
             this.gridColumn4.FieldName = "Delay";
             this.gridColumn4.MinWidth = 25;
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.DateTime;
             this.gridColumn4.Width = 94;
             // 
             // colDate
@@ -235,6 +243,13 @@ namespace Siro.F.P
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemImprimir)});
             this.bar2.Text = "Tools";
+            // 
+            // barButtonItemImprimir
+            // 
+            this.barButtonItemImprimir.Caption = "Imprimir Resumen";
+            this.barButtonItemImprimir.Id = 21;
+            this.barButtonItemImprimir.Name = "barButtonItemImprimir";
+            this.barButtonItemImprimir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemImprimir_ItemClick);
             // 
             // bar3
             // 
@@ -347,11 +362,11 @@ namespace Siro.F.P
             // 
             // spreadsheetControl1
             // 
-            this.spreadsheetControl1.Location = new System.Drawing.Point(12, 508);
+            this.spreadsheetControl1.Location = new System.Drawing.Point(12, 494);
             this.spreadsheetControl1.MenuManager = this.barManager1;
             this.spreadsheetControl1.Name = "spreadsheetControl1";
             this.spreadsheetControl1.Options.Culture = new System.Globalization.CultureInfo("es-PA");
-            this.spreadsheetControl1.Size = new System.Drawing.Size(1532, 317);
+            this.spreadsheetControl1.Size = new System.Drawing.Size(1532, 331);
             this.spreadsheetControl1.TabIndex = 0;
             this.spreadsheetControl1.DocumentLoaded += new System.EventHandler(this.spreadsheetControl1_DocumentLoaded);
             // 
@@ -511,7 +526,7 @@ namespace Siro.F.P
             this.repositoryItemHyperLinkEditElimnar,
             this.repositoryItemTextEditTotalHoras,
             this.repositoryItemCalcEditTotalHoras});
-            this.gridControl1.Size = new System.Drawing.Size(1508, 421);
+            this.gridControl1.Size = new System.Drawing.Size(1508, 407);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewMarcacion});
@@ -668,6 +683,7 @@ namespace Siro.F.P
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.listBoxControlColaboradores);
             this.layoutControl1.Controls.Add(this.gridControlResumenHorario);
             this.layoutControl1.Controls.Add(this.gridControl1);
             this.layoutControl1.Controls.Add(this.spreadsheetControl1);
@@ -679,10 +695,18 @@ namespace Siro.F.P
             this.layoutControl1.TabIndex = 10;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // listBoxControlColaboradores
+            // 
+            this.listBoxControlColaboradores.Location = new System.Drawing.Point(24, 52);
+            this.listBoxControlColaboradores.Name = "listBoxControlColaboradores";
+            this.listBoxControlColaboradores.Size = new System.Drawing.Size(187, 407);
+            this.listBoxControlColaboradores.StyleController = this.layoutControl1;
+            this.listBoxControlColaboradores.TabIndex = 5;
+            // 
             // gridControlResumenHorario
             // 
             this.gridControlResumenHorario.DataSource = this.horaRelojBindingSource;
-            this.gridControlResumenHorario.Location = new System.Drawing.Point(24, 52);
+            this.gridControlResumenHorario.Location = new System.Drawing.Point(215, 52);
             this.gridControlResumenHorario.MainView = this.gridViewResumenHorario;
             this.gridControlResumenHorario.MenuManager = this.barManager1;
             this.gridControlResumenHorario.Name = "gridControlResumenHorario";
@@ -690,8 +714,9 @@ namespace Siro.F.P
             this.repositoryItemHyperLinkEdit1,
             this.repositoryItemTextEdit1,
             this.repositoryItemCalcEdit1,
-            this.repositoryItemMemoExEdit1});
-            this.gridControlResumenHorario.Size = new System.Drawing.Size(1508, 421);
+            this.repositoryItemMemoExEdit1,
+            this.repositoryItemTimeEdit1});
+            this.gridControlResumenHorario.Size = new System.Drawing.Size(1317, 407);
             this.gridControlResumenHorario.TabIndex = 4;
             this.gridControlResumenHorario.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewResumenHorario});
@@ -713,7 +738,8 @@ namespace Siro.F.P
             this.gridColumn12,
             this.gridColumn13,
             this.colSalioALas,
-            this.colHoraSalida});
+            this.colHoraSalida,
+            this.colTotalHours1});
             gridFormatRule1.Column = this.gridColumn4;
             gridFormatRule1.ColumnApplyTo = this.gridColumn4;
             gridFormatRule1.Name = "Format0";
@@ -741,7 +767,7 @@ namespace Siro.F.P
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 173;
+            this.gridColumn1.Width = 135;
             // 
             // gridColumn2
             // 
@@ -758,7 +784,7 @@ namespace Siro.F.P
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 256;
+            this.gridColumn3.Width = 204;
             // 
             // gridColumn6
             // 
@@ -767,7 +793,7 @@ namespace Siro.F.P
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 3;
-            this.gridColumn6.Width = 98;
+            this.gridColumn6.Width = 88;
             // 
             // gridColumn5
             // 
@@ -776,7 +802,7 @@ namespace Siro.F.P
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
-            this.gridColumn5.Width = 149;
+            this.gridColumn5.Width = 133;
             // 
             // gridColumn7
             // 
@@ -803,7 +829,7 @@ namespace Siro.F.P
             this.gridColumn9.OptionsColumn.Printable = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 10;
-            this.gridColumn9.Width = 79;
+            this.gridColumn9.Width = 82;
             // 
             // repositoryItemHyperLinkEdit1
             // 
@@ -813,13 +839,29 @@ namespace Siro.F.P
             // 
             // gridColumn10
             // 
-            this.gridColumn10.Caption = "Total hh:mm";
-            this.gridColumn10.FieldName = "DelayFormat";
+            this.gridColumn10.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gridColumn10.AppearanceHeader.Options.UseBackColor = true;
+            this.gridColumn10.Caption = "Total de horas de ausencias en formato horas : minutos";
+            this.gridColumn10.ColumnEdit = this.repositoryItemTimeEdit1;
+            this.gridColumn10.DisplayFormat.FormatString = "HH:mm";
+            this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn10.FieldName = "DelayDataTime";
             this.gridColumn10.MinWidth = 25;
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 7;
-            this.gridColumn10.Width = 97;
+            this.gridColumn10.VisibleIndex = 8;
+            this.gridColumn10.Width = 117;
+            // 
+            // repositoryItemTimeEdit1
+            // 
+            this.repositoryItemTimeEdit1.AutoHeight = false;
+            this.repositoryItemTimeEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemTimeEdit1.EditFormat.FormatString = "HH:mm";
+            this.repositoryItemTimeEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemTimeEdit1.Mask.EditMask = "HH:mm";
+            this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
+            this.repositoryItemTimeEdit1.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
             // 
             // gridColumn11
             // 
@@ -828,7 +870,7 @@ namespace Siro.F.P
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 0;
-            this.gridColumn11.Width = 59;
+            this.gridColumn11.Width = 51;
             // 
             // gridColumn12
             // 
@@ -836,8 +878,8 @@ namespace Siro.F.P
             this.gridColumn12.MinWidth = 25;
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 8;
-            this.gridColumn12.Width = 142;
+            this.gridColumn12.VisibleIndex = 9;
+            this.gridColumn12.Width = 121;
             // 
             // gridColumn13
             // 
@@ -845,8 +887,8 @@ namespace Siro.F.P
             this.gridColumn13.MinWidth = 25;
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 9;
-            this.gridColumn13.Width = 205;
+            this.gridColumn13.VisibleIndex = 7;
+            this.gridColumn13.Width = 160;
             // 
             // colSalioALas
             // 
@@ -855,7 +897,7 @@ namespace Siro.F.P
             this.colSalioALas.Name = "colSalioALas";
             this.colSalioALas.Visible = true;
             this.colSalioALas.VisibleIndex = 6;
-            this.colSalioALas.Width = 119;
+            this.colSalioALas.Width = 106;
             // 
             // colHoraSalida
             // 
@@ -864,7 +906,14 @@ namespace Siro.F.P
             this.colHoraSalida.Name = "colHoraSalida";
             this.colHoraSalida.Visible = true;
             this.colHoraSalida.VisibleIndex = 4;
-            this.colHoraSalida.Width = 101;
+            this.colHoraSalida.Width = 90;
+            // 
+            // colTotalHours1
+            // 
+            this.colTotalHours1.FieldName = "TotalHours";
+            this.colTotalHours1.MinWidth = 25;
+            this.colTotalHours1.Name = "colTotalHours1";
+            this.colTotalHours1.Width = 94;
             // 
             // repositoryItemTextEdit1
             // 
@@ -901,7 +950,7 @@ namespace Siro.F.P
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
             this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup1;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(1536, 477);
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(1536, 463);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1,
             this.layoutControlGroup2});
@@ -909,20 +958,30 @@ namespace Siro.F.P
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1512, 425);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1512, 411);
             this.layoutControlGroup1.Text = "RESUMEN DE HORAS";
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.gridControlResumenHorario;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(191, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1512, 425);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1321, 411);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.listBoxControlColaboradores;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(191, 411);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
             // 
             // layoutControlGroup2
             // 
@@ -930,7 +989,7 @@ namespace Siro.F.P
             this.layoutControlItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1512, 425);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1512, 411);
             this.layoutControlGroup2.Text = "DETALLE HORAS";
             // 
             // layoutControlItem2
@@ -938,26 +997,19 @@ namespace Siro.F.P
             this.layoutControlItem2.Control = this.gridControl1;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1512, 425);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1512, 411);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.spreadsheetControl1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 477);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 463);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1536, 340);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1536, 354);
             this.layoutControlItem1.Text = "DATOS DEL RELOJ:";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(110, 16);
-            // 
-            // barButtonItemImprimir
-            // 
-            this.barButtonItemImprimir.Caption = "Imprimir Resumen";
-            this.barButtonItemImprimir.Id = 21;
-            this.barButtonItemImprimir.Name = "barButtonItemImprimir";
-            this.barButtonItemImprimir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemImprimir_ItemClick);
             // 
             // ArchivosHoras
             // 
@@ -986,9 +1038,11 @@ namespace Siro.F.P
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEditTotalHoras)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControlColaboradores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlResumenHorario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewResumenHorario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoExEdit1)).EndInit();
@@ -996,6 +1050,7 @@ namespace Siro.F.P
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -1090,5 +1145,9 @@ namespace Siro.F.P
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraBars.BarButtonItem barButtonItemImprimir;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalHours1;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControlColaboradores;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }

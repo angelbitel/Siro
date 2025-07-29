@@ -35,6 +35,30 @@ namespace Siro.F.P
             barEditItemPrmDesde.EditValue = DateTime.Now.AddDays(-15).Date;
             barEditItemPrmHasta.EditValue = DateTime.Now.Date;
             gridControlResumenHorario.DataSource = LstHoraTrajadas;
+            listBoxControlColaboradores.SelectedIndexChanged += (s, f) =>
+            {
+                if(listBoxControlColaboradores.SelectedItem is ColaboradorItem colaborador)
+                {
+                    string colaboradorSeleccionado = colaborador.Colaborador;
+
+                    if (!string.IsNullOrWhiteSpace(colaboradorSeleccionado))
+                    {
+                        gridViewResumenHorario.ActiveFilter.Clear(); // Limpia filtros anteriores
+
+                        gridViewResumenHorario.ActiveFilter.Add(
+                            gridViewResumenHorario.Columns["Colaborador"],
+                            new DevExpress.XtraGrid.Columns.ColumnFilterInfo(
+                                $"[Colaborador] = '{colaboradorSeleccionado}'"
+                            )
+                        );
+                    }
+                    else
+                    {
+                        gridViewResumenHorario.ActiveFilter.Clear(); // Mostrar todo si no hay selección
+                    }
+
+                }
+            };
         }
 
         private DataTable Range(CellRange range, DataTable dataTable)
@@ -229,7 +253,8 @@ namespace Siro.F.P
                         {
                             if (!DiasFeriados.Any(a => a.DiaLibre.Date == g.Date) && g.DayOfWeek != DayOfWeek.Sunday)
                             {
-                                var horasAusencia = g.DayOfWeek == DayOfWeek.Saturday ? 4 : 8;
+                                var horasAusencia = 8;
+                                //var horasAusencia = g.DayOfWeek == DayOfWeek.Saturday ? 4 : 8;
 
                                 // Check if the employee worked on the current day
                                 var workedOnDay = horaColaborador.Any(w => w.IdUser == f.IdColaborador && g.Date == w.Dia.Date);
@@ -301,8 +326,35 @@ namespace Siro.F.P
                 {
                     f.Comentario = "TARDANZA..";
                 }
+                f.DelayDataTime = DateTime.Today.Add(f.Delay);
             });
+
+            var colaboradores = LstHoraTrajadas
+            .GroupBy(s => s.Colaborador)
+            .Select(g => new ColaboradorItem { Colaborador = g.Key })
+            .ToList();
+
+
+            listBoxControlColaboradores.DataSource = colaboradores; 
+            listBoxControlColaboradores.DisplayMember = "Colaborador";
+            listBoxControlColaboradores.ValueMember = "Colaborador";
+
         }
+        public class ColaboradorItem
+        {
+            public string Colaborador { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                return obj is ColaboradorItem item && Colaborador == item.Colaborador;
+            }
+
+            public override int GetHashCode()
+            {
+                return Colaborador?.GetHashCode() ?? 0;
+            }
+        }
+
         private DateTime[] CreateDateArray(DateTime minDate, DateTime maxDate)
         {
             // Calculate the number of days between the two dates
@@ -337,6 +389,7 @@ namespace Siro.F.P
             {
                 LstHoraTrajadas.Where(w => w.TotalHours > 0).ToList().ForEach(f =>
                 {
+                    f.Delay = new TimeSpan(f.DelayDataTime.Hour, f.DelayDataTime.Minute, 0);
                     var horaTrabajada = new HorasTrabajadas
                     {
                         Año = f.Date.Year,
@@ -426,6 +479,20 @@ namespace Siro.F.P
         private void barButtonItemImprimir_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             gridControlResumenHorario.ShowPrintPreview();
+        }
+
+        private void listBoxControlColaboradores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var seleccionado = listBoxControlColaboradores.SelectedItem as ColaboradorItem;
+            if (seleccionado != null)
+            {
+                MessageBox.Show($"Seleccionaste: {seleccionado.Colaborador}");
+            }
+        }
+
+        private void barButtonItemVerificar_ItemPress(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
     }
 }
