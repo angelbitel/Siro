@@ -61,5 +61,6 @@ namespace Siro.Model
         }
         public bool EsAusenciaJustificada { get; set; }
         public string Comentario { get; set; }
+        public bool Seleccionar { get; set; }
     }
 }

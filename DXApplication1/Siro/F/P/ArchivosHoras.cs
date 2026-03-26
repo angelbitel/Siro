@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.Spreadsheet.Export;
 using Siro.Properties;
+using Siro.Model;
 
 namespace Siro.F.P
 {
@@ -17,6 +18,8 @@ namespace Siro.F.P
         private BindingList<Model.DiasFeriados> DiasFeriados { get; set; }
         private BindingList<Model.HoraReloj> LstHoraTrajadas = new BindingList<Model.HoraReloj>();
         private List<Colaboradores> LstColaboradores = new List<Colaboradores>();
+        private List<EstadoHoras> EstadoHora { get; set; }
+
         private readonly Controller.Horas dbH;
         public ArchivosHoras()
         {
@@ -31,13 +34,13 @@ namespace Siro.F.P
         {
             Columnas = dbH.LstColumnaOrigen;
             LstColaboradores = new Controller.Colaborador().ListaColaboradoresActivo(Settings.Default.DIdEmpresa);
-            gridControl1.DataSource = LstHoraTrajadas;
+            horaRelojBindingSource.DataSource = LstHoraTrajadas;
             barEditItemPrmDesde.EditValue = DateTime.Now.AddDays(-15).Date;
             barEditItemPrmHasta.EditValue = DateTime.Now.Date;
             gridControlResumenHorario.DataSource = LstHoraTrajadas;
             listBoxControlColaboradores.SelectedIndexChanged += (s, f) =>
             {
-                if(listBoxControlColaboradores.SelectedItem is ColaboradorItem colaborador)
+                if (listBoxControlColaboradores.SelectedItem is ColaboradorItem colaborador)
                 {
                     string colaboradorSeleccionado = colaborador.Colaborador;
 
@@ -59,6 +62,29 @@ namespace Siro.F.P
 
                 }
             };
+            gridViewResumenHorario.Columns["DelayDataTime"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Custom;
+            gridViewResumenHorario.Columns["DelayDataTime"].SummaryItem.DisplayFormat = "Total Horas $ = {0:n2}";
+            EstadoHora = new List<EstadoHoras>
+                {
+                    new EstadoHoras { Estado = "JUSTIFICADA",             DescuentaHora = false },
+                    new EstadoHoras { Estado = "CONSTANCIA",              DescuentaHora = false },
+                    new EstadoHoras { Estado = "CONSTANCIA / LABORO",     DescuentaHora = false },
+                    new EstadoHoras { Estado = "CONSTANCIA / NO REGRESO", DescuentaHora = true },
+                    new EstadoHoras { Estado = "PERMISO",                 DescuentaHora = true },
+                    new EstadoHoras { Estado = "RAYA",                    DescuentaHora = false },
+                    new EstadoHoras { Estado = "SIN JUSTIFICAR AUSENCIA", DescuentaHora = true },
+                    new EstadoHoras { Estado = "TARDANZA",                DescuentaHora = false },
+                    new EstadoHoras { Estado = "NO MARCO SALIDA..",      DescuentaHora = true },
+                    new EstadoHoras { Estado = "NO MARCO ENTRADA..",     DescuentaHora = true },
+                    new EstadoHoras { Estado = "SIN MARCACION..",        DescuentaHora = true },
+                    new EstadoHoras { Estado = "TARDANZA..",             DescuentaHora = false },
+                    new EstadoHoras { Estado = "TARDANZA INJUSTIFICADA..",             DescuentaHora = true },
+                    new EstadoHoras { Estado = "AUSENCIA..",             DescuentaHora = true },
+                    new EstadoHoras { Estado = "DIA NO LABORADO..",      DescuentaHora = true },
+                    new EstadoHoras { Estado = "AJUSTE HORA MANUAL..",      DescuentaHora = false },
+                    new EstadoHoras { Estado = "", DescuentaHora = false }
+                };
+            EstadoHora.ForEach(f => repositoryItemImageComboBoxComentarioStatus.Items.Add(T.Item(f.Estado, f.Estado)));            
         }
 
         private DataTable Range(CellRange range, DataTable dataTable)
@@ -131,20 +157,20 @@ namespace Siro.F.P
                     Habilitar = false
                 };
 
-                if (Principal.Bariables.PeridoContable.ToString("yyyyMM") == hora.Date.ToString("yyyyMM"))
-                {
-                    if (Principal.Bariables.PeridoContable.Day <= 15 && hora.Date.Day <= 15)
-                        hora.Habilitar = true;
-                    else if (Principal.Bariables.PeridoContable.Day > 15 && hora.Date.Day > 15)
-                        hora.Habilitar = true;
-                }
-                else
-                {
-                    lbl.Caption = $"EL PERIDO DE  {Principal.Bariables.PeridoContable:yyyyMM}  QUE ESTA TRABAJANDO NO CONCUERDA CON EL DEL ARCHIVO { hora.Date:yyyyMM}";
-                }
+                //if (Principal.Bariables.PeridoContable.ToString("yyyyMM") == hora.Date.ToString("yyyyMM"))
+                //{
+                //    if (Principal.Bariables.PeridoContable.Day <= 15 && hora.Date.Day <= 15)
+                //        hora.Habilitar = true;
+                //    else if (Principal.Bariables.PeridoContable.Day > 15 && hora.Date.Day > 15)
+                //        hora.Habilitar = true;
+                //}
+                //else
+                //{
+                //    lbl.Caption = $"EL PERIDO DE  {Principal.Bariables.PeridoContable:yyyyMM}  QUE ESTA TRABAJANDO NO CONCUERDA CON EL DEL ARCHIVO { hora.Date:yyyyMM}";
+                //}
+
                 var colaborador = LstColaboradores.FirstOrDefault(s => s.Reloj == item[CUser].ToString());
-                //if (LstColaboradores.Where(s => s.Reloj == item[CUser].ToString()).ToList().Count > 1)
-                //    colaborador = colaborador;
+
                 if (colaborador != null)
                 {
                     hora.IdUser = colaborador.IdColaborador;
@@ -184,8 +210,13 @@ namespace Siro.F.P
                     SalioALas = f.MaxHour,
                 }));
 
-            LstHoraTrajadas.ToList().ForEach(f =>
+            foreach (var f in LstHoraTrajadas)
             {
+                if (string.IsNullOrEmpty(f.User))
+                {
+                    XtraMessageBox.Show($"NO SE VA A PROCESAR LA FILA ({LstHoraTrajadas.IndexOf(f)}), DEL COLABORADOR {f.Colaborador}, POR FALTA DE DATOS CONTINUE CON EL PROCESO O CORRIJA Y CARGUE NUEVAMENTE....");
+                    continue;
+                }
                 var colaborador = LstColaboradores.SingleOrDefault(s => s.Reloj == f.User);
                 if (colaborador != null)
                 {
@@ -212,7 +243,7 @@ namespace Siro.F.P
                 }
                 else
                     f.Colaborador = $"ACTUALIZAR DATOS --> {f.User}";
-            });
+            }
 
 
             //BUSCAR AUSENCIAS DIAS
@@ -220,6 +251,7 @@ namespace Siro.F.P
             var minDay = datos.Min(m => m.Date);
             var maxDay = datos.Max(m => m.Date);
             
+            lbl.Caption = $"PROCESANDO DESDE EL {minDay:yyyy-MMM-dd}, HASTA {maxDay:yyyy-MMM-dd}";
 
             //AGREGAR DIA FERIADOS DEL PERIDO
             var diasFeriadoPeriodo = dbH.DiasFeriados.Where(w => w.Date >= minDay.Date && w.Date <= maxDay.Date).ToList();
@@ -244,7 +276,7 @@ namespace Siro.F.P
 
                 // Iterate over active employees
                 LstColaboradores
-                    .Where(w => w.IdEstadoColaborador == 1 && !string.IsNullOrEmpty(w.Reloj))
+                    .Where(w => w.IdEstadoColaborador == 1 && !string.IsNullOrEmpty(w.Reloj) && w.FechaIngreso.HasValue && w.FechaIngreso.Value.Date <= maxDay )
                     .ToList()
                     .ForEach(f =>
                     {
@@ -257,10 +289,23 @@ namespace Siro.F.P
                                 //var horasAusencia = g.DayOfWeek == DayOfWeek.Saturday ? 4 : 8;
 
                                 // Check if the employee worked on the current day
-                                var workedOnDay = horaColaborador.Any(w => w.IdUser == f.IdColaborador && g.Date == w.Dia.Date);
+                                /*var workedOnDay = horaColaborador.Any(w => w.IdUser == f.IdColaborador && g.Date == w.Dia.Date);
 
                                 // If no worked hours, add an absence
                                 if (!workedOnDay)
+                                {
+                                    ausencias.Add(new Model.HoraReloj
+                                    {
+                                        User = f.Reloj,
+                                        Colaborador = f.Colaborador,
+                                        Date = g.Date,
+                                        Delay = new TimeSpan(horasAusencia, 0, 0),
+                                        Habilitar = true,
+                                        IdUser = f.IdColaborador,
+                                        EsAusenciaJustificada = false
+                                    });
+                                }*/
+                                if(!LstHoraTrajadas.Any(a=> a.IdUser == f.IdColaborador && g.Date == a.Date))
                                 {
                                     ausencias.Add(new Model.HoraReloj
                                     {
@@ -322,11 +367,31 @@ namespace Siro.F.P
                 {
                     f.Comentario = "SIN MARCACION..";
                 }
-                if(f.Delay < TimeSpan.FromMinutes(15))
+                if (f.Delay < TimeSpan.FromMinutes(15))
                 {
                     f.Comentario = "TARDANZA..";
                 }
+                else if (f.Delay >= TimeSpan.FromMinutes(15))
+                {
+                    f.Comentario = "TARDANZA INJUSTIFICADA..";
+                }
+                if(f.Delay == TimeSpan.FromHours(8))
+                {
+                    f.Comentario = "AUSENCIA..";
+                }
+                if(colaborador.FechaIngreso.HasValue && f.Date < colaborador.FechaIngreso.Value.Date)
+                {
+                    f.Comentario = "DIA NO LABORADO..";
+                }
                 f.DelayDataTime = DateTime.Today.Add(f.Delay);
+
+                if (EstadoHora.SingleOrDefault(s => s.Estado == f.Comentario) is Model.EstadoHoras estado)
+                {
+                    if (estado.DescuentaHora)
+                        f.EsAusenciaJustificada = false;
+                    else
+                        f.EsAusenciaJustificada = true;
+                }
             });
 
             var colaboradores = LstHoraTrajadas
@@ -334,26 +399,16 @@ namespace Siro.F.P
             .Select(g => new ColaboradorItem { Colaborador = g.Key })
             .ToList();
 
+            LstSelectColaborador.Clear();
+            colaboradores.ForEach(f => LstSelectColaborador.Add(f));
 
-            listBoxControlColaboradores.DataSource = colaboradores; 
+            listBoxControlColaboradores.DataSource = LstSelectColaborador; 
             listBoxControlColaboradores.DisplayMember = "Colaborador";
             listBoxControlColaboradores.ValueMember = "Colaborador";
 
         }
-        public class ColaboradorItem
-        {
-            public string Colaborador { get; set; }
-
-            public override bool Equals(object obj)
-            {
-                return obj is ColaboradorItem item && Colaborador == item.Colaborador;
-            }
-
-            public override int GetHashCode()
-            {
-                return Colaborador?.GetHashCode() ?? 0;
-            }
-        }
+        private BindingList<ColaboradorItem> LstSelectColaborador = new BindingList<ColaboradorItem>();
+      
 
         private DateTime[] CreateDateArray(DateTime minDate, DateTime maxDate)
         {
@@ -493,6 +548,150 @@ namespace Siro.F.P
         private void barButtonItemVerificar_ItemPress(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+        }
+
+        private void gridViewResumenHorario_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
+        {
+            var item = e.Item as DevExpress.XtraGrid.GridSummaryItem;
+
+            // Check if the summary belongs to the column you want (e.g., "DelayDataTime")
+            if (item != null && item.FieldName == "DelayDataTime")
+            {
+                if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Start)
+                {
+                    e.TotalValue = 0m; // initialize accumulator
+                }
+                else if (e.SummaryProcess == DevExpress.Data.CustomSummaryProcess.Calculate)
+                {
+                    var row = (Siro.Model.HoraReloj)gridViewResumenHorario.GetRow(e.RowHandle);
+
+                    if (row != null)
+                    {
+                        // Add the total hours from DelayDataTime
+                        e.TotalValue = (decimal)e.TotalValue + (decimal)row.DelayDataTime.TimeOfDay.TotalHours;
+                    }
+                }
+            }
+        }
+
+        private void barButtonItemQuitarFilasGrid_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (XtraMessageBox.Show("DESEA ELIMINAR ESTOS REGISTROS SELECCIONADOS ?", "ALERTA", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                gridViewResumenHorario.PostEditor();   // Confirma el valor editado
+                gridViewResumenHorario.UpdateCurrentRow(); // Actualiza la fila actual
+                var toRemove = LstHoraTrajadas.Where(x => x.Seleccionar).ToList();
+
+                foreach (var item in toRemove)
+                {
+                    LstHoraTrajadas.Remove(item);
+
+                    if (!LstHoraTrajadas.Any(a => a.IdUser == item.IdUser))
+                    {
+                        // Buscar todos los colaboradores que coinciden
+                        var filtroColDelete = LstSelectColaborador.SingleOrDefault(s => s.Colaborador == item.Colaborador);
+                        if (filtroColDelete != null)
+                            LstSelectColaborador.Remove(filtroColDelete);
+                    }
+                }
+            }
+        }
+
+        private void gridViewResumenHorario_ValidatingEditor(object sender, DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventArgs e)
+        {
+            gridViewResumenHorario.PostEditor();   // Confirma el valor editado
+            gridViewResumenHorario.UpdateCurrentRow(); // Actualiza la fila actual
+        }
+
+        private void gridViewResumenHorario_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if(e.Column == colEntroAlas2 || e.Column == colSalioALas)
+            {
+                if (gridViewResumenHorario.GetFocusedRow() is  Model.HoraReloj row)
+                {
+                    if(LstColaboradores.SingleOrDefault(s => s.IdColaborador == row.IdUser) is Colaboradores colaborador)
+                    {
+
+                        if(colaborador.HoraEntradaSabado != null && colaborador.HoraEntrada != null)
+                        {
+                            TimeSpan enterTime = new TimeSpan(row.EntroALas.Value.Hours, row.EntroALas.Value.Minutes, 0);
+
+                            TimeSpan limitTime = new TimeSpan(colaborador.HoraEntrada.Value.Hours, colaborador.HoraEntrada.Value.Minutes, 0);
+
+                            // Verificar si es sábado
+                            if (row.Date.DayOfWeek == DayOfWeek.Saturday)
+                            {
+                                limitTime = new TimeSpan(colaborador.HoraEntradaSabado.Value.Hours, colaborador.HoraEntradaSabado.Value.Minutes, 0);
+                                row.HoraEntradaSabado = colaborador.HoraEntradaSabado;
+                            }
+                            else
+                                row.HoraEntrada = colaborador.HoraEntrada;
+
+                            if (enterTime > limitTime)
+                            {
+                                row.Delay = GetTimeAttended(enterTime, limitTime);
+                            }
+                            if (row.Delay < TimeSpan.FromMinutes(15))
+                            {
+                                row.Comentario = "TARDANZA..";
+                            }
+                            TimeSpan diferencia = row.SalioALas.Value - row.EntroALas.Value;
+                            if (diferencia.Hours >= 8)
+                            {
+                                row.DelayDataTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+                                row.Comentario = "AJUSTE HORA MANUAL..";
+                            }else if(diferencia.Hours>1)
+                            {
+                                row.DelayDataTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8-diferencia.Hours, 0, 0);
+                                row.Comentario = "SIN JUSTIFICAR AUSENCIA";
+
+                            }
+
+                            if (EstadoHora.SingleOrDefault(s => s.Estado == row.Comentario) is Model.EstadoHoras estado)
+                            {
+                                if (estado.DescuentaHora)
+                                    row.EsAusenciaJustificada = false;
+                                else
+                                    row.EsAusenciaJustificada = true;
+                            }
+                        }
+                    }
+                }
+            }
+            if(e.Column == colComentario)
+            {
+                if (gridViewResumenHorario.GetFocusedRow() is Model.HoraReloj row)
+                {
+                    if (EstadoHora.SingleOrDefault(s => s.Estado == row.Comentario) is Model.EstadoHoras estado)
+                    {
+                        if (estado.DescuentaHora)
+                            row.EsAusenciaJustificada = false;
+                        else
+                            row.EsAusenciaJustificada = true;
+                    }
+                }
+            }
+        }
+
+        private void gridViewResumenHorario_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            gridViewResumenHorario.PostEditor();   // Confirma el valor editado
+            gridViewResumenHorario.UpdateCurrentRow(); // Actualiza la fila actual
+        }
+
+        private void repositoryItemImageComboBoxComentarioStatus_EditValueChanged(object sender, EventArgs e)
+        {
+            gridViewResumenHorario.UpdateCurrentRow();
+            if (gridViewResumenHorario.GetFocusedRow() is Model.HoraReloj row)
+            {
+                if (EstadoHora.SingleOrDefault(s => s.Estado == row.Comentario) is Model.EstadoHoras estado)
+                {
+                    if (estado.DescuentaHora)
+                        row.EsAusenciaJustificada = false;
+                    else
+                        row.EsAusenciaJustificada = true;
+                }
+            }
         }
     }
 }

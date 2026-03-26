@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraLayout;
 using DevExpress.XtraReports.UI;
 using Siro.Properties;
 using System;
@@ -66,24 +67,7 @@ namespace Siro.F.P
                     this.Colaborador1TextEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular);
             }
         }
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-        }
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-        }
-        private void btnAdelante_Click(object sender, EventArgs e)
-        {
-        }
-        private void btnAtras_Click(object sender, EventArgs e)
-        {
-        }
-        private void btnfirst_Click(object sender, EventArgs e)
-        {
-        }
-        private void btnLast_Click(object sender, EventArgs e)
-        {
-        }
+
         private void DeduccionesColaborador()
         {
             var row = colaboradorBindingSource.Current as Colaboradores;
@@ -405,21 +389,92 @@ namespace Siro.F.P
             (colaboradorBindingSource.Current as Colaboradores).IdEstadoColaborador = 1;
             (colaboradorBindingSource.Current as Colaboradores).IdEmpresa = Settings.Default.DIdEmpresa;
         }
+        
+        private void ValidarColaborador(Colaboradores colaborador)
+        {
+            if(string.IsNullOrEmpty(colaborador.Colaborador))
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(ItemForColaborador1, "EL CAMPO DEL NOMBRE DE COLABORADOR NO PUEDE ESTAR VACIO.....");
+
+            if(colaborador.IdEstadoColaborador==null || colaborador.IdEstadoColaborador==0)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(ItemForIdEstadoColaborador, "DEBE DE LLENAR EL CAMPO DE ESTADO COLABORADOR.....");
+
+            if (colaborador.SalarioQuincenal == null || colaborador.IdEstadoColaborador == 0)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(ItemForSalarioQuincenal, "DEBE DE LLENAR EL CAMPO DE SALARIO QUINCENAL COLABORADOR.....");
+
+            if (colaborador.RataPorHora == null || colaborador.RataPorHora == 0)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(ItemForRataPorHora, "DEBE DE LLENAR EL CAMPO DE RATA POR HORA.....");
+
+            if (colaborador.HoraEntrada == null)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(layoutControlItemHEntrada, "DEBE DE LLENAR EL CAMPO DE HORA ENTRADA.....");
+
+            if (colaborador.HoraSalida == null)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(layoutControlItemHSalida, "DEBE DE LLENAR EL CAMPO DE HORA SALIDA.....");
+
+            if (colaborador.HoraEntrada == null)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(layoutControlItemHEntrada, "DEBE DE LLENAR EL CAMPO DE HORA ENTRADA.....");
+
+            if (colaborador.HoraEntradaSabado == null)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(layoutControlItemHEntradaSabado, "DEBE DE LLENAR EL CAMPO DE HORA ENTRADA SABADO.....");
+
+            if (colaborador.HoraSalidaSabado == null)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(layoutControlItemHSalidaSabado, "DEBE DE LLENAR EL CAMPO DE HORA SALIDA SABADO.....");
+
+            if (colaborador.IdDepartamento == null)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(ItemForIdDepartamento, "DEBE DE LLENAR EL CAMPO DE DEPARTAMENTO.....");
+
+            if (colaborador.IdentificacionPersonal == null)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(ItemForIdentificacionPersonal, "DEBE DE LLENAR EL CAMPO DE IDENTIFICACION.....");
+
+            if (colaborador.IdContratoColaborador == null)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(ItemForIdContratoColaborador, "DEBE DE LLENAR EL CAMPO DE CONTRATO COLABORADOR.....");
+
+            if (colaborador.FechaIngreso == null)
+                Siro.Helper.NotificacionesImagen.SetMessageLayaoutControlItem(ItemForFechaIngreso, "DEBE DE LLENAR EL CAMPO DE FECHA INGRESO.....");
+        }
 
         private void barButtonItemGuardarDatos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            var colaborador = colaboradorBindingSource.Current as Colaboradores;
+
+            var controlerValidar = new LayoutControlItem[]
+            { 
+                ItemForIdEstadoColaborador, 
+                ItemForColaborador1, 
+                ItemForSalarioQuincenal, 
+                ItemForRataPorHora, 
+                layoutControlItemHEntrada, 
+                layoutControlItemHEntradaSabado, 
+                ItemForIdDepartamento,
+                ItemForIdentificacionPersonal, 
+                ItemForIdContratoColaborador,
+                ItemForFechaIngreso 
+            };
+
+            Siro.Helper.NotificacionesImagen.Errores =new List<string>();
+
+            Siro.Helper.NotificacionesImagen.BlankMesageControl(controlerValidar);
+
+            ValidarColaborador(colaborador);
+
+            if(Siro.Helper.NotificacionesImagen.Errores.Any())
+            {
+                XtraMessageBox.Show($"ERRORES:\n{string.Join("\n", Siro.Helper.NotificacionesImagen.Errores)}", "VALIDACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblMsg.Caption = "VERIFIQUE LAS ALERTAS PARA PODER CONTINUAR..";
+                return;
+            }
+
             if (Settings.Default.DIdEmpresa == 0)
             {
                 lblMsg.Caption = "Seleccione una empresa!";
                 new D.Periodo().ShowDialog(this);
             }
+            
             if (Settings.Default.DIdEmpresa != 0)
             {
-                var row = colaboradorBindingSource.Current as Colaboradores;
                 var save = new Controller.Colaborador();
-                if (row.IdEmpresa == 0)
-                    row.IdEmpresa = Settings.Default.DIdEmpresa;
-                save.Guardar(row);
+                if (colaborador.IdEmpresa == 0)
+                    colaborador.IdEmpresa = Settings.Default.DIdEmpresa;
+                save.Guardar(colaborador);
                 (colaboradorBindingSource.Current as Colaboradores).IdColaborador = (save.NuevoId ?? 0);
                 lblMsg.Caption = "Los Datos Fueron Guardados Correctamente";
             }

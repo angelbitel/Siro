@@ -574,6 +574,7 @@
     <Compile Include="Gestiones.cs">
       <DependentUpon>slGestiones.tt</DependentUpon>
     </Compile>
+    <Compile Include="Helper\NotificacionesImagen.cs" />
     <Compile Include="HistorialCliente.cs">
       <DependentUpon>slGestiones.tt</DependentUpon>
     </Compile>
@@ -596,6 +597,7 @@
     <Compile Include="Model\DetalleAsientoCorto.cs" />
     <Compile Include="Model\DiasFeriados.cs" />
     <Compile Include="Model\EntradasSalidas.cs" />
+    <Compile Include="Model\EstadoHoras.cs" />
     <Compile Include="Model\HoraReloj.cs" />
     <Compile Include="Model\Items.cs" />
     <Compile Include="Model\Liquidacion.cs" />
@@ -1487,6 +1489,9 @@
     <None Include="Resources\saveandnew.svg" />
     <None Include="Resources\enablesearch.svg" />
     <None Include="Resources\driving.svg" />
+    <None Include="Resources\atencion.bmp" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\warning.png" />
     <Content Include="SiroAccounting.ico" />
     <Content Include="slSiro.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
